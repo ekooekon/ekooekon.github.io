@@ -1,70 +1,39 @@
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#ece9e1">
-<meta name="description" content="箱の中のカラフルな導線は10,000本。セーフなのはたった1本。制限時間なし、ヒントなしの運試しゲーム。">
-<title>ONE IN 10,000 — たった1本の、正解。</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='15' fill='%23262b26'/%3E%3Cpath d='M12 45C12 8 52 8 52 32S20 55 20 27' fill='none' stroke='%23ef6b49' stroke-width='7' stroke-linecap='round'/%3E%3C/svg%3E">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f1eee6">
+<meta name="description" content="200本のカラフルな導線が入った箱。ハズレは、たった1本。好きな1本を選んで切る、時間制限なしの運試しゲーム。">
+<title>ONE BAD WIRE — 200本、ハズレは1本。</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2324323d'/%3E%3Cpath d='M8 20H38M8 32H38M8 44H38' stroke='%23ffad54' stroke-width='5'/%3E%3Crect x='35' y='12' width='21' height='40' rx='4' fill='%23e4e7db'/%3E%3C/svg%3E">
 <style>
-:root{--paper:#ece9e1;--ink:#262b27;--muted:#73766e;--line:#cccac0;--red:#ce4d36;--green:#375d45;--cream:#f7f4e9;--mono:ui-monospace,SFMono-Regular,Consolas,'Liberation Mono',monospace;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:14px;-webkit-font-smoothing:antialiased}button,input{font:inherit}button{color:inherit;cursor:pointer}button:disabled{cursor:not-allowed}button:focus-visible,a:focus-visible,input:focus-visible{outline:3px solid #267e92;outline-offset:4px}button{touch-action:manipulation}svg{display:block}button svg{width:18px;height:18px;flex-shrink:0}button,.softlink{ -webkit-tap-highlight-color:transparent}body.modal-open{overflow:hidden}.wrap{max-width:1352px;margin:0 auto;padding:0 42px}.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;align-items:center;gap:12px}.brandmark{width:34px;height:34px;background:var(--ink);border-radius:7px;display:grid;place-items:center;color:var(--paper)}.brandmark svg{width:25px;height:25px}.brandtext{font-family:var(--mono);font-size:16px;font-weight:800;letter-spacing:-.7px}.brandtext span{color:var(--red)}.top-actions{display:flex;gap:9px}.tool{display:flex;align-items:center;justify-content:center;gap:8px;border:1px solid var(--line);border-radius:7px;background:transparent;min-height:38px;padding:8px 12px;font-size:12px;font-weight:600}.tool:hover{background:#f6f3eb}.hero{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:30px 0 24px}.eyebrow{font-family:var(--mono);font-size:10px;letter-spacing:2.1px;color:var(--muted);font-weight:600;margin:0 0 13px}.hero h1{font-size:clamp(30px,3.5vw,48px);letter-spacing:-1.8px;line-height:1.25;margin:0 0 14px;font-weight:800}.hero p{margin:0;color:#6a6e64;line-height:1.8;font-size:13px}.odds{padding-left:30px;text-align:right;flex-shrink:0}.odds-number{font-family:var(--mono);font-size:58px;line-height:1;font-weight:500;letter-spacing:-5px}.odds-number small{font-size:22px;letter-spacing:-1px;margin-left:4px}.odds-label{font-size:10px;color:var(--muted);letter-spacing:1.1px;margin-top:10px}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 284px;gap:28px;align-items:start}.machine-wrap{padding-top:9px;position:relative}.hinges{display:flex;justify-content:space-between;padding:0 18%;height:11px}.hinges i{width:64px;background:linear-gradient(90deg,#42473d,#8d9280 20%,#4b5144 25%,#898e7c 30%,#4b5144 70%,#858b77 75%,#565c4f 80%,#40473a);border-radius:4px 4px 0 0;border:1px solid #343a2e;box-shadow:0 2px 2px #0005}.machine{position:relative;border:1px solid #252b22;border-radius:15px;background:linear-gradient(135deg,#626956,#424a3d 48%,#4e5647);padding:20px 22px 24px;box-shadow:0 3px 0 #30362e,0 8px 0 -3px #484d40,0 20px 32px -14px #34392f70,inset 0 1px 0 #a0a58c;overflow:hidden;isolation:isolate}.screw{position:absolute;width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,#b0b4a5,#50574b);box-shadow:0 0 0 2px #30362d,0 1px 1px #0008;z-index:2}.screw:after{content:'';position:absolute;left:2px;right:2px;top:4px;height:1px;background:#32382f;transform:rotate(-32deg)}.s1{left:10px;top:11px}.s2{right:10px;top:11px}.s3{left:10px;bottom:11px}.s4{right:10px;bottom:11px}.case-top{display:flex;align-items:center;justify-content:space-between;gap:8px;color:#c9cdbb;font-family:var(--mono);font-size:9px;letter-spacing:1px;margin-bottom:18px}.case-state{display:flex;align-items:center;gap:7px}.led{width:6px;height:6px;border-radius:50%;background:#e1b567;box-shadow:0 0 6px #e1b56766}.case-top .engrave{font-size:8px;color:#b2b9a3}.rack{background:#181e1a;border:1px solid #242a21;border-radius:8px;box-shadow:inset 0 3px 10px #0008,0 1px 0 #a2a98c55;overflow:hidden}.rack-toolbar{padding:13px 15px;display:flex;justify-content:space-between;align-items:center;gap:10px;border-bottom:1px solid #394136;background:#232a23}.sector-text{display:flex;align-items:center;gap:11px}.sector-num{font-family:var(--mono);font-size:27px;line-height:1;color:#e7e9da}.sector-info{display:flex;flex-direction:column;gap:4px}.sector-info strong{font-size:9px;color:#939e88;letter-spacing:1.8px;font-weight:500}.sector-range{font-family:var(--mono);font-size:10px;color:#d7dbc8}.rack-nav{display:flex;align-items:center;gap:5px}.rack-nav button{border:1px solid #515b49;border-radius:4px;background:#353f31;color:#dce0cf;min-height:32px;padding:6px 9px;display:flex;align-items:center;justify-content:center;font-size:10px}.rack-nav button:hover:not(:disabled){background:#4d5a44}.rack-nav button:disabled{opacity:.3}.rack-nav svg{width:14px;height:14px}.wire-viewport{max-height:486px;min-height:300px;overflow:auto;scrollbar-color:#69765a #1c241c;scrollbar-width:thin;overscroll-behavior:contain;position:relative;background:#1a211a}.wire-board{position:relative;width:100%;background:radial-gradient(ellipse at 40% 40%,#2d3728,#161e17 80%);min-height:350px}.wire-board:after{content:'';position:absolute;inset:0;box-shadow:inset 0 0 30px 3px #0008;pointer-events:none;z-index:2}.wire-canvas{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none}.wire-targets{position:absolute;inset:0;display:grid}.wire-hit{position:relative;background:none;border:0;border-radius:5px;min-width:0;color:#9ba591;display:flex;align-items:flex-end;justify-content:center;padding:0 0 4px;isolation:isolate}.wire-hit span{font-family:var(--mono);font-size:8px;line-height:1;background:#192118cc;padding:2px 4px;border-radius:2px;pointer-events:none}.wire-hit:hover{background:#dfe9ce0c}.wire-hit:hover span{color:#fff}.wire-hit.selected{background:#e3edcf14;box-shadow:inset 0 0 0 1px #dce9c894}.wire-hit.selected span{color:#1d281c;background:#e7edd8;font-weight:700}.wire-hit:focus-visible{outline:2px solid #f4e9bd;outline-offset:-3px;z-index:3}.wire-hit.safe{box-shadow:inset 0 0 0 2px #8eda93;background:#73aa7922}.rack-foot{min-height:36px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 14px;border-top:1px solid #394136;font-size:9px;color:#a5af99;letter-spacing:.4px}.rack-foot span{display:flex;gap:6px;align-items:center}.rack-foot svg{width:12px;height:12px}.case-bottom{display:flex;justify-content:space-between;align-items:center;margin-top:18px;gap:10px}.case-label{font-family:var(--mono);font-size:8px;color:#b8bfab;line-height:1.6;letter-spacing:1px}.seal{display:flex;align-items:center;gap:8px;background:#d4cfb9;border:1px solid #a7a48e;padding:5px 9px;transform:rotate(-2deg);color:#4a4f3d;font-size:9px;font-weight:700;box-shadow:0 1px 4px #0003}.seal .check{font-size:19px}.lid{position:absolute;inset:0;z-index:5;background:linear-gradient(145deg,#646d57,#414a3a 60%,#58634c);border-radius:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;box-shadow:inset 0 2px 0 #9ba38a,inset 0 0 0 12px #424b3b,inset 0 0 0 14px #717b61;transform-origin:top;transition:transform .8s cubic-bezier(.2,.8,.15,1),opacity .5s .2s;overflow:hidden}.lid:before{content:'';position:absolute;inset:26px;border:1px solid #939d7e55;border-radius:8px;pointer-events:none}.lid-decor{position:absolute;inset:0;opacity:.12;pointer-events:none;background:repeating-linear-gradient(0deg,transparent,transparent 3px,#091105 4px,transparent 5px)}.lid-topline{position:absolute;top:42px;left:42px;right:42px;display:flex;justify-content:space-between;color:#c2c9b0;font:9px var(--mono);letter-spacing:2px}.lid-logo{position:relative;color:#d9ddca;font-family:var(--mono);font-size:clamp(35px,5.5vw,75px);font-weight:700;line-height:.95;text-align:center;letter-spacing:-5px;margin:18px 0}.lid-logo small{display:block;font-size:11px;letter-spacing:7px;margin-bottom:13px;font-weight:400}.lid-desc{font-size:11px;letter-spacing:2px;color:#b5bea4;margin:7px 0 28px}.open-btn{position:relative;border:1px solid #eedcb5;border-radius:5px;background:#e8d9b4;color:#333c2b;box-shadow:0 4px 0 #b4a47e,0 6px 13px #1a201a66;display:flex;align-items:center;gap:12px;padding:14px 30px;font-weight:700;letter-spacing:1px;transition:transform .15s}.open-btn:hover{background:#f7e8c4;transform:translateY(-2px)}.open-btn:active{transform:translateY(2px);box-shadow:0 2px 0 #b4a47e}.lid-warning{position:absolute;bottom:41px;color:#b4bda4;font-family:var(--mono);font-size:9px;letter-spacing:2px;text-align:center}.latch{position:absolute;width:33px;height:48px;bottom:5px;border:1px solid #252d22;border-radius:4px;background:linear-gradient(90deg,#6c7561,#a0a58b 45%,#6b7560);box-shadow:0 2px 4px #0005}.latch:after{content:'';position:absolute;left:5px;right:5px;top:12px;height:17px;border:1px solid #525c47;border-radius:2px;background:#737d63}.latch-left{left:17%}.latch-right{right:17%}.machine.is-open .lid{transform:perspective(1000px) rotateX(110deg) translateY(-18px);opacity:0;pointer-events:none}.machine.is-open .lid *{pointer-events:none}.machine.is-open .lid[hidden]{display:none}.below-case{display:flex;justify-content:space-between;align-items:center;gap:15px;padding:22px 2px 0}.below-case p{margin:0;color:var(--muted);font-size:10px;line-height:1.7}.softlink{border:0;background:none;padding:8px 0;color:#545e4c;font-size:11px;display:flex;align-items:center;gap:6px;text-decoration:underline;text-underline-offset:4px;flex-shrink:0}.softlink:disabled{opacity:.4;text-decoration:none}.controls{padding-top:21px}.selection-top{display:flex;justify-content:space-between;align-items:center;font:10px var(--mono);color:#787d71;letter-spacing:1px;padding-bottom:14px;border-bottom:1px solid var(--line)}.step{width:20px;height:20px;display:grid;place-items:center;border:1px solid #989f8d;border-radius:50%;font-size:10px;color:#5a6551}.selection-label{font-size:12px;margin:22px 0 5px;color:#74796c}.wire-number{font:500 57px/1.15 var(--mono);letter-spacing:-4px;margin:0;color:#2d3728;font-variant-numeric:tabular-nums}.wire-number.is-empty{color:#aaaF9f;letter-spacing:1px;font-size:47px}.wire-preview{height:69px;padding:4px 12px 8px 0;position:relative;display:flex;align-items:center;gap:9px;margin:6px 0 9px}.wire-preview svg{width:142px;height:55px;overflow:visible;opacity:.9}.wire-color{font-size:10px;color:var(--muted)}.pick-tools{display:flex;gap:7px;margin:0 0 10px}.small-btn{min-height:38px;border:1px solid #c2c7b7;background:#f4f3e9;border-radius:5px;font-size:11px;display:flex;align-items:center;justify-content:center;gap:7px;flex:1;padding:8px}.small-btn:hover:not(:disabled){background:#e1e5d5;border-color:#9eaa8d}.small-btn:disabled{opacity:.4}.small-btn svg{width:14px;height:14px}.cut-btn{width:100%;min-height:60px;background:var(--red);border:1px solid #a83f2d;border-radius:6px;color:#fff8e9;display:flex;align-items:center;justify-content:center;gap:12px;font-size:15px;font-weight:700;box-shadow:0 3px 0 #9c3a29,0 5px 8px #8a2d1720;transition:background .15s,transform .15s}.cut-btn svg{width:23px;height:23px}.cut-btn:hover:not(:disabled){background:#b9422e;transform:translateY(-1px)}.cut-btn:active:not(:disabled){transform:translateY(2px);box-shadow:0 1px 0 #9c3a29}.cut-btn:disabled{background:#cbc9bf;border-color:#c0beb3;color:#93978b;box-shadow:0 3px 0 #b6b8aa}.cut-hint{font-size:10px;line-height:1.6;color:#7c8076;text-align:center;min-height:32px;margin:13px 0 22px}.instructions{border-top:1px solid var(--line);padding-top:21px}.instructions p{margin:0 0 10px;line-height:1.85;color:#62685b;font-size:11px}.instructions strong{font-weight:600;color:#303d29}.stats{margin-top:24px;border-top:1px solid var(--line);padding-top:16px}.stats-title{font-size:9px;color:#82877b;letter-spacing:1.2px;font-family:var(--mono);display:flex;justify-content:space-between}.stats-values{display:flex;gap:36px;margin-top:13px}.stats-values div{display:flex;align-items:baseline;gap:7px}.stats-values b{font:24px var(--mono);color:#35432c}.stats-values span{font-size:10px;color:#7a8172}.new-box{margin-top:18px;justify-content:flex-start;color:#58634d}.footer{margin-top:40px;border-top:1px solid var(--line);padding:20px 0 26px;display:flex;justify-content:space-between;gap:15px;font:9px var(--mono);letter-spacing:.7px;color:#888c80}.footer span:last-child{font-family:var(--sans);letter-spacing:0}.flash{position:fixed;inset:0;background:#ed6b3866;z-index:20;pointer-events:none;opacity:0}.flash.fire{animation:flash .5s ease-out}.machine.shake{animation:shake .55s ease-in-out}.machine.won{box-shadow:0 3px 0 #30362e,0 20px 40px -10px #56a26166}.machine.won .led{background:#a4d999;box-shadow:0 0 8px #a4d999}.machine.lost .led{background:#f28366;box-shadow:0 0 8px #f28366}.machine.lost .rack{filter:saturate(.45)}.machine.won .rack{filter:saturate(.6)}.cut-in-progress .wire-hit.selected{animation:selectPulse .4s ease-in-out 2}.toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,20px);background:#263027;color:#f2f2e7;border-radius:7px;padding:12px 20px;font-size:12px;z-index:40;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:90vw;text-align:center}.toast.visible{opacity:1;transform:translate(-50%,0)}dialog{border:1px solid #c5c9bc;background:#f1f0e6;color:var(--ink);padding:30px;border-radius:12px;max-width:calc(100vw - 28px);width:460px;box-shadow:0 25px 90px #101a1280}dialog::backdrop{background:#111b17aa;backdrop-filter:blur(4px)}dialog h2{font-size:22px;margin:4px 0 17px;letter-spacing:-.4px}dialog p{font-size:12px;line-height:1.9;color:#6a7362;margin:12px 0}dialog .dialog-top{display:flex;justify-content:space-between;align-items:center}.dialog-eyebrow{font:9px var(--mono);letter-spacing:2px;color:#7b8570}.icon-close{border:1px solid #c3c8ba;background:none;border-radius:50%;width:30px;height:30px;display:grid;place-items:center;padding:0}.icon-close svg{width:14px;height:14px}.dialog-primary{width:100%;background:#33442c;color:#f3f2e4;border:1px solid #293724;padding:14px 18px;min-height:46px;font-weight:600;border-radius:5px;margin-top:15px}.dialog-primary:hover{background:#465b3e}.result-dialog{text-align:center;width:444px;padding:34px}.result-icon{margin:20px auto 16px;background:#e9d5c5;color:#ad5036;width:60px;height:60px;border-radius:50%;display:grid;place-items:center}.result-icon svg{width:28px;height:28px}.result-dialog h2{font-size:35px;margin-bottom:4px}.result-dialog.success .result-icon{background:#d4e4cd;color:#42663b}.result-dialog .result-text{font-size:12px;margin:6px 0 24px}.result-pairs{display:grid;grid-template-columns:1fr 1fr;border-block:1px solid #c9cdbc;padding:18px 0;text-align:left}.result-pairs div{padding-left:18px}.result-pairs div+div{border-left:1px solid #c9cdbc}.result-pairs span{font-size:10px;color:#7e8773;display:block;margin-bottom:6px}.result-pairs b{font:25px var(--mono);letter-spacing:-1px}.result-actions{display:flex;gap:10px;margin-top:12px}.result-actions button{flex:1;background:none;border:1px solid #c4caba;border-radius:5px;font-size:11px;min-height:40px;padding:8px}.result-actions button:hover{background:#e6e9dc}.sector-grid{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;margin:15px 0}.sector-grid button{aspect-ratio:1;border:1px solid #c2cbb5;border-radius:4px;background:#e5e9da;font:11px var(--mono);padding:0;min-width:0}.sector-grid button.active{background:#455c38;color:#f5f1df;border-color:#455c38}.sector-grid button:hover{border-color:#526647}.field{width:100%;height:48px;border:1px solid #adb89e;background:#faf9f1;border-radius:5px;padding:10px 14px;font:20px var(--mono);color:#293724}.field-error{color:#a43a29;min-height:20px;font-size:11px;margin-top:8px}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}noscript{display:block;padding:24px;background:#f2d1c5;text-align:center}.help-list{padding-left:20px;color:#5f6a56;font-size:12px;line-height:2.1}.keyboard-note{border-top:1px solid #c8cebd;padding-top:12px;font-size:10px!important}.theme-tag{border:1px solid #c6cbbd;border-radius:3px;padding:3px 6px;font:9px var(--mono);color:#738268;white-space:nowrap}
-@keyframes flash{0%{opacity:.6}100%{opacity:0}}@keyframes shake{0%,100%{transform:translate(0)}15%{transform:translate(-5px,2px) rotate(-.3deg)}30%{transform:translate(4px,-3px)}50%{transform:translate(-3px,1px)}75%{transform:translate(2px,0)}}@keyframes selectPulse{50%{background:#f5d7a15e}}
-@media(min-width:1500px){.wrap{padding:0 36px}.hero{padding-top:46px;padding-bottom:36px}.wire-viewport{max-height:520px}}
-@media(max-width:1050px){.wrap{padding:0 26px}.workspace{grid-template-columns:minmax(0,1fr) 248px;gap:22px}.machine{padding:18px 18px 21px}.odds-number{font-size:48px}.controls{padding-top:19px}.wire-number{font-size:51px}.case-top .engrave{display:none}.sector-text{gap:7px}.rack-toolbar{padding:12px}.rack-nav .choose-sector{font-size:9px;padding:6px}.cut-btn{font-size:13px}}
-@media(max-width:760px){.wrap{padding:0 18px}.topbar{height:68px}.brandtext{font-size:13px}.brandmark{width:30px;height:30px}.top-actions{gap:6px}.tool{font-size:10px;min-height:34px;padding:7px 9px}.hero{padding:28px 0 23px;align-items:flex-start}.eyebrow{font-size:8px;letter-spacing:1px;margin-bottom:10px}.hero h1{font-size:30px;letter-spacing:-1px;margin-bottom:10px}.hero p{font-size:11px;max-width:260px}.odds{padding:3px 0 0}.odds-number{font-size:35px;letter-spacing:-3px}.odds-number small{font-size:14px}.odds-label{font-size:8px;letter-spacing:0}.workspace{grid-template-columns:1fr;gap:8px}.controls{padding-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:0 20px}.selection-top{grid-column:1/-1}.selection-main{grid-column:1}.action-main{grid-column:2;padding-top:25px}.selection-label{margin-top:20px;font-size:10px}.wire-number{font-size:48px}.wire-preview{height:50px;margin-bottom:4px}.wire-preview svg{width:100px;height:40px}.wire-color{font-size:9px}.pick-tools{flex-direction:column;gap:6px;margin-bottom:9px}.small-btn{min-height:33px;font-size:10px}.cut-btn{min-height:50px;font-size:12px;gap:7px}.cut-btn svg{width:18px}.cut-hint{font-size:9px;margin:10px 0 8px}.instructions{grid-column:1/-1;padding-top:17px;margin-top:10px}.instructions p{font-size:11px;margin-bottom:7px}.stats{grid-column:1/-1;margin-top:12px;display:flex;align-items:center;justify-content:space-between;gap:15px}.stats-title{font-size:8px;display:block;line-height:1.7}.stats-title span{display:block}.stats-values{gap:25px;margin:0}.new-box{grid-column:1/-1;margin-top:12px}.below-case{padding-top:17px}.below-case p{font-size:9px}.softlink{font-size:10px}.machine{padding:17px 16px 20px;border-radius:13px}.rack-toolbar{padding:11px 10px}.sector-info strong{font-size:8px}.sector-range{font-size:9px}.rack-nav button{min-height:34px;padding:5px 8px}.rack-nav .choose-sector{font-size:9px;padding:6px}.rack-foot{font-size:8px;padding-inline:10px}.wire-viewport{max-height:400px}.lid-logo{font-size:68px}.lid-topline{left:30px;right:30px;top:32px;font-size:8px}.lid-desc{font-size:10px}.lid-warning{font-size:8px;bottom:33px}.case-label{font-size:7px}.seal{font-size:8px;padding:4px 6px}.case-bottom{margin-top:14px}.case-top{margin-bottom:14px}.footer{margin-top:26px;font-size:8px;padding:18px 0;line-height:1.8}.footer span:last-child{max-width:150px;text-align:right}dialog{padding:23px}.result-dialog{padding:26px}.sector-grid{grid-template-columns:repeat(5,1fr);max-height:48vh;overflow:auto;padding:3px}.sector-grid button{aspect-ratio:auto;min-height:42px}.wire-hit span{font-size:8px}.theme-tag{font-size:8px}}
-@media(max-width:380px){.wrap{padding:0 12px}.hero h1{font-size:26px}.odds-number{font-size:31px}.hero p{font-size:10px;max-width:215px}.brandtext{font-size:11px}.tool span{font-size:9px}.wire-number{font-size:42px}.controls{gap:0 15px}.machine{padding-inline:13px}.sector-num{font-size:23px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.machine.is-open .lid{display:none}}
+:root{--paper:#f1eee6;--ink:#263440;--muted:#778089;--line:#d4d3c9;--orange:#c95031;--navy:#273743;--mono:ui-monospace,SFMono-Regular,Consolas,'Liberation Mono',monospace;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:14px var(--sans);-webkit-font-smoothing:antialiased}button,input{font:inherit}button{cursor:pointer;color:inherit;touch-action:manipulation}button:disabled{cursor:default}button:focus-visible,input:focus-visible,svg [role=button]:focus-visible{outline:3px solid #3096ba;outline-offset:3px}button svg{width:18px;height:18px;flex-shrink:0}svg{display:block}button{ -webkit-tap-highlight-color:transparent}.wrap{max-width:1440px;padding:0 40px;margin:auto}.topbar{height:78px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{display:flex;align-items:center;gap:12px;font:700 16px var(--mono);letter-spacing:-.5px}.brand-logo{width:34px;height:34px;background:var(--navy);border-radius:7px;padding:7px}.brand-logo svg{width:20px;height:20px}.brand small{font:9px var(--mono);padding:4px 5px;border:1px solid #bfc4c2;border-radius:3px;margin-left:6px;color:#6e7b82;letter-spacing:.4px}.top-actions{display:flex;gap:8px}.plain-btn{border:1px solid #c9ccc5;background:transparent;border-radius:6px;padding:9px 12px;min-height:38px;display:flex;align-items:center;justify-content:center;gap:7px;font-size:11px}.plain-btn:hover:not(:disabled){background:#e5e7df}.hero{padding:32px 0 27px;display:flex;justify-content:space-between;align-items:center;gap:18px}.eyebrow{font:10px var(--mono);letter-spacing:2.3px;color:#838981;margin:0 0 12px}.hero h1{margin:0 0 12px;font-size:clamp(28px,3.5vw,47px);line-height:1.25;letter-spacing:-1.5px;font-weight:800}.hero p{font-size:12px;color:#6a7478;line-height:1.9;margin:0}.hero p strong{font-weight:600;color:#414e56}.odds{text-align:right;flex-shrink:0}.odds b{font:500 54px/1.1 var(--mono);letter-spacing:-3.8px}.odds b small{font-size:22px;letter-spacing:-1px}.odds p{font-size:10px;margin-top:5px}.odds .odds-note{color:#9b563e;font-size:10px;margin-top:7px}.workspace{display:grid;grid-template-columns:minmax(0,1fr) 285px;gap:28px;align-items:start}.board-card{min-width:0}.board-toolbar{min-height:48px;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px}.board-label{font:10px var(--mono);letter-spacing:1.2px;color:#70818b;display:flex;align-items:center;gap:8px}.board-label:before{content:'';width:6px;height:6px;background:#5c8e7e;border-radius:50%}.view-switch{display:flex;border:1px solid #c3c9c5;padding:3px;border-radius:6px;gap:3px}.view-switch button{border:0;background:none;padding:8px 12px;min-height:32px;border-radius:3px;font-size:10px;white-space:nowrap}.view-switch button[aria-pressed=true]{background:var(--navy);color:#fffaf0;box-shadow:0 2px 3px #13232b18}.apparatus{position:relative;border-radius:12px;filter:drop-shadow(0 10px 12px #23333b22)}#board{display:block;width:100%;height:620px;overflow:visible;border-radius:12px}.wire{transition:opacity .12s}.band rect{transition:fill .12s}.band:hover .band-hit,.band:focus .band-hit{fill:#d0dff41b}.wire-row:hover .row-hit,.wire-row:focus .row-hit{fill:#d0dff416}.band:focus-visible,.wire-row:focus-visible{outline:none}.band:focus-visible .band-hit,.wire-row:focus-visible .row-hit{stroke:#f5ecbf;stroke-width:2}.board-note{display:flex;justify-content:space-between;align-items:center;gap:15px;font-size:10px;line-height:1.6;color:#748089;margin:15px 2px 0}.board-note .fixed{font:9px var(--mono);white-space:nowrap;letter-spacing:.8px;color:#8b9698}.navigator{display:flex;align-items:center;justify-content:space-between;margin-top:16px;padding-top:15px;border-top:1px solid var(--line);gap:10px}.range-label{font:11px var(--mono);font-variant-numeric:tabular-nums;color:#4c5e68}.range-label span{color:#8a969b}.nav-buttons{display:flex;gap:6px}.nav-buttons button{background:#faf8f0;border:1px solid #c8cec9;border-radius:5px;min-height:34px;min-width:34px;display:grid;place-items:center;font-size:11px;padding:7px 10px}.nav-buttons button:disabled{opacity:.35}.nav-buttons button:hover:not(:disabled){background:#e2e8e2}.page-dots{display:flex;gap:4px}.page-dots button{border:0;background:#c8cec7;width:13px;height:4px;padding:0;border-radius:2px;min-height:18px;background-clip:content-box}.page-dots button.active{background-color:#405c6c}.controls{padding-top:14px}.control-heading{border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:0 0 16px;font:9px var(--mono);letter-spacing:1.2px;color:#829099}.control-heading b{font-weight:400;border:1px solid #a5b2b7;border-radius:50%;width:22px;height:22px;display:grid;place-items:center}.selection-label{margin:24px 0 7px;font-size:11px;color:#72818a}.selected-number{font:500 73px/1 var(--mono);letter-spacing:-6px;margin:0;color:#273e4a;font-variant-numeric:tabular-nums}.selected-number.empty{color:#b1b9b6;letter-spacing:2px}.color-preview{display:flex;align-items:center;gap:12px;margin:18px 0 24px}.sample-wire{position:relative;height:9px;width:100px;border-radius:9px;background:var(--wire-color,#a7b2b3);box-shadow:inset 0 2px 1px #fff7,0 2px 2px #13242c30}.sample-wire:before,.sample-wire:after{content:'';position:absolute;width:7px;height:13px;top:-2px;background:#8b9490;border:1px solid #6c7879;border-radius:2px}.sample-wire:before{left:-2px}.sample-wire:after{right:-2px}.color-name{font-size:11px;color:#677b87}.pick-tools{display:flex;gap:7px;margin-bottom:10px}.pick-tools button{flex:1;background:#faf8ef;min-height:38px;border:1px solid #c5ccc6;border-radius:5px;font-size:11px;padding:8px;display:flex;justify-content:center;align-items:center;gap:7px}.pick-tools button:hover:not(:disabled){background:#e3e9e1}.pick-tools button:disabled{opacity:.4}.cut-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:57px;background:var(--orange);color:#fff8eb;border:1px solid #a8442c;border-radius:6px;font-size:14px;font-weight:650;box-shadow:0 3px 0 #943c29;transition:background .15s,transform .15s}.cut-btn svg{width:22px;height:22px}.cut-btn:hover:not(:disabled){background:#b5432a;transform:translateY(-1px)}.cut-btn:active:not(:disabled){transform:translateY(2px);box-shadow:0 1px 0 #943c29}.cut-btn:disabled{background:#d4d4c9;border-color:#c5cabe;box-shadow:0 3px 0 #bdc3b6;color:#98a092}.cut-hint{font-size:10px;color:#7e8b90;text-align:center;line-height:1.8;min-height:36px;margin:13px 0 20px}.status-box{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:19px 0;margin:0 0 18px}.status-title{font-size:13px;color:#374e5a;margin:0 0 8px;font-weight:650}.status-box p{font-size:11px;color:#77858b;line-height:1.9;margin:0}.status-box.won .status-title{color:#36764e}.status-box.lost .status-title{color:#b84d32}.status-box.won{border-color:#abc5ad}.status-box.lost{border-color:#d7b4a5}.result-detail{display:flex;justify-content:space-between;align-items:center;margin-top:13px;font-size:10px;color:#7d8c8e}.result-detail b{font:20px var(--mono);color:#455b67}.result-detail button{border:0;border-bottom:1px solid #a6b3b6;background:none;font-size:10px;padding:4px 0}.again-btn{background:#2d4858;color:#fffaf0;border:0;border-radius:5px;width:100%;min-height:42px;margin-top:15px;font-size:12px}.again-btn:hover{background:#3d5e72}.stats{padding-top:5px}.stats-label{font:9px var(--mono);letter-spacing:1px;color:#86929a;display:flex;justify-content:space-between}.stats-values{display:flex;justify-content:space-between;gap:16px;margin-top:15px}.stats-values div{display:flex;flex-direction:column;gap:5px}.stats-values b{font:24px var(--mono);color:#415a65}.stats-values span{font-size:9px;color:#7e8d92}.reset-btn{font-size:11px;color:#687e88;background:none;border:0;border-bottom:1px solid #aab5b6;padding:7px 0;margin-top:20px}.legend{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:19px;padding-top:16px;border-top:1px solid var(--line)}.legend span{width:12px;height:12px;border-radius:50%;box-shadow:inset 0 0 0 1px #263e4422}.legend small{font-size:9px;color:#7b8a8e;width:100%;margin-top:3px;line-height:1.8}.footer{border-top:1px solid var(--line);margin-top:35px;padding:20px 0 27px;display:flex;justify-content:space-between;gap:12px;font:9px var(--mono);color:#879197;letter-spacing:.7px}.footer span:last-child{font-family:var(--sans);letter-spacing:0}.mobile-controls{display:none}.flash{position:fixed;inset:0;background:#ff654c35;opacity:0;pointer-events:none;z-index:20}.flash.fire{animation:flash .45s ease-out}.apparatus.shake{animation:shake .45s ease-in-out}.toast{position:fixed;left:50%;bottom:25px;transform:translate(-50%,20px);padding:12px 18px;color:#fffaf0;background:#293f4c;font-size:12px;border-radius:7px;max-width:90vw;text-align:center;opacity:0;transition:opacity .2s,transform .2s;pointer-events:none;z-index:40}.toast.show{opacity:1;transform:translate(-50%,0)}dialog{background:#f6f3ea;color:#2b414e;border:1px solid #bdc7c5;border-radius:12px;padding:28px;width:430px;max-width:calc(100vw - 28px);box-shadow:0 20px 80px #12242b55}dialog::backdrop{background:#172a32aa;backdrop-filter:blur(3px)}dialog h2{font-size:23px;letter-spacing:-.7px;margin:13px 0 12px}dialog p,dialog li{font-size:12px;line-height:1.9;color:#6d8087}dialog ul{padding-left:20px}.dialog-top{display:flex;justify-content:space-between;align-items:center;font:9px var(--mono);color:#7e9096;letter-spacing:1.5px}.close-btn{background:none;border:1px solid #bac7c6;border-radius:50%;width:31px;height:31px;font-size:18px;padding:0}.dialog-primary{background:#304e5d;color:#fffaf0;border:0;border-radius:5px;padding:13px;width:100%;font-size:12px;margin-top:14px;min-height:44px}.field{height:49px;width:100%;padding:12px;background:#fffdf6;border:1px solid #b5c4c3;border-radius:5px;font:22px var(--mono);color:#28444f}.field-error{font-size:11px;min-height:20px;color:#b24731;margin-top:8px}.group-list{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:18px}.group-list button{min-height:43px;border:1px solid #c3cfcb;background:#eaf0e8;font:12px var(--mono);border-radius:4px}.group-list button.current{background:#365364;color:#fffaf1}.sr-only{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.modal-open{overflow:hidden}[hidden]{display:none!important}noscript{display:block;text-align:center;padding:20px;background:#f9d4c5}.probability-note{font-size:10px!important;border-top:1px solid #c5cfca;padding-top:12px;margin-top:18px!important}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-5px)}40%{transform:translateX(5px)}60%{transform:translateX(-3px)}80%{transform:translateX(2px)}}@keyframes flash{0%{opacity:1}100%{opacity:0}}
+@media(max-width:1050px){.wrap{padding:0 25px}.workspace{grid-template-columns:minmax(0,1fr) 250px;gap:22px}.hero h1{font-size:37px}.odds b{font-size:48px}.brand small{display:none}}
+@media(max-width:760px){.wrap{padding:0 17px}.topbar{height:66px}.brand{font-size:13px;gap:8px}.brand-logo{width:29px;height:29px;padding:5px}.top-actions{gap:5px}.plain-btn{font-size:10px;padding:7px 9px;min-height:34px;gap:4px}.plain-btn svg{width:15px;height:15px}.hero{padding:25px 0 14px;align-items:flex-start;gap:7px}.eyebrow{font-size:8px;letter-spacing:1.4px;margin-bottom:10px}.hero h1{font-size:29px;letter-spacing:-1px}.hero p{font-size:10px;line-height:1.9}.odds{padding-top:23px}.odds b{font-size:33px;letter-spacing:-2.5px}.odds b small{font-size:15px}.odds p{font-size:8px}.odds .odds-note{display:none}.workspace{display:block}.board-toolbar{min-height:46px;margin-bottom:7px}.board-label{font-size:8px;letter-spacing:.6px}.view-switch button{padding:7px 9px;font-size:9px}.board-note{font-size:9px;gap:10px}.board-note .fixed{font-size:8px}.navigator{gap:7px;margin-top:13px;padding-top:12px}.page-dots{display:none}.nav-buttons button{font-size:10px}.range-label{font-size:10px}.controls{display:grid;grid-template-columns:1fr 1fr;gap:0 22px;padding-top:26px}.control-heading{grid-column:1/-1}.selection-label{margin-top:18px}.selected-number{font-size:54px;letter-spacing:-3px}.color-preview{margin:14px 0 16px;gap:9px}.sample-wire{width:70px}.color-name{font-size:10px}.action-main{padding-top:18px}.pick-tools{flex-direction:column;gap:6px}.pick-tools button{min-height:36px;font-size:10px}.action-main>.cut-btn,.action-main>.cut-hint{display:none}.status-box{grid-column:1/-1;padding:16px 0;margin-top:12px}.stats{grid-column:1/-1}.stats-values{justify-content:flex-start;gap:42px}.stats-values div{flex-direction:row;align-items:baseline;gap:7px}.legend{grid-column:1/-1;margin-top:17px}.reset-btn{grid-column:1/-1;justify-self:start;margin-top:16px}.footer{margin-top:28px;padding-bottom:111px;font-size:8px;flex-wrap:wrap}.mobile-controls{display:flex;align-items:center;justify-content:space-between;gap:15px;position:fixed;bottom:0;left:0;right:0;background:#f8f6ecf5;border-top:1px solid #bac7c3;padding:12px 18px calc(12px + env(safe-area-inset-bottom));z-index:15;box-shadow:0 -4px 25px #263f4c10;backdrop-filter:blur(8px)}.mobile-label{font-size:9px;color:#7d8b8e;margin-bottom:5px}.mobile-selection{display:flex;align-items:baseline;gap:8px}.mobile-selection strong{font:27px/1 var(--mono);letter-spacing:-1px}.mobile-selection span{font-size:10px}.mobile-controls .cut-btn{width:155px;min-height:46px;font-size:12px}.mobile-controls .cut-btn svg{width:19px;height:19px}.mobile-controls .cut-btn.is-again{background:#304f5d;border-color:#29424f;box-shadow:0 3px 0 #1b343e}.toast{bottom:100px;font-size:11px}.result-detail{justify-content:flex-start;gap:23px}}
+@media(max-width:360px){.brand{font-size:11px}.hero h1{font-size:25px}.odds b{font-size:29px}.plain-btn{padding:6px}.odds p{max-width:65px;line-height:1.5}.board-label{font-size:7px}.view-switch button{padding:6px 7px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 <noscript>このゲームを遊ぶには、ブラウザのJavaScriptを有効にしてください。</noscript>
 <div class="wrap">
-<header class="topbar">
- <div class="brand"><span class="brandmark" aria-hidden="true"><svg viewBox="0 0 32 32" fill="none"><path d="M6 24C6 4 26 4 26 16S10 29 10 13" stroke="currentColor" stroke-width="3" stroke-linecap="round"/></svg></span><span class="brandtext">ONE <span>IN</span> 10,000</span></div>
- <div class="top-actions"><button class="tool" id="soundBtn" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M11 5L6 9H3v6h3l5 4V5Z"/><path id="soundWaves" d="m16 9 6 6m0-6-6 6"/></svg><span id="soundLabel">音 OFF</span></button><button class="tool" id="helpBtn" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="9"/><path d="M9.8 8.3a2.5 2.5 0 0 1 4.7 1.2c0 1.5-2.5 2-2.5 3.5M12 16v.5"/></svg><span>遊び方</span></button></div>
-</header>
-<main>
- <section class="hero"><div><p class="eyebrow">A VERY UNREASONABLE LUCK GAME</p><h1>たった1本の、正解。</h1><p>10,000本の導線。セーフなのは、1本だけ。<br>時間制限なし。あとは、あなたの勘しだい。</p></div><div class="odds"><div class="odds-number">0.01<small>%</small></div><div class="odds-label">1回の成功率 / 1 IN 10,000</div></div></section>
- <div class="workspace">
-  <section class="machine-wrap" aria-label="導線の入った箱">
-   <div class="hinges" aria-hidden="true"><i></i><i></i></div>
-   <div class="machine" id="machine">
-    <i class="screw s1" aria-hidden="true"></i><i class="screw s2" aria-hidden="true"></i><i class="screw s3" aria-hidden="true"></i><i class="screw s4" aria-hidden="true"></i>
-    <div class="case-top"><span class="case-state"><i class="led" aria-hidden="true"></i><span id="caseStatus">STANDBY</span></span><span class="engrave">NO TIMER. NO CLUES. GOOD LUCK.</span><span id="caseSerial">CASE / 001</span></div>
-    <div class="rack" id="rack" inert>
-     <div class="rack-toolbar"><div class="sector-text"><span class="sector-num" id="sectorNum">01</span><div class="sector-info"><strong>SECTOR / 100</strong><span class="sector-range" id="sectorRange">00001 — 00100</span></div></div><div class="rack-nav"><button id="prevSector" type="button" aria-label="前の区画"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m14 5-7 7 7 7"/></svg></button><button class="choose-sector" id="sectorBtn" type="button">区画を選ぶ</button><button id="nextSector" type="button" aria-label="次の区画"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m10 5 7 7-7 7"/></svg></button></div></div>
-     <div class="wire-viewport" id="wireViewport"><div class="wire-board" id="wireBoard"><canvas class="wire-canvas" id="wireCanvas" aria-hidden="true"></canvas><div class="wire-targets" id="wireTargets" role="group" aria-label="この区画の100本の導線"></div></div></div>
-     <div class="rack-foot"><span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor"><path d="M5 8V4a1 1 0 0 1 2 0v3-5a1 1 0 0 1 2 0v5-4a1 1 0 0 1 2 0v5-2a1 1 0 0 1 2 0v5l-2 3H6l-3-4a1 1 0 0 1 1.5-1.3L5 10"/></svg><span id="rackHint">導線をクリックして選択</span></span><span>100 WIRES / SECTOR</span></div>
-    </div>
-    <div class="case-bottom"><div class="case-label">DAITAI ANZEN INDUSTRIES<br>MODEL 10K · INSPECTED, PROBABLY.</div><div class="seal"><span class="check">✓</span><span>検品済<br>ただし保証なし</span></div></div>
-    <div class="lid" id="lid"><div class="lid-decor"></div><div class="lid-topline"><span>DAITAI ANZEN INDUSTRIES</span><span>MODEL 10K</span></div><div class="lid-logo"><small>ONE IN</small>10,000</div><p class="lid-desc">正解は、この箱のどこかに。</p><button class="open-btn" id="openBtn" type="button">箱を開ける<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></button><div class="lid-warning">10,000 WIRES / ONE SAFE CHOICE</div><div class="latch latch-left" aria-hidden="true"></div><div class="latch latch-right" aria-hidden="true"></div></div>
-   </div>
-   <div class="below-case"><p>見えているのは、1万本のうちの100本。<br>区画を切り替えて、運命の1本を探そう。</p><button class="softlink" id="selectedLocation" type="button" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v4m0 10v4M3 12h4m10 0h4"/><circle cx="12" cy="12" r="6"/></svg>選択した導線へ</button></div>
-  </section>
-  <aside class="controls" aria-label="導線の選択と切断">
-   <div class="selection-top"><span>MAKE YOUR CHOICE</span><span class="step">01</span></div>
-   <div class="selection-main"><p class="selection-label" id="selectionLabel">選択中の導線</p><p class="wire-number is-empty" id="selectedNumber">— — —</p><div class="wire-preview"><svg viewBox="0 0 150 50" aria-hidden="true"><path d="M8 33C25 33 18 10 40 10S65 42 87 35 112 9 140 20" fill="none" stroke="#1a241a22" stroke-width="8" stroke-linecap="round" transform="translate(0 2)"/><path id="previewPath" d="M8 33C25 33 18 10 40 10S65 42 87 35 112 9 140 20" fill="none" stroke="#9aa48c" stroke-width="5" stroke-linecap="round"/><rect x="3" y="28" width="8" height="10" rx="2" fill="#67745c"/><rect x="137" y="15" width="8" height="10" rx="2" fill="#67745c"/></svg><span class="wire-color" id="wireColor">未選択</span></div></div>
-   <div class="action-main"><div class="pick-tools"><button class="small-btn" id="randomBtn" type="button" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="4" y="4" width="16" height="16" rx="3"/><circle cx="8" cy="8" r=".7"/><circle cx="16" cy="16" r=".7"/><circle cx="12" cy="12" r=".7"/></svg>おまかせ</button><button class="small-btn" id="jumpBtn" type="button" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m9 3-3 18m12-18-3 18M3 9h18M2 15h18"/></svg>番号で選ぶ</button></div><button class="cut-btn" id="cutBtn" type="button" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="m8.4 7.8 12 12M8.4 16.2 20.4 4.2M12 12l2 2"/></svg><span id="cutLabel">この導線を切る</span></button><p class="cut-hint" id="cutHint">まずは、箱を開けてください。</p></div>
-   <div class="instructions"><p><strong>選ぶ。切る。それだけ。</strong><br>選択しただけでは切れません。<br>覚悟ができたら、赤いボタンを。</p><p>色も形も、正解のヒントにはなりません。<br>ゆっくり迷っても、すぐ決めても。</p></div>
-   <div class="stats"><div class="stats-title">YOUR RECORD<span>このブラウザの記録</span></div><div class="stats-values"><div><b id="attemptCount">0</b><span>挑戦</span></div><div><b id="winCount">0</b><span>成功</span></div></div></div><button class="softlink new-box" id="newBoxBtn" type="button" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 7v5h-5M4 17v-5h5"/><path d="M19.4 8a8 8 0 0 0-13-2L4 9m16 6-2.4 3a8 8 0 0 1-13-2"/></svg>新しい箱にする</button>
-  </aside>
- </div>
-</main>
-<footer class="footer"><span>ONE IN 10,000 © 2026 · EKOOEKON</span><span>運を試すだけの、ちいさなゲーム。</span></footer>
-</div>
+<header class="topbar"><div class="brand"><span class="brand-logo"><svg viewBox="0 0 24 24" fill="none"><path d="M0 5h15M0 12h15M0 19h15" stroke="#ffa759" stroke-width="2.5"/><rect x="13" y="2" width="10" height="20" rx="2" fill="#e8ebe0"/></svg></span>ONE BAD WIRE<small>EDITION 02</small></div><div class="top-actions"><button class="plain-btn" id="soundBtn" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 9h4l5-4v14l-5-4H4Z"/><path id="soundWaves" d="m17 9 5 6m0-6-5 6"/></svg><span id="soundLabel">音 OFF</span></button><button class="plain-btn" id="helpBtn" type="button">遊び方</button></div></header>
+<main><section class="hero"><div><div class="eyebrow">A MOSTLY SAFE LITTLE GAME</div><h1>だいたい、セーフ。</h1><p><strong>200本の導線。ハズレは、たった1本。</strong><br>箱の中は見えない。切るなら、どれ？</p></div><div class="odds"><b>99.5<small>%</small></b><p>1本切ったときの成功率</p><p class="odds-note">残りの0.5%は、あなた次第。</p></div></section>
+<div class="workspace">
+<section class="board-card" aria-label="200本の導線と箱"><div class="board-toolbar"><span class="board-label" id="boardLabel">200 WIRES / 1 BAD</span><div class="view-switch" aria-label="表示の切り替え"><button id="overviewBtn" type="button" aria-pressed="true">全体 · 200本</button><button id="detailBtn" type="button" aria-pressed="false">拡大 · 20本</button></div></div><div class="apparatus" id="apparatus"><svg id="board" role="group" aria-label="導線の全体図。20本ずつの範囲を選ぶと拡大します。"></svg></div><div class="board-note"><span id="boardHint">見たい場所をクリックすると、20本ずつ拡大できます。</span><span class="fixed">NO TIMER. TAKE YOUR TIME.</span></div><div class="navigator"><div class="range-label" id="rangeLabel">001 — 200 <span>/ ALL WIRES</span></div><div class="page-dots" id="pageDots" aria-label="拡大する範囲"></div><div class="nav-buttons"><button id="prevBtn" type="button" aria-label="前の20本">←</button><button id="rangeBtn" type="button">範囲を選ぶ</button><button id="nextBtn" type="button" aria-label="次の20本">→</button></div></div></section>
+<aside class="controls" aria-label="導線を選んで切る"><div class="control-heading"><span>MAKE YOUR CHOICE</span><b>01</b></div><div class="selection-main"><p class="selection-label" id="selectionLabel">選択中の導線</p><p class="selected-number empty" id="selectedNumber">— —</p><div class="color-preview"><span class="sample-wire" id="sampleWire"></span><span class="color-name" id="colorName">未選択</span></div></div><div class="action-main"><div class="pick-tools"><button id="randomBtn" type="button">⚄ おまかせ</button><button id="jumpBtn" type="button"># 番号で選ぶ</button></div><button class="cut-btn" id="cutBtn" type="button" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="m8.5 8 12 12M8.5 16 20.5 4M12 12l2 2"/></svg><span id="cutLabel">この導線を切る</span></button><p class="cut-hint" id="cutHint">まずは、気になる1本を選択。</p></div><div class="status-box" id="statusBox" aria-live="polite"><h2 class="status-title" id="statusTitle">199本は、問題なし。</h2><p id="statusText">選んだだけでは切れません。<br>番号と色を確かめて、切るボタンへ。</p><div class="result-detail" id="resultDetail" hidden><span>ハズレだった導線 <b id="badNumber">—</b></span><button type="button" id="revealBtn">場所を見る</button></div><button class="again-btn" id="againBtn" type="button" hidden>新しい箱でもう一度</button></div><div class="stats"><div class="stats-label"><span>YOUR RECORD</span><span>このブラウザの記録</span></div><div class="stats-values"><div><b id="attemptCount">0</b><span>挑戦</span></div><div><b id="safeCount">0</b><span>セーフ</span></div><div><b id="failCount">0</b><span>ハズレ</span></div></div></div><button class="reset-btn" id="resetBtn" type="button">↻ 新しい箱に交換する</button><div class="legend" id="legend"><small>色は10色。番号で1本ずつ見分けられます。<br>色や順番に、当たり外れのヒントはありません。</small></div></aside>
+</div></main><footer class="footer"><span>ONE BAD WIRE © 2026 · EKOOEKON</span><span>DAITAI ANZEN INDUSTRIES — だいたい安全工業</span></footer></div>
+<div class="mobile-controls"><div><div class="mobile-label" id="mobileLabel">選択中の導線</div><div class="mobile-selection"><strong id="mobileNumber">— —</strong><span id="mobileColor">未選択</span></div></div><button class="cut-btn" id="mobileCutBtn" type="button" disabled><span id="mobileCutLabel">導線を選んでね</span></button></div>
+<dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialog-top"><span>FIELD NOTES / MODEL 200</span><button class="close-btn" data-close="helpDialog" type="button" aria-label="閉じる">×</button></div><h2 id="helpTitle">1本だけ、避ければいい。</h2><ul><li>全体図には200本の導線があります。気になる場所を押すと、その20本を拡大します。</li><li>拡大した導線を1本選び、「切る」で確定します。選び直しは自由です。</li><li>199本はセーフ。1本だけがハズレです。1本切ると、その箱の結果が決まります。</li><li>次は「新しい箱」で遊べます。ハズレはそのたびにランダムに抽選されます。</li></ul><p>時間制限はありません。拡大・移動・選び直しではハズレは変わりません。箱から出る束の見た目も、結果のヒントにはなりません。</p><p>番号指定は1〜200。「おまかせ」は選択だけで、まだ切りません。導線上では上下の矢印キーで移動、Enter / Spaceで選択できます。</p><p class="probability-note">1回の成功率は199/200（99.5%）。ハズレを切る確率は1/200（0.5%）。記録はこのブラウザに保存されます。</p><button class="dialog-primary" data-close="helpDialog" type="button">わかった。選んでみる。</button></dialog>
+<dialog id="jumpDialog" aria-labelledby="jumpTitle"><form id="jumpForm"><div class="dialog-top"><span>CHOOSE A WIRE</span><button class="close-btn" data-close="jumpDialog" type="button" aria-label="閉じる">×</button></div><h2 id="jumpTitle">どの番号にする？</h2><p><label for="wireInput">1〜200の番号を入力してください。</label></p><input class="field" id="wireInput" type="text" inputmode="numeric" maxlength="5" autocomplete="off" placeholder="例：128" aria-describedby="jumpError"><div class="field-error" id="jumpError" role="status"></div><button class="dialog-primary" type="submit">この導線を選ぶ</button></form></dialog>
+<dialog id="rangeDialog" aria-labelledby="rangeTitle"><div class="dialog-top"><span>10 GROUPS × 20 WIRES</span><button class="close-btn" data-close="rangeDialog" type="button" aria-label="閉じる">×</button></div><h2 id="rangeTitle">どこを拡大する？</h2><div class="group-list" id="groupList"></div></dialog>
+<dialog id="resetDialog" aria-labelledby="resetTitle"><div class="dialog-top"><span>A NEW BOX</span><button class="close-btn" data-close="resetDialog" type="button" aria-label="閉じる">×</button></div><h2 id="resetTitle">新しい箱に交換する？</h2><p>まだ切っていないので、挑戦回数は増えません。新しい箱ではハズレを改めて1本抽選します。</p><button class="dialog-primary" id="confirmReset" type="button">新しい箱を用意する</button></dialog>
 <div class="flash" id="flash" aria-hidden="true"></div><div class="toast" id="toast" role="status"></div><div class="sr-only" id="announce" aria-live="polite"></div>
-<dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialog-top"><span class="dialog-eyebrow">FIELD NOTES / 001</span><button class="icon-close" data-close="helpDialog" aria-label="閉じる" type="button">×</button></div><h2 id="helpTitle">勘だけを、持ってきて。</h2><ol class="help-list"><li>箱を開けると、100本の導線が現れます。</li><li>区画は100個。合計10,000本の中から1本を選びます。</li><li>選んだ番号を確認して「切る」を押します。</li><li>セーフは1本だけ。それ以外は、ドカン。</li></ol><p>制限時間はありません。セーフな番号は新しい箱を用意するたびに抽選され、区画移動や選び直しでは変わりません。色・形・番号にヒントはなく、毎回の成功率は1万分の1です。</p><p>「おまかせ」は1万本からランダムに1本を選択するだけで、まだ切りません。挑戦回数は実際に切ったときだけ増えます。</p><p class="keyboard-note">キーボード：導線にフォーカスして矢印で移動、Enter / Spaceで選択。切断は赤いボタンで確定します。記録と音の設定はこのブラウザに保存されます。</p><button class="dialog-primary" data-close="helpDialog" type="button">わかった。運を試そう。</button></dialog>
-<dialog id="sectorDialog" aria-labelledby="sectorTitle"><div class="dialog-top"><span class="dialog-eyebrow">100 SECTORS × 100 WIRES</span><button class="icon-close" data-close="sectorDialog" aria-label="閉じる" type="button">×</button></div><h2 id="sectorTitle">どの区画を開く？</h2><p>区画を変えても、セーフな導線は変わりません。</p><div class="sector-grid" id="sectorGrid"></div></dialog>
-<dialog id="jumpDialog" aria-labelledby="jumpTitle"><form id="jumpForm"><div class="dialog-top"><span class="dialog-eyebrow">PICK A NUMBER</span><button class="icon-close" data-close="jumpDialog" aria-label="閉じる" type="button">×</button></div><h2 id="jumpTitle">気になる番号は？</h2><p><label for="wireInput">1〜10,000の番号を入力してください。</label></p><input class="field" id="wireInput" type="text" inputmode="numeric" autocomplete="off" placeholder="例：7284" maxlength="6" aria-describedby="jumpError"><div class="field-error" id="jumpError" role="status"></div><button class="dialog-primary" type="submit">この導線を選ぶ</button></form></dialog>
-<dialog id="resultDialog" class="result-dialog" aria-labelledby="resultTitle"><div class="dialog-top"><span class="dialog-eyebrow" id="resultEyebrow">CASE CLOSED</span><button class="icon-close" data-close="resultDialog" aria-label="結果を閉じて箱を見る" type="button">×</button></div><div class="result-icon" id="resultIcon" aria-hidden="true"></div><h2 id="resultTitle">ドカン。</h2><p class="result-text" id="resultText">惜しかった、とは言えない。</p><div class="result-pairs"><div><span>切った導線</span><b id="resultPicked">00000</b></div><div><span>セーフだった導線</span><b id="resultSafe">00000</b></div></div><button class="dialog-primary" id="againBtn" type="button">新しい箱で、もう一度</button><div class="result-actions"><button id="revealBtn" type="button">正解の導線を見る</button><button id="shareBtn" type="button">結果をコピー</button></div><p class="keyboard-note">次の箱も、成功率は1万分の1。</p></dialog>
-<dialog id="resetDialog" aria-labelledby="resetTitle"><div class="dialog-top"><span class="dialog-eyebrow">NEW BOX</span><button class="icon-close" data-close="resetDialog" aria-label="閉じる" type="button">×</button></div><h2 id="resetTitle">新しい箱に交換する？</h2><p>今の箱を閉じ、新しいセーフ番号を抽選します。まだ切っていないので、挑戦回数は増えません。</p><button class="dialog-primary" id="confirmResetBtn" type="button">新しい箱を用意する</button></dialog>
-<script>
-(function (root) {
+<script>(function (root) {
   'use strict';
 
-  const TOTAL = 10000;
+  const TOTAL = 200;
   const UINT32_SIZE = 0x100000000;
   const ACCEPT_BELOW = Math.floor(UINT32_SIZE / TOTAL) * TOTAL;
 
@@ -87,9 +56,9 @@
     let state = 'playing';
     let round = 0;
     let selectedId = null;
-    let safeId;
+    let badId;
 
-    function chooseSafeWire() {
+    function chooseBadWire() {
       let value;
       do {
         value = randomUint32();
@@ -105,7 +74,7 @@
         state: state,
         round: round,
         selectedId: selectedId,
-        safeId: state === 'playing' ? null : safeId
+        badId: state === 'playing' ? null : badId
       });
     }
 
@@ -118,14 +87,14 @@
 
     function cut() {
       if (state === 'playing' && selectedId !== null) {
-        state = selectedId === safeId ? 'won' : 'lost';
+        state = selectedId === badId ? 'lost' : 'won';
       }
       return snapshot();
     }
 
     function newRound() {
-      const nextSafeId = chooseSafeWire();
-      safeId = nextSafeId;
+      const nextBadId = chooseBadWire();
+      badId = nextBadId;
       selectedId = null;
       state = 'playing';
       round += 1;
@@ -136,358 +105,333 @@
     return Object.freeze({select: select, cut: cut, newRound: newRound, snapshot: snapshot});
   }
 
-  root.WireEngine = Object.freeze({TOTAL: TOTAL, createGame: createGame});
+  root.WireEngine200 = Object.freeze({TOTAL: TOTAL, createGame: createGame});
 })(typeof window !== 'undefined' ? window : globalThis);
-
 </script>
-<script>
-(function () {
+<script>(function () {
   'use strict';
-  const $ = id => document.getElementById(id);
-  const pad = id => String(id).padStart(5, '0');
-  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = id => document.getElementById(id), NS = 'http://www.w3.org/2000/svg';
+  const pad = n => String(n).padStart(3, '0');
   const palette = [
-    ['#e27151', 'コーラル'], ['#d6b957', 'イエロー'], ['#6c9c98', 'ミント'],
-    ['#789bcb', 'ブルー'], ['#b89ac5', 'ライラック'], ['#bcce9b', 'ライム'],
-    ['#de9eb0', 'ピンク'], ['#c7c7b5', 'アイボリー'], ['#ce8e51', 'オレンジ'],
-    ['#8cba7c', 'グリーン']
+    ['#ff655d','赤'], ['#42dbea','シアン'], ['#ffd450','黄'], ['#b79aff','紫'],
+    ['#7add71','緑'], ['#ff94cf','ピンク'], ['#72aaff','青'], ['#ffad57','オレンジ'],
+    ['#45d4ab','ミント'], ['#edf1f6','白']
   ];
-  function hash(n) { n = Math.imul(n ^ 0x9e3779b9, 0x85ebca6b); n ^= n >>> 13; return Math.imul(n, 0xc2b2ae35) >>> 0; }
-  function wireColor(id) { return palette[hash(id) % palette.length]; }
-  function uniformId() {
-    const limit = Math.floor(0x100000000 / 10000) * 10000;
-    const data = new Uint32Array(1);
-    do { crypto.getRandomValues(data); } while (data[0] >= limit);
-    return data[0] % 10000 + 1;
-  }
+  const color = id => palette[(id - 1) % palette.length];
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const board = $('board');
   let game;
-  try { game = WireEngine.createGame(); }
+  try { game = WireEngine200.createGame(); }
   catch (_) {
-    $('openBtn').disabled = true;
-    $('cutHint').textContent = 'このブラウザでは抽選できません。新しいChrome・Safari・Firefoxで開いてください。';
-    $('lid').querySelector('.lid-desc').textContent = 'ブラウザを更新して、もう一度お試しください。';
+    $('statusTitle').textContent = 'このブラウザでは抽選できません。';
+    $('statusText').textContent = '新しいChrome・Safari・Firefoxで開いてください。';
+    document.querySelectorAll('button').forEach(b => { b.disabled = true; });
     return;
   }
-  let sector = 0, opened = false, busy = false, hovered = null, columns = 10;
-  let width = 0, height = 0, cellW = 0, cellH = 0, toastTimer;
-  let stats = {attempts: 0, wins: 0};
-  let soundEnabled = false, audio;
+  let mode = 'overview', group = 0, busy = false, hovered = null, roving = 1;
+  let stats = {attempts:0, safe:0, fail:0}, soundOn = false, audio, toastTimer;
+  let geometry = {}, drawnWidth = 0;
   try {
-    const saved = JSON.parse(localStorage.getItem('one-in-10000-record-v1') || 'null');
-    if (saved && Number.isSafeInteger(saved.attempts) && Number.isSafeInteger(saved.wins) && saved.attempts >= saved.wins && saved.wins >= 0) stats = saved;
-    soundEnabled = localStorage.getItem('one-in-10000-sound') === 'on';
+    const saved = JSON.parse(localStorage.getItem('one-bad-wire-200-v2-record') || 'null');
+    if (saved && [saved.attempts,saved.safe,saved.fail].every(n => Number.isSafeInteger(n) && n >= 0) && saved.safe + saved.fail === saved.attempts) stats = saved;
+    soundOn = localStorage.getItem('one-bad-wire-200-v2-sound') === 'on';
   } catch (_) {}
-  function persist() { try { localStorage.setItem('one-in-10000-record-v1', JSON.stringify(stats)); } catch (_) {} }
-  function updateStats() { $('attemptCount').textContent = stats.attempts.toLocaleString(); $('winCount').textContent = stats.wins.toLocaleString(); }
-  function updateSound() {
-    $('soundBtn').setAttribute('aria-pressed', String(soundEnabled));
-    $('soundLabel').textContent = '音 ' + (soundEnabled ? 'ON' : 'OFF');
-    $('soundWaves').setAttribute('d', soundEnabled ? 'M16 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14' : 'm16 9 6 6m0-6-6 6');
+  function saveStats() { try { localStorage.setItem('one-bad-wire-200-v2-record', JSON.stringify(stats)); } catch (_) {} }
+  function announce(s) { $('announce').textContent = s; }
+  function toast(s) {
+    clearTimeout(toastTimer); $('toast').textContent = s; $('toast').classList.add('show');
+    toastTimer = setTimeout(() => $('toast').classList.remove('show'), 2800);
   }
   function sound(kind) {
-    if (!soundEnabled) return;
+    if (!soundOn) return;
     try {
       if (!audio) audio = new (window.AudioContext || window.webkitAudioContext)();
       if (audio.state === 'suspended') audio.resume().catch(() => {});
-      const t = audio.currentTime;
-      if (kind === 'fail') {
-        const buffer = audio.createBuffer(1, Math.round(audio.sampleRate * .42), audio.sampleRate);
-        const values = buffer.getChannelData(0);
-        for (let i = 0; i < values.length; i++) values[i] = (Math.random() * 2 - 1) * Math.exp(-i / (audio.sampleRate * .08));
-        const noise = audio.createBufferSource(), gain = audio.createGain(), filter = audio.createBiquadFilter();
-        noise.buffer = buffer; filter.type = 'lowpass'; filter.frequency.value = 650; gain.gain.value = .2;
-        noise.connect(filter); filter.connect(gain); gain.connect(audio.destination); noise.start(t); noise.stop(t + .42);
-      } else {
-        const notes = kind === 'win' ? [523,659,784,1046] : kind === 'open' ? [200,350] : kind === 'cut' ? [800,150] : [480];
-        notes.forEach((f,i) => {
-          const osc = audio.createOscillator(), gain = audio.createGain(), start = t + i * (kind === 'win' ? .12 : .045);
-          osc.type = kind === 'select' ? 'sine' : 'triangle'; osc.frequency.setValueAtTime(f,start);
-          gain.gain.setValueAtTime(0,start); gain.gain.linearRampToValueAtTime(.045,start+.007); gain.gain.exponentialRampToValueAtTime(.001,start+.13);
-          osc.connect(gain); gain.connect(audio.destination); osc.start(start); osc.stop(start+.15);
-        });
-      }
+      const start = audio.currentTime;
+      const notes = kind === 'win' ? [523,659,784] : kind === 'lose' ? [130,85,55] : kind === 'cut' ? [750,170] : [440];
+      notes.forEach((f,i) => {
+        const osc = audio.createOscillator(), gain = audio.createGain(), t = start + i*.075;
+        osc.type = kind === 'lose' ? 'triangle' : 'sine'; osc.frequency.setValueAtTime(f,t);
+        gain.gain.setValueAtTime(0,t); gain.gain.linearRampToValueAtTime(kind === 'lose' ? .075 : .035,t+.008);
+        gain.gain.exponentialRampToValueAtTime(.001,t+.16);
+        osc.connect(gain); gain.connect(audio.destination); osc.start(t); osc.stop(t+.18);
+      });
     } catch (_) {}
   }
-  function announce(text) { $('announce').textContent = text; }
-  function toast(text) {
-    clearTimeout(toastTimer); $('toast').textContent = text; $('toast').classList.add('visible');
-    toastTimer = setTimeout(() => $('toast').classList.remove('visible'), 2600);
+  function updateSound() {
+    $('soundLabel').textContent = '音 ' + (soundOn ? 'ON' : 'OFF');
+    $('soundBtn').setAttribute('aria-pressed',String(soundOn));
+    $('soundWaves').setAttribute('d',soundOn ? 'M17 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14' : 'm17 9 5 6m0-6-5 6');
   }
   function showDialog(id) {
-    document.querySelectorAll('dialog[open]').forEach(d => { if (d.id !== id) d.close(); });
+    document.querySelectorAll('dialog[open]').forEach(d => d.close());
     $(id).showModal(); document.body.classList.add('modal-open');
   }
-  function closeDialog(id) { $(id).close(); }
   document.querySelectorAll('dialog').forEach(d => {
-    d.addEventListener('close', () => {
-      if (!document.querySelector('dialog[open]')) document.body.classList.remove('modal-open');
-    });
-    d.addEventListener('click', e => {
-      if (e.target === d) {
-        const r = d.getBoundingClientRect();
-        if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) d.close();
-      }
+    d.addEventListener('close',() => { if (!document.querySelector('dialog[open]')) document.body.classList.remove('modal-open'); });
+    d.addEventListener('click',e => {
+      if (e.target !== d) return;
+      const r = d.getBoundingClientRect();
+      if (e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom) d.close();
     });
   });
-  document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click', () => closeDialog(b.dataset.close)));
-
-  function renderGrid() {
-    hovered = null;
-    $('sectorNum').textContent = String(sector + 1).padStart(2,'0');
-    $('sectorRange').textContent = pad(sector * 100 + 1) + ' — ' + pad(sector * 100 + 100);
-    $('wireTargets').setAttribute('aria-label', `区画${sector + 1}、導線${sector * 100 + 1}から${sector * 100 + 100}`);
-    const fragment = document.createDocumentFragment();
-    for (let i = 0; i < 100; i++) {
-      const id = sector * 100 + i + 1, b = document.createElement('button');
-      b.className = 'wire-hit'; b.type = 'button'; b.dataset.wire = id;
-      b.setAttribute('aria-label', `導線 ${pad(id)}、${wireColor(id)[1]}`);
-      b.setAttribute('aria-pressed', 'false'); b.innerHTML = '<span>' + pad(id) + '</span>';
-      b.addEventListener('click', () => choose(id, false));
-      b.addEventListener('mouseenter', () => { hovered = id; drawBoard(); });
-      b.addEventListener('mouseleave', () => { hovered = null; drawBoard(); });
-      b.addEventListener('focus', () => { hovered = id; drawBoard(); });
-      b.addEventListener('blur', () => { hovered = null; drawBoard(); });
-      b.addEventListener('keydown', e => {
-        const moves = {ArrowLeft:-1,ArrowRight:1,ArrowUp:-columns,ArrowDown:columns};
-        if (!(e.key in moves)) return;
-        e.preventDefault();
-        const next = i + moves[e.key];
-        if (next >= 0 && next < 100) {
-          const wires = $('wireTargets').children;
-          for (let index = 0; index < wires.length; index++) wires[index].tabIndex = index === next ? 0 : -1;
-          wires[next].focus();
-        }
-      });
-      fragment.appendChild(b);
-    }
-    $('wireTargets').replaceChildren(fragment);
-    $('wireViewport').scrollTop = 0;
-    updateControls();
-    resizeBoard();
+  document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click',() => $(b.dataset.close).close()));
+  function el(tag, attrs, text) {
+    const node = document.createElementNS(NS,tag);
+    for (const key in attrs) node.setAttribute(key,String(attrs[key]));
+    if (text !== undefined) node.textContent = text;
+    return node;
   }
-  function resizeBoard() {
-    const w = $('wireBoard').clientWidth;
-    if (!w) return;
-    columns = w < 510 ? 5 : 10;
-    cellW = w / columns; cellH = Math.max(44, Math.min(48, cellW * .68));
-    width = w; height = Math.ceil(100 / columns) * cellH;
-    $('wireBoard').style.height = height + 'px';
-    $('wireTargets').style.gridTemplateColumns = `repeat(${columns},1fr)`;
-    $('wireTargets').style.gridTemplateRows = `repeat(${100/columns},${cellH}px)`;
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const canvas = $('wireCanvas'); canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
-    canvas.style.height = height + 'px';
-    const ctx = canvas.getContext('2d'); ctx.setTransform(dpr,0,0,dpr,0,0);
-    drawBoard();
+  function linePath(y, cut) {
+    const g = geometry;
+    if (cut) return 'M'+g.start+' '+y+'H'+(g.cut-8)+'l4 3M'+(g.cut+8)+' '+(y-3)+'l4 3H'+(g.boxX+12);
+    return 'M'+g.start+' '+y+'H'+(g.boxX+12);
   }
   function drawBoard() {
-    if (!width) return;
-    const ctx = $('wireCanvas').getContext('2d'), snap = game.snapshot();
-    ctx.clearRect(0,0,width,height);
-    // Faint loops behind the numbered, individually selectable cables.
-    for (let j = 0; j < 28; j++) {
-      const k = hash(sector * 157 + j * 913), x = (k % 1000) / 1000 * width, y = ((k >>> 10) % 1000) / 1000 * height;
-      ctx.beginPath(); ctx.moveTo(x,y); ctx.bezierCurveTo(x-110,y+80,x+90,y+85,x+25,y+165);
-      ctx.lineWidth = 2.5; ctx.strokeStyle = palette[k%10][0] + '28'; ctx.stroke();
+    const w = Math.max(280,Math.round(board.clientWidth || 800)), h = 620;
+    drawnWidth = w;
+    const compact = w < 500;
+    const g = geometry = {w,h,boxX:w*.67,boxW:w*.215,start:compact?39:63,top:58,bottom:552};
+    g.boxRight = g.boxX+g.boxW; g.cut = g.start+(g.boxX-g.start)*.48;
+    const s = game.snapshot(), detail = mode === 'detail', count = detail ? 20 : 200;
+    g.step = (g.bottom-g.top)/count; g.first = detail ? group*20+1 : 1;
+    board.setAttribute('viewBox','0 0 '+w+' '+h);
+    board.setAttribute('aria-label',detail ? '導線 '+g.first+' から '+(g.first+19)+'。番号と色を確かめて選択してください。' : '200本の導線の全体図。20本ずつの範囲を押すと拡大します。');
+    board.innerHTML =
+      '<defs><linearGradient id="frame" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#53616a"/><stop offset=".45" stop-color="#34454e"/><stop offset="1" stop-color="#48585e"/></linearGradient>'+
+      '<linearGradient id="cover" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#405a6b"/><stop offset=".5" stop-color="#2b4355"/><stop offset="1" stop-color="#385668"/></linearGradient>'+
+      '<linearGradient id="socket" x1="0" x2="1"><stop stop-color="#0c141b"/><stop offset=".5" stop-color="#5e7077"/><stop offset="1" stop-color="#17232e"/></linearGradient>'+
+      '<linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b6c1be"/><stop offset="1" stop-color="#526770"/></linearGradient>'+
+      '<pattern id="texture" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M0 0h6" stroke="#ffffff" stroke-opacity=".025" stroke-width="1"/></pattern></defs>';
+    const background = el('g',{'aria-hidden':'true'});
+    background.append(el('rect',{x:1,y:2,width:w-2,height:h-5,rx:13,fill:'url(#frame)',stroke:'#273944','stroke-width':2}));
+    background.append(el('rect',{x:11,y:13,width:w-22,height:h-28,rx:7,fill:'#182630',stroke:'#72818a','stroke-opacity':.6}));
+    background.append(el('rect',{x:12,y:14,width:w-24,height:h-30,rx:7,fill:'url(#texture)'}));
+    for (let n=0;n<10;n++) {
+      const y=g.top+(g.bottom-g.top)/10*n;
+      background.append(el('rect',{x:18,y,width:g.boxX-17,height:(g.bottom-g.top)/10,fill:n%2?'#ffffff04':'#00000008'}));
     }
-    function trace(x,y,w,h,id) {
-      const k = hash(id), a = .16 + (k % 19) / 100, b = .12 + ((k >>> 8)%20)/100;
-      ctx.beginPath(); ctx.moveTo(x+7,y+h*.43);
-      switch ((k >>> 16) % 4) {
-        case 0:
-          ctx.bezierCurveTo(x+w*a,y-h*.03,x+w*.48,y+h*.04,x+w*.48,y+h*.37);
-          ctx.bezierCurveTo(x+w*.47,y+h*.79,x+w*(1-b),y+h*.7,x+w-7,y+h*.34);
-          break;
-        case 1:
-          ctx.bezierCurveTo(x+w*.23,y+h*.9,x+w*.62,y+h*.85,x+w*.62,y+h*.34);
-          ctx.bezierCurveTo(x+w*.62,y-h*.05,x+w*.28,y+h*.05,x+w*.37,y+h*.39);
-          ctx.bezierCurveTo(x+w*.5,y+h*.72,x+w*.8,y+h*.12,x+w-7,y+h*.34);
-          break;
-        case 2:
-          ctx.bezierCurveTo(x+w*.3,y+h*.08,x+w*.24,y+h*.7,x+w*.5,y+h*.56);
-          ctx.bezierCurveTo(x+w*.77,y+h*.41,x+w*(1-b),y+h*.09,x+w-7,y+h*.34);
-          break;
-        default:
-          ctx.bezierCurveTo(x+w*a,y+h*.75,x+w*.37,y+h*.13,x+w*.57,y+h*.17);
-          ctx.bezierCurveTo(x+w*.85,y+h*.23,x+w*.54,y+h*.85,x+w-7,y+h*.34);
+    background.append(el('text',{x:25,y:35,fill:'#8da4af','font-size':compact?7:8,'font-family':'monospace','letter-spacing':1.5},compact?'INPUT / 200':'INPUT / 200 INDIVIDUAL WIRES'));
+    background.append(el('text',{x:25,y:h-28,fill:'#8c9ea4','font-size':compact?7:8,'font-family':'monospace','letter-spacing':1},'MODEL 200 · CASE '+pad(s.round)));
+    background.append(el('path',{d:'M'+g.cut+' 46V'+(h-48),stroke:'#c9d9df','stroke-opacity':.13,'stroke-dasharray':'3 6','stroke-width':1}));
+    board.append(background);
+    const wires = el('g',{id:'wireLayer','aria-hidden':'true'});
+    for (let i=0;i<count;i++) {
+      const id=g.first+i,y=g.top+g.step*(i+.5),d=linePath(y,s.state!=='playing'&&s.selectedId===id);
+      const node=el('g',{'data-drawn-wire':id});
+      if (detail) node.append(el('path',{d,fill:'none',stroke:'#050b11','stroke-width':8,'stroke-linecap':'round',transform:'translate(0 2)'}));
+      node.append(el('path',{d,fill:'none',stroke:color(id)[0],'stroke-width':detail?4.8:1.45,'stroke-linecap':'round',class:'wire-core'}));
+      if (detail) {
+        node.append(el('path',{d,fill:'none',stroke:'#ffffff','stroke-opacity':.3,'stroke-width':1,transform:'translate(0 -1)'}));
+        node.append(el('circle',{cx:g.start,cy:y,r:3.8,fill:'#a2b6bc',stroke:'#080f16','stroke-width':2}));
+      }
+      wires.append(node);
+    }
+    board.append(wires);
+    board.append(el('g',{id:'wireHighlights','aria-hidden':'true'}));
+    const targets=el('g',{id:'wireTargets'});
+    if (detail) {
+      if (Math.floor((roving-1)/20)!==group) roving=g.first;
+      for (let i=0;i<20;i++) {
+        const id=g.first+i,y=g.top+g.step*(i+.5);
+        const row=el('g',{class:'wire-row','data-wire':id,role:'button',tabindex:id===roving?0:-1,'aria-label':'導線 '+pad(id)+'、'+color(id)[1],'aria-pressed':s.selectedId===id,'aria-disabled':busy||s.state!=='playing'});
+        row.append(el('rect',{class:'row-hit',x:18,y:y-g.step/2,width:g.boxX-18,height:g.step,rx:2,fill:'transparent'}));
+        row.append(el('text',{x:compact?20:27,y:y+3.5,fill:'#a5bac6','font-size':compact?8:9,'font-family':'monospace','pointer-events':'none'},pad(id)));
+        row.addEventListener('click',() => choose(id,false));
+        row.addEventListener('pointerenter',() => { hovered=id; drawHighlights(); });
+        row.addEventListener('pointerleave',() => { hovered=null; drawHighlights(); });
+        row.addEventListener('focus',() => { hovered=id; drawHighlights(); });
+        row.addEventListener('blur',() => { hovered=null; drawHighlights(); });
+        row.addEventListener('keydown',e => {
+          if (e.key==='Enter'||e.key===' ') { e.preventDefault();choose(id,false);return; }
+          if (e.key!=='ArrowUp'&&e.key!=='ArrowDown') return;
+          e.preventDefault(); const next=id+(e.key==='ArrowDown'?1:-1);
+          if(next<1||next>200||busy) return;
+          roving=next;
+          if(Math.floor((next-1)/20)!==group) showGroup(Math.floor((next-1)/20),false);
+          roving=next;
+          board.querySelectorAll('[data-wire]').forEach(n=>n.setAttribute('tabindex',Number(n.dataset.wire)===next?'0':'-1'));
+          board.querySelector('[data-wire="'+next+'"]').focus({preventScroll:true});
+        });
+        targets.append(row);
+      }
+    } else {
+      for (let n=0;n<10;n++) {
+        const y=g.top+n*(g.bottom-g.top)/10, band=el('g',{class:'band',role:'button',tabindex:busy?-1:0,'data-group':n,'aria-label':'導線 '+pad(n*20+1)+' から '+pad(n*20+20)+' を拡大','aria-disabled':busy});
+        band.append(el('rect',{class:'band-hit',x:18,y,width:g.boxX-18,height:(g.bottom-g.top)/10,rx:2,fill:'transparent'}));
+        band.append(el('rect',{x:compact?16:24,y:y+12,width:compact?24:31,height:24,rx:3,fill:'#101d27','fill-opacity':.93,'pointer-events':'none'}));
+        band.append(el('text',{x:compact?28:39,y:y+27,fill:'#adbec5','font-size':compact?7:8,'font-family':'monospace','text-anchor':'middle','pointer-events':'none'},pad(n*20+1)));
+        band.addEventListener('click',()=>showGroup(n,true));
+        band.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showGroup(n,true);}});
+        targets.append(band);
       }
     }
-    function paintWire(i, active) {
-      const id = sector*100+i+1, x = (i%columns)*cellW, y = Math.floor(i/columns)*cellH;
-      const [color] = wireColor(id), selected = snap.selectedId === id;
-      const safe = snap.state !== 'playing' && snap.safeId === id;
-      ctx.save();
-      if (selected && snap.state !== 'playing') {
-        ctx.beginPath(); ctx.rect(x,y,cellW*.45,cellH); ctx.rect(x+cellW*.55,y,cellW*.45,cellH); ctx.clip();
-      }
-      ctx.lineCap='round';
-      if (active || safe) {
-        trace(x,y,cellW,cellH,id); ctx.strokeStyle=safe?'#b5ed9d': '#f4e9ce'; ctx.lineWidth=8; ctx.globalAlpha=.28; ctx.stroke();ctx.globalAlpha=1;
-      }
-      trace(x,y+2,cellW,cellH,id); ctx.strokeStyle='#0009';ctx.lineWidth=6.5;ctx.stroke();
-      trace(x,y,cellW,cellH,id); ctx.strokeStyle=color;ctx.lineWidth=active?4.5:3.3;ctx.stroke();
-      trace(x,y-.7,cellW,cellH,id);ctx.strokeStyle='#ffffff45';ctx.lineWidth=1;ctx.stroke();
-      for (const [tx,ty] of [[x+7,y+cellH*.43],[x+cellW-7,y+cellH*.34]]) {
-        ctx.beginPath();ctx.arc(tx,ty,3.4,0,Math.PI*2);ctx.fillStyle='#0c140e';ctx.fill();
-        ctx.beginPath();ctx.arc(tx,ty,1.65,0,Math.PI*2);ctx.fillStyle='#c1ba9b';ctx.fill();
-      }
-      ctx.restore();
-      if (selected && snap.state !== 'playing') {
-        ctx.beginPath();ctx.moveTo(x+cellW*.46,y+cellH*.27);ctx.lineTo(x+cellW*.54,y+cellH*.46);ctx.strokeStyle=snap.state==='won'?'#bed6a6':'#e79d67';ctx.lineWidth=1.5;ctx.stroke();
-      }
+    board.append(targets);
+    const hardware=el('g',{'aria-hidden':'true','pointer-events':'none'});
+    const outletY=h*.5, tailEnd=w-14;
+    for (let i=0;i<200;i++) {
+      const off=((i*37)%200-100)*.31, spread=((i*73)%200-100)*.7, x1=g.boxRight-5;
+      hardware.append(el('path',{d:'M'+x1+' '+(outletY+off)+'C'+(x1+20)+' '+(outletY+off)+' '+(tailEnd-25)+' '+(outletY+spread)+' '+tailEnd+' '+(outletY+spread*.6),fill:'none',stroke:color(i+1)[0],'stroke-width':.9,'stroke-opacity':.95}));
     }
-    for (let i = 0; i < 100; i++) paintWire(i, false);
-    for (const id of [hovered, snap.selectedId]) {
-      if (id && Math.floor((id-1)/100) === sector) paintWire((id-1)%100,true);
+    const tieX=g.boxRight+(tailEnd-g.boxRight)*.55;
+    hardware.append(el('path',{d:'M'+tieX+' '+(outletY-37)+'q8 37 0 74',fill:'none',stroke:'#0b161c','stroke-width':7}));
+    hardware.append(el('path',{d:'M'+(tieX-1)+' '+(outletY-37)+'q8 37 0 74',fill:'none',stroke:'#5b6e73','stroke-width':2}));
+    hardware.append(el('rect',{x:g.boxRight-6,y:outletY-39,width:16,height:78,rx:6,fill:'url(#socket)',stroke:'#121e29','stroke-width':2}));
+    for(let j=0;j<4;j++)hardware.append(el('path',{d:'M'+(g.boxRight-4+j*3)+' '+(outletY-35)+'v70',stroke:'#75858b','stroke-opacity':.3,'stroke-width':1}));
+    hardware.append(el('rect',{x:g.boxX-6,y:31,width:g.boxW+10,height:h-61,rx:8,fill:'#080f16','fill-opacity':.55,transform:'translate(4 4)'}));
+    hardware.append(el('rect',{x:g.boxX-6,y:29,width:g.boxW+10,height:h-61,rx:8,fill:'url(#cover)',stroke:'#172e3e','stroke-width':2}));
+    hardware.append(el('rect',{x:g.boxX-1,y:34,width:g.boxW,height:h-71,rx:5,fill:'url(#texture)',stroke:'#8babb8','stroke-opacity':.25}));
+    const cx=g.boxX+g.boxW/2;
+    for(const sx of [g.boxX+7,g.boxRight-9])for(const sy of [46,h-49]){
+      hardware.append(el('circle',{cx:sx,cy:sy,r:4.3,fill:'url(#metal)',stroke:'#1a2f3b','stroke-width':1}));
+      hardware.append(el('path',{d:'M'+(sx-2)+' '+(sy+1.2)+'l4 -2.4',stroke:'#304750','stroke-width':1}));
+    }
+    hardware.append(el('text',{x:cx,y:83,fill:'#96b2bf','font-size':compact?6:8,'letter-spacing':compact?1:2,'font-family':'monospace','text-anchor':'middle'},'SEALED UNIT'));
+    hardware.append(el('rect',{x:cx-g.boxW*.32,y:119,width:g.boxW*.64,height:92,rx:3,fill:'#132c3b',stroke:'#547084','stroke-width':1}));
+    hardware.append(el('text',{x:cx,y:165,fill:'#dce9e7','font-size':compact?23:39,'font-family':'monospace','text-anchor':'middle','letter-spacing':-2},'200'));
+    hardware.append(el('text',{x:cx,y:189,fill:'#83a8bb','font-size':compact?6:8,'font-family':'monospace','text-anchor':'middle','letter-spacing':compact?.5:1.5},'IN / ONE OUT'));
+    hardware.append(el('circle',{id:'caseLed',cx,cy:247,r:4,fill:s.state==='lost'?'#ff795e':s.state==='won'?'#80dc94':'#e9c76b'}));
+    hardware.append(el('text',{id:'caseState',x:cx,y:269,fill:'#b5c8c9','font-size':compact?6:8,'font-family':'monospace','text-anchor':'middle'},busy?'CUTTING':s.state==='won'?'SAFE':s.state==='lost'?'FAILED':'STANDBY'));
+    for(let n=0;n<6;n++)hardware.append(el('rect',{x:cx-g.boxW*.25,y:328+n*8,width:g.boxW*.5,height:3,rx:1.5,fill:'#193142',stroke:'#64818e','stroke-opacity':.18}));
+    hardware.append(el('rect',{x:cx-g.boxW*.33,y:444,width:g.boxW*.66,height:56,rx:2,fill:'#d6c9a0',transform:'rotate(-2 '+cx+' 472)'}));
+    hardware.append(el('text',{x:cx,y:466,fill:'#4c503f','font-size':compact?6:9,'font-family':'monospace','text-anchor':'middle','font-weight':'bold'},'199 SAFE'));
+    hardware.append(el('text',{x:cx,y:482,fill:'#4c503f','font-size':compact?6:8,'font-family':'monospace','text-anchor':'middle'},'1 BAD WIRE'));
+    hardware.append(el('text',{x:cx,y:551,fill:'#8ea5ad','font-size':compact?5:7,'font-family':'monospace','text-anchor':'middle'},'DO NOT OPEN'));
+    board.append(hardware);
+    drawHighlights(); updateViewControls();
+  }
+  function drawHighlights() {
+    const layer=$('wireHighlights'); if(!layer)return;
+    layer.replaceChildren();
+    const s=game.snapshot(),g=geometry,ids=[];
+    if(s.state!=='playing')ids.push({id:s.badId,type:'bad'});
+    if(hovered&&s.state==='playing'&&!busy)ids.push({id:hovered,type:'hover'});
+    if(s.selectedId)ids.push({id:s.selectedId,type:'selected'});
+    for(const item of ids){
+      const i=item.id-g.first;if(i<0||i>=(mode==='detail'?20:200))continue;
+      const y=g.top+g.step*(i+.5),d=linePath(y,s.state!=='playing'&&s.selectedId===item.id);
+      const mark=(item.type==='bad'||(s.state!=='playing'&&item.id===s.badId))?'#ff725c':'#f6f5e7';
+      layer.append(el('path',{d,fill:'none',stroke:'#09131d','stroke-width':mode==='detail'?12:6,'stroke-linecap':'round'}));
+      layer.append(el('path',{d,fill:'none',stroke:mark,'stroke-width':mode==='detail'?8:4,'stroke-linecap':'round','stroke-opacity':item.type==='hover'?.65:1}));
+      layer.append(el('path',{d,fill:'none',stroke:color(item.id)[0],'stroke-width':mode==='detail'?4.7:2,'stroke-linecap':'round'}));
+      if(mode==='detail'&&item.type==='selected'){
+        layer.append(el('rect',{x:17,y:y-g.step/2+1,width:g.boxX-17,height:g.step-2,rx:3,fill:'none',stroke:'#ecf2ed','stroke-width':1,'stroke-opacity':.5}));
+        layer.append(el('path',{d:'M'+(g.cut-6)+' '+(y-8)+'l-3 3m9-3 3 3M'+(g.cut-6)+' '+(y+8)+'l-3-3m9 3 3-3',stroke:'#fff8df',fill:'none','stroke-width':1.3}));
+      }
     }
   }
-  function updateControls() {
-    const s = game.snapshot(), active = opened && !busy && s.state === 'playing';
-    $('randomBtn').disabled = !active; $('jumpBtn').disabled = !active;
-    $('cutBtn').disabled = !active || s.selectedId === null;
-    $('newBoxBtn').disabled = !opened || busy;
-    $('prevSector').disabled = !opened || busy || sector === 0;
-    $('nextSector').disabled = !opened || busy || sector === 99;
-    $('sectorBtn').disabled = !opened || busy;
-    $('selectedLocation').disabled = !opened || busy || s.selectedId === null;
-    $('selectedNumber').textContent = s.selectedId === null ? '— — —' : pad(s.selectedId);
-    $('selectedNumber').classList.toggle('is-empty',s.selectedId === null);
-    $('wireColor').textContent = s.selectedId === null ? '未選択' : wireColor(s.selectedId)[1];
-    $('previewPath').setAttribute('stroke',s.selectedId === null ? '#9aa48c' : wireColor(s.selectedId)[0]);
-    $('selectionLabel').textContent = s.state === 'playing' ? '選択中の導線' : '切った導線';
-    $('cutLabel').textContent = busy ? '切断中…' : s.state === 'playing' ? 'この導線を切る' : s.state === 'won' ? '解除成功' : '切断済み';
-    $('cutBtn').setAttribute('aria-label', s.selectedId === null ? '導線を選ぶと切断できます' : `導線 ${pad(s.selectedId)} を切る`);
-    $('cutHint').textContent = !opened ? 'まずは、箱を開けてください。' : busy ? 'その1本に、運を託して。' : s.state !== 'playing' ? '次の箱も、確率は1万分の1。' : s.selectedId === null ? '好きな導線を選んでください。' : `No. ${pad(s.selectedId)} を選択中。まだ切っていません。`;
-    $('caseSerial').textContent = 'CASE / ' + String(s.round).padStart(3,'0');
-    $('caseStatus').textContent = !opened ? 'STANDBY' : busy ? 'CUTTING' : s.state === 'won' ? 'SAFE / DISARMED' : s.state === 'lost' ? 'CASE CLOSED' : 'AWAITING YOUR CHOICE';
-    $('rackHint').textContent = s.state === 'playing' ? (columns === 5 ? 'スクロールして、導線を選択' : '導線をクリックして選択') : 'この箱の結果は確定しました';
-    for (const b of $('wireTargets').children) {
-      const id = Number(b.dataset.wire), selected = s.selectedId === id;
-      b.classList.toggle('selected',selected); b.classList.toggle('safe',s.state !== 'playing' && s.safeId === id);
-      b.setAttribute('aria-pressed',String(selected));
-      b.disabled = busy || s.state !== 'playing';
-      b.tabIndex = (s.selectedId !== null && Math.floor((s.selectedId-1)/100) === sector) ? (selected ? 0 : -1) : (id === sector*100+1 ? 0 : -1);
-      if (s.state !== 'playing' && s.safeId === id) b.setAttribute('aria-label',`正解の導線 ${pad(id)}`);
-    }
+  function updateViewControls(){
+    const s=game.snapshot(),detail=mode==='detail';
+    $('overviewBtn').setAttribute('aria-pressed',String(!detail));
+    $('detailBtn').setAttribute('aria-pressed',String(detail));
+    $('overviewBtn').disabled=busy;$('detailBtn').disabled=busy;
+    $('prevBtn').disabled=busy||!detail||group===0;$('nextBtn').disabled=busy||!detail||group===9;
+    $('rangeBtn').disabled=busy;
+    $('rangeLabel').innerHTML=detail?pad(group*20+1)+' — '+pad(group*20+20)+' <span>/ 200 WIRES</span>':'001 — 200 <span>/ ALL WIRES</span>';
+    $('boardHint').textContent=detail?(s.state==='playing'?'導線を選択。色と番号を確かめてから、切断します。':'切断済みの導線と、ハズレの位置を確認できます。'):'見たい場所を押すと、20本ずつ拡大できます。';
+    for(const b of $('pageDots').children){b.classList.toggle('active',detail&&Number(b.dataset.group)===group);b.disabled=busy;}
+  }
+  function showGroup(n,focus){
+    if(busy||!Number.isInteger(n)||n<0||n>9)return;
+    group=n;mode='detail';hovered=null;roving=group*20+1;
+    const s=game.snapshot();if(s.selectedId&&Math.floor((s.selectedId-1)/20)===group)roving=s.selectedId;
     drawBoard();
+    if(focus){const row=board.querySelector('[data-wire="'+roving+'"]');if(row)row.focus({preventScroll:true});}
+    announce('導線 '+pad(n*20+1)+' から '+pad(n*20+20)+' を拡大しました。');
   }
-  function goSector(n) {
-    if (!opened || busy || !Number.isInteger(n) || n < 0 || n > 99) return;
-    sector = n; renderGrid(); announce(`区画 ${n+1}。導線 ${n*100+1} から ${n*100+100} を表示しています。`);
+  function choose(id,move){
+    if(busy||game.snapshot().state!=='playing'||!Number.isInteger(id)||id<1||id>200)return;
+    game.select(id);roving=id;
+    if(move)showGroup(Math.floor((id-1)/20),false);
+    for(const row of board.querySelectorAll('[data-wire]')){const selected=Number(row.dataset.wire)===id;row.setAttribute('aria-pressed',String(selected));row.setAttribute('tabindex',selected?'0':'-1');}
+    updateControls();drawHighlights();sound('select');
+    announce('導線 '+pad(id)+'、'+color(id)[1]+' を選択。まだ切っていません。');
   }
-  function locate(id, focus) {
-    const n = Math.floor((id-1)/100);
-    if (n !== sector) goSector(n);
-    const b = $('wireTargets').querySelector(`[data-wire="${id}"]`);
-    if (b) {
-      const viewport = $('wireViewport'), top = b.offsetTop;
-      if (top < viewport.scrollTop || top+b.offsetHeight > viewport.scrollTop+viewport.clientHeight) viewport.scrollTop = Math.max(0,top-viewport.clientHeight/2+cellH/2);
-      if (focus && !b.disabled) b.focus({preventScroll:true});
-    }
+  function updateControls(){
+    const s=game.snapshot(),done=s.state!=='playing',active=!busy&&!done,has=s.selectedId!==null;
+    $('selectedNumber').textContent=$('mobileNumber').textContent=has?pad(s.selectedId):'— —';
+    $('selectedNumber').classList.toggle('empty',!has);
+    $('colorName').textContent=$('mobileColor').textContent=has?color(s.selectedId)[1]:'未選択';
+    $('sampleWire').style.setProperty('--wire-color',has?color(s.selectedId)[0]:'#a7b2b3');
+    $('selectionLabel').textContent=done?'切った導線':'選択中の導線';
+    $('mobileLabel').textContent=busy?'切断中…':done?(s.state==='won'?'セーフ。解除成功。':'ドカン。ハズレでした。'):'選択中の導線';
+    $('cutBtn').disabled=!active||!has;$('randomBtn').disabled=$('jumpBtn').disabled=!active;
+    $('cutLabel').textContent=busy?'切断中…':done?'切断済み':'この導線を切る';
+    $('cutBtn').setAttribute('aria-label',has?'導線 '+pad(s.selectedId)+' を切る':'導線を選ぶと切断できます');
+    $('cutHint').textContent=busy?'その1本に、決めた。':done?'1本切ると、この箱は終了です。':has?'No. '+pad(s.selectedId)+' を選択中。まだ切っていません。':'まずは、気になる1本を選択。';
+    $('mobileCutBtn').disabled=busy||(!done&&!has);
+    $('mobileCutBtn').classList.toggle('is-again',done&&!busy);
+    $('mobileCutLabel').textContent=busy?'切断中…':done?'新しい箱へ':has?'この導線を切る':'導線を選んでね';
+    $('resetBtn').disabled=busy;$('againBtn').disabled=busy;
+    $('attemptCount').textContent=stats.attempts.toLocaleString();$('safeCount').textContent=stats.safe.toLocaleString();$('failCount').textContent=stats.fail.toLocaleString();
+    updateViewControls();
   }
-  function choose(id, move) {
-    if (!opened || busy || game.snapshot().state !== 'playing') return;
-    game.select(id);
-    if (move) locate(id,false);
-    updateControls(); sound('select'); announce(`導線 ${pad(id)}、${wireColor(id)[1]}を選択しました。切るボタンで確定します。`);
+  function showResult(){
+    const s=game.snapshot(),won=s.state==='won';
+    $('statusBox').classList.toggle('won',won);$('statusBox').classList.toggle('lost',!won);
+    $('statusTitle').textContent=won?'セーフ。解除成功。':'ドカン。まさかの1本。';
+    $('statusText').textContent=won?'No. '+pad(s.selectedId)+' は安全でした。だいたい安全工業、今回も無事でした。':'200本の中で、たった1本のハズレを引き当てました。次の箱では、改めて抽選します。';
+    $('resultDetail').hidden=false;$('badNumber').textContent=pad(s.badId);$('againBtn').hidden=false;
+    announce($('statusTitle').textContent+' 切った導線は'+pad(s.selectedId)+'、ハズレだった導線は'+pad(s.badId)+'です。');
+    toast(won?'セーフ。No. '+pad(s.selectedId)+'、解除成功！':'ドカン。No. '+pad(s.selectedId)+' がハズレでした。');
   }
-  function openBox() {
-    if (opened) return;
-    opened = true; $('machine').classList.add('is-open'); $('rack').inert = false;
-    $('lid').inert = true; sound('open'); updateControls();
-    setTimeout(() => {
-      $('lid').hidden = true;
-      const first = $('wireTargets').firstElementChild; if (first) first.focus({preventScroll:true});
-    }, reducedMotion ? 0 : 800);
-    announce('箱を開けました。1万本の中から、好きな導線を1本選んでください。');
+  function cut(){
+    const before=game.snapshot();if(busy||before.state!=='playing'||before.selectedId===null)return;
+    busy=true;const s=game.cut();stats.attempts++;if(s.state==='won')stats.safe++;else stats.fail++;saveStats();
+    updateControls();drawBoard();sound('cut');
+    setTimeout(()=>{
+      if(s.state==='lost'&&!reduced){$('apparatus').classList.remove('shake');void $('apparatus').offsetWidth;$('apparatus').classList.add('shake');$('flash').classList.remove('fire');void $('flash').offsetWidth;$('flash').classList.add('fire');}
+      busy=false;sound(s.state==='won'?'win':'lose');updateControls();drawBoard();showResult();
+    },reduced?120:500);
   }
-  function newBox() {
-    if (busy) return;
-    document.querySelectorAll('dialog[open]').forEach(d => d.close());
-    game.newRound(); sector=0; opened=true;
-    $('machine').classList.remove('lost','won','shake'); $('machine').classList.add('is-open');
-    $('lid').hidden=true; $('lid').inert=true; $('rack').inert=false;
-    renderGrid(); updateControls(); sound('open');
-    $('wireTargets').firstElementChild.focus({preventScroll:true});
-    toast('新しい箱を用意しました。正解も、新しく抽選しました。');
+  function newBox(){
+    if(busy)return;
+    try{game.newRound();}catch(_){toast('新しい箱を用意できませんでした。もう一度お試しください。');return;}
+    document.querySelectorAll('dialog[open]').forEach(d=>d.close());
+    hovered=null;roving=group*20+1;$('apparatus').classList.remove('shake');
+    $('statusBox').classList.remove('won','lost');$('statusTitle').textContent='199本は、問題なし。';
+    $('statusText').innerHTML='選んだだけでは切れません。<br>番号と色を確かめて、切るボタンへ。';
+    $('resultDetail').hidden=true;$('againBtn').hidden=true;updateControls();drawBoard();
+    toast('新しい箱。ハズレを1本、抽選しました。');
+    const target=mode==='detail'?board.querySelector('[data-wire="'+roving+'"]'):board.querySelector('[data-group="0"]');
+    if(target)target.focus({preventScroll:true});
   }
-  function cut() {
-    const before=game.snapshot();
-    if (!opened || busy || before.state !== 'playing' || before.selectedId === null) return;
-    busy=true;
-    const s=game.cut();stats.attempts++;if(s.state==='won') stats.wins++;persist();updateStats();
-    $('machine').classList.add('cut-in-progress');sound('cut');updateControls();
-    setTimeout(() => {
-      $('machine').classList.remove('cut-in-progress');
-      $('machine').classList.add(s.state==='won'?'won':'lost');
-      if(s.state==='lost'&&!reducedMotion){$('machine').classList.add('shake');$('flash').classList.remove('fire');void $('flash').offsetWidth;$('flash').classList.add('fire');}
-      sound(s.state==='won'?'win':'fail');
-      setTimeout(() => {
-        busy=false;updateControls();showResult(s);
-      },reducedMotion?0:420);
-    },reducedMotion?120:500);
+  function randomId(){
+    const n=new Uint32Array(1),limit=Math.floor(0x100000000/200)*200;
+    do{crypto.getRandomValues(n);}while(n[0]>=limit);return n[0]%200+1;
   }
-  function showResult(s) {
-    const won=s.state==='won';
-    $('resultDialog').classList.toggle('success',won);
-    $('resultEyebrow').textContent=won?'ONE IN TEN THOUSAND. YOU FOUND IT.':'CASE CLOSED / TRY ANOTHER ONE';
-    $('resultTitle').textContent=won?'解除成功。':'ドカン。';
-    const remarks=['惜しかった、とは言えない。','その1本では、ありませんでした。','検品担当には、伝えておきます。','だいたい安全、では足りなかった。','深呼吸して、次の箱へ。'];
-    $('resultText').textContent=won?'1万本の中から、たった1本を引き当てました。':remarks[hash(s.round)%remarks.length];
-    $('resultPicked').textContent=pad(s.selectedId);$('resultSafe').textContent=pad(s.safeId);
-    $('resultIcon').innerHTML=won?'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="m5 12 4 4L19 6"/><circle cx="12" cy="12" r="10"/></svg>':'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m12 2 2.2 6 6.8-3-3 6.5 4 4.5-7-1-1 7-4-6-6 3 2-7-5-2 7-2Z"/></svg>';
-    showDialog('resultDialog');
-    announce(won?`解除成功。導線${pad(s.selectedId)}が正解でした。`:`残念。切った導線は${pad(s.selectedId)}。正解は${pad(s.safeId)}でした。`);
-  }
-  $('openBtn').addEventListener('click',openBox);
+  $('overviewBtn').addEventListener('click',()=>{if(busy)return;mode='overview';hovered=null;drawBoard();});
+  $('detailBtn').addEventListener('click',()=>{const s=game.snapshot();showGroup(s.selectedId?Math.floor((s.selectedId-1)/20):group,true);});
+  $('prevBtn').addEventListener('click',()=>showGroup(group-1,false));
+  $('nextBtn').addEventListener('click',()=>showGroup(group+1,false));
+  $('randomBtn').addEventListener('click',()=>{if(busy||game.snapshot().state!=='playing')return;try{choose(randomId(),true);}catch(_){toast('番号を抽選できませんでした。導線を直接選んでください。');}});
   $('cutBtn').addEventListener('click',cut);
-  $('soundBtn').addEventListener('click',()=>{soundEnabled=!soundEnabled;try{localStorage.setItem('one-in-10000-sound',soundEnabled?'on':'off');}catch(_){}updateSound();if(soundEnabled)sound('select');});
+  $('mobileCutBtn').addEventListener('click',()=>{if(game.snapshot().state==='playing')cut();else newBox();});
+  $('againBtn').addEventListener('click',newBox);
+  $('resetBtn').addEventListener('click',()=>{if(game.snapshot().state==='playing')showDialog('resetDialog');else newBox();});
+  $('confirmReset').addEventListener('click',newBox);
+  $('revealBtn').addEventListener('click',()=>{const s=game.snapshot();if(s.badId)showGroup(Math.floor((s.badId-1)/20),false);toast('ハズレは No. '+pad(s.badId)+'。赤い縁取りの導線です。');});
   $('helpBtn').addEventListener('click',()=>showDialog('helpDialog'));
-  $('prevSector').addEventListener('click',()=>goSector(sector-1));
-  $('nextSector').addEventListener('click',()=>goSector(sector+1));
-  $('sectorBtn').addEventListener('click',()=>{
-    for(const b of $('sectorGrid').children)b.classList.toggle('active',Number(b.dataset.sector)===sector);
-    showDialog('sectorDialog');
-    $('sectorGrid').children[sector].focus();
-  });
-  for(let n=0;n<100;n++){
-    const b=document.createElement('button');b.type='button';b.dataset.sector=n;b.textContent=String(n+1).padStart(2,'0');
-    b.setAttribute('aria-label',`区画 ${n+1}、導線 ${n*100+1} から ${n*100+100}`);
-    b.addEventListener('click',()=>{closeDialog('sectorDialog');goSector(n);$('sectorBtn').focus({preventScroll:true});});
-    $('sectorGrid').appendChild(b);
-  }
-  $('randomBtn').addEventListener('click',()=>choose(uniformId(),true));
-  $('jumpBtn').addEventListener('click',()=>{
-    $('wireInput').value='';$('jumpError').textContent='';$('wireInput').removeAttribute('aria-invalid');
-    showDialog('jumpDialog');$('wireInput').focus();
-  });
+  $('soundBtn').addEventListener('click',()=>{soundOn=!soundOn;try{localStorage.setItem('one-bad-wire-200-v2-sound',soundOn?'on':'off');}catch(_){}updateSound();if(soundOn)sound('select');});
+  $('jumpBtn').addEventListener('click',()=>{$('wireInput').value='';$('jumpError').textContent='';$('wireInput').removeAttribute('aria-invalid');showDialog('jumpDialog');$('wireInput').focus();});
   $('jumpForm').addEventListener('submit',e=>{
     e.preventDefault();
-    const value=$('wireInput').value.trim().replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0));
-    const id=Number(value);
-    if(!/^\d+$/.test(value)||!Number.isInteger(id)||id<1||id>10000){$('jumpError').textContent='1〜10,000の整数を入力してください。';$('wireInput').setAttribute('aria-invalid','true');return;}
-    closeDialog('jumpDialog');choose(id,true);$('cutBtn').focus({preventScroll:true});
+    const v=$('wireInput').value.trim().replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0)),id=Number(v);
+    if(!/^\d+$/.test(v)||!Number.isInteger(id)||id<1||id>200){$('jumpError').textContent='1〜200の整数を入力してください。';$('wireInput').setAttribute('aria-invalid','true');return;}
+    $('jumpDialog').close();choose(id,true);
+    const cutButton=window.matchMedia('(max-width:760px)').matches?$('mobileCutBtn'):$('cutBtn');
+    cutButton.focus({preventScroll:true});
   });
-  $('selectedLocation').addEventListener('click',()=>{const id=game.snapshot().selectedId;if(id)locate(id,true);});
-  $('newBoxBtn').addEventListener('click',()=>{if(game.snapshot().state==='playing')showDialog('resetDialog');else newBox();});
-  $('confirmResetBtn').addEventListener('click',newBox);
-  $('againBtn').addEventListener('click',newBox);
-  $('revealBtn').addEventListener('click',()=>{
-    const s=game.snapshot();closeDialog('resultDialog');locate(s.safeId,false);updateControls();
-    toast(`セーフだった導線は No. ${pad(s.safeId)}。緑の枠で表示しています。`);
-    $('newBoxBtn').focus({preventScroll:true});
-  });
-  $('shareBtn').addEventListener('click',async()=>{
-    const s=game.snapshot();const text=`ONE IN 10,000｜${s.state==='won'?'解除成功！':'ドカン。'}\n選んだ導線：${pad(s.selectedId)}\nセーフな導線：${pad(s.safeId)}\n10,000本中1本。制限時間なし、運だけのゲーム。`;
-    try{
-      if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(text);
-      else {const area=document.createElement('textarea');area.value=text;area.style.position='fixed';area.style.opacity='0';$('resultDialog').appendChild(area);area.select();const ok=document.execCommand('copy');area.remove();if(!ok)throw new Error('copy');}
-      toast('結果をコピーしました。');
-    }catch(_){toast('コピーできませんでした。結果画面の番号をご利用ください。');}
-  });
-  const observer=new ResizeObserver(()=>{resizeBoard();updateControls();});observer.observe($('wireBoard'));
-  updateStats();updateSound();renderGrid();
+  $('rangeBtn').addEventListener('click',()=>{for(const b of $('groupList').children)b.classList.toggle('current',mode==='detail'&&Number(b.dataset.group)===group);showDialog('rangeDialog');});
+  for(let n=0;n<10;n++){
+    const b=document.createElement('button');b.type='button';b.dataset.group=n;b.textContent=pad(n*20+1)+' — '+pad(n*20+20);
+    b.addEventListener('click',()=>{$('rangeDialog').close();showGroup(n,true);});$('groupList').append(b);
+    const dot=document.createElement('button');dot.type='button';dot.dataset.group=n;dot.setAttribute('aria-label','導線 '+pad(n*20+1)+' から '+pad(n*20+20)+' を拡大');
+    dot.addEventListener('click',()=>showGroup(n,true));$('pageDots').append(dot);
+  }
+  for(const entry of palette){const swatch=document.createElement('span');swatch.style.backgroundColor=entry[0];swatch.title=entry[1];swatch.setAttribute('aria-label',entry[1]);$('legend').insertBefore(swatch,$('legend').lastElementChild);}
+  new ResizeObserver(()=>{if(Math.abs(board.clientWidth-drawnWidth)>1)drawBoard();}).observe(board);
+  updateSound();updateControls();drawBoard();
 })();
-
 </script>
 </body></html>
