@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f1eee6">
-<meta name="description" content="100本の導線から99本のセーフを切り、1本のハズレを残せるか。成功率1%の爆弾解除ゲーム。">
+<meta name="description" content="100本の導線から99本のセーフを切り、1本のハズレを残せるか。3分以内に99本を切る、1パーセント爆弾解除ゲーム。">
 <title>ONE BAD WIRE — 1パーセント爆弾解除ゲーム</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2324323d'/%3E%3Cpath d='M8 20H38M8 32H38M8 44H38' stroke='%23ffad54' stroke-width='5'/%3E%3Crect x='35' y='12' width='21' height='40' rx='4' fill='%23e4e7db'/%3E%3C/svg%3E">
 <style>
@@ -19,22 +19,26 @@
 .tap-note{font-size:11px;line-height:1.9;text-align:center;padding:16px 8px;background:#e6e8e0;border:1px solid #c5ccc6;border-radius:5px;color:#718186;margin:12px 0 24px}.tap-note strong{color:#3e5c66;font-weight:600}.status-box .comment-tag{font:9px var(--mono);letter-spacing:1.5px;color:#8a9996;margin:0 0 9px}.status-box .comment-line{font-size:19px;line-height:1.65;font-weight:650;letter-spacing:-.4px;color:#2e4c56;margin:0 0 18px;overflow-wrap:anywhere;min-height:63px}.status-box.lost .comment-line{color:#a84932}.status-box .status-title{font-size:11px}.status-box p:not(.comment-line):not(.comment-tag){font-size:10px}.wire-row{cursor:pointer}.mobile-copy{flex:1;min-width:0}.mobile-comment{font-size:13px;line-height:1.6;font-weight:600;color:#334d57;margin:0;overflow-wrap:anywhere}.mobile-controls.lost .mobile-comment{color:#a84932}.mobile-controls .again-btn{width:95px;flex-shrink:0;margin:0;font-size:11px}.mobile-controls.lost{border-top-color:#d3a18f}@media(max-width:760px){.tap-note{font-size:10px;padding:9px 5px;margin:7px 0 0}.status-box .comment-line{font-size:20px;min-height:0}.mobile-controls{gap:12px;min-height:78px}.footer{padding-bottom:155px}.toast{bottom:150px}}
 
 .start-overlay{position:absolute;inset:auto 22px 25px;display:flex;justify-content:center;z-index:4}.start-btn{background:#e9cf83;color:#273e47;border:1px solid #f9df9d;border-radius:7px;padding:15px 32px;font-weight:700;font-size:16px;min-width:220px;box-shadow:0 4px 0 #756847,0 8px 25px #0004;cursor:pointer}.start-btn:hover{background:#f2dc9f}.start-btn:disabled{opacity:.5}.stage-label{font:10px var(--mono);color:#647c85;letter-spacing:1px}.scroll-tools{display:flex;gap:12px;align-items:center}.scroll-tools input{width:100%;accent-color:#415f6c;cursor:ns-resize}.scroll-tools .range-label{white-space:nowrap;min-width:90px}.scroll-tools button{border:1px solid #b7c6c3;border-radius:5px;background:#faf8f0;min-width:36px;min-height:36px}.range-wrap{flex:1;display:flex;align-items:center;gap:12px}.scroll-tools{margin-top:15px;border-top:1px solid var(--line);padding-top:12px}.share-btn{display:flex;align-items:center;justify-content:center;min-height:42px;background:#24343e;color:#fffaf0;border:1px solid #24343e;border-radius:5px;font-size:12px;text-decoration:none;margin-top:12px;gap:8px}.share-btn:hover{background:#3b515e}.share-btn:focus-visible{outline:3px solid #3096ba;outline-offset:3px}.share-btn b{font-size:18px}.status-box.success .comment-line{color:#2e7250}.status-box.success{border-color:#9fbd9d}.stats-values{gap:12px}.stats-values b{font-size:23px}.record-note{font-size:9px;color:#899695;line-height:1.7;margin:14px 0 0}.tap-note{min-height:0}.mobile-actions{display:flex;gap:8px;flex-shrink:0}.mobile-actions .start-btn{min-width:110px;min-height:43px;padding:10px 15px;font-size:13px}.mobile-actions .again-btn,.mobile-actions .share-btn{width:92px;margin:0;min-height:42px;font-size:10px}.mobile-controls.success .mobile-comment{color:#2e7250}.mobile-controls.success{border-top-color:#abc4a7}.apparatus[data-phase=active] #board{touch-action:none}.phase-tag{display:inline-block;font:9px var(--mono);border:1px solid #b6c6bd;border-radius:20px;padding:8px 12px;color:#58776b;background:#e7ece3}.status-box .comment-line{min-height:0}.is-ready .selection-main{opacity:.55}.wire-row[aria-disabled=true]{cursor:default}@media(max-width:760px){.start-overlay{bottom:18px}.start-overlay .start-btn{min-width:165px;padding:12px 22px;font-size:14px}.apparatus[data-phase=ready] #board,.apparatus[data-phase=result] #board{height:auto}.phase-tag{font-size:8px;padding:7px 9px}.scroll-tools{gap:7px}.range-label{font-size:9px}.scroll-tools .range-label{min-width:70px}.range-wrap{gap:5px}.mobile-controls{flex-wrap:wrap}.mobile-copy{min-width:160px}.mobile-controls.success .mobile-copy,.mobile-controls.lost .mobile-copy{flex-basis:100%}.mobile-controls.success .mobile-actions,.mobile-controls.lost .mobile-actions{margin-left:auto}.footer{padding-bottom:230px}.stats-values{gap:16px}.stats-values div{flex-direction:column;gap:4px}.stats-values span{font-size:8px}.mobile-comment{font-size:12px}.board-note .fixed{font-size:7px}.controls{padding-top:20px}.hero{padding-top:20px}}
+
+.mission-meta{display:flex;align-items:center;gap:16px}.mission-clock{display:flex;align-items:center;gap:9px;color:#48616b}.mission-clock>span{font-size:9px;color:#7b8b8f}.mission-clock strong{font:600 25px/1 var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-1px}.mission-clock.urgent,.mobile-timer.urgent{color:#bd4934}.mission-clock.expired,.mobile-timer.expired{color:#a33829}.mobile-meta{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:5px}.mobile-meta .mobile-label{margin:0}.mobile-timer{font:600 16px/1 var(--mono);font-variant-numeric:tabular-nums;color:#48616b}.control-heading b{min-width:22px;width:auto;padding:0 5px}.share-note{font-size:9px;color:#819194}
+@media(max-width:760px){.mission-meta{gap:8px}.mission-clock{gap:5px}.mission-clock strong{font-size:21px}.mission-clock>span{font-size:8px}.mobile-controls .mobile-copy{min-width:150px}.mobile-controls .mobile-actions{margin-left:auto}.is-ready~.mobile-controls .mobile-copy{flex-basis:100%}.mobile-actions .share-btn{width:86px}.board-note .fixed{font-size:6px;letter-spacing:.3px}}
 </style>
 <style id="bombStyles"></style></head>
 <body>
 <noscript>このゲームを遊ぶには、JavaScriptを有効にしてください。</noscript>
 <div class="wrap is-ready" id="gameRoot"><header class="topbar"><div class="brand"><span class="brand-logo"><svg viewBox="0 0 20 20" fill="none"><path d="M1 5h12M1 10h12M1 15h12" stroke="#f5bf69" stroke-width="1.6"/><rect x="11" y="2" width="7" height="16" rx="1" fill="#e6e6cf"/></svg></span><span>ONE BAD WIRE</span></div><div class="top-actions"><button class="plain-btn" id="soundBtn" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path id="soundWaves" d="m17 9 5 6m0-6-5 6"/></svg><span id="soundLabel">音 OFF</span></button><button class="plain-btn" id="helpBtn" type="button">遊び方</button></div></header>
-<main><section class="hero"><div><div class="eyebrow">ONE BAD WIRE. ONE PERCENT CHANCE.</div><h1>最後の1本、<wbr>残せる？</h1><p><strong>100本の導線。99本を切って、ハズレ1本を残せ。</strong><br>時間制限なし。あなたの直感を信じて。</p></div><div class="odds"><b><span id="safetyValue">1</span><small id="oddsUnit">%</small></b><p id="oddsLabel">すべて解除できる確率</p><p class="odds-note" id="riskNote">ハズレを最後まで残せたら成功。</p></div></section>
-<div class="workspace"><section class="board-card" aria-label="爆弾と導線"><div class="board-toolbar"><span class="board-label" id="boardLabel">100 WIRES / 1 BAD</span><span class="phase-tag" id="phaseLabel">READY</span></div><div class="apparatus" id="apparatus" data-phase="ready"><svg id="board" role="group" aria-label="100本の導線と爆弾の全体図"></svg><div class="start-overlay" id="startOverlay"><button class="start-btn" id="startBtn" type="button">スタート</button></div></div><div class="board-note"><span id="boardHint">スタートすると、配線を拡大します。</span><span class="fixed">NO TIMER. TAKE YOUR TIME.</span></div><div class="scroll-tools" id="scrollTools" hidden><span class="range-label" id="rangeLabel">001 — 010</span><div class="range-wrap"><button id="upBtn" type="button" aria-label="上の導線へ">↑</button><input id="rangeScroll" type="range" min="0" max="90" step="0.01" value="0" aria-label="表示する導線の範囲"><button id="downBtn" type="button" aria-label="下の導線へ">↓</button></div></div></section>
-<aside class="controls" aria-label="ゲームの状態"><div class="control-heading"><span id="controlHeading">READY TO DISARM</span><b id="attemptBadge">—</b></div><div class="run-score"><div><span class="score-label">この箱の記録</span><strong id="scoreCount">0</strong><small>本セーフ</small></div><div class="remaining"><span>残り</span><b id="remainingCount">100</b><span>本</span></div></div><div class="selection-main"><p class="selection-label">最後に切った導線</p><p class="selected-number empty" id="selectedNumber">— —</p><div class="color-preview"><span class="sample-wire" id="sampleWire"></span><span class="color-name" id="colorName">まだ切っていません</span></div></div><div class="action-main" id="actionTools" hidden><div class="pick-tools"><button id="randomBtn" type="button">⚄ おまかせで切る</button><button id="jumpBtn" type="button"># 番号で切る</button></div><p class="tap-note">タップで切断。<br><strong>二本指スクロールで上下に移動。</strong></p></div><div class="status-box" id="statusBox"><p class="comment-tag" id="commentTag">FIELD NOTES</p><p class="comment-line" id="commentText">さて、世界を救いにいこうか。</p><h2 class="status-title" id="statusTitle">準備ができたら、スタート。</h2><p id="statusText">99本はセーフ。1本だけがハズレです。</p><button class="again-btn" id="againBtn" type="button" hidden>次の爆弾へ</button><a class="share-btn" id="shareBtn" target="_blank" rel="noopener noreferrer" hidden><b>𝕏</b> Xに投稿</a></div><div class="stats"><div class="stats-label"><span>YOUR RECORD</span><span>このブラウザの記録</span></div><div class="stats-values"><div><b id="attemptCount">0</b><span>挑戦</span></div><div><b id="winCount">0</b><span>解除成功</span></div><div><b id="safeCount">0</b><span>自己ベスト</span></div><div><b id="failCount">0</b><span>爆発</span></div></div><p class="record-note">挑戦回数はスタート時に数えます。</p></div><button class="reset-btn" id="resetBtn" type="button" hidden>↻ この挑戦をやめる</button><div class="legend" id="legend"><small>色は10色。番号で1本ずつ見分けられます。<br>色や順番に、当たり外れのヒントはありません。</small></div></aside></div></main><footer class="footer"><span>ONE BAD WIRE © 2026 · EKOOEKON</span><span>DAITAI ANZEN INDUSTRIES — だいたい安全工業</span></footer></div>
-<div class="mobile-controls" id="mobileBar"><div class="mobile-copy"><div class="mobile-label" id="mobileLabel">100本 / ハズレは1本</div><p class="mobile-comment" id="mobileComment">準備ができたら、スタート。</p></div><div class="mobile-actions"><button class="start-btn" id="mobileStartBtn" type="button">スタート</button><button class="again-btn" id="mobileAgainBtn" type="button" hidden>次の爆弾へ</button><a class="share-btn" id="mobileShareBtn" target="_blank" rel="noopener noreferrer" hidden>𝕏 Xに投稿</a></div></div>
-<dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialog-top"><span>FIELD NOTES / ONE PERCENT</span><button class="close-btn" data-close="helpDialog" type="button" aria-label="閉じる">×</button></div><h2 id="helpTitle">最後の1本を、残せ。</h2><ul><li>スタートで配線を拡大。約10本ずつ表示します。</li><li>配線の上で二本指スクロール、または上下にスワイプすると、範囲を連続して動かせます。下のスライダーでも移動できます。</li><li>導線をタップすると即切断。セーフなら続行、ハズレなら爆発します。</li><li>99本のセーフを切り、1本のハズレを残せたら解除成功です。</li></ul><p>成功・失敗のどちらも、最後は全体図に戻ります。時間制限はありません。ハズレは箱を用意したときに決まり、途中で変わりません。</p><p>上下矢印で導線へ移動、Enter / Spaceで切断。「おまかせで切る」と番号入力の送信も、すぐ切断します。</p><p>セーフのコメントは100種類、アウトは8種類。出やすさには差があります。成功時のXボタンは、挑戦回数とゲームのリンクを入れた投稿画面を開きます。</p><p class="probability-note">最後まで解除できる確率は1/100（1%）。最初の1本がセーフの確率は99%。見た目やコメントは当たり外れのヒントではありません。</p><button class="dialog-primary" data-close="helpDialog" type="button">わかった</button></dialog>
+<main><section class="hero"><div><div class="eyebrow">ONE BAD WIRE. ONE PERCENT CHANCE.</div><h1>最後の1本、<wbr>残せる？</h1><p><strong>100本の導線。99本を切って、ハズレ1本を残せ。</strong><br>制限時間は3分。あなたの直感を信じて。</p></div><div class="odds"><b><span id="safetyValue">1</span><small id="oddsUnit">%</small></b><p id="oddsLabel">ハズレを最後に残す確率</p><p class="odds-note" id="riskNote">3分以内に99本を切れたら成功。</p></div></section>
+<div class="workspace"><section class="board-card" aria-label="爆弾と導線"><div class="board-toolbar"><span class="board-label" id="boardLabel">100 WIRES / 1 BAD</span><div class="mission-meta"><div class="mission-clock" id="clockBox"><span>残り時間</span><strong id="timerText" role="timer" aria-live="off">03:00</strong></div><span class="phase-tag" id="phaseLabel">READY</span></div></div><div class="apparatus" id="apparatus" data-phase="ready"><svg id="board" role="group" aria-label="100本の導線と爆弾の全体図"></svg><div class="start-overlay" id="startOverlay"><button class="start-btn" id="startBtn" type="button">スタート</button></div></div><div class="board-note"><span id="boardHint">スタートすると、配線を拡大します。</span><span class="fixed">180 SECONDS. TRUST YOUR INSTINCT.</span></div><div class="scroll-tools" id="scrollTools" hidden><span class="range-label" id="rangeLabel">001 — 010</span><div class="range-wrap"><button id="upBtn" type="button" aria-label="上の導線へ">↑</button><input id="rangeScroll" type="range" min="0" max="90" step="0.01" value="0" aria-label="表示する導線の範囲"><button id="downBtn" type="button" aria-label="下の導線へ">↓</button></div></div></section>
+<aside class="controls" aria-label="ゲームの状態"><div class="control-heading"><span id="controlHeading">READY TO DISARM</span><b id="attemptBadge">—</b></div><div class="run-score"><div><span class="score-label">この箱の記録</span><strong id="scoreCount">0</strong><small>本セーフ</small></div><div class="remaining"><span>残り</span><b id="remainingCount">100</b><span>本</span></div></div><div class="selection-main"><p class="selection-label">最後に切った導線</p><p class="selected-number empty" id="selectedNumber">— —</p><div class="color-preview"><span class="sample-wire" id="sampleWire"></span><span class="color-name" id="colorName">まだ切っていません</span></div></div><div class="action-main" id="actionTools" hidden><div class="pick-tools"><button id="randomBtn" type="button">⚄ おまかせで切る</button><button id="jumpBtn" type="button"># 番号で切る</button></div><p class="tap-note">タップで切断。<br><strong>二本指スクロールで上下に移動。</strong></p></div><div class="status-box" id="statusBox"><p class="comment-tag" id="commentTag">FIELD NOTES</p><p class="comment-line" id="commentText">さて、世界を救いにいこうか。</p><h2 class="status-title" id="statusTitle">準備ができたら、スタート。</h2><p id="statusText">99本はセーフ。1本だけがハズレです。</p><button class="again-btn" id="againBtn" type="button" hidden>次の爆弾へ</button><a class="share-btn" id="shareBtn" target="_blank" rel="noopener noreferrer"><b>𝕏</b> Xに投稿</a></div><div class="stats"><div class="stats-label"><span>YOUR RECORD</span><span>このブラウザの記録</span></div><div class="stats-values"><div><b id="attemptCount">0</b><span>挑戦</span></div><div><b id="winCount">0</b><span>解除成功</span></div><div><b id="safeCount">0</b><span>自己ベスト</span></div><div><b id="failCount">0</b><span>爆発</span></div></div><p class="record-note">挑戦回数はスタート時に数えます。</p></div><button class="reset-btn" id="resetBtn" type="button" hidden>↻ この挑戦をやめる</button><div class="legend" id="legend"><small>色は10色。番号で1本ずつ見分けられます。<br>色や順番に、当たり外れのヒントはありません。</small></div></aside></div></main><footer class="footer"><span>ONE BAD WIRE © 2026 · EKOOEKON</span><span>DAITAI ANZEN INDUSTRIES — だいたい安全工業</span></footer></div>
+<div class="mobile-controls" id="mobileBar"><div class="mobile-copy"><div class="mobile-meta"><div class="mobile-label" id="mobileLabel">100本 / ハズレは1本</div><strong class="mobile-timer" id="mobileTimer" aria-label="残り時間 3分">03:00</strong></div><p class="mobile-comment" id="mobileComment">準備ができたら、スタート。</p></div><div class="mobile-actions"><button class="start-btn" id="mobileStartBtn" type="button">スタート</button><button class="again-btn" id="mobileAgainBtn" type="button" hidden>次の爆弾へ</button><a class="share-btn" id="mobileShareBtn" target="_blank" rel="noopener noreferrer">𝕏 Xに投稿</a></div></div>
+<dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialog-top"><span>FIELD NOTES / ONE PERCENT</span><button class="close-btn" data-close="helpDialog" type="button" aria-label="閉じる">×</button></div><h2 id="helpTitle">最後の1本を、残せ。</h2><ul><li>スタートで3分のカウントダウンが始まり、配線を約10本ずつ拡大表示します。</li><li>配線の上で二本指スクロール、または上下にスワイプすると、範囲を連続して動かせます。下のスライダーでも移動できます。</li><li>導線をタップすると即切断。セーフなら続行、ハズレなら爆発します。</li><li>3分以内に99本のセーフを切り、1本のハズレを残せたら解除成功。時間切れでも爆発します。</li></ul><p>成功・失敗のどちらも、最後は全体図に戻ります。別のタブや投稿画面を開いている間も時間は進みます。ハズレは箱を用意したときに決まり、途中で変わりません。</p><p>上下矢印で導線へ移動、Enter / Spaceで切断。「おまかせで切る」と番号入力の送信も、すぐ切断します。</p><p>セーフのコメントは100種類、アウトは8種類。出やすさには差があります。Xボタンはいつでも使えます。クリア済みなら成功した挑戦回数、未クリアなら累計爆発回数とゲームのリンクを入れた投稿画面を開きます。</p><p class="probability-note">時間内に99本を選べる場合、ハズレを最後に残せる確率は1/100（1%）。最初の1本がセーフの確率は99%。見た目やコメントは当たり外れのヒントではありません。</p><button class="dialog-primary" data-close="helpDialog" type="button">わかった</button></dialog>
 <dialog id="jumpDialog" aria-labelledby="jumpTitle"><form id="jumpForm"><div class="dialog-top"><span>CUT BY NUMBER</span><button class="close-btn" data-close="jumpDialog" type="button" aria-label="閉じる">×</button></div><h2 id="jumpTitle">どの番号を切る？</h2><p><label for="wireInput">1〜100の番号を入力。送信するとすぐ切れます。</label></p><input class="field" id="wireInput" type="text" inputmode="numeric" maxlength="5" autocomplete="off" placeholder="例：48" aria-describedby="jumpError"><div class="field-error" id="jumpError" role="status"></div><button class="dialog-primary" type="submit">この番号を切る</button></form></dialog>
 <dialog id="resetDialog" aria-labelledby="resetTitle"><div class="dialog-top"><span>A NEW BOX</span><button class="close-btn" data-close="resetDialog" type="button" aria-label="閉じる">×</button></div><h2 id="resetTitle">この挑戦をやめる？</h2><p>新しい爆弾のスタート画面に戻ります。挑戦回数と自己ベストは残ります。</p><button class="dialog-primary" id="confirmReset" type="button">新しい爆弾を用意する</button></dialog><div class="flash" id="flash" aria-hidden="true"></div><div class="toast" id="toast" role="status"></div><div class="sr-only" id="announce" aria-live="polite"></div>
 <script>(function (root) {
   'use strict';
 
   const TOTAL = 100;
+  const TIME_LIMIT_MS = 180000;
   const UINT32_SIZE = 0x100000000;
   const ACCEPT_BELOW = Math.floor(UINT32_SIZE / TOTAL) * TOTAL;
 
@@ -53,6 +57,8 @@
     if (typeof randomUint32 !== 'function') {
       throw new TypeError('randomUint32 must be a function.');
     }
+    const now = options && options.now !== undefined ? options.now : Date.now;
+    if (typeof now !== 'function') throw new TypeError('now must be a function.');
 
     let state = 'ready';
     let round = 0;
@@ -63,6 +69,32 @@
     let safeCount = 0;
     let lastCutId = null;
     let lastOutcome = null;
+    let lossReason = null;
+    let startedAt = null;
+    let deadlineAt = null;
+    let finalRemainingMs = TIME_LIMIT_MS;
+
+    function readTime() {
+      const value = now();
+      if (!Number.isFinite(value)) throw new RangeError('now must return a finite timestamp.');
+      return value;
+    }
+
+    function remainingAt(time) {
+      if (state === 'ready') return TIME_LIMIT_MS;
+      if (state !== 'playing') return finalRemainingMs;
+      return Math.max(0, Math.min(TIME_LIMIT_MS, deadlineAt - time));
+    }
+
+    function expire(time) {
+      if (state === 'playing' && time >= deadlineAt) {
+        state = 'lost';
+        selectedId = null;
+        lastOutcome = 'timeout';
+        lossReason = 'timeout';
+        finalRemainingMs = 0;
+      }
+    }
 
     function chooseBadWire() {
       let value;
@@ -75,7 +107,7 @@
       return value % TOTAL + 1;
     }
 
-    function snapshot() {
+    function view(time) {
       return Object.freeze({
         state: state,
         round: round,
@@ -85,38 +117,66 @@
         safeCount: safeCount,
         remainingCount: TOTAL - cutIds.length,
         lastCutId: lastCutId,
-        lastOutcome: lastOutcome
+        lastOutcome: lastOutcome,
+        lossReason: lossReason,
+        timeLimitMs: TIME_LIMIT_MS,
+        startedAt: startedAt,
+        deadlineAt: deadlineAt,
+        remainingMs: remainingAt(time)
       });
     }
 
+    function snapshot() {
+      return view(state === 'playing' ? readTime() : null);
+    }
+
+    function tick() {
+      const time = state === 'playing' ? readTime() : null;
+      expire(time);
+      return view(time);
+    }
+
     function start() {
-      if (state === 'ready') state = 'playing';
-      return snapshot();
+      if (state !== 'ready') return tick();
+      const time = readTime();
+      startedAt = time;
+      deadlineAt = time + TIME_LIMIT_MS;
+      state = 'playing';
+      return view(time);
     }
 
     function select(id) {
+      const time = state === 'playing' ? readTime() : null;
+      expire(time);
       if (state === 'playing' && Number.isInteger(id) && id >= 1 && id <= TOTAL && !cutSet.has(id)) {
         selectedId = id;
       }
-      return snapshot();
+      return view(time);
     }
 
     function cut() {
-      if (state !== 'playing' || selectedId === null || cutSet.has(selectedId)) return snapshot();
+      const time = state === 'playing' ? readTime() : null;
+      expire(time);
+      if (state !== 'playing' || selectedId === null || cutSet.has(selectedId)) return view(time);
       const id = selectedId;
       cutIds.push(id);
       cutSet.add(id);
       lastCutId = id;
       if (id === badId) {
+        finalRemainingMs = remainingAt(time);
         state = 'lost';
         lastOutcome = 'bad';
+        lossReason = 'wire';
       } else {
         safeCount += 1;
         selectedId = null;
         lastOutcome = 'safe';
-        if (safeCount === TOTAL - 1) state = 'won';
+        if (safeCount === TOTAL - 1) {
+          finalRemainingMs = remainingAt(time);
+          state = 'won';
+        }
       }
-      return snapshot();
+      return view(time);
     }
 
     function newRound() {
@@ -129,15 +189,19 @@
       safeCount = 0;
       lastCutId = null;
       lastOutcome = null;
+      lossReason = null;
+      startedAt = null;
+      deadlineAt = null;
+      finalRemainingMs = TIME_LIMIT_MS;
       round += 1;
       return snapshot();
     }
 
     newRound();
-    return Object.freeze({start: start, select: select, cut: cut, newRound: newRound, snapshot: snapshot});
+    return Object.freeze({start: start, select: select, cut: cut, tick: tick, newRound: newRound, snapshot: snapshot});
   }
 
-  root.WireEngine100 = Object.freeze({TOTAL: TOTAL, createGame: createGame});
+  root.WireEngine100 = Object.freeze({TOTAL: TOTAL, TIME_LIMIT_MS: TIME_LIMIT_MS, createGame: createGame});
 })(typeof window !== 'undefined' ? window : globalThis);
 
 (function () {
@@ -862,12 +926,24 @@
   'use strict';
   const GAME_URL='https://ekooekon.github.io/wires/';
   const TAGS=['1パーセント爆弾解除ゲーム','ゲーム制作','gamedev'];
-  function success(attempt){
-    if(!Number.isSafeInteger(attempt)||attempt<1)throw new RangeError('Invalid attempt number.');
-    const text=attempt+'回目の挑戦で爆弾解除に成功した！\n'+TAGS.map(tag=>'#'+tag).join(' ')+'\n'+GAME_URL;
+  function compose(message){
+    const text=message+'\n'+TAGS.map(tag=>'#'+tag).join(' ')+'\n'+GAME_URL;
     return Object.freeze({text,href:'https://x.com/intent/tweet?text='+encodeURIComponent(text)});
   }
-  root.WireShare=Object.freeze({success,GAME_URL});
+  function success(attempt){
+    if(!Number.isSafeInteger(attempt)||attempt<1)throw new RangeError('Invalid attempt number.');
+    return compose(attempt+'回目で解除に成功した');
+  }
+  function failure(explosions){
+    if(!Number.isSafeInteger(explosions)||explosions<0)throw new RangeError('Invalid explosion count.');
+    return compose(explosions+'回爆発させてしまった。そういうこともある。');
+  }
+  function fromStats({lastSuccessAttempt=0,explosions=0,wins=0}={}){
+    if(!Number.isSafeInteger(lastSuccessAttempt)||lastSuccessAttempt<0)throw new RangeError('Invalid success attempt number.');
+    if(!Number.isSafeInteger(wins)||wins<0)throw new RangeError('Invalid win count.');
+    return lastSuccessAttempt>0?success(lastSuccessAttempt):wins>0?compose('爆弾解除に成功した'):failure(explosions);
+  }
+  root.WireShare=Object.freeze({success,failure,fromStats,GAME_URL});
 })(typeof window!=='undefined'?window:globalThis);
 
 (function (root) {
@@ -1249,10 +1325,10 @@
   $('bombStyles').textContent=WireBomb.styles;
   let game;
   try{game=WireEngine100.createGame();}catch(_){$('statusTitle').textContent='このブラウザでは抽選できません。';document.querySelectorAll('button').forEach(b=>b.disabled=true);return;}
-  let phase='ready',busy=false,exploded=false,currentAttempt=0,soundOn=false,audio,toastTimer;
-  let stats={rounds:0,best:0,totalSafe:0,explosions:0,wins:0};
+  let phase='ready',busy=false,exploded=false,currentAttempt=0,soundOn=false,audio,toastTimer,clockTimer,cutTimer,resultRecorded=false;
+  let stats={rounds:0,best:0,totalSafe:0,explosions:0,wins:0,lastSuccessAttempt:0};
   const previousComment={safe:null,out:null};
-  try{const saved=JSON.parse(localStorage.getItem(RECORD)||'null');if(saved&&['rounds','best','totalSafe','explosions','wins'].every(k=>Number.isSafeInteger(saved[k])&&saved[k]>=0)&&saved.best<=99&&saved.wins+saved.explosions<=saved.rounds&&saved.totalSafe>=saved.best)stats=saved;soundOn=localStorage.getItem(SOUND)==='on';}catch(_){}
+  try{const saved=JSON.parse(localStorage.getItem(RECORD)||'null');if(saved&&['rounds','best','totalSafe','explosions','wins'].every(k=>Number.isSafeInteger(saved[k])&&saved[k]>=0)&&saved.best<=99&&saved.wins+saved.explosions<=saved.rounds&&saved.totalSafe>=saved.best)stats={...saved,lastSuccessAttempt:Number.isSafeInteger(saved.lastSuccessAttempt)&&saved.lastSuccessAttempt>0&&saved.lastSuccessAttempt<=saved.rounds?saved.lastSuccessAttempt:0};soundOn=localStorage.getItem(SOUND)==='on';}catch(_){}
   function saveStats(){try{localStorage.setItem(RECORD,JSON.stringify(stats));}catch(_){}}
   function announce(text){$('announce').textContent=text;}
   function toast(text){clearTimeout(toastTimer);$('toast').textContent=text;$('toast').classList.add('show');toastTimer=setTimeout(()=>$('toast').classList.remove('show'),2400);}
@@ -1306,6 +1382,25 @@
   }});
   function renderBoard(animateExplosion=false){boardView.render(game.snapshot(),{mode:phase==='active'?'active':'overview',exploded,animateExplosion,reducedMotion:reduced,interactive:phase==='active'&&!busy});}
   function focusBoard(){if(window.matchMedia('(max-width:760px)').matches)$('board').scrollIntoView?.({block:'start',behavior:reduced?'auto':'smooth'});}
+  function updateShare(){const {href}=WireShare.fromStats(stats);for(const id of ['shareBtn','mobileShareBtn']){$(id).hidden=false;$(id).setAttribute('href',href);}}
+  function updateClock(s=game.snapshot()){
+    const seconds=Math.ceil(s.remainingMs/1000),label=Math.floor(seconds/60)+':'+String(seconds%60).padStart(2,'0'),display=label.padStart(5,'0');
+    $('timerText').textContent=$('mobileTimer').textContent=display;
+    $('mobileTimer').setAttribute('aria-label','残り時間 '+Math.floor(seconds/60)+'分'+seconds%60+'秒');
+    for(const id of ['clockBox','mobileTimer']){$(id).classList.toggle('urgent',phase==='active'&&seconds<=30);$(id).classList.toggle('expired',s.lossReason==='timeout');}
+  }
+  function stopClock(){clearInterval(clockTimer);clockTimer=null;}
+  function recordResult(s){
+    if(resultRecorded||!['won','lost'].includes(s.state))return;
+    resultRecorded=true;stopClock();
+    if(s.state==='won'){stats.wins++;stats.lastSuccessAttempt=currentAttempt;}else stats.explosions++;
+    saveStats();updateShare();
+  }
+  function refreshTimer(){
+    if(phase!=='active')return;
+    const s=game.tick();updateClock(s);
+    if(s.state==='lost'&&s.lossReason==='timeout'&&!resultRecorded){busy=true;clearTimeout(cutTimer);recordResult(s);finish(true);}
+  }
   function setMessage(text){$('commentText').textContent=$('mobileComment').textContent=text;}
   function setComment(kind){const entry=WireComments.pick(kind,previousComment[kind]);previousComment[kind]=entry.id;setMessage(entry.text);return entry.text;}
   function updateUI(){
@@ -1318,8 +1413,7 @@
     const range=boardView.getRange();$('upBtn').disabled=busy||range.offset<=0;$('downBtn').disabled=busy||range.offset>=90;
     $('againBtn').hidden=$('mobileAgainBtn').hidden=!done||busy;
     $('againBtn').textContent=$('mobileAgainBtn').textContent=won?'次の爆弾へ':'もう一度挑戦';
-    $('shareBtn').hidden=$('mobileShareBtn').hidden=!won||busy;
-    if(won){const href=WireShare.success(currentAttempt).href;$('shareBtn').setAttribute('href',href);$('mobileShareBtn').setAttribute('href',href);}else{$('shareBtn').removeAttribute('href');$('mobileShareBtn').removeAttribute('href');}
+    updateShare();updateClock(s);
     $('selectedNumber').textContent=s.lastCutId===null?'— —':pad(s.lastCutId);$('selectedNumber').classList.toggle('empty',s.lastCutId===null);
     $('colorName').textContent=s.lastCutId===null?'まだ切っていません':color(s.lastCutId)[1];$('sampleWire').style.setProperty('--wire-color',s.lastCutId===null?'#a7b2b3':color(s.lastCutId)[0]);
     $('scoreCount').textContent=s.safeCount;$('remainingCount').textContent=s.remainingCount;
@@ -1328,23 +1422,24 @@
     $('phaseLabel').textContent=ready?'READY':active?'DISARMING':won?'DISARMED':'GAME OVER';
     $('controlHeading').textContent=ready?'READY TO DISARM':active?'TRUST YOUR INSTINCT':'MISSION RESULT';
     $('boardLabel').textContent=ready?'100 WIRES / 1 BAD':active?'100 WIRES / '+s.remainingCount+' LEFT':won?'99 CUT / 1 LEFT':'MISSION FAILED';
-    $('boardHint').textContent=ready?'スタートすると、配線を拡大します。':active?'二本指スクロール / スワイプで移動。タップで切断。':won?'ハズレ1本を残して、解除成功。':'ハズレを切ってしまった。全体図に戻りました。';
+    $('boardHint').textContent=ready?'スタートすると、配線を拡大します。':active?'二本指スクロール / スワイプで移動。タップで切断。':won?'ハズレ1本を残して、解除成功。':(s.lossReason==='timeout'?'時間切れで爆発。全体図に戻りました。':'ハズレを切ってしまった。全体図に戻りました。');
     $('safetyValue').textContent=ready?'1':done?(won?'CLEAR':'OUT'):((s.remainingCount-1)/s.remainingCount*100).toFixed(1);
-    $('oddsUnit').hidden=done;$('oddsLabel').textContent=ready?'すべて解除できる確率':done?'第'+currentAttempt+'回の挑戦結果':'次の1本がセーフの確率';
-    $('riskNote').textContent=ready?'ハズレを最後まで残せたら成功。':done?(won?'世界は、ひとまず無事です。':'次の爆弾で、もう一度。'):'残り'+s.remainingCount+'本。ハズレは1本。';
+    $('oddsUnit').hidden=done;$('oddsLabel').textContent=ready?'ハズレを最後に残す確率':done?'第'+currentAttempt+'回の挑戦結果':'次の1本がセーフの確率';
+    $('riskNote').textContent=ready?'3分以内に99本を切れたら成功。':done?(won?'世界は、ひとまず無事です。':'次の爆弾で、もう一度。'):'残り'+s.remainingCount+'本。ハズレは1本。';
     $('mobileLabel').textContent=ready?'100本 / ハズレは1本':busy?'切断中…':done?(won?'第'+currentAttempt+'回の挑戦で解除成功':'爆発。記録 '+s.safeCount+'本'):s.safeCount+'本セーフ / 残り'+s.remainingCount+'本';
     $('mobileBar').classList.toggle('lost',done&&!won);$('mobileBar').classList.toggle('success',won);
     $('statusBox').classList.toggle('success',won);$('statusBox').classList.toggle('lost',done&&!won);$('statusBox').classList.toggle('won',active&&s.safeCount>0);
   }
   function start(){
     if(busy||game.snapshot().state!=='ready')return;
-    game.start();stats.rounds++;currentAttempt=stats.rounds;saveStats();phase='active';exploded=false;boardView.reset();
-    $('commentTag').textContent='FIELD NOTES';setMessage('タップで切断。二本指スクロールで移動。');$('statusTitle').textContent=currentAttempt+'回目の挑戦。';$('statusText').textContent='セーフを99本切って、ハズレを1本残しましょう。';
-    updateUI();renderBoard();focusBoard();announce('スタート。導線001から010を拡大しました。');
+    game.start();resultRecorded=false;stats.rounds++;currentAttempt=stats.rounds;saveStats();phase='active';exploded=false;boardView.reset();
+    $('commentTag').textContent='FIELD NOTES';setMessage('タップで切断。二本指スクロールで移動。');$('statusTitle').textContent=currentAttempt+'回目の挑戦。';$('statusText').textContent='3分以内にセーフを99本切って、ハズレを1本残しましょう。';
+    updateUI();renderBoard();focusBoard();clockTimer=setInterval(refreshTimer,100);announce('スタート。制限時間は3分です。導線001から010を拡大しました。');
   }
   function finish(lost){
-    const s=game.snapshot();phase='result';exploded=lost;
-    if(lost){setComment('out');$('commentTag').textContent='OUT / GAME OVER';$('statusTitle').textContent='ドカン。ここまで！';$('statusText').textContent='記録は '+s.safeCount+'本。No. '+pad(s.badId)+' がハズレでした。';}
+    if(phase!=='active')return;
+    const s=game.snapshot();recordResult(s);clearTimeout(cutTimer);stopClock();document.querySelectorAll('dialog[open]').forEach(d=>d.close());phase='result';exploded=lost;
+    if(lost){setComment('out');$('commentTag').textContent='OUT / GAME OVER';$('statusTitle').textContent=s.lossReason==='timeout'?'時間切れ。ドカン！':'ドカン。ここまで！';$('statusText').textContent=s.lossReason==='timeout'?'3分以内に解除できませんでした。記録は '+s.safeCount+'本です。':'記録は '+s.safeCount+'本。No. '+pad(s.badId)+' がハズレでした。';}
     else{setMessage(SUCCESS);$('commentTag').textContent='MISSION COMPLETE';$('statusTitle').textContent=currentAttempt+'回目の挑戦で解除成功！';$('statusText').textContent='99本を切断。No. '+pad(s.badId)+' のハズレを残しました。';}
     updateUI();renderBoard(lost);focusBoard();
     if(lost&&!reduced){$('apparatus').classList.add('shake');$('flash').classList.add('fire');}
@@ -1352,18 +1447,20 @@
     if(lost){setTimeout(()=>{busy=false;updateUI();announce($('commentText').textContent+' '+$('statusTitle').textContent);},reduced?0:850);}else{busy=false;updateUI();announce(SUCCESS+' '+$('statusTitle').textContent);}
   }
   function cutWire(id){
-    const before=game.snapshot();if(busy||phase!=='active'||before.state!=='playing'||!Number.isInteger(id)||id<1||id>100||before.cutIds.includes(id))return;
+    refreshTimer();const before=game.snapshot();if(busy||phase!=='active'||before.state!=='playing'||!Number.isInteger(id)||id<1||id>100||before.cutIds.includes(id))return;
     game.select(id);const s=game.cut();busy=true;
-    if(s.lastOutcome==='safe')stats.totalSafe++;if(s.state==='lost')stats.explosions++;if(s.state==='won')stats.wins++;stats.best=Math.max(stats.best,s.safeCount);saveStats();
+    if(s.lossReason==='timeout'){recordResult(s);finish(true);return;}
+    if(s.lastOutcome==='safe')stats.totalSafe++;stats.best=Math.max(stats.best,s.safeCount);recordResult(s);saveStats();
     updateUI();renderBoard();sound('cut');
-    setTimeout(()=>{
+    cutTimer=setTimeout(()=>{
+      refreshTimer();if(phase!=='active')return;
       if(s.state==='won'||s.state==='lost'){finish(s.state==='lost');return;}
       busy=false;setComment('safe');$('commentTag').textContent='SAFE / KEEP GOING';$('statusTitle').textContent=s.safeCount+'本目も、セーフ。';$('statusText').textContent='No. '+pad(s.lastCutId)+' は安全でした。残り '+s.remainingCount+'本です。';updateUI();renderBoard();sound('win');announce($('commentText').textContent+' '+$('statusTitle').textContent);
     },reduced?60:s.state==='lost'?250:100);
   }
   function newBox(){
-    if(busy)return;try{game.newRound();}catch(_){toast('新しい爆弾を用意できませんでした。');return;}
-    document.querySelectorAll('dialog[open]').forEach(d=>d.close());phase='ready';exploded=false;currentAttempt=0;boardView.reset();
+    refreshTimer();if(busy)return;try{game.newRound();}catch(_){toast('新しい爆弾を用意できませんでした。');return;}stopClock();clearTimeout(cutTimer);
+    document.querySelectorAll('dialog[open]').forEach(d=>d.close());phase='ready';exploded=false;currentAttempt=0;resultRecorded=false;boardView.reset();
     $('apparatus').classList.remove('shake');$('flash').classList.remove('fire');$('commentTag').textContent='FIELD NOTES';setMessage('さて、世界を救いにいこうか。');$('statusTitle').textContent='準備ができたら、スタート。';$('statusText').textContent='99本はセーフ。1本だけがハズレです。';updateUI();renderBoard();announce('新しい爆弾を用意しました。スタートで始まります。');
   }
   function randomId(){const available=Array.from({length:100},(_,i)=>i+1).filter(id=>!game.snapshot().cutIds.includes(id));const n=new Uint32Array(1),limit=Math.floor(0x100000000/available.length)*available.length;do{crypto.getRandomValues(n);}while(n[0]>=limit);return available[n[0]%available.length];}
@@ -1378,6 +1475,9 @@
   $('jumpBtn').addEventListener('click',()=>{if(phase!=='active'||busy)return;$('wireInput').value='';$('jumpError').textContent='';$('wireInput').removeAttribute('aria-invalid');showDialog('jumpDialog');$('wireInput').focus();});
   $('jumpForm').addEventListener('submit',e=>{e.preventDefault();if(phase!=='active'||busy)return;const v=$('wireInput').value.trim().replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0)),id=Number(v);if(!/^\d+$/.test(v)||!Number.isInteger(id)||id<1||id>100){$('jumpError').textContent='1〜100の整数を入力してください。';return;}if(game.snapshot().cutIds.includes(id)){$('jumpError').textContent='その導線は切断済みです。';return;}$('jumpDialog').close();boardView.ensureVisible(id);cutWire(id);});
   for(const entry of palette){const swatch=document.createElement('span');swatch.style.backgroundColor=entry[0];swatch.title=entry[1];$('legend').insertBefore(swatch,$('legend').lastElementChild);}
+  for(const id of ['shareBtn','mobileShareBtn'])$(id).addEventListener('click',()=>{refreshTimer();updateShare();});
+  document.addEventListener('visibilitychange',refreshTimer);
+  window.addEventListener('pageshow',refreshTimer);window.addEventListener('focus',refreshTimer);
   new ResizeObserver(()=>renderBoard()).observe($('board'));
   updateSound();updateUI();renderBoard();
 })();
