@@ -2,7 +2,7 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f1eee6">
-<meta name="description" content="200本の導線と、1本のハズレ。セーフなら同じ箱で切り続け、ハズレで爆発。何本まで切れるかを競う、時間制限なしの運試しゲーム。">
+<meta name="description" content="100本の導線と、1本のハズレ。セーフなら同じ箱で切り続け、ハズレで爆発。何本まで切れるかを競う、時間制限なしの運試しゲーム。">
 <title>ONE BAD WIRE — ハズレまで、切り続けろ。</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2324323d'/%3E%3Cpath d='M8 20H38M8 32H38M8 44H38' stroke='%23ffad54' stroke-width='5'/%3E%3Crect x='35' y='12' width='21' height='40' rx='4' fill='%23e4e7db'/%3E%3C/svg%3E">
 <style>
@@ -15,27 +15,29 @@
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 
 .run-score{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;background:#e5e9e1;border:1px solid #ccd5ca;border-radius:6px;padding:14px 17px;margin:18px 0 4px}.score-label{display:block;font-size:10px;color:#748778;margin-bottom:6px}.run-score strong{font:38px/1 var(--mono);letter-spacing:-2px;color:#344e43}.run-score small{font-size:10px;color:#6a8171;margin-left:8px}.remaining{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:9px;color:#72847b}.remaining b{font:20px var(--mono);color:#4a6357}.wire-row.is-cut{cursor:default}.wire-row.is-cut:hover .row-hit{fill:transparent}.wire-row[aria-disabled=true]{cursor:default}@media(max-width:760px){.run-score{margin-top:14px;margin-bottom:0;padding:12px 15px}.run-score strong{font-size:32px}.stats-values{gap:25px}.stats-values span{font-size:8px}}
+
+.tap-note{font-size:11px;line-height:1.9;text-align:center;padding:16px 8px;background:#e6e8e0;border:1px solid #c5ccc6;border-radius:5px;color:#718186;margin:12px 0 24px}.tap-note strong{color:#3e5c66;font-weight:600}.status-box .comment-tag{font:9px var(--mono);letter-spacing:1.5px;color:#8a9996;margin:0 0 9px}.status-box .comment-line{font-size:19px;line-height:1.65;font-weight:650;letter-spacing:-.4px;color:#2e4c56;margin:0 0 18px;overflow-wrap:anywhere;min-height:63px}.status-box.lost .comment-line{color:#a84932}.status-box .status-title{font-size:11px}.status-box p:not(.comment-line):not(.comment-tag){font-size:10px}.wire-row{cursor:pointer}.mobile-copy{flex:1;min-width:0}.mobile-comment{font-size:13px;line-height:1.6;font-weight:600;color:#334d57;margin:0;overflow-wrap:anywhere}.mobile-controls.lost .mobile-comment{color:#a84932}.mobile-controls .again-btn{width:95px;flex-shrink:0;margin:0;font-size:11px}.mobile-controls.lost{border-top-color:#d3a18f}@media(max-width:760px){.tap-note{font-size:10px;padding:9px 5px;margin:7px 0 0}.status-box .comment-line{font-size:20px;min-height:0}.mobile-controls{gap:12px;min-height:78px}.footer{padding-bottom:155px}.toast{bottom:150px}}
 </style>
 <style id="bombStyles"></style></head>
 <body>
 <noscript>このゲームを遊ぶには、ブラウザのJavaScriptを有効にしてください。</noscript>
 <div class="wrap">
-<header class="topbar"><div class="brand"><span class="brand-logo"><svg viewBox="0 0 24 24" fill="none"><path d="M0 5h15M0 12h15M0 19h15" stroke="#ffa759" stroke-width="2.5"/><rect x="13" y="2" width="10" height="20" rx="2" fill="#e8ebe0"/></svg></span>ONE BAD WIRE<small>EDITION 03</small></div><div class="top-actions"><button class="plain-btn" id="soundBtn" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 9h4l5-4v14l-5-4H4Z"/><path id="soundWaves" d="m17 9 5 6m0-6-5 6"/></svg><span id="soundLabel">音 OFF</span></button><button class="plain-btn" id="helpBtn" type="button">遊び方</button></div></header>
-<main><section class="hero"><div><div class="eyebrow">HOW LONG CAN YOUR LUCK LAST?</div><h1>何本まで、<wbr>いける？</h1><p><strong>200本の導線。ハズレを切ったら、そこで終了。</strong><br>セーフなら、同じ箱で次の1本へ。</p></div><div class="odds"><b><span id="safetyValue">99.5</span><small id="oddsUnit">%</small></b><p id="oddsLabel">次の1本がセーフの確率</p><p class="odds-note" id="riskNote">ハズレは残り200本の中に1本。</p></div></section>
+<header class="topbar"><div class="brand"><span class="brand-logo"><svg viewBox="0 0 24 24" fill="none"><path d="M0 5h15M0 12h15M0 19h15" stroke="#ffa759" stroke-width="2.5"/><rect x="13" y="2" width="10" height="20" rx="2" fill="#e8ebe0"/></svg></span>ONE BAD WIRE<small>EDITION 04</small></div><div class="top-actions"><button class="plain-btn" id="soundBtn" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 9h4l5-4v14l-5-4H4Z"/><path id="soundWaves" d="m17 9 5 6m0-6-5 6"/></svg><span id="soundLabel">音 OFF</span></button><button class="plain-btn" id="helpBtn" type="button">遊び方</button></div></header>
+<main><section class="hero"><div><div class="eyebrow">HOW LONG CAN YOUR LUCK LAST?</div><h1>何本まで、<wbr>いける？</h1><p><strong>100本の導線。ハズレを切ったら、そこで終了。</strong><br>タップで切断。セーフなら、次の1本へ。</p></div><div class="odds"><b><span id="safetyValue">99.0</span><small id="oddsUnit">%</small></b><p id="oddsLabel">次の1本がセーフの確率</p><p class="odds-note" id="riskNote">ハズレは残り100本の中に1本。</p></div></section>
 <div class="workspace">
-<section class="board-card" aria-label="200本の導線と箱"><div class="board-toolbar"><span class="board-label" id="boardLabel">200 WIRES / 1 BAD</span><div class="view-switch" aria-label="表示の切り替え"><button id="overviewBtn" type="button" aria-pressed="true">全体 · 200本</button><button id="detailBtn" type="button" aria-pressed="false">拡大 · 20本</button></div></div><div class="apparatus" id="apparatus"><svg id="board" role="group" aria-label="導線の全体図。20本ずつの範囲を選ぶと拡大します。"></svg></div><div class="board-note"><span id="boardHint">見たい場所をクリックすると、20本ずつ拡大できます。</span><span class="fixed">NO TIMER. TAKE YOUR TIME.</span></div><div class="navigator"><div class="range-label" id="rangeLabel">001 — 200 <span>/ ALL WIRES</span></div><div class="page-dots" id="pageDots" aria-label="拡大する範囲"></div><div class="nav-buttons"><button id="prevBtn" type="button" aria-label="前の20本">←</button><button id="rangeBtn" type="button">範囲を選ぶ</button><button id="nextBtn" type="button" aria-label="次の20本">→</button></div></div></section>
-<aside class="controls" aria-label="導線を選んで切る"><div class="control-heading"><span>MAKE YOUR CHOICE</span><b>01</b></div><div class="run-score"><div><span class="score-label">この箱の記録</span><strong id="scoreCount">0</strong><small>本セーフ</small></div><div class="remaining"><span>残り</span><b id="remainingCount">200</b><span>本</span></div></div><div class="selection-main"><p class="selection-label" id="selectionLabel">選択中の導線</p><p class="selected-number empty" id="selectedNumber">— —</p><div class="color-preview"><span class="sample-wire" id="sampleWire"></span><span class="color-name" id="colorName">未選択</span></div></div><div class="action-main"><div class="pick-tools"><button id="randomBtn" type="button">⚄ おまかせ</button><button id="jumpBtn" type="button"># 番号で選ぶ</button></div><button class="cut-btn" id="cutBtn" type="button" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="m8.5 8 12 12M8.5 16 20.5 4M12 12l2 2"/></svg><span id="cutLabel">この導線を切る</span></button><p class="cut-hint" id="cutHint">まずは、気になる1本を選択。</p></div><div class="status-box" id="statusBox" aria-live="polite"><h2 class="status-title" id="statusTitle">ハズレを引くまで、続けよう。</h2><p id="statusText">セーフなら、次の1本へ。<br>何本切れるか、運試し。</p><div class="result-detail" id="resultDetail" hidden><span>ハズレだった導線 <b id="badNumber">—</b></span><button type="button" id="revealBtn">場所を見る</button></div><button class="again-btn" id="againBtn" type="button" hidden>新しい箱でもう一度</button></div><div class="stats"><div class="stats-label"><span>YOUR RECORD</span><span>このブラウザの記録</span></div><div class="stats-values"><div><b id="attemptCount">0</b><span>挑戦</span></div><div><b id="safeCount">0</b><span>自己ベスト</span></div><div><b id="failCount">0</b><span>爆発</span></div></div></div><button class="reset-btn" id="resetBtn" type="button">↻ 新しい箱に交換する</button><div class="legend" id="legend"><small>色は10色。番号で1本ずつ見分けられます。<br>色や順番に、当たり外れのヒントはありません。</small></div></aside>
+<section class="board-card" aria-label="100本の導線と箱"><div class="board-toolbar"><span class="board-label" id="boardLabel">100 WIRES / 1 BAD</span><div class="view-switch" aria-label="表示の切り替え"><button id="overviewBtn" type="button" aria-pressed="false">全体 · 100本</button><button id="detailBtn" type="button" aria-pressed="true">拡大 · 20本</button></div></div><div class="apparatus" id="apparatus"><svg id="board" role="group" aria-label="導線の全体図。20本ずつの範囲を選ぶと拡大します。"></svg></div><div class="board-note"><span id="boardHint">見たい場所をクリックすると、20本ずつ拡大できます。</span><span class="fixed">NO TIMER. TAKE YOUR TIME.</span></div><div class="navigator"><div class="range-label" id="rangeLabel">001 — 100 <span>/ ALL WIRES</span></div><div class="page-dots" id="pageDots" aria-label="拡大する範囲"></div><div class="nav-buttons"><button id="prevBtn" type="button" aria-label="前の20本">←</button><button id="rangeBtn" type="button">範囲を選ぶ</button><button id="nextBtn" type="button" aria-label="次の20本">→</button></div></div></section>
+<aside class="controls" aria-label="導線を選んで切る"><div class="control-heading"><span>MAKE YOUR CHOICE</span><b>01</b></div><div class="run-score"><div><span class="score-label">この箱の記録</span><strong id="scoreCount">0</strong><small>本セーフ</small></div><div class="remaining"><span>残り</span><b id="remainingCount">100</b><span>本</span></div></div><div class="selection-main"><p class="selection-label" id="selectionLabel">最後に切った導線</p><p class="selected-number empty" id="selectedNumber">— —</p><div class="color-preview"><span class="sample-wire" id="sampleWire"></span><span class="color-name" id="colorName">まだ切っていません</span></div></div><div class="action-main"><div class="pick-tools"><button id="randomBtn" type="button">⚄ おまかせで切る</button><button id="jumpBtn" type="button"># 番号で切る</button></div><p class="tap-note">導線をタップすると<br><strong>すぐに切れます。</strong></p></div><div class="status-box" id="statusBox"><p class="comment-tag" id="commentTag">FIELD NOTES</p><p class="comment-line" id="commentText">さて、どこからいこうか。</p><h2 class="status-title" id="statusTitle">ハズレを引くまで、続けよう。</h2><p id="statusText">気になる導線をタップ。<br>何本切れるか、運試し。</p><div class="result-detail" id="resultDetail" hidden><span>ハズレだった導線 <b id="badNumber">—</b></span><button type="button" id="revealBtn">場所を見る</button></div><button class="again-btn" id="againBtn" type="button" hidden>新しい箱でもう一度</button></div><div class="stats"><div class="stats-label"><span>YOUR RECORD</span><span>このブラウザの記録</span></div><div class="stats-values"><div><b id="attemptCount">0</b><span>挑戦</span></div><div><b id="safeCount">0</b><span>自己ベスト</span></div><div><b id="failCount">0</b><span>爆発</span></div></div></div><button class="reset-btn" id="resetBtn" type="button">↻ 新しい箱に交換する</button><div class="legend" id="legend"><small>色は10色。番号で1本ずつ見分けられます。<br>色や順番に、当たり外れのヒントはありません。</small></div></aside>
 </div></main><footer class="footer"><span>ONE BAD WIRE © 2026 · EKOOEKON</span><span>DAITAI ANZEN INDUSTRIES — だいたい安全工業</span></footer></div>
-<div class="mobile-controls"><div><div class="mobile-label" id="mobileLabel">0本セーフ / 残り200本</div><div class="mobile-selection"><strong id="mobileNumber">— —</strong><span id="mobileColor">未選択</span></div></div><button class="cut-btn" id="mobileCutBtn" type="button" disabled><span id="mobileCutLabel">導線を選んでね</span></button></div>
-<dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialog-top"><span>FIELD NOTES / KEEP CUTTING</span><button class="close-btn" data-close="helpDialog" type="button" aria-label="閉じる">×</button></div><h2 id="helpTitle">ハズレが出るまで、続行。</h2><ul><li>全体図から気になる場所を押し、20本ずつ拡大します。</li><li>導線を1本選んで「切る」。セーフなら同じ箱で次の1本を選べます。</li><li>切断済みの導線は暗く表示され、もう切れません。</li><li>1本だけあるハズレを切ると、右側の爆弾が爆発して終了します。</li></ul><p>記録は、爆発するまでに切れたセーフな導線の本数です。自己ベストはこのブラウザに保存されます。</p><p>制限時間はありません。ハズレは箱を用意したときに決まり、セーフが出ても変わりません。色や導線の束はヒントになりません。</p><p>「おまかせ」は、まだ切っていない導線から選択します。番号指定は1〜200。拡大中は上下の矢印キーで移動、Enter / Spaceで選択できます。</p><p class="probability-note">最初の成功率は199/200（99.5%）。残りが減るほど次の成功率は下がります。199本すべてセーフだった場合、最後の1本は必ずハズレです。</p><button class="dialog-primary" data-close="helpDialog" type="button">わかった。続けてみよう。</button></dialog>
-<dialog id="jumpDialog" aria-labelledby="jumpTitle"><form id="jumpForm"><div class="dialog-top"><span>CHOOSE A WIRE</span><button class="close-btn" data-close="jumpDialog" type="button" aria-label="閉じる">×</button></div><h2 id="jumpTitle">どの番号にする？</h2><p><label for="wireInput">1〜200の番号を入力してください。</label></p><input class="field" id="wireInput" type="text" inputmode="numeric" maxlength="5" autocomplete="off" placeholder="例：128" aria-describedby="jumpError"><div class="field-error" id="jumpError" role="status"></div><button class="dialog-primary" type="submit">この導線を選ぶ</button></form></dialog>
-<dialog id="rangeDialog" aria-labelledby="rangeTitle"><div class="dialog-top"><span>10 GROUPS × 20 WIRES</span><button class="close-btn" data-close="rangeDialog" type="button" aria-label="閉じる">×</button></div><h2 id="rangeTitle">どこを拡大する？</h2><div class="group-list" id="groupList"></div></dialog>
-<dialog id="resetDialog" aria-labelledby="resetTitle"><div class="dialog-top"><span>A NEW BOX</span><button class="close-btn" data-close="resetDialog" type="button" aria-label="閉じる">×</button></div><h2 id="resetTitle">新しい箱に交換する？</h2><p>今の箱での挑戦を終え、新しい200本で始めます。ここまでの自己ベストは保存されます。ハズレは新しく1本だけ抽選します。</p><button class="dialog-primary" id="confirmReset" type="button">新しい箱を用意する</button></dialog>
+<div class="mobile-controls"><div class="mobile-copy"><div class="mobile-label" id="mobileLabel">0本セーフ / 残り100本</div><p class="mobile-comment" id="mobileComment">導線をタップすると、すぐ切れます。</p></div><button class="again-btn" id="mobileAgainBtn" type="button" hidden>新しい箱へ</button></div>
+<dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialog-top"><span>FIELD NOTES / KEEP CUTTING</span><button class="close-btn" data-close="helpDialog" type="button" aria-label="閉じる">×</button></div><h2 id="helpTitle">ハズレが出るまで、続行。</h2><ul><li>拡大図の導線をタップすると、すぐに切れます。確認ボタンはありません。</li><li>セーフなら同じ箱で続行。全体図では範囲を押して20本ずつ拡大できます。</li><li>切断済みの導線は暗く表示され、もう切れません。</li><li>1本だけあるハズレを切ると、右側の爆弾が爆発して終了します。</li></ul><p>記録は、爆発するまでに切れたセーフな導線の本数です。自己ベストはこのブラウザに保存されます。</p><p>制限時間はありません。ハズレは箱を用意したときに決まり、セーフが出ても変わりません。色や導線の束はヒントになりません。</p><p>「おまかせで切る」は未切断の1本をランダムに切ります。番号指定も、送信するとすぐ切断します。拡大中は上下の矢印キーで移動し、Enter / Spaceで切れます。</p><p>セーフのコメントは100種類、アウトは8種類。出やすさには差があり、同じ種類のコメントが連続しないように抽選します。コメントは次の当たり外れのヒントではありません。</p><p class="probability-note">最初の成功率は99/100（99.0%）。残りが減るほど次の成功率は下がります。99本すべてセーフだった場合、最後の1本は必ずハズレです。</p><button class="dialog-primary" data-close="helpDialog" type="button">わかった。続けてみよう。</button></dialog>
+<dialog id="jumpDialog" aria-labelledby="jumpTitle"><form id="jumpForm"><div class="dialog-top"><span>CHOOSE A WIRE</span><button class="close-btn" data-close="jumpDialog" type="button" aria-label="閉じる">×</button></div><h2 id="jumpTitle">どの番号を切る？</h2><p><label for="wireInput">1〜100の番号を入力。送信するとすぐ切れます。</label></p><input class="field" id="wireInput" type="text" inputmode="numeric" maxlength="5" autocomplete="off" placeholder="例：48" aria-describedby="jumpError"><div class="field-error" id="jumpError" role="status"></div><button class="dialog-primary" type="submit">この番号を切る</button></form></dialog>
+<dialog id="rangeDialog" aria-labelledby="rangeTitle"><div class="dialog-top"><span>5 GROUPS × 20 WIRES</span><button class="close-btn" data-close="rangeDialog" type="button" aria-label="閉じる">×</button></div><h2 id="rangeTitle">どこを拡大する？</h2><div class="group-list" id="groupList"></div></dialog>
+<dialog id="resetDialog" aria-labelledby="resetTitle"><div class="dialog-top"><span>A NEW BOX</span><button class="close-btn" data-close="resetDialog" type="button" aria-label="閉じる">×</button></div><h2 id="resetTitle">新しい箱に交換する？</h2><p>今の箱での挑戦を終え、新しい100本で始めます。ここまでの自己ベストは保存されます。ハズレは新しく1本だけ抽選します。</p><button class="dialog-primary" id="confirmReset" type="button">新しい箱を用意する</button></dialog>
 <div class="flash" id="flash" aria-hidden="true"></div><div class="toast" id="toast" role="status"></div><div class="sr-only" id="announce" aria-live="polite"></div>
 <script>(function (root) {
   'use strict';
 
-  const TOTAL = 200;
+  const TOTAL = 100;
   const UINT32_SIZE = 0x100000000;
   const ACCEPT_BELOW = Math.floor(UINT32_SIZE / TOTAL) * TOTAL;
 
@@ -132,7 +134,7 @@
     return Object.freeze({select: select, cut: cut, newRound: newRound, snapshot: snapshot});
   }
 
-  root.WireEngine200 = Object.freeze({TOTAL: TOTAL, createGame: createGame});
+  root.WireEngine100 = Object.freeze({TOTAL: TOTAL, createGame: createGame});
 })(typeof window !== 'undefined' ? window : globalThis);
 
 (function () {
@@ -267,6 +269,591 @@
 
   window.WireBomb = Object.freeze({create, explode, styles});
 })();
+
+(function (root) {
+  'use strict';
+  const safe = Object.freeze([
+  {
+    "id": "safe-001",
+    "text": "それ、実力だと思ってる？",
+    "weight": 10
+  },
+  {
+    "id": "safe-002",
+    "text": "考えた時間、関係なかったね。",
+    "weight": 10
+  },
+  {
+    "id": "safe-003",
+    "text": "今ので自信ついた？",
+    "weight": 10
+  },
+  {
+    "id": "safe-004",
+    "text": "そのドヤ顔、保存しとくね。",
+    "weight": 10
+  },
+  {
+    "id": "safe-005",
+    "text": "ほら、そんなに褒めてほしそうにしない。",
+    "weight": 10
+  },
+  {
+    "id": "safe-006",
+    "text": "今のは運。異論は受け付けます。",
+    "weight": 10
+  },
+  {
+    "id": "safe-007",
+    "text": "名人っぽい手つきだけは見えた。",
+    "weight": 10
+  },
+  {
+    "id": "safe-008",
+    "text": "迷ったわりに、ただのセーフ。",
+    "weight": 10
+  },
+  {
+    "id": "safe-009",
+    "text": "もうインタビューの練習してる？",
+    "weight": 10
+  },
+  {
+    "id": "safe-010",
+    "text": "たまたま、を丁寧に言うとお見事。",
+    "weight": 10
+  },
+  {
+    "id": "safe-011",
+    "text": "その決め顔、誰に見せてるの？",
+    "weight": 10
+  },
+  {
+    "id": "safe-012",
+    "text": "セーフを引く才能、ありそうだね。",
+    "weight": 10
+  },
+  {
+    "id": "safe-013",
+    "text": "喜ぶの、ちょっと早くない？",
+    "weight": 10
+  },
+  {
+    "id": "safe-014",
+    "text": "今ので伝説になったつもり？",
+    "weight": 10
+  },
+  {
+    "id": "safe-015",
+    "text": "照れなくていいよ。まだ何も言ってない。",
+    "weight": 10
+  },
+  {
+    "id": "safe-016",
+    "text": "ずいぶん大物みたいに切るね。",
+    "weight": 10
+  },
+  {
+    "id": "safe-017",
+    "text": "うまいことやった顔してる。",
+    "weight": 10
+  },
+  {
+    "id": "safe-018",
+    "text": "その勢いで解説まで始めないでね。",
+    "weight": 10
+  },
+  {
+    "id": "safe-019",
+    "text": "はいはい、お見事お見事。",
+    "weight": 10
+  },
+  {
+    "id": "safe-020",
+    "text": "大丈夫、偶然も立派な味方です。",
+    "weight": 10
+  },
+  {
+    "id": "safe-021",
+    "text": "急にプロの顔になったね。",
+    "weight": 10
+  },
+  {
+    "id": "safe-022",
+    "text": "今のため息、すごく正直。",
+    "weight": 10
+  },
+  {
+    "id": "safe-023",
+    "text": "知ってた、みたいな顔しない。",
+    "weight": 10
+  },
+  {
+    "id": "safe-024",
+    "text": "ガッツポーズ、ちょっと見えたよ。",
+    "weight": 10
+  },
+  {
+    "id": "safe-025",
+    "text": "説明はいいよ。セーフだったから。",
+    "weight": 10
+  },
+  {
+    "id": "safe-026",
+    "text": "セーフ。",
+    "weight": 10
+  },
+  {
+    "id": "safe-027",
+    "text": "ナイス！",
+    "weight": 10
+  },
+  {
+    "id": "safe-028",
+    "text": "ふう。",
+    "weight": 10
+  },
+  {
+    "id": "safe-029",
+    "text": "よかった、まだ終わらない。",
+    "weight": 10
+  },
+  {
+    "id": "safe-030",
+    "text": "一本、無事に切れました。",
+    "weight": 10
+  },
+  {
+    "id": "safe-031",
+    "text": "よし。",
+    "weight": 10
+  },
+  {
+    "id": "safe-032",
+    "text": "いいね、その一本。",
+    "weight": 10
+  },
+  {
+    "id": "safe-033",
+    "text": "まだ続けられるよ。",
+    "weight": 10
+  },
+  {
+    "id": "safe-034",
+    "text": "お見事！",
+    "weight": 10
+  },
+  {
+    "id": "safe-035",
+    "text": "大丈夫だったね。",
+    "weight": 10
+  },
+  {
+    "id": "safe-036",
+    "text": "ほっとするね。",
+    "weight": 10
+  },
+  {
+    "id": "safe-037",
+    "text": "静かで何より。",
+    "weight": 10
+  },
+  {
+    "id": "safe-038",
+    "text": "うん、セーフだよ。",
+    "weight": 10
+  },
+  {
+    "id": "safe-039",
+    "text": "おつかれさま。深呼吸しよう。",
+    "weight": 10
+  },
+  {
+    "id": "safe-040",
+    "text": "順調、順調。",
+    "weight": 10
+  },
+  {
+    "id": "safe-041",
+    "text": "今のは安心して喜んでいい。",
+    "weight": 10
+  },
+  {
+    "id": "safe-042",
+    "text": "やりました。",
+    "weight": 10
+  },
+  {
+    "id": "safe-043",
+    "text": "手の力、抜いていいよ。",
+    "weight": 10
+  },
+  {
+    "id": "safe-044",
+    "text": "こちらも、ひと安心。",
+    "weight": 10
+  },
+  {
+    "id": "safe-045",
+    "text": "また一本。",
+    "weight": 10
+  },
+  {
+    "id": "safe-046",
+    "text": "異常なし。以上。",
+    "weight": 10
+  },
+  {
+    "id": "safe-047",
+    "text": "特にコメントはありません。",
+    "weight": 10
+  },
+  {
+    "id": "safe-048",
+    "text": "無音の見せ場でした。",
+    "weight": 10
+  },
+  {
+    "id": "safe-049",
+    "text": "拍手はセルフサービスです。",
+    "weight": 10
+  },
+  {
+    "id": "safe-050",
+    "text": "はい。次の感情をどうぞ。",
+    "weight": 10
+  },
+  {
+    "id": "safe-051",
+    "text": "今のうちにお茶を一口。",
+    "weight": 10
+  },
+  {
+    "id": "safe-052",
+    "text": "コメント係、ちょっと眠い。",
+    "weight": 10
+  },
+  {
+    "id": "safe-053",
+    "text": "その間にカップ麺が伸びました。",
+    "weight": 10
+  },
+  {
+    "id": "safe-054",
+    "text": "すみません、よそ見してました。",
+    "weight": 10
+  },
+  {
+    "id": "safe-055",
+    "text": "箱の中は、相変わらず箱の中。",
+    "weight": 10
+  },
+  {
+    "id": "safe-056",
+    "text": "誰もいない客席が沸いています。",
+    "weight": 10
+  },
+  {
+    "id": "safe-057",
+    "text": "冷蔵庫のプリンは無事かな。",
+    "weight": 10
+  },
+  {
+    "id": "safe-058",
+    "text": "この静けさ、休日の役所。",
+    "weight": 10
+  },
+  {
+    "id": "safe-059",
+    "text": "めでたいので、椅子を少し回します。",
+    "weight": 10
+  },
+  {
+    "id": "safe-060",
+    "text": "よし。お腹すいた。",
+    "weight": 10
+  },
+  {
+    "id": "safe-061",
+    "text": "表彰状は現在、印刷待ちです。",
+    "weight": 5
+  },
+  {
+    "id": "safe-062",
+    "text": "今の成功、額縁に入れますか。",
+    "weight": 5
+  },
+  {
+    "id": "safe-063",
+    "text": "拍手の経費は出ないそうです。",
+    "weight": 5
+  },
+  {
+    "id": "safe-064",
+    "text": "そのドヤ顔、決裁は通りました。",
+    "weight": 5
+  },
+  {
+    "id": "safe-065",
+    "text": "上出来です。印鑑は省略します。",
+    "weight": 5
+  },
+  {
+    "id": "safe-066",
+    "text": "本日の感想欄は「よし」です。",
+    "weight": 5
+  },
+  {
+    "id": "safe-067",
+    "text": "この沈黙を議事録に残します。",
+    "weight": 5
+  },
+  {
+    "id": "safe-068",
+    "text": "祝賀会は脳内で開催されます。",
+    "weight": 5
+  },
+  {
+    "id": "safe-069",
+    "text": "いい仕事です。領収書はいりません。",
+    "weight": 5
+  },
+  {
+    "id": "safe-070",
+    "text": "歓声の担当者は在宅勤務です。",
+    "weight": 5
+  },
+  {
+    "id": "safe-071",
+    "text": "褒めております。顔には出ません。",
+    "weight": 5
+  },
+  {
+    "id": "safe-072",
+    "text": "成功報告は、簡潔で助かります。",
+    "weight": 5
+  },
+  {
+    "id": "safe-073",
+    "text": "今の間に、餃子を一つ食べました。",
+    "weight": 5
+  },
+  {
+    "id": "safe-074",
+    "text": "お祝いのケーキ、ひと口だけください。",
+    "weight": 5
+  },
+  {
+    "id": "safe-075",
+    "text": "ポテトが冷める前に喜ぼう。",
+    "weight": 5
+  },
+  {
+    "id": "safe-076",
+    "text": "寿司なら、今のは中トロです。",
+    "weight": 5
+  },
+  {
+    "id": "safe-077",
+    "text": "その安堵、お味噌汁に似ている。",
+    "weight": 5
+  },
+  {
+    "id": "safe-078",
+    "text": "ここで見てるだけって、気楽ですね。",
+    "weight": 5
+  },
+  {
+    "id": "safe-079",
+    "text": "さっきから座り方しか変えてません。",
+    "weight": 5
+  },
+  {
+    "id": "safe-080",
+    "text": "見守り係にも、おやつは必要です。",
+    "weight": 5
+  },
+  {
+    "id": "safe-081",
+    "text": "今のを見て、猫が寝返りを打ちました。",
+    "weight": 5
+  },
+  {
+    "id": "safe-082",
+    "text": "盛り上げ役を頼んだ人が来ません。",
+    "weight": 5
+  },
+  {
+    "id": "safe-083",
+    "text": "感動しました。たぶん表情には出てます。",
+    "weight": 5
+  },
+  {
+    "id": "safe-084",
+    "text": "成功の報酬は、ほどけた靴ひもです。",
+    "weight": 5
+  },
+  {
+    "id": "safe-085",
+    "text": "だれか今のを、いい感じに語り継いで。",
+    "weight": 5
+  },
+  {
+    "id": "safe-086",
+    "text": "小さなカニが拍手しています。",
+    "weight": 2
+  },
+  {
+    "id": "safe-087",
+    "text": "観葉植物も、たぶん喜んでる。",
+    "weight": 2
+  },
+  {
+    "id": "safe-088",
+    "text": "天井のすみで、虹が会釈した。",
+    "weight": 2
+  },
+  {
+    "id": "safe-089",
+    "text": "プリンの上のさくらんぼも納得。",
+    "weight": 2
+  },
+  {
+    "id": "safe-090",
+    "text": "月の受付から、お祝いの伝言。",
+    "weight": 2
+  },
+  {
+    "id": "safe-091",
+    "text": "机の下で、祝賀パレード開催中。",
+    "weight": 2
+  },
+  {
+    "id": "safe-092",
+    "text": "成功の香り。少しだけ焼き芋。",
+    "weight": 2
+  },
+  {
+    "id": "safe-093",
+    "text": "宇宙の片隅で、座布団が増えた。",
+    "weight": 2
+  },
+  {
+    "id": "safe-094",
+    "text": "この安堵、瓶に詰めておきたい。",
+    "weight": 2
+  },
+  {
+    "id": "safe-095",
+    "text": "今の演出、予算の都合で想像してください。",
+    "weight": 2
+  },
+  {
+    "id": "safe-096",
+    "text": "このコメントに攻略情報は含まれていません。",
+    "weight": 2
+  },
+  {
+    "id": "safe-097",
+    "text": "エンドロール係が、また椅子に座りました。",
+    "weight": 2
+  },
+  {
+    "id": "safe-098",
+    "text": "この成功を見届け、豆腐は旅に出た。",
+    "weight": 1
+  },
+  {
+    "id": "safe-099",
+    "text": "祝福のハトが、なぜか徒歩で来ました。",
+    "weight": 1
+  },
+  {
+    "id": "safe-100",
+    "text": "銀河の町内会から、回覧板で祝福です。",
+    "weight": 1
+  }
+].map(Object.freeze));
+  const out = Object.freeze([
+  {
+    "id": "out-001",
+    "text": "あーあ隣のを切っておけばよかったのに",
+    "weight": 22
+  },
+  {
+    "id": "out-002",
+    "text": "専門家を待つべきだったね❤️",
+    "weight": 16
+  },
+  {
+    "id": "out-003",
+    "text": "今日の夕飯はすき焼きだったのに、、、",
+    "weight": 12
+  },
+  {
+    "id": "out-004",
+    "text": "そこは切っちゃダメって習わなかった？",
+    "weight": 16
+  },
+  {
+    "id": "out-005",
+    "text": "何人の命がかかっていたと思ってるんだい？",
+    "weight": 10
+  },
+  {
+    "id": "out-006",
+    "text": "日本列島が消滅してしまった。。。",
+    "weight": 4
+  },
+  {
+    "id": "out-007",
+    "text": "爆発によってかさぶたができてしまったよ",
+    "weight": 8
+  },
+  {
+    "id": "out-008",
+    "text": "わざと？",
+    "weight": 12
+  }
+].map(Object.freeze));
+  const UINT32_RANGE = 4294967296;
+
+  function cryptoRandomUint32() {
+    if (!root.crypto || typeof root.crypto.getRandomValues !== 'function') {
+      throw new Error('A cryptographic random source is required.');
+    }
+    return root.crypto.getRandomValues(new Uint32Array(1))[0];
+  }
+
+  function pick(kind, previousId, randomUint32) {
+    if (kind !== 'safe' && kind !== 'out') {
+      throw new TypeError('Comment kind must be safe or out.');
+    }
+    if (randomUint32 !== undefined && typeof randomUint32 !== 'function') {
+      throw new TypeError('randomUint32 must be a function.');
+    }
+    const entries = (kind === 'safe' ? safe : out).filter(entry => entry.id !== previousId);
+    const total = entries.reduce((sum, entry) => sum + entry.weight, 0);
+    const limit = UINT32_RANGE - (UINT32_RANGE % total);
+    const random = randomUint32 === undefined ? cryptoRandomUint32 : randomUint32;
+    let value;
+    do {
+      value = random();
+      if (!Number.isInteger(value) || value < 0 || value >= UINT32_RANGE) {
+        throw new RangeError('randomUint32 must return an unsigned 32-bit integer.');
+      }
+    } while (value >= limit);
+    let ticket = value % total;
+    for (const entry of entries) {
+      if (ticket < entry.weight) return entry;
+      ticket -= entry.weight;
+    }
+    throw new Error('Comment selection failed.');
+  }
+
+  root.WireComments = Object.freeze({ safe, out, pick });
+})(typeof window === 'undefined' ? globalThis : window);
+
 </script>
 <script>(function () {
   'use strict';
@@ -282,22 +869,24 @@
   const board = $('board');
   $('bombStyles').textContent = WireBomb.styles;
   let game;
-  try { game = WireEngine200.createGame(); }
+  try { game = WireEngine100.createGame(); }
   catch (_) {
     $('statusTitle').textContent = 'このブラウザでは抽選できません。';
     $('statusText').textContent = '新しいChrome・Safari・Firefoxで開いてください。';
     document.querySelectorAll('button').forEach(b => { b.disabled = true; });
     return;
   }
-  let mode = 'overview', group = 0, busy = false, hovered = null, roving = 1, exploded = false;
+  let mode = 'detail', group = 0, busy = false, hovered = null, roving = 1, exploded = false;
   let stats = {rounds:0, best:0, totalSafe:0, explosions:0}, soundOn = false, audio, toastTimer;
   let geometry = {}, drawnWidth = 0;
+  let currentComment = null;
+  const previousComment = {safe:null,out:null};
   try {
-    const saved = JSON.parse(localStorage.getItem('one-bad-wire-200-v3-record') || 'null');
-    if (saved && [saved.rounds,saved.best,saved.totalSafe,saved.explosions].every(n => Number.isSafeInteger(n) && n >= 0) && saved.best <= 199 && saved.explosions <= saved.rounds && saved.totalSafe >= saved.best) stats = saved;
-    soundOn = localStorage.getItem('one-bad-wire-200-v3-sound') === 'on';
+    const saved = JSON.parse(localStorage.getItem('one-bad-wire-100-v4-record') || 'null');
+    if (saved && [saved.rounds,saved.best,saved.totalSafe,saved.explosions].every(n => Number.isSafeInteger(n) && n >= 0) && saved.best <= 99 && saved.explosions <= saved.rounds && saved.totalSafe >= saved.best) stats = saved;
+    soundOn = localStorage.getItem('one-bad-wire-100-v4-sound') === 'on';
   } catch (_) {}
-  function saveStats() { try { localStorage.setItem('one-bad-wire-200-v3-record', JSON.stringify(stats)); } catch (_) {} }
+  function saveStats() { try { localStorage.setItem('one-bad-wire-100-v4-record', JSON.stringify(stats)); } catch (_) {} }
   function announce(s) { $('announce').textContent = s; }
   function toast(s) {
     clearTimeout(toastTimer); $('toast').textContent = s; $('toast').classList.add('show');
@@ -362,10 +951,10 @@
     const g = geometry = {w,h,boxX:w*.59,boxW:w*.17,start:compact?39:63,top:58,bottom:552};
     g.boxRight = g.boxX+g.boxW; g.cut = g.start+(g.boxX-g.start)*.48;
     g.bombX=w*.895;g.bombR=Math.min(56,w*.075);
-    const s = game.snapshot(), detail = mode === 'detail', count = detail ? 20 : 200;
+    const s = game.snapshot(), detail = mode === 'detail', count = detail ? 20 : 100;
     g.step = (g.bottom-g.top)/count; g.first = detail ? group*20+1 : 1;
     board.setAttribute('viewBox','0 0 '+w+' '+h);
-    board.setAttribute('aria-label',detail ? '導線 '+g.first+' から '+(g.first+19)+'。番号と色を確かめて選択してください。' : '200本の導線の全体図。20本ずつの範囲を押すと拡大します。');
+    board.setAttribute('aria-label',detail ? '導線 '+g.first+' から '+(g.first+19)+'。タップするとすぐ切れます。' : '100本の導線の全体図。20本ずつの範囲を押すと拡大します。');
     board.innerHTML =
       '<defs><linearGradient id="frame" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#53616a"/><stop offset=".45" stop-color="#34454e"/><stop offset="1" stop-color="#48585e"/></linearGradient>'+
       '<linearGradient id="cover" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#405a6b"/><stop offset=".5" stop-color="#2b4355"/><stop offset="1" stop-color="#385668"/></linearGradient>'+
@@ -376,12 +965,12 @@
     background.append(el('rect',{x:1,y:2,width:w-2,height:h-5,rx:13,fill:'url(#frame)',stroke:'#273944','stroke-width':2}));
     background.append(el('rect',{x:11,y:13,width:w-22,height:h-28,rx:7,fill:'#182630',stroke:'#72818a','stroke-opacity':.6}));
     background.append(el('rect',{x:12,y:14,width:w-24,height:h-30,rx:7,fill:'url(#texture)'}));
-    for (let n=0;n<10;n++) {
-      const y=g.top+(g.bottom-g.top)/10*n;
-      background.append(el('rect',{x:18,y,width:g.boxX-17,height:(g.bottom-g.top)/10,fill:n%2?'#ffffff04':'#00000008'}));
+    for (let n=0;n<5;n++) {
+      const y=g.top+(g.bottom-g.top)/5*n;
+      background.append(el('rect',{x:18,y,width:g.boxX-17,height:(g.bottom-g.top)/5,fill:n%2?'#ffffff04':'#00000008'}));
     }
-    background.append(el('text',{x:25,y:35,fill:'#8da4af','font-size':compact?7:8,'font-family':'monospace','letter-spacing':1.5},compact?'INPUT / 200':'INPUT / 200 INDIVIDUAL WIRES'));
-    background.append(el('text',{x:25,y:h-28,fill:'#8c9ea4','font-size':compact?7:8,'font-family':'monospace','letter-spacing':1},'MODEL 200 · CASE '+pad(s.round)));
+    background.append(el('text',{x:25,y:35,fill:'#8da4af','font-size':compact?7:8,'font-family':'monospace','letter-spacing':1.5},compact?'INPUT / 100':'INPUT / 100 INDIVIDUAL WIRES'));
+    background.append(el('text',{x:25,y:h-28,fill:'#8c9ea4','font-size':compact?7:8,'font-family':'monospace','letter-spacing':1},'MODEL 100 · CASE '+pad(s.round)));
     background.append(el('path',{d:'M'+g.cut+' 46V'+(h-48),stroke:'#c9d9df','stroke-opacity':.13,'stroke-dasharray':'3 6','stroke-width':1}));
     board.append(background);
     const wires = el('g',{id:'wireLayer','aria-hidden':'true'});
@@ -404,7 +993,7 @@
       for (let i=0;i<20;i++) {
         const id=g.first+i,y=g.top+g.step*(i+.5);
         const used=s.cutIds.includes(id);
-        const row=el('g',{class:'wire-row'+(used?' is-cut':''),'data-wire':id,role:'button',tabindex:!busy&&s.state==='playing'&&!used&&id===roving?0:-1,'aria-label':'導線 '+pad(id)+'、'+color(id)[1]+(used?'、切断済み':''),'aria-pressed':s.selectedId===id,'aria-disabled':busy||s.state!=='playing'||used});
+        const row=el('g',{class:'wire-row'+(used?' is-cut':''),'data-wire':id,role:'button',tabindex:!busy&&s.state==='playing'&&!used&&id===roving?0:-1,'aria-label':'導線 '+pad(id)+'、'+color(id)[1]+(used?'、切断済み':'、タップで切断'),'aria-pressed':s.selectedId===id,'aria-disabled':busy||s.state!=='playing'||used});
         row.append(el('rect',{class:'row-hit',x:18,y:y-g.step/2,width:g.boxX-18,height:g.step,rx:2,fill:'transparent'}));
         row.append(el('text',{x:compact?20:27,y:y+3.5,fill:used?'#5d7079':'#a5bac6','font-size':compact?8:9,'font-family':'monospace','pointer-events':'none','text-decoration':used?'line-through':'none'},pad(id)));
         row.addEventListener('click',() => choose(id,false));
@@ -413,12 +1002,12 @@
         row.addEventListener('focus',() => { hovered=id; drawHighlights(); });
         row.addEventListener('blur',() => { hovered=null; drawHighlights(); });
         row.addEventListener('keydown',e => {
-          if (e.key==='Enter'||e.key===' ') { e.preventDefault();choose(id,false);return; }
+          if (e.key==='Enter'||e.key===' ') { e.preventDefault();if(!e.repeat)choose(id,false);return; }
           if (e.key!=='ArrowUp'&&e.key!=='ArrowDown') return;
           if(busy||game.snapshot().state!=='playing') return;
           e.preventDefault(); const delta=e.key==='ArrowDown'?1:-1; let next=id+delta;
-          while(next>=1&&next<=200&&s.cutIds.includes(next))next+=delta;
-          if(next<1||next>200||busy) return;
+          while(next>=1&&next<=100&&s.cutIds.includes(next))next+=delta;
+          if(next<1||next>100||busy) return;
           roving=next;
           if(Math.floor((next-1)/20)!==group) showGroup(Math.floor((next-1)/20),false);
           roving=next;
@@ -428,9 +1017,9 @@
         targets.append(row);
       }
     } else {
-      for (let n=0;n<10;n++) {
-        const y=g.top+n*(g.bottom-g.top)/10, band=el('g',{class:'band',role:'button',tabindex:busy?-1:0,'data-group':n,'aria-label':'導線 '+pad(n*20+1)+' から '+pad(n*20+20)+' を拡大','aria-disabled':busy});
-        band.append(el('rect',{class:'band-hit',x:18,y,width:g.boxX-18,height:(g.bottom-g.top)/10,rx:2,fill:'transparent'}));
+      for (let n=0;n<5;n++) {
+        const y=g.top+n*(g.bottom-g.top)/5, band=el('g',{class:'band',role:'button',tabindex:busy?-1:0,'data-group':n,'aria-label':'導線 '+pad(n*20+1)+' から '+pad(n*20+20)+' を拡大','aria-disabled':busy});
+        band.append(el('rect',{class:'band-hit',x:18,y,width:g.boxX-18,height:(g.bottom-g.top)/5,rx:2,fill:'transparent'}));
         band.append(el('rect',{x:compact?16:24,y:y+12,width:compact?24:31,height:24,rx:3,fill:'#101d27','fill-opacity':.93,'pointer-events':'none'}));
         band.append(el('text',{x:compact?28:39,y:y+27,fill:'#adbec5','font-size':compact?7:8,'font-family':'monospace','text-anchor':'middle','pointer-events':'none'},pad(n*20+1)));
         band.addEventListener('click',()=>showGroup(n,true));
@@ -441,8 +1030,8 @@
     board.append(targets);
     const hardware=el('g',{'aria-hidden':'true','pointer-events':'none'});
     const outletY=h*.5, tailEnd=g.bombX-g.bombR+7;
-    for (let i=0;i<200;i++) {
-      const off=((i*37)%200-100)*.25, spread=((i*73)%200-100)*.15, x1=g.boxRight-5;
+    for (let i=0;i<100;i++) {
+      const off=((i*37)%100-50)*.5, spread=((i*73)%100-50)*.3, x1=g.boxRight-5;
       hardware.append(el('path',{d:'M'+x1+' '+(outletY+off)+'C'+(x1+15)+' '+(outletY+off)+' '+(tailEnd-10)+' '+(outletY+spread)+' '+tailEnd+' '+(outletY+spread*.45),fill:'none',stroke:color(i+1)[0],'stroke-width':.9,'stroke-opacity':exploded?.28:.95}));
     }
     const tieX=g.boxRight+(tailEnd-g.boxRight)*.55;
@@ -460,13 +1049,13 @@
     }
     hardware.append(el('text',{x:cx,y:83,fill:'#96b2bf','font-size':compact?6:8,'letter-spacing':compact?1:2,'font-family':'monospace','text-anchor':'middle'},'SEALED UNIT'));
     hardware.append(el('rect',{x:cx-g.boxW*.32,y:119,width:g.boxW*.64,height:92,rx:3,fill:'#132c3b',stroke:'#547084','stroke-width':1}));
-    hardware.append(el('text',{x:cx,y:165,fill:'#dce9e7','font-size':compact?23:39,'font-family':'monospace','text-anchor':'middle','letter-spacing':-2},'200'));
+    hardware.append(el('text',{x:cx,y:165,fill:'#dce9e7','font-size':compact?23:39,'font-family':'monospace','text-anchor':'middle','letter-spacing':-2},'100'));
     hardware.append(el('text',{x:cx,y:189,fill:'#83a8bb','font-size':compact?6:8,'font-family':'monospace','text-anchor':'middle','letter-spacing':compact?.5:1.5},'IN / ONE OUT'));
     hardware.append(el('circle',{id:'caseLed',cx,cy:247,r:4,fill:exploded?'#ff795e':s.safeCount>0?'#80dc94':'#e9c76b'}));
     hardware.append(el('text',{id:'caseState',x:cx,y:269,fill:'#b5c8c9','font-size':compact?6:8,'font-family':'monospace','text-anchor':'middle'},busy?'CUTTING':s.state==='lost'?'FAILED':s.safeCount>0?'KEEP GOING':'STANDBY'));
     for(let n=0;n<6;n++)hardware.append(el('rect',{x:cx-g.boxW*.25,y:328+n*8,width:g.boxW*.5,height:3,rx:1.5,fill:'#193142',stroke:'#64818e','stroke-opacity':.18}));
     hardware.append(el('rect',{x:cx-g.boxW*.33,y:444,width:g.boxW*.66,height:56,rx:2,fill:'#d6c9a0',transform:'rotate(-2 '+cx+' 472)'}));
-    hardware.append(el('text',{x:cx,y:466,fill:'#4c503f','font-size':compact?6:9,'font-family':'monospace','text-anchor':'middle','font-weight':'bold'},'199 SAFE'));
+    hardware.append(el('text',{x:cx,y:466,fill:'#4c503f','font-size':compact?6:9,'font-family':'monospace','text-anchor':'middle','font-weight':'bold'},'99 SAFE'));
     hardware.append(el('text',{x:cx,y:482,fill:'#4c503f','font-size':compact?6:8,'font-family':'monospace','text-anchor':'middle'},'1 BAD WIRE'));
     hardware.append(el('text',{x:cx,y:551,fill:'#8ea5ad','font-size':compact?5:7,'font-family':'monospace','text-anchor':'middle'},'DO NOT OPEN'));
     hardware.append(WireBomb.create({x:g.bombX,y:outletY,r:g.bombR,state:exploded?'exploded':'idle',reducedMotion:reduced||!animateExplosion}));
@@ -482,7 +1071,7 @@
     if(hovered&&s.state==='playing'&&!busy&&!s.cutIds.includes(hovered))ids.push({id:hovered,type:'hover'});
     if(s.selectedId)ids.push({id:s.selectedId,type:'selected'});
     for(const item of ids){
-      const i=item.id-g.first;if(i<0||i>=(mode==='detail'?20:200))continue;
+      const i=item.id-g.first;if(i<0||i>=(mode==='detail'?20:100))continue;
       const y=g.top+g.step*(i+.5),d=linePath(y,s.cutIds.includes(item.id));
       const mark=(item.type==='bad'||(s.state!=='playing'&&item.id===s.badId))?'#ff725c':'#f6f5e7';
       layer.append(el('path',{d,fill:'none',stroke:'#09131d','stroke-width':mode==='detail'?12:6,'stroke-linecap':'round'}));
@@ -499,14 +1088,14 @@
     $('overviewBtn').setAttribute('aria-pressed',String(!detail));
     $('detailBtn').setAttribute('aria-pressed',String(detail));
     $('overviewBtn').disabled=busy;$('detailBtn').disabled=busy;
-    $('prevBtn').disabled=busy||!detail||group===0;$('nextBtn').disabled=busy||!detail||group===9;
+    $('prevBtn').disabled=busy||!detail||group===0;$('nextBtn').disabled=busy||!detail||group===4;
     $('rangeBtn').disabled=busy;
-    $('rangeLabel').innerHTML=detail?pad(group*20+1)+' — '+pad(group*20+20)+' <span>/ 200 WIRES</span>':'001 — 200 <span>/ ALL WIRES</span>';
-    $('boardHint').textContent=detail?(s.state==='playing'?'導線を選択。色と番号を確かめてから、切断します。':'切断済みの導線と、ハズレの位置を確認できます。'):'見たい場所を押すと、20本ずつ拡大できます。';
+    $('rangeLabel').innerHTML=detail?pad(group*20+1)+' — '+pad(group*20+20)+' <span>/ 100 WIRES</span>':'001 — 100 <span>/ ALL WIRES</span>';
+    $('boardHint').textContent=detail?(s.state==='playing'?'導線をタップすると、すぐに切れます。':'切断済みの導線と、ハズレの位置を確認できます。'):'見たい場所を押すと、20本ずつ拡大できます。';
     for(const b of $('pageDots').children){b.classList.toggle('active',detail&&Number(b.dataset.group)===group);b.disabled=busy;}
   }
   function showGroup(n,focus){
-    if(busy||!Number.isInteger(n)||n<0||n>9)return;
+    if(busy||!Number.isInteger(n)||n<0||n>4)return;
     group=n;mode='detail';hovered=null;roving=group*20+1;
     const s=game.snapshot();if(s.selectedId&&Math.floor((s.selectedId-1)/20)===group)roving=s.selectedId;
     drawBoard();
@@ -514,30 +1103,23 @@
     announce('導線 '+pad(n*20+1)+' から '+pad(n*20+20)+' を拡大しました。');
   }
   function choose(id,move){
-    if(busy||game.snapshot().state!=='playing'||!Number.isInteger(id)||id<1||id>200)return;
-    if(game.snapshot().cutIds.includes(id)){toast('No. '+pad(id)+' は切断済みです。');return;}
+    const s=game.snapshot();
+    if(busy||s.state!=='playing'||!Number.isInteger(id)||id<1||id>100||s.cutIds.includes(id))return;
     game.select(id);roving=id;
     if(move)showGroup(Math.floor((id-1)/20),false);
-    for(const row of board.querySelectorAll('[data-wire]')){const selected=Number(row.dataset.wire)===id;row.setAttribute('aria-pressed',String(selected));row.setAttribute('tabindex',selected?'0':'-1');}
-    updateControls();drawHighlights();sound('select');
-    announce('導線 '+pad(id)+'、'+color(id)[1]+' を選択。まだ切っていません。');
+    cut();
   }
   function updateControls(){
-    const s=game.snapshot(),done=s.state!=='playing',active=!busy&&!done,has=s.selectedId!==null;
-    const displayId=has?s.selectedId:busy?s.lastCutId:null;
-    $('selectedNumber').textContent=$('mobileNumber').textContent=displayId!==null?pad(displayId):'— —';
+    const s=game.snapshot(),done=s.state!=='playing',active=!busy&&!done,displayId=s.lastCutId;
+    $('selectedNumber').textContent=displayId!==null?pad(displayId):'— —';
     $('selectedNumber').classList.toggle('empty',displayId===null);
-    $('colorName').textContent=$('mobileColor').textContent=displayId!==null?color(displayId)[1]:'未選択';
+    $('colorName').textContent=displayId!==null?color(displayId)[1]:'まだ切っていません';
     $('sampleWire').style.setProperty('--wire-color',displayId!==null?color(displayId)[0]:'#a7b2b3');
-    $('selectionLabel').textContent=done?'切った導線':'選択中の導線';
+    $('selectionLabel').textContent='最後に切った導線';
     $('mobileLabel').textContent=busy?'切断中…':done?'爆発。記録 '+s.safeCount+'本':s.safeCount+'本セーフ / 残り'+s.remainingCount+'本';
-    $('cutBtn').disabled=!active||!has;$('randomBtn').disabled=$('jumpBtn').disabled=!active;
-    $('cutLabel').textContent=busy?'切断中…':done?'ゲームオーバー':'この導線を切る';
-    $('cutBtn').setAttribute('aria-label',has?'導線 '+pad(s.selectedId)+' を切る':'導線を選ぶと切断できます');
-    $('cutHint').textContent=busy?'その1本に、決めた。':done?'ハズレを切ったので、この箱は終了です。':has?'No. '+pad(s.selectedId)+' を選択中。まだ切っていません。':s.safeCount>0?'セーフ。次の1本を選んでください。':'まずは、気になる1本を選択。';
-    $('mobileCutBtn').disabled=busy||(!done&&!has);
-    $('mobileCutBtn').classList.toggle('is-again',done&&!busy);
-    $('mobileCutLabel').textContent=busy?'切断中…':done?'新しい箱へ':has?'この導線を切る':s.safeCount>0?'次の導線を選ぼう':'導線を選んでね';
+    $('randomBtn').disabled=$('jumpBtn').disabled=!active;
+    $('mobileAgainBtn').hidden=!done||busy;$('mobileAgainBtn').disabled=busy;
+    document.querySelector('.mobile-controls').classList.toggle('lost',done&&!busy);
     $('resetBtn').disabled=busy;$('againBtn').disabled=busy;
     $('attemptCount').textContent=stats.rounds.toLocaleString();$('safeCount').textContent=stats.best.toLocaleString();$('failCount').textContent=stats.explosions.toLocaleString();
     $('scoreCount').textContent=s.safeCount;$('remainingCount').textContent=s.remainingCount;
@@ -545,18 +1127,20 @@
     $('oddsUnit').hidden=done;
     $('oddsLabel').textContent=done?'この箱は終了':'次の1本がセーフの確率';
     $('riskNote').textContent=done?'記録 '+s.safeCount+'本。次の箱でもう一度。':'ハズレは残り'+s.remainingCount+'本の中に1本。';
-    $('boardLabel').textContent='200 WIRES / '+s.remainingCount+' LEFT';
+    $('boardLabel').textContent='100 WIRES / '+s.remainingCount+' LEFT';
     updateViewControls();
   }
   function showResult(){
-    const s=game.snapshot(),lost=s.state==='lost';
+    const s=game.snapshot(),lost=s.state==='lost',kind=lost?'out':'safe';
+    currentComment=WireComments.pick(kind,previousComment[kind]);previousComment[kind]=currentComment.id;
+    $('commentText').textContent=$('mobileComment').textContent=currentComment.text;
+    $('commentTag').textContent=lost?'OUT / GAME OVER':'SAFE / KEEP GOING';
     $('statusBox').classList.toggle('won',!lost);$('statusBox').classList.toggle('lost',lost);
     $('statusTitle').textContent=lost?'ドカン。ここまで！':s.safeCount+'本目も、セーフ。';
-    $('statusText').textContent=lost?'記録は '+s.safeCount+'本。No. '+pad(s.badId)+' がハズレでした。自己ベストは '+stats.best+'本です。':s.remainingCount===1?'199本すべてセーフ。残った1本は必ずハズレです。切ると爆発して終了します。':'No. '+pad(s.lastCutId)+' は安全でした。同じ箱で続けましょう。残りは '+s.remainingCount+'本です。';
+    $('statusText').textContent=lost?'記録は '+s.safeCount+'本。No. '+pad(s.badId)+' がハズレでした。自己ベストは '+stats.best+'本です。':s.remainingCount===1?'99本すべてセーフ。残った1本は必ずハズレです。切ると爆発して終了します。':'No. '+pad(s.lastCutId)+' は安全でした。同じ箱で続けましょう。残りは '+s.remainingCount+'本です。';
     $('resultDetail').hidden=!lost;$('againBtn').hidden=!lost;
     if(lost)$('badNumber').textContent=pad(s.badId);
-    announce($('statusTitle').textContent+' '+$('statusText').textContent);
-    toast(lost?'爆発！ 記録は '+s.safeCount+'本。':'セーフ！ '+s.safeCount+'本成功。次の導線へ。');
+    announce(currentComment.text+' '+$('statusTitle').textContent+' '+$('statusText').textContent);
   }
   function cut(){
     const before=game.snapshot();if(busy||before.state!=='playing'||before.selectedId===null)return;
@@ -575,7 +1159,7 @@
         busy=false;sound('win');updateControls();drawBoard();showResult();
         if(mode==='detail'){const target=board.querySelector('[data-wire="'+roving+'"]');if(target)target.focus({preventScroll:true});}
       }
-    },reduced?80:s.state==='lost'?350:200);
+    },reduced?80:s.state==='lost'?350:100);
   }
   function newBox(){
     if(busy)return;
@@ -583,14 +1167,15 @@
     document.querySelectorAll('dialog[open]').forEach(d=>d.close());
     hovered=null;exploded=false;roving=group*20+1;$('apparatus').classList.remove('shake');$('flash').classList.remove('fire');
     $('statusBox').classList.remove('won','lost');$('statusTitle').textContent='ハズレを引くまで、続けよう。';
-    $('statusText').innerHTML='セーフなら、次の1本へ。<br>何本切れるか、運試し。';
+    $('statusText').innerHTML='気になる導線をタップ。<br>何本切れるか、運試し。';
+    currentComment=null;$('commentText').textContent='さて、どこからいこうか。';$('mobileComment').textContent='導線をタップすると、すぐ切れます。';$('commentTag').textContent='FIELD NOTES';
     $('resultDetail').hidden=true;$('againBtn').hidden=true;updateControls();drawBoard();
     toast('新しい箱。ハズレを1本、抽選しました。');
     const target=mode==='detail'?board.querySelector('[data-wire="'+roving+'"]'):board.querySelector('[data-group="0"]');
     if(target)target.focus({preventScroll:true});
   }
   function randomId(){
-    const s=game.snapshot(),available=Array.from({length:200},(_,i)=>i+1).filter(id=>!s.cutIds.includes(id));
+    const s=game.snapshot(),available=Array.from({length:100},(_,i)=>i+1).filter(id=>!s.cutIds.includes(id));
     if(!available.length)return null;
     const n=new Uint32Array(1),limit=Math.floor(0x100000000/available.length)*available.length;
     do{crypto.getRandomValues(n);}while(n[0]>=limit);return available[n[0]%available.length];
@@ -599,27 +1184,24 @@
   $('detailBtn').addEventListener('click',()=>{const s=game.snapshot();showGroup(s.selectedId?Math.floor((s.selectedId-1)/20):group,true);});
   $('prevBtn').addEventListener('click',()=>showGroup(group-1,false));
   $('nextBtn').addEventListener('click',()=>showGroup(group+1,false));
-  $('randomBtn').addEventListener('click',()=>{if(busy||game.snapshot().state!=='playing')return;try{choose(randomId(),true);}catch(_){toast('番号を抽選できませんでした。導線を直接選んでください。');}});
-  $('cutBtn').addEventListener('click',cut);
-  $('mobileCutBtn').addEventListener('click',()=>{if(game.snapshot().state==='playing')cut();else newBox();});
+  $('randomBtn').addEventListener('click',()=>{if(busy||game.snapshot().state!=='playing')return;try{choose(randomId(),true);}catch(_){toast('番号を抽選できませんでした。導線を直接タップしてください。');}});
+  $('mobileAgainBtn').addEventListener('click',()=>{if(game.snapshot().state==='lost')newBox();});
   $('againBtn').addEventListener('click',newBox);
   $('resetBtn').addEventListener('click',()=>{if(game.snapshot().state==='playing')showDialog('resetDialog');else newBox();});
   $('confirmReset').addEventListener('click',newBox);
   $('revealBtn').addEventListener('click',()=>{const s=game.snapshot();if(s.badId)showGroup(Math.floor((s.badId-1)/20),false);toast('ハズレは No. '+pad(s.badId)+'。赤い縁取りの導線です。');});
   $('helpBtn').addEventListener('click',()=>showDialog('helpDialog'));
-  $('soundBtn').addEventListener('click',()=>{soundOn=!soundOn;try{localStorage.setItem('one-bad-wire-200-v3-sound',soundOn?'on':'off');}catch(_){}updateSound();if(soundOn)sound('select');});
+  $('soundBtn').addEventListener('click',()=>{soundOn=!soundOn;try{localStorage.setItem('one-bad-wire-100-v4-sound',soundOn?'on':'off');}catch(_){}updateSound();if(soundOn)sound('select');});
   $('jumpBtn').addEventListener('click',()=>{$('wireInput').value='';$('jumpError').textContent='';$('wireInput').removeAttribute('aria-invalid');showDialog('jumpDialog');$('wireInput').focus();});
   $('jumpForm').addEventListener('submit',e=>{
     e.preventDefault();
     const v=$('wireInput').value.trim().replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0)),id=Number(v);
-    if(!/^\d+$/.test(v)||!Number.isInteger(id)||id<1||id>200){$('jumpError').textContent='1〜200の整数を入力してください。';$('wireInput').setAttribute('aria-invalid','true');return;}
+    if(!/^\d+$/.test(v)||!Number.isInteger(id)||id<1||id>100){$('jumpError').textContent='1〜100の整数を入力してください。';$('wireInput').setAttribute('aria-invalid','true');return;}
     if(game.snapshot().cutIds.includes(id)){$('jumpError').textContent='No. '+pad(id)+' は切断済みです。別の番号を選んでください。';$('wireInput').setAttribute('aria-invalid','true');return;}
     $('jumpDialog').close();choose(id,true);
-    const cutButton=window.matchMedia('(max-width:760px)').matches?$('mobileCutBtn'):$('cutBtn');
-    cutButton.focus({preventScroll:true});
   });
   $('rangeBtn').addEventListener('click',()=>{for(const b of $('groupList').children)b.classList.toggle('current',mode==='detail'&&Number(b.dataset.group)===group);showDialog('rangeDialog');});
-  for(let n=0;n<10;n++){
+  for(let n=0;n<5;n++){
     const b=document.createElement('button');b.type='button';b.dataset.group=n;b.textContent=pad(n*20+1)+' — '+pad(n*20+20);
     b.addEventListener('click',()=>{$('rangeDialog').close();showGroup(n,true);});$('groupList').append(b);
     const dot=document.createElement('button');dot.type='button';dot.dataset.group=n;dot.setAttribute('aria-label','導線 '+pad(n*20+1)+' から '+pad(n*20+20)+' を拡大');
