@@ -2,8 +2,8 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f1eee6">
-<meta name="description" content="100本の導線と、1本のハズレ。セーフなら同じ箱で切り続け、ハズレで爆発。何本まで切れるかを競う、時間制限なしの運試しゲーム。">
-<title>ONE BAD WIRE — ハズレまで、切り続けろ。</title>
+<meta name="description" content="100本の導線から99本のセーフを切り、1本のハズレを残せるか。成功率1%の爆弾解除ゲーム。">
+<title>ONE BAD WIRE — 1パーセント爆弾解除ゲーム</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2324323d'/%3E%3Cpath d='M8 20H38M8 32H38M8 44H38' stroke='%23ffad54' stroke-width='5'/%3E%3Crect x='35' y='12' width='21' height='40' rx='4' fill='%23e4e7db'/%3E%3C/svg%3E">
 <style>
 :root{--paper:#f1eee6;--ink:#263440;--muted:#778089;--line:#d4d3c9;--orange:#c95031;--navy:#273743;--mono:ui-monospace,SFMono-Regular,Consolas,'Liberation Mono',monospace;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif}
@@ -17,23 +17,20 @@
 .run-score{grid-column:1/-1;display:flex;align-items:center;justify-content:space-between;background:#e5e9e1;border:1px solid #ccd5ca;border-radius:6px;padding:14px 17px;margin:18px 0 4px}.score-label{display:block;font-size:10px;color:#748778;margin-bottom:6px}.run-score strong{font:38px/1 var(--mono);letter-spacing:-2px;color:#344e43}.run-score small{font-size:10px;color:#6a8171;margin-left:8px}.remaining{display:flex;flex-direction:column;align-items:center;gap:3px;font-size:9px;color:#72847b}.remaining b{font:20px var(--mono);color:#4a6357}.wire-row.is-cut{cursor:default}.wire-row.is-cut:hover .row-hit{fill:transparent}.wire-row[aria-disabled=true]{cursor:default}@media(max-width:760px){.run-score{margin-top:14px;margin-bottom:0;padding:12px 15px}.run-score strong{font-size:32px}.stats-values{gap:25px}.stats-values span{font-size:8px}}
 
 .tap-note{font-size:11px;line-height:1.9;text-align:center;padding:16px 8px;background:#e6e8e0;border:1px solid #c5ccc6;border-radius:5px;color:#718186;margin:12px 0 24px}.tap-note strong{color:#3e5c66;font-weight:600}.status-box .comment-tag{font:9px var(--mono);letter-spacing:1.5px;color:#8a9996;margin:0 0 9px}.status-box .comment-line{font-size:19px;line-height:1.65;font-weight:650;letter-spacing:-.4px;color:#2e4c56;margin:0 0 18px;overflow-wrap:anywhere;min-height:63px}.status-box.lost .comment-line{color:#a84932}.status-box .status-title{font-size:11px}.status-box p:not(.comment-line):not(.comment-tag){font-size:10px}.wire-row{cursor:pointer}.mobile-copy{flex:1;min-width:0}.mobile-comment{font-size:13px;line-height:1.6;font-weight:600;color:#334d57;margin:0;overflow-wrap:anywhere}.mobile-controls.lost .mobile-comment{color:#a84932}.mobile-controls .again-btn{width:95px;flex-shrink:0;margin:0;font-size:11px}.mobile-controls.lost{border-top-color:#d3a18f}@media(max-width:760px){.tap-note{font-size:10px;padding:9px 5px;margin:7px 0 0}.status-box .comment-line{font-size:20px;min-height:0}.mobile-controls{gap:12px;min-height:78px}.footer{padding-bottom:155px}.toast{bottom:150px}}
+
+.start-overlay{position:absolute;inset:auto 22px 25px;display:flex;justify-content:center;z-index:4}.start-btn{background:#e9cf83;color:#273e47;border:1px solid #f9df9d;border-radius:7px;padding:15px 32px;font-weight:700;font-size:16px;min-width:220px;box-shadow:0 4px 0 #756847,0 8px 25px #0004;cursor:pointer}.start-btn:hover{background:#f2dc9f}.start-btn:disabled{opacity:.5}.stage-label{font:10px var(--mono);color:#647c85;letter-spacing:1px}.scroll-tools{display:flex;gap:12px;align-items:center}.scroll-tools input{width:100%;accent-color:#415f6c;cursor:ns-resize}.scroll-tools .range-label{white-space:nowrap;min-width:90px}.scroll-tools button{border:1px solid #b7c6c3;border-radius:5px;background:#faf8f0;min-width:36px;min-height:36px}.range-wrap{flex:1;display:flex;align-items:center;gap:12px}.scroll-tools{margin-top:15px;border-top:1px solid var(--line);padding-top:12px}.share-btn{display:flex;align-items:center;justify-content:center;min-height:42px;background:#24343e;color:#fffaf0;border:1px solid #24343e;border-radius:5px;font-size:12px;text-decoration:none;margin-top:12px;gap:8px}.share-btn:hover{background:#3b515e}.share-btn:focus-visible{outline:3px solid #3096ba;outline-offset:3px}.share-btn b{font-size:18px}.status-box.success .comment-line{color:#2e7250}.status-box.success{border-color:#9fbd9d}.stats-values{gap:12px}.stats-values b{font-size:23px}.record-note{font-size:9px;color:#899695;line-height:1.7;margin:14px 0 0}.tap-note{min-height:0}.mobile-actions{display:flex;gap:8px;flex-shrink:0}.mobile-actions .start-btn{min-width:110px;min-height:43px;padding:10px 15px;font-size:13px}.mobile-actions .again-btn,.mobile-actions .share-btn{width:92px;margin:0;min-height:42px;font-size:10px}.mobile-controls.success .mobile-comment{color:#2e7250}.mobile-controls.success{border-top-color:#abc4a7}.apparatus[data-phase=active] #board{touch-action:none}.phase-tag{display:inline-block;font:9px var(--mono);border:1px solid #b6c6bd;border-radius:20px;padding:8px 12px;color:#58776b;background:#e7ece3}.status-box .comment-line{min-height:0}.is-ready .selection-main{opacity:.55}.wire-row[aria-disabled=true]{cursor:default}@media(max-width:760px){.start-overlay{bottom:18px}.start-overlay .start-btn{min-width:165px;padding:12px 22px;font-size:14px}.apparatus[data-phase=ready] #board,.apparatus[data-phase=result] #board{height:auto}.phase-tag{font-size:8px;padding:7px 9px}.scroll-tools{gap:7px}.range-label{font-size:9px}.scroll-tools .range-label{min-width:70px}.range-wrap{gap:5px}.mobile-controls{flex-wrap:wrap}.mobile-copy{min-width:160px}.mobile-controls.success .mobile-copy,.mobile-controls.lost .mobile-copy{flex-basis:100%}.mobile-controls.success .mobile-actions,.mobile-controls.lost .mobile-actions{margin-left:auto}.footer{padding-bottom:230px}.stats-values{gap:16px}.stats-values div{flex-direction:column;gap:4px}.stats-values span{font-size:8px}.mobile-comment{font-size:12px}.board-note .fixed{font-size:7px}.controls{padding-top:20px}.hero{padding-top:20px}}
 </style>
 <style id="bombStyles"></style></head>
 <body>
-<noscript>このゲームを遊ぶには、ブラウザのJavaScriptを有効にしてください。</noscript>
-<div class="wrap">
-<header class="topbar"><div class="brand"><span class="brand-logo"><svg viewBox="0 0 24 24" fill="none"><path d="M0 5h15M0 12h15M0 19h15" stroke="#ffa759" stroke-width="2.5"/><rect x="13" y="2" width="10" height="20" rx="2" fill="#e8ebe0"/></svg></span>ONE BAD WIRE<small>EDITION 04</small></div><div class="top-actions"><button class="plain-btn" id="soundBtn" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 9h4l5-4v14l-5-4H4Z"/><path id="soundWaves" d="m17 9 5 6m0-6-5 6"/></svg><span id="soundLabel">音 OFF</span></button><button class="plain-btn" id="helpBtn" type="button">遊び方</button></div></header>
-<main><section class="hero"><div><div class="eyebrow">HOW LONG CAN YOUR LUCK LAST?</div><h1>何本まで、<wbr>いける？</h1><p><strong>100本の導線。ハズレを切ったら、そこで終了。</strong><br>タップで切断。セーフなら、次の1本へ。</p></div><div class="odds"><b><span id="safetyValue">99.0</span><small id="oddsUnit">%</small></b><p id="oddsLabel">次の1本がセーフの確率</p><p class="odds-note" id="riskNote">ハズレは残り100本の中に1本。</p></div></section>
-<div class="workspace">
-<section class="board-card" aria-label="100本の導線と箱"><div class="board-toolbar"><span class="board-label" id="boardLabel">100 WIRES / 1 BAD</span><div class="view-switch" aria-label="表示の切り替え"><button id="overviewBtn" type="button" aria-pressed="false">全体 · 100本</button><button id="detailBtn" type="button" aria-pressed="true">拡大 · 20本</button></div></div><div class="apparatus" id="apparatus"><svg id="board" role="group" aria-label="導線の全体図。20本ずつの範囲を選ぶと拡大します。"></svg></div><div class="board-note"><span id="boardHint">見たい場所をクリックすると、20本ずつ拡大できます。</span><span class="fixed">NO TIMER. TAKE YOUR TIME.</span></div><div class="navigator"><div class="range-label" id="rangeLabel">001 — 100 <span>/ ALL WIRES</span></div><div class="page-dots" id="pageDots" aria-label="拡大する範囲"></div><div class="nav-buttons"><button id="prevBtn" type="button" aria-label="前の20本">←</button><button id="rangeBtn" type="button">範囲を選ぶ</button><button id="nextBtn" type="button" aria-label="次の20本">→</button></div></div></section>
-<aside class="controls" aria-label="導線を選んで切る"><div class="control-heading"><span>MAKE YOUR CHOICE</span><b>01</b></div><div class="run-score"><div><span class="score-label">この箱の記録</span><strong id="scoreCount">0</strong><small>本セーフ</small></div><div class="remaining"><span>残り</span><b id="remainingCount">100</b><span>本</span></div></div><div class="selection-main"><p class="selection-label" id="selectionLabel">最後に切った導線</p><p class="selected-number empty" id="selectedNumber">— —</p><div class="color-preview"><span class="sample-wire" id="sampleWire"></span><span class="color-name" id="colorName">まだ切っていません</span></div></div><div class="action-main"><div class="pick-tools"><button id="randomBtn" type="button">⚄ おまかせで切る</button><button id="jumpBtn" type="button"># 番号で切る</button></div><p class="tap-note">導線をタップすると<br><strong>すぐに切れます。</strong></p></div><div class="status-box" id="statusBox"><p class="comment-tag" id="commentTag">FIELD NOTES</p><p class="comment-line" id="commentText">さて、どこからいこうか。</p><h2 class="status-title" id="statusTitle">ハズレを引くまで、続けよう。</h2><p id="statusText">気になる導線をタップ。<br>何本切れるか、運試し。</p><div class="result-detail" id="resultDetail" hidden><span>ハズレだった導線 <b id="badNumber">—</b></span><button type="button" id="revealBtn">場所を見る</button></div><button class="again-btn" id="againBtn" type="button" hidden>新しい箱でもう一度</button></div><div class="stats"><div class="stats-label"><span>YOUR RECORD</span><span>このブラウザの記録</span></div><div class="stats-values"><div><b id="attemptCount">0</b><span>挑戦</span></div><div><b id="safeCount">0</b><span>自己ベスト</span></div><div><b id="failCount">0</b><span>爆発</span></div></div></div><button class="reset-btn" id="resetBtn" type="button">↻ 新しい箱に交換する</button><div class="legend" id="legend"><small>色は10色。番号で1本ずつ見分けられます。<br>色や順番に、当たり外れのヒントはありません。</small></div></aside>
-</div></main><footer class="footer"><span>ONE BAD WIRE © 2026 · EKOOEKON</span><span>DAITAI ANZEN INDUSTRIES — だいたい安全工業</span></footer></div>
-<div class="mobile-controls"><div class="mobile-copy"><div class="mobile-label" id="mobileLabel">0本セーフ / 残り100本</div><p class="mobile-comment" id="mobileComment">導線をタップすると、すぐ切れます。</p></div><button class="again-btn" id="mobileAgainBtn" type="button" hidden>新しい箱へ</button></div>
-<dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialog-top"><span>FIELD NOTES / KEEP CUTTING</span><button class="close-btn" data-close="helpDialog" type="button" aria-label="閉じる">×</button></div><h2 id="helpTitle">ハズレが出るまで、続行。</h2><ul><li>拡大図の導線をタップすると、すぐに切れます。確認ボタンはありません。</li><li>セーフなら同じ箱で続行。全体図では範囲を押して20本ずつ拡大できます。</li><li>切断済みの導線は暗く表示され、もう切れません。</li><li>1本だけあるハズレを切ると、右側の爆弾が爆発して終了します。</li></ul><p>記録は、爆発するまでに切れたセーフな導線の本数です。自己ベストはこのブラウザに保存されます。</p><p>制限時間はありません。ハズレは箱を用意したときに決まり、セーフが出ても変わりません。色や導線の束はヒントになりません。</p><p>「おまかせで切る」は未切断の1本をランダムに切ります。番号指定も、送信するとすぐ切断します。拡大中は上下の矢印キーで移動し、Enter / Spaceで切れます。</p><p>セーフのコメントは100種類、アウトは8種類。出やすさには差があり、同じ種類のコメントが連続しないように抽選します。コメントは次の当たり外れのヒントではありません。</p><p class="probability-note">最初の成功率は99/100（99.0%）。残りが減るほど次の成功率は下がります。99本すべてセーフだった場合、最後の1本は必ずハズレです。</p><button class="dialog-primary" data-close="helpDialog" type="button">わかった。続けてみよう。</button></dialog>
-<dialog id="jumpDialog" aria-labelledby="jumpTitle"><form id="jumpForm"><div class="dialog-top"><span>CHOOSE A WIRE</span><button class="close-btn" data-close="jumpDialog" type="button" aria-label="閉じる">×</button></div><h2 id="jumpTitle">どの番号を切る？</h2><p><label for="wireInput">1〜100の番号を入力。送信するとすぐ切れます。</label></p><input class="field" id="wireInput" type="text" inputmode="numeric" maxlength="5" autocomplete="off" placeholder="例：48" aria-describedby="jumpError"><div class="field-error" id="jumpError" role="status"></div><button class="dialog-primary" type="submit">この番号を切る</button></form></dialog>
-<dialog id="rangeDialog" aria-labelledby="rangeTitle"><div class="dialog-top"><span>5 GROUPS × 20 WIRES</span><button class="close-btn" data-close="rangeDialog" type="button" aria-label="閉じる">×</button></div><h2 id="rangeTitle">どこを拡大する？</h2><div class="group-list" id="groupList"></div></dialog>
-<dialog id="resetDialog" aria-labelledby="resetTitle"><div class="dialog-top"><span>A NEW BOX</span><button class="close-btn" data-close="resetDialog" type="button" aria-label="閉じる">×</button></div><h2 id="resetTitle">新しい箱に交換する？</h2><p>今の箱での挑戦を終え、新しい100本で始めます。ここまでの自己ベストは保存されます。ハズレは新しく1本だけ抽選します。</p><button class="dialog-primary" id="confirmReset" type="button">新しい箱を用意する</button></dialog>
-<div class="flash" id="flash" aria-hidden="true"></div><div class="toast" id="toast" role="status"></div><div class="sr-only" id="announce" aria-live="polite"></div>
+<noscript>このゲームを遊ぶには、JavaScriptを有効にしてください。</noscript>
+<div class="wrap is-ready" id="gameRoot"><header class="topbar"><div class="brand"><span class="brand-logo"><svg viewBox="0 0 20 20" fill="none"><path d="M1 5h12M1 10h12M1 15h12" stroke="#f5bf69" stroke-width="1.6"/><rect x="11" y="2" width="7" height="16" rx="1" fill="#e6e6cf"/></svg></span><span>ONE BAD WIRE</span></div><div class="top-actions"><button class="plain-btn" id="soundBtn" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path id="soundWaves" d="m17 9 5 6m0-6-5 6"/></svg><span id="soundLabel">音 OFF</span></button><button class="plain-btn" id="helpBtn" type="button">遊び方</button></div></header>
+<main><section class="hero"><div><div class="eyebrow">ONE BAD WIRE. ONE PERCENT CHANCE.</div><h1>最後の1本、<wbr>残せる？</h1><p><strong>100本の導線。99本を切って、ハズレ1本を残せ。</strong><br>時間制限なし。あなたの直感を信じて。</p></div><div class="odds"><b><span id="safetyValue">1</span><small id="oddsUnit">%</small></b><p id="oddsLabel">すべて解除できる確率</p><p class="odds-note" id="riskNote">ハズレを最後まで残せたら成功。</p></div></section>
+<div class="workspace"><section class="board-card" aria-label="爆弾と導線"><div class="board-toolbar"><span class="board-label" id="boardLabel">100 WIRES / 1 BAD</span><span class="phase-tag" id="phaseLabel">READY</span></div><div class="apparatus" id="apparatus" data-phase="ready"><svg id="board" role="group" aria-label="100本の導線と爆弾の全体図"></svg><div class="start-overlay" id="startOverlay"><button class="start-btn" id="startBtn" type="button">スタート</button></div></div><div class="board-note"><span id="boardHint">スタートすると、配線を拡大します。</span><span class="fixed">NO TIMER. TAKE YOUR TIME.</span></div><div class="scroll-tools" id="scrollTools" hidden><span class="range-label" id="rangeLabel">001 — 010</span><div class="range-wrap"><button id="upBtn" type="button" aria-label="上の導線へ">↑</button><input id="rangeScroll" type="range" min="0" max="90" step="0.01" value="0" aria-label="表示する導線の範囲"><button id="downBtn" type="button" aria-label="下の導線へ">↓</button></div></div></section>
+<aside class="controls" aria-label="ゲームの状態"><div class="control-heading"><span id="controlHeading">READY TO DISARM</span><b id="attemptBadge">—</b></div><div class="run-score"><div><span class="score-label">この箱の記録</span><strong id="scoreCount">0</strong><small>本セーフ</small></div><div class="remaining"><span>残り</span><b id="remainingCount">100</b><span>本</span></div></div><div class="selection-main"><p class="selection-label">最後に切った導線</p><p class="selected-number empty" id="selectedNumber">— —</p><div class="color-preview"><span class="sample-wire" id="sampleWire"></span><span class="color-name" id="colorName">まだ切っていません</span></div></div><div class="action-main" id="actionTools" hidden><div class="pick-tools"><button id="randomBtn" type="button">⚄ おまかせで切る</button><button id="jumpBtn" type="button"># 番号で切る</button></div><p class="tap-note">タップで切断。<br><strong>二本指スクロールで上下に移動。</strong></p></div><div class="status-box" id="statusBox"><p class="comment-tag" id="commentTag">FIELD NOTES</p><p class="comment-line" id="commentText">さて、世界を救いにいこうか。</p><h2 class="status-title" id="statusTitle">準備ができたら、スタート。</h2><p id="statusText">99本はセーフ。1本だけがハズレです。</p><button class="again-btn" id="againBtn" type="button" hidden>次の爆弾へ</button><a class="share-btn" id="shareBtn" target="_blank" rel="noopener noreferrer" hidden><b>𝕏</b> Xに投稿</a></div><div class="stats"><div class="stats-label"><span>YOUR RECORD</span><span>このブラウザの記録</span></div><div class="stats-values"><div><b id="attemptCount">0</b><span>挑戦</span></div><div><b id="winCount">0</b><span>解除成功</span></div><div><b id="safeCount">0</b><span>自己ベスト</span></div><div><b id="failCount">0</b><span>爆発</span></div></div><p class="record-note">挑戦回数はスタート時に数えます。</p></div><button class="reset-btn" id="resetBtn" type="button" hidden>↻ この挑戦をやめる</button><div class="legend" id="legend"><small>色は10色。番号で1本ずつ見分けられます。<br>色や順番に、当たり外れのヒントはありません。</small></div></aside></div></main><footer class="footer"><span>ONE BAD WIRE © 2026 · EKOOEKON</span><span>DAITAI ANZEN INDUSTRIES — だいたい安全工業</span></footer></div>
+<div class="mobile-controls" id="mobileBar"><div class="mobile-copy"><div class="mobile-label" id="mobileLabel">100本 / ハズレは1本</div><p class="mobile-comment" id="mobileComment">準備ができたら、スタート。</p></div><div class="mobile-actions"><button class="start-btn" id="mobileStartBtn" type="button">スタート</button><button class="again-btn" id="mobileAgainBtn" type="button" hidden>次の爆弾へ</button><a class="share-btn" id="mobileShareBtn" target="_blank" rel="noopener noreferrer" hidden>𝕏 Xに投稿</a></div></div>
+<dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialog-top"><span>FIELD NOTES / ONE PERCENT</span><button class="close-btn" data-close="helpDialog" type="button" aria-label="閉じる">×</button></div><h2 id="helpTitle">最後の1本を、残せ。</h2><ul><li>スタートで配線を拡大。約10本ずつ表示します。</li><li>配線の上で二本指スクロール、または上下にスワイプすると、範囲を連続して動かせます。下のスライダーでも移動できます。</li><li>導線をタップすると即切断。セーフなら続行、ハズレなら爆発します。</li><li>99本のセーフを切り、1本のハズレを残せたら解除成功です。</li></ul><p>成功・失敗のどちらも、最後は全体図に戻ります。時間制限はありません。ハズレは箱を用意したときに決まり、途中で変わりません。</p><p>上下矢印で導線へ移動、Enter / Spaceで切断。「おまかせで切る」と番号入力の送信も、すぐ切断します。</p><p>セーフのコメントは100種類、アウトは8種類。出やすさには差があります。成功時のXボタンは、挑戦回数とゲームのリンクを入れた投稿画面を開きます。</p><p class="probability-note">最後まで解除できる確率は1/100（1%）。最初の1本がセーフの確率は99%。見た目やコメントは当たり外れのヒントではありません。</p><button class="dialog-primary" data-close="helpDialog" type="button">わかった</button></dialog>
+<dialog id="jumpDialog" aria-labelledby="jumpTitle"><form id="jumpForm"><div class="dialog-top"><span>CUT BY NUMBER</span><button class="close-btn" data-close="jumpDialog" type="button" aria-label="閉じる">×</button></div><h2 id="jumpTitle">どの番号を切る？</h2><p><label for="wireInput">1〜100の番号を入力。送信するとすぐ切れます。</label></p><input class="field" id="wireInput" type="text" inputmode="numeric" maxlength="5" autocomplete="off" placeholder="例：48" aria-describedby="jumpError"><div class="field-error" id="jumpError" role="status"></div><button class="dialog-primary" type="submit">この番号を切る</button></form></dialog>
+<dialog id="resetDialog" aria-labelledby="resetTitle"><div class="dialog-top"><span>A NEW BOX</span><button class="close-btn" data-close="resetDialog" type="button" aria-label="閉じる">×</button></div><h2 id="resetTitle">この挑戦をやめる？</h2><p>新しい爆弾のスタート画面に戻ります。挑戦回数と自己ベストは残ります。</p><button class="dialog-primary" id="confirmReset" type="button">新しい爆弾を用意する</button></dialog><div class="flash" id="flash" aria-hidden="true"></div><div class="toast" id="toast" role="status"></div><div class="sr-only" id="announce" aria-live="polite"></div>
 <script>(function (root) {
   'use strict';
 
@@ -57,7 +54,7 @@
       throw new TypeError('randomUint32 must be a function.');
     }
 
-    let state = 'playing';
+    let state = 'ready';
     let round = 0;
     let selectedId = null;
     let badId;
@@ -83,13 +80,18 @@
         state: state,
         round: round,
         selectedId: selectedId,
-        badId: state === 'lost' ? badId : null,
+        badId: state === 'won' || state === 'lost' ? badId : null,
         cutIds: Object.freeze(cutIds.slice()),
         safeCount: safeCount,
         remainingCount: TOTAL - cutIds.length,
         lastCutId: lastCutId,
         lastOutcome: lastOutcome
       });
+    }
+
+    function start() {
+      if (state === 'ready') state = 'playing';
+      return snapshot();
     }
 
     function select(id) {
@@ -112,6 +114,7 @@
         safeCount += 1;
         selectedId = null;
         lastOutcome = 'safe';
+        if (safeCount === TOTAL - 1) state = 'won';
       }
       return snapshot();
     }
@@ -120,7 +123,7 @@
       const nextBadId = chooseBadWire();
       badId = nextBadId;
       selectedId = null;
-      state = 'playing';
+      state = 'ready';
       cutIds = [];
       cutSet = new Set();
       safeCount = 0;
@@ -131,7 +134,7 @@
     }
 
     newRound();
-    return Object.freeze({select: select, cut: cut, newRound: newRound, snapshot: snapshot});
+    return Object.freeze({start: start, select: select, cut: cut, newRound: newRound, snapshot: snapshot});
   }
 
   root.WireEngine100 = Object.freeze({TOTAL: TOTAL, createGame: createGame});
@@ -854,44 +857,405 @@
   root.WireComments = Object.freeze({ safe, out, pick });
 })(typeof window === 'undefined' ? globalThis : window);
 
-</script>
-<script>(function () {
+
+(function(root){
   'use strict';
-  const $ = id => document.getElementById(id), NS = 'http://www.w3.org/2000/svg';
-  const pad = n => String(n).padStart(3, '0');
+  const GAME_URL='https://ekooekon.github.io/wires/';
+  const TAGS=['1パーセント爆弾解除ゲーム','ゲーム制作','gamedev'];
+  function success(attempt){
+    if(!Number.isSafeInteger(attempt)||attempt<1)throw new RangeError('Invalid attempt number.');
+    const text=attempt+'回目の挑戦で爆弾解除に成功した！\n'+TAGS.map(tag=>'#'+tag).join(' ')+'\n'+GAME_URL;
+    return Object.freeze({text,href:'https://x.com/intent/tweet?text='+encodeURIComponent(text)});
+  }
+  root.WireShare=Object.freeze({success,GAME_URL});
+})(typeof window!=='undefined'?window:globalThis);
+
+(function (root) {
+  'use strict';
+  const NS = 'http://www.w3.org/2000/svg', TOTAL = 100, VISIBLE = 10;
+  const TOP = 58, BOTTOM = 552, HEIGHT = 620, STEP = (BOTTOM - TOP) / VISIBLE;
   const palette = [
     ['#ff655d','赤'], ['#42dbea','シアン'], ['#ffd450','黄'], ['#b79aff','紫'],
     ['#7add71','緑'], ['#ff94cf','ピンク'], ['#72aaff','青'], ['#ffad57','オレンジ'],
     ['#45d4ab','ミント'], ['#edf1f6','白']
   ];
+  const pad = n => String(n).padStart(3, '0');
   const color = id => palette[(id - 1) % palette.length];
-  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const board = $('board');
-  $('bombStyles').textContent = WireBomb.styles;
+  let instance = 0;
+
+  function create(svg, callbacks) {
+    if (!svg || typeof svg.addEventListener !== 'function') throw new TypeError('WireBoard requires an SVG element.');
+    const cb = callbacks || {}, uid = 'wire-board-' + (++instance) + '-';
+    let snapshot = {state:'ready', round:0, cutIds:[], safeCount:0, badId:null};
+    let settings = {mode:'overview', exploded:false, animateExplosion:false, reducedMotion:false, interactive:false};
+    let offset = 0, roving = 1, hovered = null, focused = null;
+    let geometry = null, sceneMode = null, sceneWidth = 0, scroller = null;
+    let rows = [], pointer = null, deferredBuild = false, lastRange = '';
+
+    function el(tag, attrs, text) {
+      const node = document.createElementNS(NS, tag);
+      for (const key in attrs) {
+        let value = String(attrs[key]);
+        if (key === 'id') value = uid + value;
+        value = value.replace(/url\(#(frame|cover|socket|metal|texture|workClip)\)/g, 'url(#' + uid + '$1)');
+        node.setAttribute(key, value);
+      }
+      if (text !== undefined) node.textContent = text;
+      return node;
+    }
+    function active() { return settings.mode === 'active'; }
+    function cutSet() { return new Set(Array.isArray(snapshot.cutIds) ? snapshot.cutIds : []); }
+    function canCut(id) {
+      return active() && settings.interactive !== false && snapshot.state === 'playing' &&
+        Number.isInteger(id) && id >= 1 && id <= TOTAL && !cutSet().has(id);
+    }
+    function getRange() {
+      return {offset:offset, first:Math.floor(offset + 1e-8) + 1, last:Math.min(TOTAL, Math.ceil(offset + VISIBLE - 1e-8))};
+    }
+    function notifyRange(force) {
+      const range = getRange(), key = range.offset + ':' + range.first + ':' + range.last;
+      if (force || key !== lastRange) {
+        lastRange = key;
+        if (typeof cb.onRangeChange === 'function') cb.onRangeChange(range);
+      }
+    }
+    function screenScale() {
+      const rect = typeof svg.getBoundingClientRect === 'function' ? svg.getBoundingClientRect() : null;
+      return rect && rect.height > 0 ? HEIGHT / rect.height : 1;
+    }
+    function makeDefs() {
+      const defs = el('defs', {});
+      [['frame',[['0','#53616a'],['.45','#34454e'],['1','#48585e']]],
+       ['cover',[['0','#405a6b'],['.5','#2b4355'],['1','#385668']]],
+       ['socket',[['0','#0c141b'],['.5','#5e7077'],['1','#17232e']]],
+       ['metal',[['0','#b6c1be'],['1','#526770']]]].forEach(entry => {
+        const gradient = el('linearGradient', {id:entry[0],x1:0,y1:0,x2:1,y2:entry[0] === 'socket' ? 0 : 1});
+        entry[1].forEach(stop => gradient.append(el('stop', {offset:stop[0],'stop-color':stop[1]})));
+        defs.append(gradient);
+      });
+      const texture = el('pattern', {id:'texture',width:6,height:6,patternUnits:'userSpaceOnUse'});
+      texture.append(el('path', {d:'M0 0h6',stroke:'#ffffff','stroke-opacity':'.025','stroke-width':1}));
+      defs.append(texture);
+      return defs;
+    }
+    function linePath(y, cut) {
+      const g = geometry;
+      if (cut) return 'M'+g.start+' '+y+'H'+(g.cut-8)+'l4 3M'+(g.cut+8)+' '+(y-3)+'l4 3H'+g.end;
+      return 'M'+g.start+' '+y+'H'+g.end;
+    }
+    function drawOverview(w) {
+      const board=svg, h=HEIGHT, compact=w<500, s=snapshot;
+      const exploded=settings.exploded || s.state === 'lost', animateExplosion=settings.animateExplosion;
+      const reduced=settings.reducedMotion;
+      const g=geometry={w,h,boxX:w*.59,boxW:w*.17,start:compact?39:63,top:TOP,bottom:BOTTOM};
+      g.boxRight=g.boxX+g.boxW;g.cut=g.start+(g.boxX-g.start)*.48;g.end=g.boxX+12;
+      g.bombX=w*.895;g.bombR=Math.min(56,w*.075);g.step=(g.bottom-g.top)/TOTAL;
+    const background = el('g',{'aria-hidden':'true'});
+    background.append(el('rect',{x:1,y:2,width:w-2,height:h-5,rx:13,fill:'url(#frame)',stroke:'#273944','stroke-width':2}));
+    background.append(el('rect',{x:11,y:13,width:w-22,height:h-28,rx:7,fill:'#182630',stroke:'#72818a','stroke-opacity':.6}));
+    background.append(el('rect',{x:12,y:14,width:w-24,height:h-30,rx:7,fill:'url(#texture)'}));
+    for (let n=0;n<5;n++) {
+      const y=g.top+(g.bottom-g.top)/5*n;
+      background.append(el('rect',{x:18,y,width:g.boxX-17,height:(g.bottom-g.top)/5,fill:n%2?'#ffffff04':'#00000008'}));
+    }
+    background.append(el('text',{x:25,y:35,fill:'#8da4af','font-size':compact?7:8,'font-family':'monospace','letter-spacing':1.5},compact?'INPUT / 100':'INPUT / 100 INDIVIDUAL WIRES'));
+    background.append(el('text',{x:25,y:h-28,fill:'#8c9ea4','font-size':compact?7:8,'font-family':'monospace','letter-spacing':1},'MODEL 100 · CASE '+pad(s.round)));
+    background.append(el('path',{d:'M'+g.cut+' 46V'+(h-48),stroke:'#c9d9df','stroke-opacity':.13,'stroke-dasharray':'3 6','stroke-width':1}));
+    board.append(background);
+      const wires=el('g', {'aria-hidden':'true'}), used=cutSet();
+      for(let i=0;i<TOTAL;i++) {
+        const id=i+1,y=g.top+g.step*(i+.5),node=el('g',{'data-drawn-wire':id,opacity:used.has(id)?.28:1});
+        node.append(el('path',{d:linePath(y,used.has(id)),fill:'none',stroke:color(id)[0],'stroke-width':1.45,'stroke-linecap':'round',class:'wire-core'}));
+        wires.append(node);
+      }
+      board.append(wires);
+      const labels=el('g',{'aria-hidden':'true','pointer-events':'none'});
+      for(let n=0;n<5;n++) {
+        const y=g.top+n*(g.bottom-g.top)/5;
+        labels.append(el('rect',{x:24,y:y+12,width:31,height:24,rx:3,fill:'#101d27','fill-opacity':.93}));
+        labels.append(el('text',{x:39,y:y+27,fill:'#adbec5','font-size':8,'font-family':'monospace','text-anchor':'middle'},pad(n*20+1)));
+      }
+      board.append(labels);
+    const hardware=el('g',{'aria-hidden':'true','pointer-events':'none'});
+    const outletY=h*.5, tailEnd=g.bombX-g.bombR+7;
+    for (let i=0;i<100;i++) {
+      const off=((i*37)%100-50)*.5, spread=((i*73)%100-50)*.3, x1=g.boxRight-5;
+      hardware.append(el('path',{d:'M'+x1+' '+(outletY+off)+'C'+(x1+15)+' '+(outletY+off)+' '+(tailEnd-10)+' '+(outletY+spread)+' '+tailEnd+' '+(outletY+spread*.45),fill:'none',stroke:color(i+1)[0],'stroke-width':.9,'stroke-opacity':exploded?.28:.95}));
+    }
+    const tieX=g.boxRight+(tailEnd-g.boxRight)*.55;
+    hardware.append(el('path',{d:'M'+tieX+' '+(outletY-37)+'q8 37 0 74',fill:'none',stroke:'#0b161c','stroke-width':7}));
+    hardware.append(el('path',{d:'M'+(tieX-1)+' '+(outletY-37)+'q8 37 0 74',fill:'none',stroke:'#5b6e73','stroke-width':2}));
+    hardware.append(el('rect',{x:g.boxRight-6,y:outletY-39,width:16,height:78,rx:6,fill:'url(#socket)',stroke:'#121e29','stroke-width':2}));
+    for(let j=0;j<4;j++)hardware.append(el('path',{d:'M'+(g.boxRight-4+j*3)+' '+(outletY-35)+'v70',stroke:'#75858b','stroke-opacity':.3,'stroke-width':1}));
+    hardware.append(el('rect',{x:g.boxX-6,y:31,width:g.boxW+10,height:h-61,rx:8,fill:'#080f16','fill-opacity':.55,transform:'translate(4 4)'}));
+    hardware.append(el('rect',{x:g.boxX-6,y:29,width:g.boxW+10,height:h-61,rx:8,fill:'url(#cover)',stroke:'#172e3e','stroke-width':2}));
+    hardware.append(el('rect',{x:g.boxX-1,y:34,width:g.boxW,height:h-71,rx:5,fill:'url(#texture)',stroke:'#8babb8','stroke-opacity':.25}));
+    const cx=g.boxX+g.boxW/2;
+    for(const sx of [g.boxX+7,g.boxRight-9])for(const sy of [46,h-49]){
+      hardware.append(el('circle',{cx:sx,cy:sy,r:4.3,fill:'url(#metal)',stroke:'#1a2f3b','stroke-width':1}));
+      hardware.append(el('path',{d:'M'+(sx-2)+' '+(sy+1.2)+'l4 -2.4',stroke:'#304750','stroke-width':1}));
+    }
+    hardware.append(el('text',{x:cx,y:83,fill:'#96b2bf','font-size':compact?6:8,'letter-spacing':compact?1:2,'font-family':'monospace','text-anchor':'middle'},'SEALED UNIT'));
+    hardware.append(el('rect',{x:cx-g.boxW*.32,y:119,width:g.boxW*.64,height:92,rx:3,fill:'#132c3b',stroke:'#547084','stroke-width':1}));
+    hardware.append(el('text',{x:cx,y:165,fill:'#dce9e7','font-size':compact?23:39,'font-family':'monospace','text-anchor':'middle','letter-spacing':-2},'100'));
+    hardware.append(el('text',{x:cx,y:189,fill:'#83a8bb','font-size':compact?6:8,'font-family':'monospace','text-anchor':'middle','letter-spacing':compact?.5:1.5},'IN / ONE OUT'));
+    hardware.append(el('circle',{id:'caseLed',cx,cy:247,r:4,fill:exploded?'#ff795e':s.state==='won'?'#80dc94':'#e9c76b'}));
+    hardware.append(el('text',{id:'caseState',x:cx,y:269,fill:'#b5c8c9','font-size':compact?6:8,'font-family':'monospace','text-anchor':'middle'},s.state==='won'?'DISARMED':s.state==='lost'?'FAILED':'STANDBY'));
+    for(let n=0;n<6;n++)hardware.append(el('rect',{x:cx-g.boxW*.25,y:328+n*8,width:g.boxW*.5,height:3,rx:1.5,fill:'#193142',stroke:'#64818e','stroke-opacity':.18}));
+    hardware.append(el('rect',{x:cx-g.boxW*.33,y:444,width:g.boxW*.66,height:56,rx:2,fill:'#d6c9a0',transform:'rotate(-2 '+cx+' 472)'}));
+    hardware.append(el('text',{x:cx,y:466,fill:'#4c503f','font-size':compact?6:9,'font-family':'monospace','text-anchor':'middle','font-weight':'bold'},'99 SAFE'));
+    hardware.append(el('text',{x:cx,y:482,fill:'#4c503f','font-size':compact?6:8,'font-family':'monospace','text-anchor':'middle'},'1 BAD WIRE'));
+    hardware.append(el('text',{x:cx,y:551,fill:'#8ea5ad','font-size':compact?5:7,'font-family':'monospace','text-anchor':'middle'},'DO NOT OPEN'));
+    hardware.append(root.WireBomb.create({x:g.bombX,y:outletY,r:g.bombR,state:exploded?'exploded':'idle',reducedMotion:reduced||!animateExplosion}));
+    hardware.append(el('text',{x:g.bombX,y:outletY+g.bombR+37,fill:s.state==='won'?'#93dfa7':exploded?'#d89476':'#8c9fa9','font-size':compact?6:8,'font-family':'monospace','text-anchor':'middle'},s.state==='won'?'DISARMED':exploded?'BOOM.':'ONE BAD WIRE'));
+    board.append(hardware);
+      if(s.state === 'won') {
+        const marker=el('g', {'aria-hidden':'true','pointer-events':'none'}), cy=h*.5;
+        marker.append(el('circle',{cx:g.bombX,cy,r:g.bombR*1.09,fill:'none',stroke:'#80dc94','stroke-width':3,'stroke-opacity':'.85'}));
+        marker.append(el('circle',{cx:g.bombX+g.bombR*.68,cy:cy+g.bombR*.64,r:g.bombR*.29,fill:'#80dc94',stroke:'#182630','stroke-width':2}));
+        marker.append(el('path',{d:'M'+(g.bombX+g.bombR*.54)+' '+(cy+g.bombR*.64)+'l'+(g.bombR*.1)+' '+(g.bombR*.1)+'l'+(g.bombR*.19)+' '+(-g.bombR*.22),fill:'none',stroke:'#16392a','stroke-width':Math.max(2,g.bombR*.055),'stroke-linecap':'round','stroke-linejoin':'round'}));
+        board.append(marker);
+      }
+      if((s.state === 'won' || s.state === 'lost') && Number.isInteger(s.badId)) {
+        const y=g.top+g.step*(s.badId-.5), d=linePath(y,used.has(s.badId));
+        const layer=el('g',{'aria-hidden':'true','pointer-events':'none'});
+        layer.append(el('path',{d,fill:'none',stroke:'#09131d','stroke-width':6,'stroke-linecap':'round'}));
+        layer.append(el('path',{d,fill:'none',stroke:s.state==='won'?'#80dc94':'#ff725c','stroke-width':4,'stroke-linecap':'round'}));
+        layer.append(el('path',{d,fill:'none',stroke:color(s.badId)[0],'stroke-width':2,'stroke-linecap':'round'}));
+        board.append(layer);
+      }
+    }
+
+    function drawActive(w, defs) {
+      const g=geometry={w,h:HEIGHT,start:w<500?62:78,end:w-43,top:TOP,bottom:BOTTOM,step:STEP};
+      g.cut=g.start+(g.end-g.start)*.48;
+      const clip=el('clipPath',{id:'workClip',clipPathUnits:'userSpaceOnUse'});
+      clip.append(el('rect',{x:18,y:TOP,width:w-36,height:BOTTOM-TOP}));
+      defs.append(clip);
+      const frame=el('g',{'aria-hidden':'true'});
+      frame.append(el('rect',{x:1,y:2,width:w-2,height:HEIGHT-5,rx:13,fill:'url(#frame)',stroke:'#273944','stroke-width':2}));
+      frame.append(el('rect',{x:11,y:13,width:w-22,height:HEIGHT-28,rx:7,fill:'#182630',stroke:'#72818a','stroke-opacity':.6}));
+      frame.append(el('rect',{x:12,y:14,width:w-24,height:HEIGHT-30,rx:7,fill:'url(#texture)'}));
+      frame.append(el('text',{x:25,y:35,fill:'#8da4af','font-size':8,'font-family':'monospace','letter-spacing':1.5},'WIRE WORK AREA / 100'));
+      frame.append(el('text',{x:25,y:HEIGHT-28,fill:'#8c9ea4','font-size':8,'font-family':'monospace','letter-spacing':1},'SCROLL TO FIND YOUR NEXT WIRE'));
+      frame.append(el('path',{d:'M'+g.cut+' '+TOP+'V'+BOTTOM,stroke:'#c9d9df','stroke-opacity':.13,'stroke-dasharray':'3 6','stroke-width':1}));
+      frame.append(el('rect',{x:w-47,y:TOP,width:27,height:BOTTOM-TOP,rx:3,fill:'#243946',stroke:'#577080','stroke-opacity':'.35'}));
+      svg.append(frame);
+      const viewport=el('g',{'clip-path':'url(#workClip)'});
+      scroller=el('g',{'data-wire-scroll':'true'});
+      viewport.append(scroller);svg.append(viewport);rows=[];
+      for(let i=0;i<TOTAL;i++) {
+        const id=i+1,y=TOP+STEP*(i+.5);
+        const node=el('g',{class:'wire-row','data-wire':id,role:'button',tabindex:-1});
+        const hit=el('rect',{class:'row-hit',x:18,y:TOP+STEP*i,width:w-36,height:STEP,rx:2,fill:'transparent'});
+        node.append(hit);
+        if(i%2)node.append(el('rect',{x:18,y:TOP+STEP*i,width:w-36,height:STEP,fill:'#ffffff03','pointer-events':'none'}));
+        const outline=el('path',{fill:'none',stroke:'#fff3ca','stroke-width':10,'stroke-linecap':'round',opacity:0,'pointer-events':'none'});
+        const shadow=el('path',{fill:'none',stroke:'#050b11','stroke-width':8,'stroke-linecap':'round',transform:'translate(0 2)','pointer-events':'none'});
+        const core=el('path',{fill:'none',stroke:color(id)[0],'stroke-width':5.4,'stroke-linecap':'round',class:'wire-core','pointer-events':'none'});
+        const shine=el('path',{fill:'none',stroke:'#ffffff','stroke-opacity':'.3','stroke-width':1,transform:'translate(0 -1)','pointer-events':'none'});
+        node.append(outline,shadow,core,shine);
+        node.append(el('circle',{cx:g.start,cy:y,r:4.2,fill:'#a2b6bc',stroke:'#080f16','stroke-width':2,'pointer-events':'none'}));
+        node.append(el('circle',{cx:g.end,cy:y,r:4.2,fill:'#a2b6bc',stroke:'#080f16','stroke-width':2,'pointer-events':'none'}));
+        const label=el('text',{x:26,y:y+4.5,fill:'#a5bac6','font-size':12,'font-family':'monospace','pointer-events':'none'},pad(id));
+        node.append(label);scroller.append(node);
+        rows.push({id,node,hit,outline,shadow,core,shine,label,y});
+      }
+      paintActive();
+    }
+
+    function paintActive() {
+      if(!scroller || !active())return;
+      const used=cutSet(),range=getRange();
+      const visibleUncut=rows.filter(row=>row.id>=range.first&&row.id<=range.last&&!used.has(row.id));
+      if(roving<range.first||roving>range.last||used.has(roving))roving=visibleUncut.length?visibleUncut[0].id:range.first;
+      scroller.setAttribute('transform','translate(0 '+(-offset*STEP)+')');
+      for(const row of rows) {
+        const done=used.has(row.id),visible=row.id>=range.first&&row.id<=range.last;
+        const enabled=settings.interactive!==false&&snapshot.state==='playing'&&!done;
+        const mark=enabled&&(hovered===row.id||focused===row.id);
+        const d=linePath(row.y,done);
+        for(const path of [row.outline,row.shadow,row.core,row.shine])path.setAttribute('d',d);
+        row.node.setAttribute('class','wire-row'+(done?' is-cut':''));
+        row.node.setAttribute('aria-label','導線 '+pad(row.id)+'、'+color(row.id)[1]+(done?'、切断済み':'、押すと切断'));
+        row.node.setAttribute('aria-disabled',String(!enabled));
+        row.node.setAttribute('aria-hidden',String(!visible));
+        row.node.setAttribute('tabindex',enabled&&visible&&row.id===roving?'0':'-1');
+        row.node.setAttribute('opacity',done?'.28':'1');
+        row.label.setAttribute('text-decoration',done?'line-through':'none');
+        row.label.setAttribute('fill',done?'#7b8e97':'#a5bac6');
+        row.outline.setAttribute('opacity',mark?'.65':'0');
+        row.hit.setAttribute('fill',mark?'#d0dff416':'transparent');
+      }
+      svg.setAttribute('aria-label','導線 '+pad(range.first)+' から '+pad(range.last)+' を表示。スクロールで移動し、押すと切断します。');
+    }
+    function build() {
+      const w=Math.max(active()?280:700,Math.round(svg.clientWidth||800));
+      const remember=focused;
+      svg.replaceChildren();rows=[];scroller=null;
+      svg.setAttribute('viewBox','0 0 '+w+' '+HEIGHT);
+      svg.setAttribute('data-mode',settings.mode);
+      svg.setAttribute('role',active()?'group':'img');
+      svg.setAttribute('aria-label',active()?'導線の作業エリア':'100本の導線、密閉された箱、黒い爆弾の全体図。');
+      svg.style.aspectRatio=w+' / '+HEIGHT;
+      svg.style.touchAction=active()?'none':'auto';
+      const defs=makeDefs();svg.append(defs);
+      if(active())drawActive(w,defs);else drawOverview(w);
+      sceneMode=settings.mode;sceneWidth=w;deferredBuild=false;
+      if(active()&&remember&&canCut(remember))focusWire(remember,false);
+    }
+    function render(nextSnapshot, nextSettings) {
+      if(nextSnapshot)snapshot=nextSnapshot;
+      settings=Object.assign({},settings,nextSettings||{});
+      settings.mode=settings.mode==='active'?'active':'overview';
+      const w=Math.max(active()?280:700,Math.round(svg.clientWidth||800));
+      const needsBuild=sceneMode!==settings.mode||sceneWidth!==w||!active();
+      if(needsBuild&&pointer){deferredBuild=true;paintActive();}
+      else if(needsBuild)build();
+      else paintActive();
+      notifyRange(false);
+      return getRange();
+    }
+    function setOffset(value) {
+      const numeric=Number(value);
+      if(!Number.isFinite(numeric))return getRange();
+      offset=Math.max(0,Math.min(TOTAL-VISIBLE,numeric));
+      hovered=null;paintActive();notifyRange(false);
+      return getRange();
+    }
+    function scrollBy(pixels) {
+      const numeric=Number(pixels);
+      return Number.isFinite(numeric)?setOffset(offset+numeric*screenScale()/STEP):getRange();
+    }
+    function ensureVisible(id) {
+      if(!Number.isInteger(id)||id<1||id>TOTAL)return getRange();
+      if(id-1<offset)setOffset(id-1);
+      else if(id>offset+VISIBLE)setOffset(id-VISIBLE);
+      return getRange();
+    }
+    function reset() {
+      if(pointer)releasePointer(pointer.id);
+      pointer=null;hovered=null;focused=null;roving=1;
+      offset=0;paintActive();notifyRange(true);
+      return getRange();
+    }
+    function idFromNode(node) {
+      while(node&&node!==svg) {
+        if(typeof node.getAttribute==='function') {
+          const raw=node.getAttribute('data-wire');
+          if(raw!==null&&raw!==undefined&&raw!=='')return Number(raw);
+        }
+        node=node.parentNode||node.parent;
+      }
+      return null;
+    }
+    function focusWire(id, notify) {
+      if(!canCut(id))return;
+      ensureVisible(id);roving=id;focused=id;hovered=id;paintActive();
+      const row=rows[id-1];
+      if(row&&typeof row.node.focus==='function')row.node.focus({preventScroll:true});
+      if(notify&&typeof cb.onNavigate==='function')cb.onNavigate(id);
+    }
+    function activate(id) {
+      if(!canCut(id))return;
+      roving=id;hovered=null;
+      if(typeof cb.onCut==='function')cb.onCut(id);
+    }
+    function releasePointer(id) {
+      try { if(typeof svg.hasPointerCapture==='function'&&svg.hasPointerCapture(id))svg.releasePointerCapture(id); } catch(_) {}
+    }
+    function cancelPointer() {
+      if(!pointer)return;
+      const id=pointer.id;pointer=null;releasePointer(id);
+      if(deferredBuild)build();
+    }
+    svg.addEventListener('wheel',function(e) {
+      if(!active()||e.ctrlKey||!Number.isFinite(e.deltaY)||e.deltaY===0)return;
+      e.preventDefault();
+      const factor=e.deltaMode===1?16:e.deltaMode===2?(typeof svg.getBoundingClientRect==='function'?svg.getBoundingClientRect().height:HEIGHT):1;
+      scrollBy(e.deltaY*(factor||HEIGHT));
+    },{passive:false});
+    svg.addEventListener('pointerdown',function(e) {
+      if(!active()||(e.button!==undefined&&e.button!==0))return;
+      if(pointer){pointer.dragged=true;return;}
+      pointer={id:e.pointerId,startX:e.clientX,startY:e.clientY,lastY:e.clientY,wire:idFromNode(e.target),dragged:false,type:e.pointerType||'mouse'};
+      try { svg.setPointerCapture(e.pointerId); } catch(_) {}
+    });
+    svg.addEventListener('pointermove',function(e) {
+      if(!pointer||pointer.id!==e.pointerId)return;
+      const dx=e.clientX-pointer.startX,dy=e.clientY-pointer.startY;
+      if(!pointer.dragged&&Math.hypot(dx,dy)>6)pointer.dragged=true;
+      if(pointer.dragged) {
+        if(e.cancelable)e.preventDefault();
+        scrollBy(pointer.lastY-e.clientY);
+      }
+      pointer.lastY=e.clientY;
+    },{passive:false});
+    svg.addEventListener('pointerup',function(e) {
+      if(!pointer||pointer.id!==e.pointerId)return;
+      const gesture=pointer;
+      const moved=Math.hypot(e.clientX-gesture.startX,e.clientY-gesture.startY)>6;
+      pointer=null;releasePointer(gesture.id);
+      if(deferredBuild)build();
+      if(!gesture.dragged&&!moved)activate(gesture.wire);
+    });
+    svg.addEventListener('pointercancel',cancelPointer);
+    svg.addEventListener('lostpointercapture',function(e) {
+      if(pointer&&pointer.id===e.pointerId)cancelPointer();
+    });
+    svg.addEventListener('click',function(e) {
+      if(e.detail===0)activate(idFromNode(e.target));
+    });
+    svg.addEventListener('pointerover',function(e) {
+      if(pointer||!active()||e.pointerType==='touch')return;
+      const id=idFromNode(e.target);hovered=canCut(id)?id:null;paintActive();
+    });
+    svg.addEventListener('pointerout',function(e) {
+      if(pointer||!active())return;
+      const next=idFromNode(e.relatedTarget);hovered=canCut(next)?next:null;paintActive();
+    });
+    svg.addEventListener('focusin',function(e) {
+      const id=idFromNode(e.target);if(!Number.isInteger(id))return;
+      focused=id;roving=id;paintActive();
+    });
+    svg.addEventListener('focusout',function(e) {
+      if(idFromNode(e.relatedTarget)!==null)return;
+      focused=null;paintActive();
+    });
+    svg.addEventListener('keydown',function(e) {
+      if(!active())return;
+      const id=idFromNode(e.target);if(!Number.isInteger(id))return;
+      if(e.key==='Enter'||e.key===' '||e.key==='Spacebar') {
+        e.preventDefault();if(!e.repeat)activate(id);return;
+      }
+      if(e.key!=='ArrowUp'&&e.key!=='ArrowDown')return;
+      e.preventDefault();if(settings.interactive===false||snapshot.state!=='playing')return;
+      const delta=e.key==='ArrowDown'?1:-1,used=cutSet();let next=id+delta;
+      while(next>=1&&next<=TOTAL&&used.has(next))next+=delta;
+      if(next>=1&&next<=TOTAL)focusWire(next,true);
+    });
+    return Object.freeze({render,setOffset,scrollBy,ensureVisible,reset,getRange});
+  }
+  root.WireBoard=Object.freeze({create});
+})(typeof window!=='undefined'?window:globalThis);
+</script><script>(function () {
+  'use strict';
+  const $=id=>document.getElementById(id),pad=n=>String(n).padStart(3,'0');
+  const palette=[['#ff655d','赤'],['#42dbea','シアン'],['#ffd450','黄'],['#b79aff','紫'],['#7add71','緑'],['#ff94cf','ピンク'],['#72aaff','青'],['#ffad57','オレンジ'],['#45d4ab','ミント'],['#edf1f6','白']];
+  const color=id=>palette[(id-1)%10];
+  const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const SUCCESS='あなたは世界を救いました。では次の爆弾を解除しに行きましょう。';
+  const RECORD='one-bad-wire-100-v5-record',SOUND='one-bad-wire-100-v5-sound';
+  $('bombStyles').textContent=WireBomb.styles;
   let game;
-  try { game = WireEngine100.createGame(); }
-  catch (_) {
-    $('statusTitle').textContent = 'このブラウザでは抽選できません。';
-    $('statusText').textContent = '新しいChrome・Safari・Firefoxで開いてください。';
-    document.querySelectorAll('button').forEach(b => { b.disabled = true; });
-    return;
-  }
-  let mode = 'detail', group = 0, busy = false, hovered = null, roving = 1, exploded = false;
-  let stats = {rounds:0, best:0, totalSafe:0, explosions:0}, soundOn = false, audio, toastTimer;
-  let geometry = {}, drawnWidth = 0;
-  let currentComment = null;
-  const previousComment = {safe:null,out:null};
-  try {
-    const saved = JSON.parse(localStorage.getItem('one-bad-wire-100-v4-record') || 'null');
-    if (saved && [saved.rounds,saved.best,saved.totalSafe,saved.explosions].every(n => Number.isSafeInteger(n) && n >= 0) && saved.best <= 99 && saved.explosions <= saved.rounds && saved.totalSafe >= saved.best) stats = saved;
-    soundOn = localStorage.getItem('one-bad-wire-100-v4-sound') === 'on';
-  } catch (_) {}
-  function saveStats() { try { localStorage.setItem('one-bad-wire-100-v4-record', JSON.stringify(stats)); } catch (_) {} }
-  function announce(s) { $('announce').textContent = s; }
-  function toast(s) {
-    clearTimeout(toastTimer); $('toast').textContent = s; $('toast').classList.add('show');
-    toastTimer = setTimeout(() => $('toast').classList.remove('show'), 2800);
-  }
+  try{game=WireEngine100.createGame();}catch(_){$('statusTitle').textContent='このブラウザでは抽選できません。';document.querySelectorAll('button').forEach(b=>b.disabled=true);return;}
+  let phase='ready',busy=false,exploded=false,currentAttempt=0,soundOn=false,audio,toastTimer;
+  let stats={rounds:0,best:0,totalSafe:0,explosions:0,wins:0};
+  const previousComment={safe:null,out:null};
+  try{const saved=JSON.parse(localStorage.getItem(RECORD)||'null');if(saved&&['rounds','best','totalSafe','explosions','wins'].every(k=>Number.isSafeInteger(saved[k])&&saved[k]>=0)&&saved.best<=99&&saved.wins+saved.explosions<=saved.rounds&&saved.totalSafe>=saved.best)stats=saved;soundOn=localStorage.getItem(SOUND)==='on';}catch(_){}
+  function saveStats(){try{localStorage.setItem(RECORD,JSON.stringify(stats));}catch(_){}}
+  function announce(text){$('announce').textContent=text;}
+  function toast(text){clearTimeout(toastTimer);$('toast').textContent=text;$('toast').classList.add('show');toastTimer=setTimeout(()=>$('toast').classList.remove('show'),2400);}
   function sound(kind) {
     if (!soundOn) return;
     try {
@@ -933,283 +1297,88 @@
     });
   });
   document.querySelectorAll('[data-close]').forEach(b => b.addEventListener('click',() => $(b.dataset.close).close()));
-  function el(tag, attrs, text) {
-    const node = document.createElementNS(NS,tag);
-    for (const key in attrs) node.setAttribute(key,String(attrs[key]));
-    if (text !== undefined) node.textContent = text;
-    return node;
-  }
-  function linePath(y, cut) {
-    const g = geometry;
-    if (cut) return 'M'+g.start+' '+y+'H'+(g.cut-8)+'l4 3M'+(g.cut+8)+' '+(y-3)+'l4 3H'+(g.boxX+12);
-    return 'M'+g.start+' '+y+'H'+(g.boxX+12);
-  }
-  function drawBoard(animateExplosion) {
-    const w = Math.max(280,Math.round(board.clientWidth || 800)), h = 620;
-    drawnWidth = w;
-    const compact = w < 500;
-    const g = geometry = {w,h,boxX:w*.59,boxW:w*.17,start:compact?39:63,top:58,bottom:552};
-    g.boxRight = g.boxX+g.boxW; g.cut = g.start+(g.boxX-g.start)*.48;
-    g.bombX=w*.895;g.bombR=Math.min(56,w*.075);
-    const s = game.snapshot(), detail = mode === 'detail', count = detail ? 20 : 100;
-    g.step = (g.bottom-g.top)/count; g.first = detail ? group*20+1 : 1;
-    board.setAttribute('viewBox','0 0 '+w+' '+h);
-    board.setAttribute('aria-label',detail ? '導線 '+g.first+' から '+(g.first+19)+'。タップするとすぐ切れます。' : '100本の導線の全体図。20本ずつの範囲を押すと拡大します。');
-    board.innerHTML =
-      '<defs><linearGradient id="frame" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#53616a"/><stop offset=".45" stop-color="#34454e"/><stop offset="1" stop-color="#48585e"/></linearGradient>'+
-      '<linearGradient id="cover" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#405a6b"/><stop offset=".5" stop-color="#2b4355"/><stop offset="1" stop-color="#385668"/></linearGradient>'+
-      '<linearGradient id="socket" x1="0" x2="1"><stop stop-color="#0c141b"/><stop offset=".5" stop-color="#5e7077"/><stop offset="1" stop-color="#17232e"/></linearGradient>'+
-      '<linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b6c1be"/><stop offset="1" stop-color="#526770"/></linearGradient>'+
-      '<pattern id="texture" width="6" height="6" patternUnits="userSpaceOnUse"><path d="M0 0h6" stroke="#ffffff" stroke-opacity=".025" stroke-width="1"/></pattern></defs>';
-    const background = el('g',{'aria-hidden':'true'});
-    background.append(el('rect',{x:1,y:2,width:w-2,height:h-5,rx:13,fill:'url(#frame)',stroke:'#273944','stroke-width':2}));
-    background.append(el('rect',{x:11,y:13,width:w-22,height:h-28,rx:7,fill:'#182630',stroke:'#72818a','stroke-opacity':.6}));
-    background.append(el('rect',{x:12,y:14,width:w-24,height:h-30,rx:7,fill:'url(#texture)'}));
-    for (let n=0;n<5;n++) {
-      const y=g.top+(g.bottom-g.top)/5*n;
-      background.append(el('rect',{x:18,y,width:g.boxX-17,height:(g.bottom-g.top)/5,fill:n%2?'#ffffff04':'#00000008'}));
-    }
-    background.append(el('text',{x:25,y:35,fill:'#8da4af','font-size':compact?7:8,'font-family':'monospace','letter-spacing':1.5},compact?'INPUT / 100':'INPUT / 100 INDIVIDUAL WIRES'));
-    background.append(el('text',{x:25,y:h-28,fill:'#8c9ea4','font-size':compact?7:8,'font-family':'monospace','letter-spacing':1},'MODEL 100 · CASE '+pad(s.round)));
-    background.append(el('path',{d:'M'+g.cut+' 46V'+(h-48),stroke:'#c9d9df','stroke-opacity':.13,'stroke-dasharray':'3 6','stroke-width':1}));
-    board.append(background);
-    const wires = el('g',{id:'wireLayer','aria-hidden':'true'});
-    for (let i=0;i<count;i++) {
-      const id=g.first+i,y=g.top+g.step*(i+.5),used=s.cutIds.includes(id),d=linePath(y,used);
-      const node=el('g',{'data-drawn-wire':id,opacity:used?.28:1});
-      if (detail) node.append(el('path',{d,fill:'none',stroke:'#050b11','stroke-width':8,'stroke-linecap':'round',transform:'translate(0 2)'}));
-      node.append(el('path',{d,fill:'none',stroke:color(id)[0],'stroke-width':detail?4.8:1.45,'stroke-linecap':'round',class:'wire-core'}));
-      if (detail) {
-        node.append(el('path',{d,fill:'none',stroke:'#ffffff','stroke-opacity':.3,'stroke-width':1,transform:'translate(0 -1)'}));
-        node.append(el('circle',{cx:g.start,cy:y,r:3.8,fill:'#a2b6bc',stroke:'#080f16','stroke-width':2}));
-      }
-      wires.append(node);
-    }
-    board.append(wires);
-    board.append(el('g',{id:'wireHighlights','aria-hidden':'true'}));
-    const targets=el('g',{id:'wireTargets'});
-    if (detail) {
-      if (Math.floor((roving-1)/20)!==group || s.cutIds.includes(roving)) roving=Array.from({length:20},(_,i)=>g.first+i).find(id=>!s.cutIds.includes(id))||g.first;
-      for (let i=0;i<20;i++) {
-        const id=g.first+i,y=g.top+g.step*(i+.5);
-        const used=s.cutIds.includes(id);
-        const row=el('g',{class:'wire-row'+(used?' is-cut':''),'data-wire':id,role:'button',tabindex:!busy&&s.state==='playing'&&!used&&id===roving?0:-1,'aria-label':'導線 '+pad(id)+'、'+color(id)[1]+(used?'、切断済み':'、タップで切断'),'aria-pressed':s.selectedId===id,'aria-disabled':busy||s.state!=='playing'||used});
-        row.append(el('rect',{class:'row-hit',x:18,y:y-g.step/2,width:g.boxX-18,height:g.step,rx:2,fill:'transparent'}));
-        row.append(el('text',{x:compact?20:27,y:y+3.5,fill:used?'#5d7079':'#a5bac6','font-size':compact?8:9,'font-family':'monospace','pointer-events':'none','text-decoration':used?'line-through':'none'},pad(id)));
-        row.addEventListener('click',() => choose(id,false));
-        row.addEventListener('pointerenter',() => { hovered=id; drawHighlights(); });
-        row.addEventListener('pointerleave',() => { hovered=null; drawHighlights(); });
-        row.addEventListener('focus',() => { hovered=id; drawHighlights(); });
-        row.addEventListener('blur',() => { hovered=null; drawHighlights(); });
-        row.addEventListener('keydown',e => {
-          if (e.key==='Enter'||e.key===' ') { e.preventDefault();if(!e.repeat)choose(id,false);return; }
-          if (e.key!=='ArrowUp'&&e.key!=='ArrowDown') return;
-          if(busy||game.snapshot().state!=='playing') return;
-          e.preventDefault(); const delta=e.key==='ArrowDown'?1:-1; let next=id+delta;
-          while(next>=1&&next<=100&&s.cutIds.includes(next))next+=delta;
-          if(next<1||next>100||busy) return;
-          roving=next;
-          if(Math.floor((next-1)/20)!==group) showGroup(Math.floor((next-1)/20),false);
-          roving=next;
-          board.querySelectorAll('[data-wire]').forEach(n=>n.setAttribute('tabindex',Number(n.dataset.wire)===next?'0':'-1'));
-          board.querySelector('[data-wire="'+next+'"]').focus({preventScroll:true});
-        });
-        targets.append(row);
-      }
-    } else {
-      for (let n=0;n<5;n++) {
-        const y=g.top+n*(g.bottom-g.top)/5, band=el('g',{class:'band',role:'button',tabindex:busy?-1:0,'data-group':n,'aria-label':'導線 '+pad(n*20+1)+' から '+pad(n*20+20)+' を拡大','aria-disabled':busy});
-        band.append(el('rect',{class:'band-hit',x:18,y,width:g.boxX-18,height:(g.bottom-g.top)/5,rx:2,fill:'transparent'}));
-        band.append(el('rect',{x:compact?16:24,y:y+12,width:compact?24:31,height:24,rx:3,fill:'#101d27','fill-opacity':.93,'pointer-events':'none'}));
-        band.append(el('text',{x:compact?28:39,y:y+27,fill:'#adbec5','font-size':compact?7:8,'font-family':'monospace','text-anchor':'middle','pointer-events':'none'},pad(n*20+1)));
-        band.addEventListener('click',()=>showGroup(n,true));
-        band.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();showGroup(n,true);}});
-        targets.append(band);
-      }
-    }
-    board.append(targets);
-    const hardware=el('g',{'aria-hidden':'true','pointer-events':'none'});
-    const outletY=h*.5, tailEnd=g.bombX-g.bombR+7;
-    for (let i=0;i<100;i++) {
-      const off=((i*37)%100-50)*.5, spread=((i*73)%100-50)*.3, x1=g.boxRight-5;
-      hardware.append(el('path',{d:'M'+x1+' '+(outletY+off)+'C'+(x1+15)+' '+(outletY+off)+' '+(tailEnd-10)+' '+(outletY+spread)+' '+tailEnd+' '+(outletY+spread*.45),fill:'none',stroke:color(i+1)[0],'stroke-width':.9,'stroke-opacity':exploded?.28:.95}));
-    }
-    const tieX=g.boxRight+(tailEnd-g.boxRight)*.55;
-    hardware.append(el('path',{d:'M'+tieX+' '+(outletY-37)+'q8 37 0 74',fill:'none',stroke:'#0b161c','stroke-width':7}));
-    hardware.append(el('path',{d:'M'+(tieX-1)+' '+(outletY-37)+'q8 37 0 74',fill:'none',stroke:'#5b6e73','stroke-width':2}));
-    hardware.append(el('rect',{x:g.boxRight-6,y:outletY-39,width:16,height:78,rx:6,fill:'url(#socket)',stroke:'#121e29','stroke-width':2}));
-    for(let j=0;j<4;j++)hardware.append(el('path',{d:'M'+(g.boxRight-4+j*3)+' '+(outletY-35)+'v70',stroke:'#75858b','stroke-opacity':.3,'stroke-width':1}));
-    hardware.append(el('rect',{x:g.boxX-6,y:31,width:g.boxW+10,height:h-61,rx:8,fill:'#080f16','fill-opacity':.55,transform:'translate(4 4)'}));
-    hardware.append(el('rect',{x:g.boxX-6,y:29,width:g.boxW+10,height:h-61,rx:8,fill:'url(#cover)',stroke:'#172e3e','stroke-width':2}));
-    hardware.append(el('rect',{x:g.boxX-1,y:34,width:g.boxW,height:h-71,rx:5,fill:'url(#texture)',stroke:'#8babb8','stroke-opacity':.25}));
-    const cx=g.boxX+g.boxW/2;
-    for(const sx of [g.boxX+7,g.boxRight-9])for(const sy of [46,h-49]){
-      hardware.append(el('circle',{cx:sx,cy:sy,r:4.3,fill:'url(#metal)',stroke:'#1a2f3b','stroke-width':1}));
-      hardware.append(el('path',{d:'M'+(sx-2)+' '+(sy+1.2)+'l4 -2.4',stroke:'#304750','stroke-width':1}));
-    }
-    hardware.append(el('text',{x:cx,y:83,fill:'#96b2bf','font-size':compact?6:8,'letter-spacing':compact?1:2,'font-family':'monospace','text-anchor':'middle'},'SEALED UNIT'));
-    hardware.append(el('rect',{x:cx-g.boxW*.32,y:119,width:g.boxW*.64,height:92,rx:3,fill:'#132c3b',stroke:'#547084','stroke-width':1}));
-    hardware.append(el('text',{x:cx,y:165,fill:'#dce9e7','font-size':compact?23:39,'font-family':'monospace','text-anchor':'middle','letter-spacing':-2},'100'));
-    hardware.append(el('text',{x:cx,y:189,fill:'#83a8bb','font-size':compact?6:8,'font-family':'monospace','text-anchor':'middle','letter-spacing':compact?.5:1.5},'IN / ONE OUT'));
-    hardware.append(el('circle',{id:'caseLed',cx,cy:247,r:4,fill:exploded?'#ff795e':s.safeCount>0?'#80dc94':'#e9c76b'}));
-    hardware.append(el('text',{id:'caseState',x:cx,y:269,fill:'#b5c8c9','font-size':compact?6:8,'font-family':'monospace','text-anchor':'middle'},busy?'CUTTING':s.state==='lost'?'FAILED':s.safeCount>0?'KEEP GOING':'STANDBY'));
-    for(let n=0;n<6;n++)hardware.append(el('rect',{x:cx-g.boxW*.25,y:328+n*8,width:g.boxW*.5,height:3,rx:1.5,fill:'#193142',stroke:'#64818e','stroke-opacity':.18}));
-    hardware.append(el('rect',{x:cx-g.boxW*.33,y:444,width:g.boxW*.66,height:56,rx:2,fill:'#d6c9a0',transform:'rotate(-2 '+cx+' 472)'}));
-    hardware.append(el('text',{x:cx,y:466,fill:'#4c503f','font-size':compact?6:9,'font-family':'monospace','text-anchor':'middle','font-weight':'bold'},'99 SAFE'));
-    hardware.append(el('text',{x:cx,y:482,fill:'#4c503f','font-size':compact?6:8,'font-family':'monospace','text-anchor':'middle'},'1 BAD WIRE'));
-    hardware.append(el('text',{x:cx,y:551,fill:'#8ea5ad','font-size':compact?5:7,'font-family':'monospace','text-anchor':'middle'},'DO NOT OPEN'));
-    hardware.append(WireBomb.create({x:g.bombX,y:outletY,r:g.bombR,state:exploded?'exploded':'idle',reducedMotion:reduced||!animateExplosion}));
-    hardware.append(el('text',{x:g.bombX,y:outletY+g.bombR+37,fill:exploded?'#d89476':'#8c9fa9','font-size':compact?6:8,'font-family':'monospace','text-anchor':'middle'},exploded?'BOOM.':'ONE BAD WIRE'));
-    board.append(hardware);
-    drawHighlights(); updateViewControls();
-  }
-  function drawHighlights() {
-    const layer=$('wireHighlights'); if(!layer)return;
-    layer.replaceChildren();
-    const s=game.snapshot(),g=geometry,ids=[];
-    if(s.state!=='playing')ids.push({id:s.badId,type:'bad'});
-    if(hovered&&s.state==='playing'&&!busy&&!s.cutIds.includes(hovered))ids.push({id:hovered,type:'hover'});
-    if(s.selectedId)ids.push({id:s.selectedId,type:'selected'});
-    for(const item of ids){
-      const i=item.id-g.first;if(i<0||i>=(mode==='detail'?20:100))continue;
-      const y=g.top+g.step*(i+.5),d=linePath(y,s.cutIds.includes(item.id));
-      const mark=(item.type==='bad'||(s.state!=='playing'&&item.id===s.badId))?'#ff725c':'#f6f5e7';
-      layer.append(el('path',{d,fill:'none',stroke:'#09131d','stroke-width':mode==='detail'?12:6,'stroke-linecap':'round'}));
-      layer.append(el('path',{d,fill:'none',stroke:mark,'stroke-width':mode==='detail'?8:4,'stroke-linecap':'round','stroke-opacity':item.type==='hover'?.65:1}));
-      layer.append(el('path',{d,fill:'none',stroke:color(item.id)[0],'stroke-width':mode==='detail'?4.7:2,'stroke-linecap':'round'}));
-      if(mode==='detail'&&item.type==='selected'){
-        layer.append(el('rect',{x:17,y:y-g.step/2+1,width:g.boxX-17,height:g.step-2,rx:3,fill:'none',stroke:'#ecf2ed','stroke-width':1,'stroke-opacity':.5}));
-        layer.append(el('path',{d:'M'+(g.cut-6)+' '+(y-8)+'l-3 3m9-3 3 3M'+(g.cut-6)+' '+(y+8)+'l-3-3m9 3 3-3',stroke:'#fff8df',fill:'none','stroke-width':1.3}));
-      }
-    }
-  }
-  function updateViewControls(){
-    const s=game.snapshot(),detail=mode==='detail';
-    $('overviewBtn').setAttribute('aria-pressed',String(!detail));
-    $('detailBtn').setAttribute('aria-pressed',String(detail));
-    $('overviewBtn').disabled=busy;$('detailBtn').disabled=busy;
-    $('prevBtn').disabled=busy||!detail||group===0;$('nextBtn').disabled=busy||!detail||group===4;
-    $('rangeBtn').disabled=busy;
-    $('rangeLabel').innerHTML=detail?pad(group*20+1)+' — '+pad(group*20+20)+' <span>/ 100 WIRES</span>':'001 — 100 <span>/ ALL WIRES</span>';
-    $('boardHint').textContent=detail?(s.state==='playing'?'導線をタップすると、すぐに切れます。':'切断済みの導線と、ハズレの位置を確認できます。'):'見たい場所を押すと、20本ずつ拡大できます。';
-    for(const b of $('pageDots').children){b.classList.toggle('active',detail&&Number(b.dataset.group)===group);b.disabled=busy;}
-  }
-  function showGroup(n,focus){
-    if(busy||!Number.isInteger(n)||n<0||n>4)return;
-    group=n;mode='detail';hovered=null;roving=group*20+1;
-    const s=game.snapshot();if(s.selectedId&&Math.floor((s.selectedId-1)/20)===group)roving=s.selectedId;
-    drawBoard();
-    if(focus){const row=board.querySelector('[data-wire="'+roving+'"]');if(row)row.focus({preventScroll:true});}
-    announce('導線 '+pad(n*20+1)+' から '+pad(n*20+20)+' を拡大しました。');
-  }
-  function choose(id,move){
-    const s=game.snapshot();
-    if(busy||s.state!=='playing'||!Number.isInteger(id)||id<1||id>100||s.cutIds.includes(id))return;
-    game.select(id);roving=id;
-    if(move)showGroup(Math.floor((id-1)/20),false);
-    cut();
-  }
-  function updateControls(){
-    const s=game.snapshot(),done=s.state!=='playing',active=!busy&&!done,displayId=s.lastCutId;
-    $('selectedNumber').textContent=displayId!==null?pad(displayId):'— —';
-    $('selectedNumber').classList.toggle('empty',displayId===null);
-    $('colorName').textContent=displayId!==null?color(displayId)[1]:'まだ切っていません';
-    $('sampleWire').style.setProperty('--wire-color',displayId!==null?color(displayId)[0]:'#a7b2b3');
-    $('selectionLabel').textContent='最後に切った導線';
-    $('mobileLabel').textContent=busy?'切断中…':done?'爆発。記録 '+s.safeCount+'本':s.safeCount+'本セーフ / 残り'+s.remainingCount+'本';
-    $('randomBtn').disabled=$('jumpBtn').disabled=!active;
-    $('mobileAgainBtn').hidden=!done||busy;$('mobileAgainBtn').disabled=busy;
-    document.querySelector('.mobile-controls').classList.toggle('lost',done&&!busy);
-    $('resetBtn').disabled=busy;$('againBtn').disabled=busy;
-    $('attemptCount').textContent=stats.rounds.toLocaleString();$('safeCount').textContent=stats.best.toLocaleString();$('failCount').textContent=stats.explosions.toLocaleString();
+
+  const boardView=WireBoard.create($('board'),{onCut:id=>cutWire(id),onRangeChange:range=>{
+    $('rangeLabel').textContent=pad(range.first)+' — '+pad(range.last);
+    $('rangeScroll').value=String(range.offset);
+    $('rangeScroll').setAttribute('aria-valuetext','導線 '+pad(range.first)+' から '+pad(range.last));
+    $('upBtn').disabled=busy||range.offset<=0;$('downBtn').disabled=busy||range.offset>=90;
+  }});
+  function renderBoard(animateExplosion=false){boardView.render(game.snapshot(),{mode:phase==='active'?'active':'overview',exploded,animateExplosion,reducedMotion:reduced,interactive:phase==='active'&&!busy});}
+  function focusBoard(){if(window.matchMedia('(max-width:760px)').matches)$('board').scrollIntoView?.({block:'start',behavior:reduced?'auto':'smooth'});}
+  function setMessage(text){$('commentText').textContent=$('mobileComment').textContent=text;}
+  function setComment(kind){const entry=WireComments.pick(kind,previousComment[kind]);previousComment[kind]=entry.id;setMessage(entry.text);return entry.text;}
+  function updateUI(){
+    const s=game.snapshot(),ready=phase==='ready',active=phase==='active',done=phase==='result',won=done&&s.state==='won';
+    $('gameRoot').classList.toggle('is-ready',ready);$('apparatus').dataset.phase=phase;
+    $('startOverlay').hidden=!ready;$('startBtn').disabled=busy;$('mobileStartBtn').hidden=!ready;$('mobileStartBtn').disabled=busy;
+    $('actionTools').hidden=!active;$('scrollTools').hidden=!active;
+    $('randomBtn').disabled=$('jumpBtn').disabled=!active||busy;
+    $('resetBtn').hidden=!active;$('resetBtn').disabled=busy;$('rangeScroll').disabled=busy||!active;
+    const range=boardView.getRange();$('upBtn').disabled=busy||range.offset<=0;$('downBtn').disabled=busy||range.offset>=90;
+    $('againBtn').hidden=$('mobileAgainBtn').hidden=!done||busy;
+    $('againBtn').textContent=$('mobileAgainBtn').textContent=won?'次の爆弾へ':'もう一度挑戦';
+    $('shareBtn').hidden=$('mobileShareBtn').hidden=!won||busy;
+    if(won){const href=WireShare.success(currentAttempt).href;$('shareBtn').setAttribute('href',href);$('mobileShareBtn').setAttribute('href',href);}else{$('shareBtn').removeAttribute('href');$('mobileShareBtn').removeAttribute('href');}
+    $('selectedNumber').textContent=s.lastCutId===null?'— —':pad(s.lastCutId);$('selectedNumber').classList.toggle('empty',s.lastCutId===null);
+    $('colorName').textContent=s.lastCutId===null?'まだ切っていません':color(s.lastCutId)[1];$('sampleWire').style.setProperty('--wire-color',s.lastCutId===null?'#a7b2b3':color(s.lastCutId)[0]);
     $('scoreCount').textContent=s.safeCount;$('remainingCount').textContent=s.remainingCount;
-    $('safetyValue').textContent=done?'—':((s.remainingCount-1)/s.remainingCount*100).toFixed(1);
-    $('oddsUnit').hidden=done;
-    $('oddsLabel').textContent=done?'この箱は終了':'次の1本がセーフの確率';
-    $('riskNote').textContent=done?'記録 '+s.safeCount+'本。次の箱でもう一度。':'ハズレは残り'+s.remainingCount+'本の中に1本。';
-    $('boardLabel').textContent='100 WIRES / '+s.remainingCount+' LEFT';
-    updateViewControls();
+    $('attemptCount').textContent=stats.rounds.toLocaleString();$('winCount').textContent=stats.wins.toLocaleString();$('safeCount').textContent=stats.best.toLocaleString();$('failCount').textContent=stats.explosions.toLocaleString();
+    $('attemptBadge').textContent=ready?'—':String(currentAttempt);$('attemptBadge').setAttribute('title',currentAttempt+'回目の挑戦');
+    $('phaseLabel').textContent=ready?'READY':active?'DISARMING':won?'DISARMED':'GAME OVER';
+    $('controlHeading').textContent=ready?'READY TO DISARM':active?'TRUST YOUR INSTINCT':'MISSION RESULT';
+    $('boardLabel').textContent=ready?'100 WIRES / 1 BAD':active?'100 WIRES / '+s.remainingCount+' LEFT':won?'99 CUT / 1 LEFT':'MISSION FAILED';
+    $('boardHint').textContent=ready?'スタートすると、配線を拡大します。':active?'二本指スクロール / スワイプで移動。タップで切断。':won?'ハズレ1本を残して、解除成功。':'ハズレを切ってしまった。全体図に戻りました。';
+    $('safetyValue').textContent=ready?'1':done?(won?'CLEAR':'OUT'):((s.remainingCount-1)/s.remainingCount*100).toFixed(1);
+    $('oddsUnit').hidden=done;$('oddsLabel').textContent=ready?'すべて解除できる確率':done?'第'+currentAttempt+'回の挑戦結果':'次の1本がセーフの確率';
+    $('riskNote').textContent=ready?'ハズレを最後まで残せたら成功。':done?(won?'世界は、ひとまず無事です。':'次の爆弾で、もう一度。'):'残り'+s.remainingCount+'本。ハズレは1本。';
+    $('mobileLabel').textContent=ready?'100本 / ハズレは1本':busy?'切断中…':done?(won?'第'+currentAttempt+'回の挑戦で解除成功':'爆発。記録 '+s.safeCount+'本'):s.safeCount+'本セーフ / 残り'+s.remainingCount+'本';
+    $('mobileBar').classList.toggle('lost',done&&!won);$('mobileBar').classList.toggle('success',won);
+    $('statusBox').classList.toggle('success',won);$('statusBox').classList.toggle('lost',done&&!won);$('statusBox').classList.toggle('won',active&&s.safeCount>0);
   }
-  function showResult(){
-    const s=game.snapshot(),lost=s.state==='lost',kind=lost?'out':'safe';
-    currentComment=WireComments.pick(kind,previousComment[kind]);previousComment[kind]=currentComment.id;
-    $('commentText').textContent=$('mobileComment').textContent=currentComment.text;
-    $('commentTag').textContent=lost?'OUT / GAME OVER':'SAFE / KEEP GOING';
-    $('statusBox').classList.toggle('won',!lost);$('statusBox').classList.toggle('lost',lost);
-    $('statusTitle').textContent=lost?'ドカン。ここまで！':s.safeCount+'本目も、セーフ。';
-    $('statusText').textContent=lost?'記録は '+s.safeCount+'本。No. '+pad(s.badId)+' がハズレでした。自己ベストは '+stats.best+'本です。':s.remainingCount===1?'99本すべてセーフ。残った1本は必ずハズレです。切ると爆発して終了します。':'No. '+pad(s.lastCutId)+' は安全でした。同じ箱で続けましょう。残りは '+s.remainingCount+'本です。';
-    $('resultDetail').hidden=!lost;$('againBtn').hidden=!lost;
-    if(lost)$('badNumber').textContent=pad(s.badId);
-    announce(currentComment.text+' '+$('statusTitle').textContent+' '+$('statusText').textContent);
+  function start(){
+    if(busy||game.snapshot().state!=='ready')return;
+    game.start();stats.rounds++;currentAttempt=stats.rounds;saveStats();phase='active';exploded=false;boardView.reset();
+    $('commentTag').textContent='FIELD NOTES';setMessage('タップで切断。二本指スクロールで移動。');$('statusTitle').textContent=currentAttempt+'回目の挑戦。';$('statusText').textContent='セーフを99本切って、ハズレを1本残しましょう。';
+    updateUI();renderBoard();focusBoard();announce('スタート。導線001から010を拡大しました。');
   }
-  function cut(){
-    const before=game.snapshot();if(busy||before.state!=='playing'||before.selectedId===null)return;
-    busy=true;const s=game.cut();
-    if(before.cutIds.length===0)stats.rounds++;
-    if(s.lastOutcome==='safe')stats.totalSafe++;else stats.explosions++;
-    stats.best=Math.max(stats.best,s.safeCount);saveStats();hovered=null;
-    updateControls();drawBoard();sound('cut');
+  function finish(lost){
+    const s=game.snapshot();phase='result';exploded=lost;
+    if(lost){setComment('out');$('commentTag').textContent='OUT / GAME OVER';$('statusTitle').textContent='ドカン。ここまで！';$('statusText').textContent='記録は '+s.safeCount+'本。No. '+pad(s.badId)+' がハズレでした。';}
+    else{setMessage(SUCCESS);$('commentTag').textContent='MISSION COMPLETE';$('statusTitle').textContent=currentAttempt+'回目の挑戦で解除成功！';$('statusText').textContent='99本を切断。No. '+pad(s.badId)+' のハズレを残しました。';}
+    updateUI();renderBoard(lost);focusBoard();
+    if(lost&&!reduced){$('apparatus').classList.add('shake');$('flash').classList.add('fire');}
+    sound(lost?'lose':'win');
+    if(lost){setTimeout(()=>{busy=false;updateUI();announce($('commentText').textContent+' '+$('statusTitle').textContent);},reduced?0:850);}else{busy=false;updateUI();announce(SUCCESS+' '+$('statusTitle').textContent);}
+  }
+  function cutWire(id){
+    const before=game.snapshot();if(busy||phase!=='active'||before.state!=='playing'||!Number.isInteger(id)||id<1||id>100||before.cutIds.includes(id))return;
+    game.select(id);const s=game.cut();busy=true;
+    if(s.lastOutcome==='safe')stats.totalSafe++;if(s.state==='lost')stats.explosions++;if(s.state==='won')stats.wins++;stats.best=Math.max(stats.best,s.safeCount);saveStats();
+    updateUI();renderBoard();sound('cut');
     setTimeout(()=>{
-      if(s.state==='lost'){
-        exploded=true;
-        if(!reduced){$('apparatus').classList.remove('shake');void $('apparatus').offsetWidth;$('apparatus').classList.add('shake');$('flash').classList.remove('fire');void $('flash').offsetWidth;$('flash').classList.add('fire');}
-        sound('lose');drawBoard(true);
-        setTimeout(()=>{busy=false;updateControls();$('caseState').textContent='FAILED';showResult();},reduced?0:850);
-      }else{
-        busy=false;sound('win');updateControls();drawBoard();showResult();
-        if(mode==='detail'){const target=board.querySelector('[data-wire="'+roving+'"]');if(target)target.focus({preventScroll:true});}
-      }
-    },reduced?80:s.state==='lost'?350:100);
+      if(s.state==='won'||s.state==='lost'){finish(s.state==='lost');return;}
+      busy=false;setComment('safe');$('commentTag').textContent='SAFE / KEEP GOING';$('statusTitle').textContent=s.safeCount+'本目も、セーフ。';$('statusText').textContent='No. '+pad(s.lastCutId)+' は安全でした。残り '+s.remainingCount+'本です。';updateUI();renderBoard();sound('win');announce($('commentText').textContent+' '+$('statusTitle').textContent);
+    },reduced?60:s.state==='lost'?250:100);
   }
   function newBox(){
-    if(busy)return;
-    try{game.newRound();}catch(_){toast('新しい箱を用意できませんでした。もう一度お試しください。');return;}
-    document.querySelectorAll('dialog[open]').forEach(d=>d.close());
-    hovered=null;exploded=false;roving=group*20+1;$('apparatus').classList.remove('shake');$('flash').classList.remove('fire');
-    $('statusBox').classList.remove('won','lost');$('statusTitle').textContent='ハズレを引くまで、続けよう。';
-    $('statusText').innerHTML='気になる導線をタップ。<br>何本切れるか、運試し。';
-    currentComment=null;$('commentText').textContent='さて、どこからいこうか。';$('mobileComment').textContent='導線をタップすると、すぐ切れます。';$('commentTag').textContent='FIELD NOTES';
-    $('resultDetail').hidden=true;$('againBtn').hidden=true;updateControls();drawBoard();
-    toast('新しい箱。ハズレを1本、抽選しました。');
-    const target=mode==='detail'?board.querySelector('[data-wire="'+roving+'"]'):board.querySelector('[data-group="0"]');
-    if(target)target.focus({preventScroll:true});
+    if(busy)return;try{game.newRound();}catch(_){toast('新しい爆弾を用意できませんでした。');return;}
+    document.querySelectorAll('dialog[open]').forEach(d=>d.close());phase='ready';exploded=false;currentAttempt=0;boardView.reset();
+    $('apparatus').classList.remove('shake');$('flash').classList.remove('fire');$('commentTag').textContent='FIELD NOTES';setMessage('さて、世界を救いにいこうか。');$('statusTitle').textContent='準備ができたら、スタート。';$('statusText').textContent='99本はセーフ。1本だけがハズレです。';updateUI();renderBoard();announce('新しい爆弾を用意しました。スタートで始まります。');
   }
-  function randomId(){
-    const s=game.snapshot(),available=Array.from({length:100},(_,i)=>i+1).filter(id=>!s.cutIds.includes(id));
-    if(!available.length)return null;
-    const n=new Uint32Array(1),limit=Math.floor(0x100000000/available.length)*available.length;
-    do{crypto.getRandomValues(n);}while(n[0]>=limit);return available[n[0]%available.length];
-  }
-  $('overviewBtn').addEventListener('click',()=>{if(busy)return;mode='overview';hovered=null;drawBoard();});
-  $('detailBtn').addEventListener('click',()=>{const s=game.snapshot();showGroup(s.selectedId?Math.floor((s.selectedId-1)/20):group,true);});
-  $('prevBtn').addEventListener('click',()=>showGroup(group-1,false));
-  $('nextBtn').addEventListener('click',()=>showGroup(group+1,false));
-  $('randomBtn').addEventListener('click',()=>{if(busy||game.snapshot().state!=='playing')return;try{choose(randomId(),true);}catch(_){toast('番号を抽選できませんでした。導線を直接タップしてください。');}});
-  $('mobileAgainBtn').addEventListener('click',()=>{if(game.snapshot().state==='lost')newBox();});
-  $('againBtn').addEventListener('click',newBox);
-  $('resetBtn').addEventListener('click',()=>{if(game.snapshot().state==='playing')showDialog('resetDialog');else newBox();});
-  $('confirmReset').addEventListener('click',newBox);
-  $('revealBtn').addEventListener('click',()=>{const s=game.snapshot();if(s.badId)showGroup(Math.floor((s.badId-1)/20),false);toast('ハズレは No. '+pad(s.badId)+'。赤い縁取りの導線です。');});
+  function randomId(){const available=Array.from({length:100},(_,i)=>i+1).filter(id=>!game.snapshot().cutIds.includes(id));const n=new Uint32Array(1),limit=Math.floor(0x100000000/available.length)*available.length;do{crypto.getRandomValues(n);}while(n[0]>=limit);return available[n[0]%available.length];}
+  $('startBtn').addEventListener('click',start);$('mobileStartBtn').addEventListener('click',start);
+  $('againBtn').addEventListener('click',newBox);$('mobileAgainBtn').addEventListener('click',newBox);
+  $('resetBtn').addEventListener('click',()=>{if(phase==='active'&&!busy)showDialog('resetDialog');});$('confirmReset').addEventListener('click',newBox);
+  $('randomBtn').addEventListener('click',()=>{if(phase!=='active'||busy)return;const id=randomId();boardView.ensureVisible(id);cutWire(id);});
+  $('rangeScroll').addEventListener('input',()=>{if(phase==='active'&&!busy)boardView.setOffset(Number($('rangeScroll').value));});
+  $('upBtn').addEventListener('click',()=>{if(!busy)boardView.scrollBy(-247);});$('downBtn').addEventListener('click',()=>{if(!busy)boardView.scrollBy(247);});
   $('helpBtn').addEventListener('click',()=>showDialog('helpDialog'));
-  $('soundBtn').addEventListener('click',()=>{soundOn=!soundOn;try{localStorage.setItem('one-bad-wire-100-v4-sound',soundOn?'on':'off');}catch(_){}updateSound();if(soundOn)sound('select');});
-  $('jumpBtn').addEventListener('click',()=>{$('wireInput').value='';$('jumpError').textContent='';$('wireInput').removeAttribute('aria-invalid');showDialog('jumpDialog');$('wireInput').focus();});
-  $('jumpForm').addEventListener('submit',e=>{
-    e.preventDefault();
-    const v=$('wireInput').value.trim().replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0)),id=Number(v);
-    if(!/^\d+$/.test(v)||!Number.isInteger(id)||id<1||id>100){$('jumpError').textContent='1〜100の整数を入力してください。';$('wireInput').setAttribute('aria-invalid','true');return;}
-    if(game.snapshot().cutIds.includes(id)){$('jumpError').textContent='No. '+pad(id)+' は切断済みです。別の番号を選んでください。';$('wireInput').setAttribute('aria-invalid','true');return;}
-    $('jumpDialog').close();choose(id,true);
-  });
-  $('rangeBtn').addEventListener('click',()=>{for(const b of $('groupList').children)b.classList.toggle('current',mode==='detail'&&Number(b.dataset.group)===group);showDialog('rangeDialog');});
-  for(let n=0;n<5;n++){
-    const b=document.createElement('button');b.type='button';b.dataset.group=n;b.textContent=pad(n*20+1)+' — '+pad(n*20+20);
-    b.addEventListener('click',()=>{$('rangeDialog').close();showGroup(n,true);});$('groupList').append(b);
-    const dot=document.createElement('button');dot.type='button';dot.dataset.group=n;dot.setAttribute('aria-label','導線 '+pad(n*20+1)+' から '+pad(n*20+20)+' を拡大');
-    dot.addEventListener('click',()=>showGroup(n,true));$('pageDots').append(dot);
-  }
-  for(const entry of palette){const swatch=document.createElement('span');swatch.style.backgroundColor=entry[0];swatch.title=entry[1];swatch.setAttribute('aria-label',entry[1]);$('legend').insertBefore(swatch,$('legend').lastElementChild);}
-  new ResizeObserver(()=>{if(Math.abs(board.clientWidth-drawnWidth)>1)drawBoard();}).observe(board);
-  updateSound();updateControls();drawBoard();
+  $('soundBtn').addEventListener('click',()=>{soundOn=!soundOn;try{localStorage.setItem(SOUND,soundOn?'on':'off');}catch(_){}updateSound();if(soundOn)sound('select');});
+  $('jumpBtn').addEventListener('click',()=>{if(phase!=='active'||busy)return;$('wireInput').value='';$('jumpError').textContent='';$('wireInput').removeAttribute('aria-invalid');showDialog('jumpDialog');$('wireInput').focus();});
+  $('jumpForm').addEventListener('submit',e=>{e.preventDefault();if(phase!=='active'||busy)return;const v=$('wireInput').value.trim().replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0)),id=Number(v);if(!/^\d+$/.test(v)||!Number.isInteger(id)||id<1||id>100){$('jumpError').textContent='1〜100の整数を入力してください。';return;}if(game.snapshot().cutIds.includes(id)){$('jumpError').textContent='その導線は切断済みです。';return;}$('jumpDialog').close();boardView.ensureVisible(id);cutWire(id);});
+  for(const entry of palette){const swatch=document.createElement('span');swatch.style.backgroundColor=entry[0];swatch.title=entry[1];$('legend').insertBefore(swatch,$('legend').lastElementChild);}
+  new ResizeObserver(()=>renderBoard()).observe($('board'));
+  updateSound();updateUI();renderBoard();
 })();
-</script>
-</body></html>
+</script></body></html>
