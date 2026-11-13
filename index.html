@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f1eee6">
+<meta name="description" content="だいたい安全工業の、小さなブラウザゲーム集。1パーセント爆弾解除ゲームなど、気になったゲームを気軽にどうぞ。">
+<title>だいたい安全工業 — 小さなブラウザゲーム集</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23273540'/%3E%3Cpath d='M13 19h38M13 32h38M13 45h38' stroke='%23e9cf83' stroke-width='5'/%3E%3C/svg%3E">
+<style>
+:root{--paper:#f1eee6;--ink:#26353f;--muted:#71807f;--line:#cdd0c5;--yellow:#e9cf83;--mono:ui-monospace,SFMono-Regular,Consolas,'Liberation Mono',monospace;--sans:-apple-system,BlinkMacSystemFont,'Segoe UI','Hiragino Kaku Gothic ProN','Yu Gothic',Meiryo,sans-serif}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.7 var(--sans);-webkit-font-smoothing:antialiased}a{color:inherit}a:focus-visible{outline:3px solid #2580a0;outline-offset:6px}svg{display:block}::selection{background:var(--yellow);color:var(--ink)}.wrap{width:min(1200px,calc(100% - 80px));margin-inline:auto}.skip{position:absolute;top:8px;left:8px;transform:translateY(-180%);background:var(--ink);color:#fff;padding:8px 16px;z-index:5}.skip:focus{transform:none}.topbar{height:88px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:20px}.brand{display:flex;align-items:center;gap:12px;text-decoration:none}.logo{width:37px;height:37px;padding:9px;background:var(--ink);border-radius:8px}.brand-name{font-size:16px;font-weight:750;letter-spacing:.05em;line-height:1.4}.brand-name small{display:block;font:8px/1.7 var(--mono);letter-spacing:1.1px;color:var(--muted);margin-top:3px}.top-nav{display:flex;gap:26px;font-size:11px}.top-nav a{text-decoration:none;padding:8px 0}.top-nav a:hover{color:#976126}.hero{padding:56px 0 47px;display:flex;align-items:flex-end;justify-content:space-between;gap:30px}.eyebrow{font:10px var(--mono);letter-spacing:2px;color:var(--muted);margin:0 0 16px}.hero h1{font-size:clamp(38px,5.4vw,68px);letter-spacing:-.065em;font-weight:800;line-height:1.22;margin:0;white-space:nowrap}.hero h1 span{position:relative;isolation:isolate}.hero h1 span:after{content:'';position:absolute;z-index:-1;background:var(--yellow);left:0;right:-.05em;bottom:.07em;height:.22em;transform:rotate(-1.7deg)}.intro{font-size:12px;line-height:2;color:#687773;margin:0 0 4px;max-width:310px}.collection{scroll-margin-top:24px}.section-top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:0 0 15px}.section-top h2{font-size:13px;letter-spacing:.07em;margin:0;font-weight:650}.section-top h2 span{display:inline-block;font:10px var(--mono);color:var(--muted);margin-left:12px}.section-top p{font:10px var(--mono);letter-spacing:1px;color:var(--muted);margin:0}.game-list{list-style:none;padding:0;margin:0;display:grid;gap:24px}.game{display:grid;grid-template-columns:1.48fr 1fr;border:1px solid #c5cbbf;border-radius:12px;overflow:hidden;background:#f9f7ef;box-shadow:0 8px 22px #26353f07}.game-art{position:relative;background:#1b2a34;display:flex;flex-direction:column;justify-content:center;overflow:hidden;text-decoration:none;min-width:0}.art-top{position:absolute;top:23px;left:25px;right:25px;display:flex;justify-content:space-between;align-items:center;gap:15px;color:#bdcec9;font:9px var(--mono);letter-spacing:1.4px;z-index:1}.live{display:flex;align-items:center;gap:7px}.live:before{content:'';width:5px;height:5px;border-radius:50%;background:#b3d1ae;box-shadow:0 0 8px #a6caa340}.artwork{width:100%;padding:20px 8px 4px;transition:transform .28s ease}.artwork svg{width:100%;height:auto}.game-art:hover .artwork{transform:scale(1.025)}.art-caption{position:absolute;left:25px;bottom:20px;font:9px var(--mono);letter-spacing:1.2px;color:#91a4ad}.art-corner{position:absolute;right:24px;bottom:17px;color:#e9cf83;font:12px var(--mono)}.game-copy{padding:33px 34px 29px;display:flex;flex-direction:column;align-items:flex-start}.game-index{font:10px var(--mono);letter-spacing:1.6px;color:#84918b;margin:0 0 17px}.game-copy h3{font-size:clamp(24px,2.5vw,33px);font-weight:800;letter-spacing:-.05em;line-height:1.4;margin:0 0 5px;word-break:keep-all}.game-en{font:9px var(--mono);letter-spacing:1.7px;color:#8b9490;margin:0 0 18px}.game-hook{font-size:14px;font-weight:650;line-height:1.8;margin:0 0 9px}.game-description{font-size:12px;line-height:1.9;color:#71807c;margin:0 0 19px}.tags{list-style:none;display:flex;gap:7px;flex-wrap:wrap;padding:0;margin:0 0 25px}.tags li{font-size:9px;color:#64776b;background:#edf0e7;border:1px solid #d8dfd1;border-radius:4px;padding:4px 9px}.play{display:flex;align-items:center;justify-content:space-between;gap:30px;width:100%;margin-top:auto;padding:13px 17px;min-height:50px;background:var(--yellow);border:1px solid #d1b76e;border-radius:5px;text-decoration:none;font-size:13px;font-weight:700;box-shadow:0 3px 0 #c5ae70;transition:background .15s,transform .15s}.play:hover{background:#f1dc9f;transform:translateY(-1px)}.play:active{transform:translateY(2px);box-shadow:0 1px 0 #c5ae70}.play svg{width:19px;height:19px}.next-game{margin-top:18px;border:1px dashed #c2c9be;border-radius:8px;padding:21px 25px;display:flex;align-items:center;gap:20px}.next-icon{height:35px;width:35px;flex-shrink:0;border:1px solid #c6ccbf;border-radius:50%;display:grid;place-items:center;font:22px/1 var(--mono);color:#91a085}.next-game p{margin:0;font-size:12px;color:#738177}.next-game p strong{color:#526458;font-weight:600}.next-game small{font:9px var(--mono);letter-spacing:1.3px;color:#93a08f;margin-left:auto;white-space:nowrap}.about{margin:45px 0 39px;display:grid;grid-template-columns:1fr 2fr;gap:30px;border-top:1px solid var(--line);padding-top:23px}.about h2{font-size:11px;font-weight:600;margin:0;letter-spacing:.05em}.about p{font-size:11px;line-height:2;color:#76837d;margin:0}.about b{color:#56685c;font-weight:600}.footer{border-top:1px solid var(--line);padding:21px 0 27px;display:flex;justify-content:space-between;align-items:center;gap:20px;font:9px var(--mono);letter-spacing:.6px;color:#8a948c}.footer a{text-decoration:none}.footer a:hover{color:var(--ink)}
+@media(min-width:1000px){.game-art{min-height:418px}}
+@media(max-width:900px){.wrap{width:calc(100% - 48px)}.hero{padding:39px 0 34px;display:block}.hero h1{font-size:53px}.intro{margin-top:20px;max-width:none}.intro br{display:none}.game{grid-template-columns:1.1fr 1fr}.game-copy{padding:25px}.game-copy h3{font-size:26px}.art-top{top:18px;left:19px;right:19px;font-size:7px}.art-caption{left:19px;bottom:18px;font-size:7px}.art-corner{right:18px;bottom:14px;font-size:10px}}
+@media(max-width:640px){html{scroll-padding-top:18px}.wrap{width:calc(100% - 34px)}.topbar{height:73px}.logo{width:32px;height:32px;padding:7px;border-radius:7px}.brand{gap:9px}.brand-name{font-size:13px}.brand-name small{font-size:6px;letter-spacing:.6px}.top-nav{gap:0;font-size:10px}.top-nav .about-link{display:none}.hero{padding:33px 0 30px}.eyebrow{font-size:8px;letter-spacing:1.3px;margin-bottom:13px}.hero h1{font-size:clamp(32px,9.6vw,52px);letter-spacing:-.065em}.intro{font-size:11px;line-height:1.9;margin-top:17px}.intro br{display:block}.section-top{padding-bottom:12px}.section-top h2{font-size:12px}.section-top h2 span{font-size:9px;margin-left:7px}.section-top p{font-size:8px}.game{grid-template-columns:1fr;border-radius:10px}.game-art{aspect-ratio:1.68;min-height:0}.artwork{width:100%;padding:12px 6px 0}.art-top{top:17px;left:19px;right:19px}.art-caption{bottom:14px;font-size:6px;letter-spacing:.8px}.art-corner{bottom:11px;font-size:9px}.art-caption,.art-corner{display:none}.game-copy{padding:23px 24px 25px}.game-index{margin-bottom:11px;font-size:9px}.game-copy h3{font-size:28px}.game-en{font-size:8px;margin-bottom:16px}.game-hook{font-size:13px;margin-bottom:8px}.game-description{font-size:11px;margin-bottom:15px}.tags{margin-bottom:20px}.play{min-height:50px}.next-game{padding:17px 18px;gap:13px;margin-top:14px}.next-game p{font-size:10px}.next-game small{display:none}.next-icon{width:29px;height:29px;font-size:19px}.about{margin:32px 0 28px;padding-top:19px;grid-template-columns:1fr;gap:10px}.about p{font-size:10px}.footer{padding:18px 0 23px;font-size:7px;gap:10px;letter-spacing:.2px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+</style>
+</head>
+<body id="top">
+<a class="skip" href="#games">ゲーム一覧へ</a>
+<div class="wrap">
+<header class="topbar">
+  <a class="brand" href="#top" aria-label="だいたい安全工業 トップへ"><span class="logo"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M1 5h12M1 10h12M1 15h12" stroke="#e9cf83" stroke-width="1.7"/><rect x="11" y="2" width="7" height="16" rx="1" fill="#e6e6cf"/></svg></span><span class="brand-name">だいたい安全工業<small>DAITAI ANZEN INDUSTRIES</small></span></a>
+  <nav class="top-nav" aria-label="メインナビゲーション"><a href="#games">ゲームを見る ↓</a><a class="about-link" href="#about">この場所について</a></nav>
+</header>
+<main>
+  <section class="hero" aria-labelledby="pageTitle">
+    <div><p class="eyebrow">SMALL GAMES. ONE MORE TRY.</p><h1 id="pageTitle">あと<span>1回</span>、だけ。</h1></div>
+    <p class="intro">気軽に遊べる、小さなブラウザゲーム集。<br>気になったものから、どうぞ。</p>
+  </section>
+  <section class="collection" id="games" aria-labelledby="gamesTitle">
+    <div class="section-top"><h2 id="gamesTitle">遊べるゲーム <span>01</span></h2><p>THE GAME SHELF</p></div>
+    <ul class="game-list">
+      <!-- GAME START: 新作はこのliと同じ構造で追加できます。 -->
+      <li><article class="game" aria-labelledby="wireTitle">
+        <a class="game-art" href="./wires/" aria-label="1パーセント爆弾解除ゲームを遊ぶ">
+          <div class="art-top" aria-hidden="true"><span>ONE BAD WIRE</span><span class="live">PLAYABLE NOW</span></div>
+          <div class="artwork" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 560" fill="none" role="img" aria-labelledby="hub-wire-title hub-wire-desc">
+<title id="hub-wire-title">100本の導線と、ひとつの爆弾</title><desc id="hub-wire-desc">色とりどりの導線が金属の箱に入り、束になって黒い爆弾へつながっている。</desc>
+<defs>
+  <linearGradient id="hub-background" x1="0" y1="0" x2="900" y2="560" gradientUnits="userSpaceOnUse"><stop stop-color="#263d49"/><stop offset="1" stop-color="#162530"/></linearGradient>
+  <linearGradient id="hub-steel" x1="510" y1="64" x2="658" y2="484" gradientUnits="userSpaceOnUse"><stop stop-color="#476579"/><stop offset=".46" stop-color="#304c60"/><stop offset="1" stop-color="#223b4d"/></linearGradient>
+  <linearGradient id="hub-metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b7c4c5"/><stop offset=".48" stop-color="#778e96"/><stop offset="1" stop-color="#3c545f"/></linearGradient>
+  <radialGradient id="hub-shell" cx=".33" cy=".24" r=".82"><stop stop-color="#34414c"/><stop offset=".35" stop-color="#171e27"/><stop offset="1" stop-color="#080d14"/></radialGradient>
+  <pattern id="hub-grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" stroke="#afc5c8" stroke-opacity=".035"/></pattern>
+</defs>
+<rect width="900" height="560" rx="20" fill="url(#hub-background)"/>
+<rect width="900" height="560" rx="20" fill="url(#hub-grid)"/>
+<path d="M35 62V35H62M838 35H865V62M35 498V525H62M838 525H865V498" stroke="#78919b" stroke-opacity=".4"/>
+<g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" fill="#9cb0b7">
+<text x="58" y="80" font-size="11" letter-spacing="2">100 WIRES / ONE BAD CHOICE</text>
+<text x="58" y="487" font-size="10" letter-spacing="1.5">TRUST YOUR INSTINCT.</text>
+<text x="842" y="487" text-anchor="end" font-size="10" letter-spacing="1.5">ONE BAD WIRE</text>
+</g>
+<rect x="48" y="101" width="481" height="352" rx="7" fill="#0c1924" fill-opacity=".42"/>
+<path d="M295 104V450" stroke="#a1b6bc" stroke-opacity=".14" stroke-dasharray="3 7"/>
+
+<path d="M69 118H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 116H527" stroke="#ff655d" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 115H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="116" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 132H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 130H527" stroke="#42dbea" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 129H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="130" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 146H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 144H527" stroke="#ffd450" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 143H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="144" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 160H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 158H527" stroke="#b79aff" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 157H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="158" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 174H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 172H527" stroke="#7add71" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 171H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="172" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 188H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 186H527" stroke="#ff94cf" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 185H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="186" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 202H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 200H527" stroke="#72aaff" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 199H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="200" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 216H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 214H527" stroke="#ffad57" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 213H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="214" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 230H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 228H527" stroke="#45d4ab" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 227H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="228" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 244H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 242H527" stroke="#edf1f6" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 241H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="242" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 258H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 256H527" stroke="#ff655d" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 255H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="256" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 272H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 270H527" stroke="#42dbea" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 269H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="270" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 286H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 284H527" stroke="#ffd450" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 283H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="284" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 300H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 298H527" stroke="#b79aff" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 297H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="298" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 314H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 312H527" stroke="#7add71" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 311H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="312" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 328H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 326H527" stroke="#ff94cf" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 325H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="326" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 342H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 340H527" stroke="#72aaff" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 339H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="340" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 356H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 354H527" stroke="#ffad57" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 353H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="354" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 370H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 368H527" stroke="#45d4ab" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 367H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="368" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 384H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 382H527" stroke="#edf1f6" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 381H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="382" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 398H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 396H527" stroke="#ff655d" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 395H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="396" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 412H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 410H527" stroke="#42dbea" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 409H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="410" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 426H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 424H527" stroke="#ffd450" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 423H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="424" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M69 440H527" stroke="#08131c" stroke-width="7" stroke-linecap="round"/>
+<path d="M69 438H527" stroke="#b79aff" stroke-width="4" stroke-linecap="round"/>
+<path d="M70 437H526" stroke="#fff" stroke-opacity=".22" stroke-width=".7" stroke-linecap="round"/>
+<circle cx="69" cy="438" r="3" fill="#9bafb4" stroke="#12212d" stroke-width="1.5"/>
+<path d="M644 257C674 257,691 272.0,721 272.0" stroke="#ff655d" stroke-width="1.9"/>
+<path d="M644 259C674 259,691 273.8,721 273.8" stroke="#42dbea" stroke-width="1.9"/>
+<path d="M644 261C674 261,691 275.6,721 275.6" stroke="#ffd450" stroke-width="1.9"/>
+<path d="M644 263C674 263,691 277.4,721 277.4" stroke="#b79aff" stroke-width="1.9"/>
+<path d="M644 265C674 265,691 279.2,721 279.2" stroke="#7add71" stroke-width="1.9"/>
+<path d="M644 267C674 267,691 281.0,721 281.0" stroke="#ff94cf" stroke-width="1.9"/>
+<path d="M644 269C674 269,691 282.8,721 282.8" stroke="#72aaff" stroke-width="1.9"/>
+<path d="M644 271C674 271,691 284.6,721 284.6" stroke="#ffad57" stroke-width="1.9"/>
+<path d="M644 273C674 273,691 286.4,721 286.4" stroke="#45d4ab" stroke-width="1.9"/>
+<path d="M644 275C674 275,691 288.2,721 288.2" stroke="#edf1f6" stroke-width="1.9"/>
+<path d="M644 277C674 277,691 290.0,721 290.0" stroke="#ff655d" stroke-width="1.9"/>
+<path d="M644 279C674 279,691 291.8,721 291.8" stroke="#42dbea" stroke-width="1.9"/>
+<path d="M644 281C674 281,691 272.0,721 272.0" stroke="#ffd450" stroke-width="1.9"/>
+<path d="M644 283C674 283,691 273.8,721 273.8" stroke="#b79aff" stroke-width="1.9"/>
+<path d="M644 285C674 285,691 275.6,721 275.6" stroke="#7add71" stroke-width="1.9"/>
+<path d="M644 287C674 287,691 277.4,721 277.4" stroke="#ff94cf" stroke-width="1.9"/>
+<path d="M644 289C674 289,691 279.2,721 279.2" stroke="#72aaff" stroke-width="1.9"/>
+<path d="M644 291C674 291,691 281.0,721 281.0" stroke="#ffad57" stroke-width="1.9"/>
+<path d="M644 293C674 293,691 282.8,721 282.8" stroke="#45d4ab" stroke-width="1.9"/>
+<path d="M644 295C674 295,691 284.6,721 284.6" stroke="#edf1f6" stroke-width="1.9"/>
+<path d="M644 297C674 297,691 286.4,721 286.4" stroke="#ff655d" stroke-width="1.9"/>
+<path d="M644 299C674 299,691 288.2,721 288.2" stroke="#42dbea" stroke-width="1.9"/>
+<path d="M644 301C674 301,691 290.0,721 290.0" stroke="#ffd450" stroke-width="1.9"/>
+<path d="M644 303C674 303,691 291.8,721 291.8" stroke="#b79aff" stroke-width="1.9"/>
+<path d="M686 249Q697 281 686 312" stroke="#0c1620" stroke-width="9" stroke-linecap="round"/>
+<path d="M685 250Q693 281 685 310" stroke="#69808a" stroke-width="2" stroke-linecap="round"/>
+<rect x="642" y="244" width="20" height="72" rx="7" fill="url(#hub-metal)" stroke="#142635" stroke-width="3"/>
+<path d="M648 250V309M653 250V309M658 250V309" stroke="#132632" stroke-opacity=".65" stroke-width="2"/>
+<rect x="517" y="73" width="140" height="420" rx="12" fill="#07131b" opacity=".5"/>
+<rect x="509" y="64" width="140" height="420" rx="11" fill="url(#hub-steel)" stroke="#142b3b" stroke-width="3"/>
+<rect x="516" y="71" width="126" height="406" rx="7" stroke="#96b2be" stroke-opacity=".25"/>
+
+<circle cx="524" cy="83" r="4.5" fill="url(#hub-metal)" stroke="#223d4d"/><path d="M522 84.5l4 -3" stroke="#253e4b" stroke-width="1.4"/>
+<circle cx="524" cy="465" r="4.5" fill="url(#hub-metal)" stroke="#223d4d"/><path d="M522 466.5l4 -3" stroke="#253e4b" stroke-width="1.4"/>
+<circle cx="634" cy="83" r="4.5" fill="url(#hub-metal)" stroke="#223d4d"/><path d="M632 84.5l4 -3" stroke="#253e4b" stroke-width="1.4"/>
+<circle cx="634" cy="465" r="4.5" fill="url(#hub-metal)" stroke="#223d4d"/><path d="M632 466.5l4 -3" stroke="#253e4b" stroke-width="1.4"/>
+<g font-family="ui-monospace, SFMono-Regular, Consolas, monospace" text-anchor="middle">
+<text x="579" y="116" font-size="9" fill="#a2bdc9" letter-spacing="2">SEALED UNIT</text>
+<rect x="532" y="145" width="94" height="89" rx="5" fill="#142d3c" stroke="#638092"/>
+<text x="579" y="191" font-size="40" fill="#e4edeb" letter-spacing="-2">100</text>
+<text x="579" y="215" font-size="8" fill="#8daebf" letter-spacing="1.4">IN / ONE OUT</text>
+<circle cx="579" cy="273" r="9" fill="#f5cf70" opacity=".09"/>
+<circle cx="579" cy="273" r="4" fill="#efd37d"/>
+<text x="579" y="296" font-size="8" fill="#afc6cd" letter-spacing="1">STANDBY</text>
+</g>
+<rect x="552" y="325" width="54" height="2.5" rx="1.25" fill="#162f40" stroke="#72909a" stroke-opacity=".16"/>
+<rect x="552" y="332" width="54" height="2.5" rx="1.25" fill="#162f40" stroke="#72909a" stroke-opacity=".16"/>
+<rect x="552" y="339" width="54" height="2.5" rx="1.25" fill="#162f40" stroke="#72909a" stroke-opacity=".16"/>
+<rect x="552" y="346" width="54" height="2.5" rx="1.25" fill="#162f40" stroke="#72909a" stroke-opacity=".16"/>
+<rect x="552" y="353" width="54" height="2.5" rx="1.25" fill="#162f40" stroke="#72909a" stroke-opacity=".16"/>
+<g transform="rotate(-3 579 416)"><rect x="538" y="391" width="83" height="49" rx="2" fill="#dacb9b"/><text x="579" y="412" text-anchor="middle" font-family="monospace" font-size="10" font-weight="700" fill="#394237">99 SAFE</text><text x="579" y="427" text-anchor="middle" font-family="monospace" font-size="8" fill="#555a43">1 BAD WIRE</text></g>
+<ellipse cx="780" cy="368" rx="74" ry="13" fill="#07111b" opacity=".55"/>
+<g transform="rotate(16 780 280)">
+<path d="M780 202C779 178 792 168 805 177S834 174 829 162" stroke="#bba775" stroke-width="8" stroke-linecap="round"/>
+<path d="M780 202C779 178 792 168 805 177S834 174 829 162" stroke="#655b43" stroke-width="2" stroke-dasharray="2 6"/>
+<rect x="764" y="201" width="32" height="24" rx="6" fill="url(#hub-metal)" stroke="#09131c" stroke-width="3"/>
+<path d="M769 207H790" stroke="#d3dcda" stroke-width="2" stroke-linecap="round"/>
+</g>
+<circle cx="780" cy="286" r="72" fill="url(#hub-shell)" stroke="#08121c" stroke-width="5"/>
+<path d="M731 263C740 240 760 229 780 231" stroke="#b4c0c8" stroke-opacity=".25" stroke-width="10" stroke-linecap="round"/>
+<path d="M730 279L731 273" stroke="#cbd3d5" stroke-opacity=".15" stroke-width="6" stroke-linecap="round"/>
+<path d="M780 262l26 46c2 4 0 7-4 7h-45c-4 0-6-3-4-7l23-46c1-3 3-3 4 0Z" fill="#e8c970" stroke="#0d151d" stroke-width="3"/>
+<path d="M779 278v17" stroke="#263239" stroke-width="4" stroke-linecap="round"/>
+<circle cx="779" cy="303" r="2.5" fill="#263239"/>
+</svg></div>
+          <div class="art-caption" aria-hidden="true">100 WIRES · 1 BAD · 180 SECONDS</div><span class="art-corner" aria-hidden="true">01 / 100</span>
+        </a>
+        <div class="game-copy">
+          <p class="game-index">GAME 001 / 直感と運</p>
+          <h3 id="wireTitle">1パーセント<wbr>爆弾解除ゲーム</h3><p class="game-en">ONE BAD WIRE</p>
+          <p class="game-hook">国民の命は、あなたの手に。</p>
+          <p class="game-description">100本の導線。ハズレは、たった1本。<br>3分以内に99本を切って、その1本を残せ。</p>
+          <ul class="tags" aria-label="ゲームの特徴"><li>制限時間 3分</li><li>スマホ・PC</li><li>無料</li></ul>
+          <a class="play" href="./wires/"><span>遊んでみる</span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></a>
+        </div>
+      </article></li>
+      <!-- GAME END -->
+    </ul>
+    <div class="next-game"><span class="next-icon" aria-hidden="true">＋</span><p><strong>この棚は、まだ増えます。</strong><br>新しいゲームも、ここに並べていきます。</p><small>ROOM FOR ONE MORE</small></div>
+  </section>
+  <section class="about" id="about" aria-labelledby="aboutTitle"><h2 id="aboutTitle">この場所について</h2><p><b>だいたい安全工業</b>は、小さなゲームをつくって並べる場所です。<br>インストールも、ログインも不要。ブラウザでそのまま遊べます。</p></section>
+</main>
+<footer class="footer"><span>© 2026 EKOOEKON · DAITAI ANZEN INDUSTRIES</span><a href="#top">ページの先頭へ ↑</a></footer>
+</div>
+</body>
+</html>
