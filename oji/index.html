@@ -36,7 +36,7 @@
 <div class="progress"><span>START</span><div class="progress-bar" role="progressbar" aria-label="改札までの進み具合" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress"><span id="progressFill"></span></div><span>改札 →</span></div>
 <div class="control-row" role="group" aria-label="移動ボタン"><button class="steer" id="left" aria-label="左に移動" disabled>←</button><button class="steer" id="up" aria-label="前に移動" disabled>↑</button><button class="steer" id="down" aria-label="後ろに移動" disabled>↓</button><button class="steer" id="right" aria-label="右に移動" disabled>→</button></div><p class="control-hint">画面を自由にドラッグ / 矢印キー・WASDでも移動</p>
 </section><div class="message" id="message"><span class="message-tag">ひとこと</span><p id="comment" aria-live="polite">こちらは、普通に歩いているだけです。</p></div>
-</div><aside class="sidebar"><div class="rail-label"><span>COMMUTE MANUAL</span><span>↗</span></div><div class="mission-number">45<span>秒の帰り道。</span></div><h2>人混みの向こうから、<br>肩が、やってくる。</h2><p>通行人は道を譲ってくれます。<br>おじさんだけは、お構いなし。</p><ul class="rules"><li><span class="rule-num">01</span><span><b>人混みをかき分けてくる。</b><br>「！」を見たら、狙われた場所から移動。</span></li><li><span class="rule-num">02</span><span><b>ラグビーおじさんは超高速。</b><br>大きな肩とボールが目印。直進に注意。</span></li><li><span class="rule-num">03</span><span><b>名刺拾いにも、ご用心。</b><br>予告なしで、頭からダイブしてきます。</span></li><li><span class="rule-num">04</span><span><b>押し出された人は、駅員さんが救助。</b><br>ときどき停電。暗闇では足元の輪を頼りに。</span></li></ul><div class="record"><span>このブラウザの最高記録</span><strong id="best">0</strong></div><p class="record-note">最高記録は速度設定にかかわらず共通です。</p><p class="pause-note">ギリギリ回避は +15 PT。<br>一般の通行人に触れてもダメージなし。<br>「速度」で3種類の速さを調整できます。<br>途中で休むときは「一時停止」。<br>別タブへ移ると自動で止まります。</p></aside></div>
+</div><aside class="sidebar"><div class="rail-label"><span>COMMUTE MANUAL</span><span>↗</span></div><div class="mission-number">45<span>秒の帰り道。</span></div><h2>人混みの向こうから、<br>肩が、やってくる。</h2><p>通行人は道を譲ってくれます。<br>おじさんだけは、お構いなし。</p><ul class="rules"><li><span class="rule-num">01</span><span><b>人混みをかき分けてくる。</b><br>「！」を見たら、狙われた場所から移動。</span></li><li><span class="rule-num">02</span><span><b>ラグビーおじさんは超高速。</b><br>大きな肩とボールが目印。直進に注意。</span></li><li><span class="rule-num">03</span><span><b>名刺拾いにも、ご用心。</b><br>予告なしで、頭からダイブしてきます。</span></li><li><span class="rule-num">04</span><span><b>押し出された人は、駅員さんが救助。</b><br>停電中は真っ暗。移動もタックルも続きます。</span></li></ul><div class="record"><span>このブラウザの最高記録</span><strong id="best">0</strong></div><p class="record-note">最高記録は速度設定にかかわらず共通です。</p><p class="pause-note">ギリギリ回避は +15 PT。<br>一般の通行人に触れてもダメージなし。<br>「速度」で3種類の速さを調整できます。<br>途中で休むときは「一時停止」。<br>別タブへ移ると自動で止まります。</p></aside></div>
 </main><footer class="footer"><span>DAITAI ANZEN INDUSTRIES</span><span>本日も、ご安全に。© 2026 EKOOEKON</span></footer>
 </div><dialog class="settings" id="settings" aria-labelledby="settingsTitle">
 <div class="settings-head"><h2 id="settingsTitle">自分のペースで。</h2><button class="settings-close" id="settingsClose" aria-label="速度設定を閉じる" autofocus>×</button></div>
@@ -92,9 +92,9 @@ const OjiCore = (() => {
         }
       }else if(b.phase==='warn'){
         b.timer=Math.max(0,b.timer-dt);
-        if(b.timer===0){b.phase='dark';b.timer=.8;b.level=0;emit('blackout-on');}
+        if(b.timer===0){b.phase='dark';b.timer=.8;b.level=1;emit('blackout-on');}
       }else if(b.phase==='dark'){
-        b.timer=Math.max(0,b.timer-dt);b.level=clamp((.8-b.timer)/.12,0,1);
+        b.timer=Math.max(0,b.timer-dt);b.level=1;
         if(b.timer===0){b.phase='recover';b.timer=.3;b.level=1;}
       }else{
         b.timer=Math.max(0,b.timer-dt);b.level=b.timer/.3;
@@ -190,7 +190,7 @@ const OjiCore = (() => {
         }
       }
     }
-    function moveCrowd(dt,dim){
+    function moveCrowd(dt){
       for(const p of s.crowd){
         if(!p.status)p.status='walking';
         if(p.status==='falling'){
@@ -202,7 +202,7 @@ const OjiCore = (() => {
         if(p.status!=='walking')continue;
         p.rescueGrace=Math.max(0,(p.rescueGrace||0)-dt);
         p.push=Math.max(0,p.push-dt*1.6);p.tilt*=Math.exp(-dt*5);
-        p.y+=p.speed*p.direction*dt*(dim?.30:1);
+        p.y+=p.speed*p.direction*dt;
         if(p.y>610||p.y< -62){p.y=p.direction>0?-57:605;p.x=p.baseX=70+random()*280;p.push=0;p.tilt=0;}
         p.x=clamp(p.x+(p.baseX-p.x)*dt*.28,50,370);
         const pdx=p.x-s.player.x,pdy=p.y-s.player.y;
@@ -217,7 +217,7 @@ const OjiCore = (() => {
           a.x=clamp(a.x-push*side,50,370);b.x=clamp(b.x+push*side,50,370);
         }
       }
-      if(!dim)for(const p of s.crowd){
+      for(const p of s.crowd){
         if(p.status!=='walking')continue;
         for(const e of s.enemies){
           if(e.mode==='pickup'||e.passed)continue;
@@ -270,13 +270,12 @@ const OjiCore = (() => {
       s.player.hit=Math.max(0,s.player.hit-dt);s.shake=Math.max(0,s.shake-dt);
       const oldPlayerX=s.player.x,oldPlayerY=s.player.y;movePlayer(dt,input);
       updateBlackout(dt);
-      const dim=s.blackout.phase==='dark'||s.blackout.phase==='recover';
-      if(!dim){s.spawn-=dt;if(s.spawn<=0)spawnEnemy();}
+      s.spawn-=dt;if(s.spawn<=0)spawnEnemy();
       for(const e of s.enemies){
         e.oldX=e.x;e.oldY=e.y;
-        if(!dim)moveEnemy(e,dt);
+        moveEnemy(e,dt);
         if(e.y>=0&&e.y<=600&&e.x>=-40&&e.x<=460)e.entered=true;
-        const approach=dim?{touching:false,clearance:Infinity}:closestApproach(e,oldPlayerX,oldPlayerY);
+        const approach=closestApproach(e,oldPlayerX,oldPlayerY);
         e.minClearance=Math.min(e.minClearance??Infinity,approach.clearance);
         if(approach.touching)e.touched=true;
         if(!e.hit&&s.player.hit<=0&&approach.touching){
@@ -291,7 +290,7 @@ const OjiCore = (() => {
         }
       }
       s.enemies=s.enemies.filter(e=>!e.passed);
-      moveCrowd(dt,dim);
+      moveCrowd(dt);
       for(const p of s.particles){p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=140*dt;}
       s.particles=s.particles.filter(p=>p.life>0);
       s.score=s.dodged*10+s.near*15+Math.floor(s.elapsed)*2;
@@ -630,22 +629,17 @@ const OjiArt = (() => {
   function lighting(c,s){
     const b=s.blackout||{}, amount=Math.max(0,Math.min(1,b.level||0));
     if(amount>0){
-      c.fillStyle=`rgba(10,24,27,${amount*.89})`;c.fillRect(0,0,420,560);
-      c.save();c.globalAlpha=amount*.70;
-      // Emergency lighting identifies the player without lighting the whole corridor.
-      c.strokeStyle='#d4e1ae';c.lineWidth=1.4;c.beginPath();c.ellipse(s.player.x,s.player.y+12,21,14,0,0,Math.PI*2);c.stroke();
-      arrow(c,s.player.x,s.player.y-47,true,6,'#d4e1ae');
-      rr(c,s.player.x-7,s.player.y+7,14,7,2,'#9db69c');
-      rr(c,74,-5,272,46,3,'#244c40','#587d60',1);
-      text(c,'非常灯',91,23,11,'#aaca91','650');text(c,'改札方面',160,23,12,'#cee2b1','650');arrow(c,323,20,true,8,'#cee2b1');
-      c.restore();
-      if(amount>.5){rr(c,162,54,96,24,5,'#213b37','#6d8465',1);text(c,'一時停電中',210,70,11,'#d5dfb9','600','center');}
+      c.fillStyle=`rgba(0,0,0,${amount})`;c.fillRect(0,0,420,560);
     }else if(b.phase==='warn'){
       rr(c,151,52,118,24,5,'#f1dfac','#b9a46f',1);text(c,'照明が不安定です',210,68,10,'#7e663c','650','center');
     }
   }
   function draw(c,s){
-    c.save();floor(c,s);
+    c.save();
+    if(s.blackout?.phase==='dark'){
+      c.globalAlpha=1;c.fillStyle='#000';c.fillRect(0,0,420,560);c.restore();return;
+    }
+    floor(c,s);
     const t=s.time||s.elapsed||0, enemies=s.enemies||[], reduced=!!s.reduceMotion;
     // The attack preview is only a thin dashed line, with no cone or body-shaped trail.
     for(const e of enemies){
@@ -789,8 +783,8 @@ const OjiArt = (() => {
           else if(event==='civilian-fall'){if(s.elapsed>=commentUntil)say('通行人が押し出された！駅員さんが駆けつけます。');}
           else if(event==='civilian-rescued'){if(s.elapsed>=commentUntil)say('駅員さん、救助完了。ありがとうございます。');}
           else if(event==='blackout-warning'){say('照明の調子が……。まもなく、一瞬停電します。');tone(260,.12,'sine',.025);}
-          else if(event==='blackout-on')say('停電！足元の輪が、あなたの位置です。');
-          else if(event==='blackout-off')say('復旧しました。おじさんも、動き出します。');
+          else if(event==='blackout-on')say('停電！何も見えません。おじさんは止まりません。');
+          else if(event==='blackout-off')say('復旧しました。暗闇の中でも、お疲れさまでした。');
           else if(event==='won'||event==='lost')finish();
         }
       }
