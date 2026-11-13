@@ -8,49 +8,80 @@
 <style>
 :root{--paper:#efeee5;--ink:#263d3d;--muted:#6e817b;--green:#315a52;--line:#ccd3c7;--yellow:#efd57f;--rust:#b85036;--mono:ui-monospace,SFMono-Regular,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif}
 *{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.6 var(--sans);-webkit-font-smoothing:antialiased}button,a{touch-action:manipulation;-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer;color:inherit}a{color:inherit}button:focus-visible,a:focus-visible,canvas:focus-visible{outline:3px solid #3e8d9a;outline-offset:3px}button:disabled{cursor:default;opacity:.45}[hidden]{display:none!important}.wrap{max-width:1100px;padding:0 32px;margin:auto}.topbar{height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:12px}.brand{font-size:12px;font-weight:700;letter-spacing:.04em;text-decoration:none;display:flex;align-items:center;gap:10px}.brand-mark{display:grid;place-items:center;width:28px;height:28px;border-radius:6px;background:var(--green);color:var(--yellow);font-size:19px}.top-actions{display:flex;gap:7px;flex-shrink:0}.top-actions>*{white-space:nowrap}.subtle{background:none;border:1px solid #c1cbc0;border-radius:5px;padding:7px 10px;font-size:10px;min-height:34px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}.subtle:hover{background:#e1e6d9}.hero{padding:28px 0 23px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px}.eyebrow{font:9px var(--mono);letter-spacing:2px;color:var(--muted);margin:0 0 8px}.hero h1{margin:0;font-size:clamp(26px,3.8vw,40px);font-weight:850;letter-spacing:-1.6px;line-height:1.3}.hero h1 em{font-style:normal;color:var(--green)}.hero-copy{color:var(--muted);font-size:12px;margin:0;text-align:right}.workspace{display:grid;grid-template-columns:minmax(0,640px) 270px;justify-content:space-between;gap:38px;align-items:start}.arena-shell{min-width:0;background:#dae2d5;border:1px solid #b9c9ba;padding:16px 20px 14px;border-radius:12px;box-shadow:0 10px 25px #2d4d3c09}.hud{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:11px}.hud-label{font:8px var(--mono);letter-spacing:1.1px;color:#5d776d;display:block;margin-bottom:1px}.hud strong{font:600 21px/1.2 var(--mono);font-variant-numeric:tabular-nums}.hud-time{display:flex;align-items:center;gap:12px}.hearts{display:flex;gap:4px}.heart{display:block;width:12px;height:12px;transform:rotate(-45deg);background:#bc674c;position:relative;margin:4px 2px}.heart:before,.heart:after{content:'';position:absolute;width:12px;height:12px;border-radius:50%;background:inherit}.heart:before{top:-6px;left:0}.heart:after{left:6px;top:0}.heart.empty{background:#a6b6a6}.life-label{font-size:9px;color:#617b6e;margin-top:5px}.stage{width:min(100%,420px);aspect-ratio:3/4;margin:auto;position:relative;border-radius:8px;overflow:hidden;border:1px solid #a7bbac;background:#e7e8d9;isolation:isolate}.stage canvas{display:block;width:100%;height:100%;touch-action:none;user-select:none;outline-offset:-3px}.stage:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 30px #1c3b3512;border-radius:8px}.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;background:#e8ede142;backdrop-filter:blur(2px);z-index:3}.ticket{width:100%;max-width:320px;max-height:100%;overflow-y:auto;padding:25px 25px 21px;background:#f8f6e9;border:1px solid #aebbab;border-radius:7px;box-shadow:0 12px 35px #17382d24;text-align:center;position:relative}.ticket:before{content:'';height:5px;position:absolute;top:0;left:0;right:0;background:repeating-linear-gradient(90deg,#315a52 0 14px,#efd57f 14px 28px);border-radius:6px 6px 0 0}.ticket .stamp{display:inline-block;border:1px solid #9cae99;border-radius:3px;color:#61775e;font:9px var(--mono);letter-spacing:1px;padding:4px 8px;margin:0 0 10px}.ticket h2{font-size:29px;letter-spacing:-1px;line-height:1.4;margin:0 0 12px}.ticket p{font-size:11px;line-height:1.9;color:#6a7c70;margin:0 0 16px}.primary{width:100%;min-height:46px;border-radius:5px;background:var(--green);border:1px solid #24483f;color:#fffbed;font-weight:700;font-size:14px;box-shadow:0 3px 0 #1b3c36;padding:10px}.primary:hover{background:#3f7166}.primary:active{transform:translateY(2px);box-shadow:none}.ticket .tiny{font-size:9px;margin:12px 0 0;color:#8a9586}.result-score{font:600 36px var(--mono);color:var(--green);margin:6px 0}.result-score small{font:10px var(--mono);margin-left:5px}.result-detail{font-size:11px;color:var(--muted);margin-bottom:13px}.result-actions{display:flex;gap:7px;margin-top:10px}.result-actions a{flex:1;min-height:33px;text-decoration:none;border:1px solid #c4cdbc;border-radius:4px;font-size:10px;display:grid;place-items:center}.progress{margin:10px 0 0;display:flex;align-items:center;gap:10px;font:8px var(--mono);letter-spacing:.7px;color:#63816f}.progress-bar{height:4px;flex:1;background:#b9c9b5;border-radius:3px;overflow:hidden}.progress-bar span{display:block;background:var(--green);height:100%;width:0;transition:width .1s linear}.control-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:12px}.steer{height:38px;flex:1;border:1px solid #a9baa5;background:#f3f2e5;border-radius:5px;font-size:18px;box-shadow:0 2px 0 #acb9a3;max-width:165px;touch-action:none;user-select:none}.steer:active{background:var(--yellow);transform:translateY(1px);box-shadow:none}.control-hint{font-size:9px;color:#63786a;text-align:center;min-width:102px;line-height:1.5}.sidebar{padding-top:2px}.rail-label{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:12px;font:9px var(--mono);letter-spacing:1px;color:#7c8d7d}.mission-number{font:600 69px/1 var(--mono);letter-spacing:-5px;color:var(--green);margin:19px 0 3px}.mission-number span{font:14px var(--sans);letter-spacing:0;margin-left:8px}.sidebar h2{font-size:16px;line-height:1.6;margin:7px 0 11px;letter-spacing:-.4px}.sidebar p{font-size:11px;line-height:1.9;color:#748576}.rules{list-style:none;padding:15px 0;margin:15px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.rules li{display:flex;gap:10px;font-size:11px;line-height:1.65;margin:0 0 10px;color:#667d6e}.rules li:last-child{margin-bottom:0}.rule-num{font:10px var(--mono);color:#8da18b;padding-top:3px}.rules b{font-weight:650;color:#425e4c}.record{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:20px}.record span{font-size:10px;color:#788b78}.record strong{font:22px var(--mono)}.record-note{font-size:9px!important;color:#8c9787!important;margin-top:3px!important}.message{display:flex;align-items:center;gap:11px;min-height:62px;margin-top:14px;padding:12px 15px;background:#f7f5eb;border:1px solid #d0d6c9;border-radius:7px}.message-tag{font:8px var(--mono);letter-spacing:1px;color:#889980;border-right:1px solid #d5ddcb;padding-right:11px;flex-shrink:0}.message p{font-size:12px;font-weight:600;line-height:1.6;margin:0;color:#51694f}.message.hit{border-color:#c3927a;background:#f2e5d6}.message.hit p{color:#9b4c32}.footer{margin:25px 0 0;padding:16px 0 22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:15px;font:8px var(--mono);letter-spacing:.6px;color:#899581}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.pause-note{font-size:10px;color:#748576}.urgent{color:var(--rust)!important}.stage.bump{animation:bump .25s ease-out}@keyframes bump{20%{transform:translate(-4px,1px)}50%{transform:translate(4px,-2px)}80%{transform:translate(-2px,0)}}
-@media(max-width:800px){.wrap{padding:0 18px;max-width:640px}.topbar{height:46px}.brand{font-size:10px;gap:7px}.brand-mark{width:24px;height:24px;font-size:17px}.subtle{min-height:29px;font-size:9px;padding:5px 8px}.hero{padding:16px 0 13px;display:block}.hero h1{font-size:28px;letter-spacing:-1px}.eyebrow{font-size:7px;margin-bottom:5px;letter-spacing:1.5px}.hero-copy{font-size:10px;margin:5px 0 0;text-align:left}.workspace{display:block}.sidebar{display:none}.arena-shell{padding:10px 12px;border-radius:9px}.hud{margin-bottom:8px}.hud strong{font-size:18px}.hud-label{font-size:7px}.heart{width:9px;height:9px;margin:4px 1px}.heart:before,.heart:after{width:9px;height:9px}.heart:before{top:-4.5px}.heart:after{left:4.5px}.life-label{font-size:8px;margin-top:2px}.stage{width:min(100%,calc((100svh - 286px)*.75));min-width:195px}.progress{margin-top:7px}.control-row{margin-top:9px;gap:9px}.steer{height:34px}.control-hint{font-size:8px;min-width:90px}.message{margin-top:9px;padding:8px 10px;min-height:45px}.message p{font-size:11px}.message-tag{font-size:7px}.footer{margin-top:15px;padding:12px 0 15px;font-size:7px}.ticket{padding:19px 17px 17px}.ticket h2{font-size:25px;margin-bottom:9px}.ticket p{font-size:10px;margin-bottom:12px}.ticket .tiny{font-size:8px;margin-top:10px}.ticket .stamp{font-size:8px;margin-bottom:8px}.primary{min-height:41px;font-size:12px}.overlay{padding:17px}.result-score{font-size:30px}.result-detail{font-size:9px;margin-bottom:10px}.result-actions a{font-size:9px}.hud-time{gap:9px}}
-@media(max-width:800px) and (max-height:680px){.hero{padding:10px 0}.hero-copy,.eyebrow{display:none}.hero h1{font-size:24px}.stage{width:min(100%,calc((100svh - 275px)*.75))}.ticket h2{font-size:21px}.ticket .tiny{display:none}.ticket{padding:15px}.overlay{padding:12px}.ticket .stamp{font-size:7px}.ticket p{font-size:9px}.footer{margin-top:10px}}
+@media(max-width:800px){.wrap{padding:0 18px;max-width:640px}.topbar{height:46px}.brand{font-size:10px;gap:7px}.brand-mark{width:24px;height:24px;font-size:17px}.subtle{min-height:29px;font-size:9px;padding:5px 8px}.hero{padding:16px 0 13px;display:block}.hero h1{font-size:28px;letter-spacing:-1px}.eyebrow{font-size:7px;margin-bottom:5px;letter-spacing:1.5px}.hero-copy{font-size:10px;margin:5px 0 0;text-align:left}.workspace{display:block}.sidebar{display:none}.arena-shell{padding:10px 12px;border-radius:9px}.hud{margin-bottom:8px}.hud strong{font-size:18px}.hud-label{font-size:7px}.heart{width:9px;height:9px;margin:4px 1px}.heart:before,.heart:after{width:9px;height:9px}.heart:before{top:-4.5px}.heart:after{left:4.5px}.life-label{font-size:8px;margin-top:2px}.stage{width:min(100%,calc((100svh - 303px)*.75));min-width:195px}.progress{margin-top:7px}.control-row{margin-top:9px;gap:9px}.steer{height:34px}.control-hint{font-size:8px;min-width:90px}.message{margin-top:9px;padding:8px 10px;min-height:45px}.message p{font-size:11px}.message-tag{font-size:7px}.footer{margin-top:15px;padding:12px 0 15px;font-size:7px}.ticket{padding:19px 17px 17px}.ticket h2{font-size:25px;margin-bottom:9px}.ticket p{font-size:10px;margin-bottom:12px}.ticket .tiny{font-size:8px;margin-top:10px}.ticket .stamp{font-size:8px;margin-bottom:8px}.primary{min-height:41px;font-size:12px}.overlay{padding:17px}.result-score{font-size:30px}.result-detail{font-size:9px;margin-bottom:10px}.result-actions a{font-size:9px}.hud-time{gap:9px}}
+@media(max-width:800px) and (max-height:680px){.hero{padding:10px 0}.hero-copy,.eyebrow{display:none}.hero h1{font-size:24px}.stage{width:min(100%,calc((100svh - 308px)*.75))}.ticket h2{font-size:21px}.ticket .tiny{display:none}.ticket{padding:15px}.overlay{padding:12px}.ticket .stamp{font-size:7px}.ticket p{font-size:9px}.footer{margin-top:10px}}
 @media(max-width:360px){.brand>span:last-child{display:none}.hero h1{font-size:21px;letter-spacing:-.8px}.topbar{gap:8px}.wrap{padding:0 14px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+.control-hint{margin:8px 0 0;min-width:0;font-size:9px;line-height:1.4}.steer{min-height:40px}.settings{width:min(420px,calc(100% - 28px));max-height:calc(100svh - 32px);overflow-y:auto;margin:auto;padding:26px;border:1px solid #aebbab;border-radius:12px;background:#f8f6e9;color:var(--ink);box-shadow:0 20px 70px #17382d33}.settings::backdrop{background:#18372e85;backdrop-filter:blur(3px)}.settings-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.settings h2{font-size:23px;margin:0;letter-spacing:-.8px}.settings-close{border:1px solid #c4cdbc;background:transparent;border-radius:5px;width:34px;height:34px;font-size:22px;line-height:1}.setting{display:block;margin:0 0 23px}.setting-title{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:13px}.setting output{font:600 16px var(--mono);color:var(--green)}.setting small{display:block;color:var(--muted);font-size:11px;margin:5px 0 9px}.setting input{display:block;width:100%;accent-color:var(--green);min-height:26px;margin:0;cursor:pointer}.setting-ends{display:flex;justify-content:space-between;font-size:9px;color:var(--muted)}.settings-foot{border-top:1px solid var(--line);padding-top:15px;display:flex;gap:16px;align-items:center}.settings-foot p{font-size:10px;color:var(--muted);margin:0;flex:1}.settings-foot button{flex-shrink:0}input:focus-visible{outline:3px solid #3e8d9a;outline-offset:2px}
+@media(max-width:800px){.control-hint{font-size:8px;margin-top:6px}.steer{min-height:36px}.top-actions{gap:5px}.top-actions .subtle{padding:5px 6px}.settings{padding:22px}.setting{margin-bottom:19px}}
+@media(max-width:460px){.brand>span:last-child{display:none}.topbar{gap:5px}}
+@media(max-width:800px) and (max-height:680px){.overlay{padding:8px}.ticket{padding:13px 10px 12px}.ticket h2{font-size:18px;line-height:1.35;letter-spacing:-.5px;margin-bottom:8px}.ticket .stamp{font-size:7px;line-height:1.4;padding:3px 5px;margin-bottom:7px}.ticket p{font-size:9px;line-height:1.6;margin-bottom:9px}.ticket .primary{font-size:11px;min-height:36px;padding:7px}.result-score{font-size:24px;margin:4px 0}.result-detail{margin-bottom:7px}.result-actions{margin-top:8px}}
 </style>
 </head>
 <body>
 <div class="wrap">
-<header class="topbar"><a class="brand" href="../" aria-label="ゲーム一覧へ"><span class="brand-mark" aria-hidden="true">↗</span><span>だいたい安全工業</span></a><div class="top-actions"><a class="subtle" href="../">← 一覧</a><button class="subtle" id="sound" aria-pressed="false">音 OFF</button><button class="subtle" id="pause" disabled aria-label="一時停止">Ⅱ 一時停止</button></div></header>
+<header class="topbar"><a class="brand" href="../" aria-label="ゲーム一覧へ"><span class="brand-mark" aria-hidden="true">↗</span><span>だいたい安全工業</span></a><div class="top-actions"><a class="subtle" href="../">← 一覧</a><button class="subtle" id="settingsButton" aria-haspopup="dialog">速度 0.90×</button><button class="subtle" id="sound" aria-pressed="false">音 OFF</button><button class="subtle" id="pause" disabled aria-label="一時停止">Ⅱ 一時停止</button></div></header>
 <main>
 <section class="hero"><div><p class="eyebrow">DAILY COMMUTE / AVOID THE UNAVOIDABLE</p><h1>ぶつかりおじさん<em>回避中。</em></h1></div><p class="hero-copy">ただ、帰りたいだけなのに。<br>人混み、突進、ときどき停電。</p></section>
 <div class="workspace"><div class="game-column">
 <section class="arena-shell" aria-label="回避ゲーム">
 <div class="hud"><div><span class="hud-label">SCORE</span><strong id="score">000</strong></div><div class="hud-time"><div><span class="hud-label">改札まで</span><strong id="time">45.0<small style="font-size:10px"> 秒</small></strong></div><div><div class="hearts" id="hearts" aria-label="残り体力3"><i class="heart"></i><i class="heart"></i><i class="heart"></i></div><div class="life-label">心の余裕</div></div></div></div>
-<div class="stage" id="stage"><canvas id="game" width="840" height="1120" tabindex="0" aria-label="黄色い服があなた。左右の矢印キー、A・Dキー、ドラッグ、または下の左右ボタンで移動。45秒間おじさんを避けます。"></canvas>
+<div class="stage" id="stage"><canvas id="game" width="840" height="1120" tabindex="0" aria-label="黄色い服があなた。矢印キー、WASD、ドラッグ、または下の4方向ボタンで前後左右に移動。45秒間おじさんを避けます。"></canvas>
 <div class="overlay" id="overlay"><div class="ticket" id="ticket">
-<span class="stamp" id="overlayTag">帰宅ラッシュ / 45 SEC.</span><h2 id="overlayTitle">ぶつからずに、<br>帰りたい。</h2><p id="overlayText">黄色い服があなた。<br>人混みを抜けて、45秒で改札へ。<br>「！」を見たら左右へ。<br>3回ぶつかると、心が折れます。</p>
+<span class="stamp" id="overlayTag">帰宅ラッシュ / 45 SEC.</span><h2 id="overlayTitle">ぶつからずに、<br>帰りたい。</h2><p id="overlayText">黄色い服があなた。<br>人混みを抜けて、45秒で改札へ。<br>前後左右に動いてかわそう。<br>3回ぶつかると、心が折れます。</p>
 <div id="result" hidden><div class="result-score"><span id="resultScore">0</span><small>PT</small></div><div class="result-detail" id="resultDetail"></div></div>
-<button class="primary" id="start">通勤をはじめる →</button><div class="result-actions" id="resultActions" hidden><a id="share" target="_blank" rel="noopener noreferrer">𝕏 結果を投稿</a><a href="../">ゲーム一覧</a></div><p class="tiny" id="overlayHint">スマホ：左右にドラッグ / PC：← →</p>
+<button class="primary" id="start">通勤をはじめる →</button><div class="result-actions" id="resultActions" hidden><a id="share" target="_blank" rel="noopener noreferrer">𝕏 結果を投稿</a><a href="../">ゲーム一覧</a></div><p class="tiny" id="overlayHint">スマホ：自由にドラッグ / PC：矢印・WASD</p>
 </div></div></div>
 <div class="progress"><span>START</span><div class="progress-bar" role="progressbar" aria-label="改札までの進み具合" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress"><span id="progressFill"></span></div><span>改札 →</span></div>
-<div class="control-row"><button class="steer" id="left" aria-label="左に移動" disabled>←</button><span class="control-hint">左右にドラッグ<br>または ← → キー</span><button class="steer" id="right" aria-label="右に移動" disabled>→</button></div>
+<div class="control-row" role="group" aria-label="移動ボタン"><button class="steer" id="left" aria-label="左に移動" disabled>←</button><button class="steer" id="up" aria-label="前に移動" disabled>↑</button><button class="steer" id="down" aria-label="後ろに移動" disabled>↓</button><button class="steer" id="right" aria-label="右に移動" disabled>→</button></div><p class="control-hint">画面を自由にドラッグ / 矢印キー・WASDでも移動</p>
 </section><div class="message" id="message"><span class="message-tag">ひとこと</span><p id="comment" aria-live="polite">こちらは、普通に歩いているだけです。</p></div>
-</div><aside class="sidebar"><div class="rail-label"><span>COMMUTE MANUAL</span><span>↗</span></div><div class="mission-number">45<span>秒の帰り道。</span></div><h2>人混みの向こうから、<br>肩が、やってくる。</h2><p>通行人は道を譲ってくれます。<br>おじさんだけは、お構いなし。</p><ul class="rules"><li><span class="rule-num">01</span><span><b>人混みをかき分けてくる。</b><br>「！」を見たら、狙われた場所から移動。</span></li><li><span class="rule-num">02</span><span><b>ラグビーおじさんは超高速。</b><br>大きな肩とボールが目印。直進に注意。</span></li><li><span class="rule-num">03</span><span><b>名刺拾いにも、ご用心。</b><br>あたふたしていたのに、突然タックル。</span></li><li><span class="rule-num">04</span><span><b>ときどき、短い停電。</b><br>暗闇では足元の目印を頼りに。</span></li></ul><div class="record"><span>このブラウザの最高記録</span><strong id="best">0</strong></div><p class="record-note">記録はこの端末・ブラウザに保存されます。</p><p class="pause-note">ギリギリ回避は +15 PT。<br>一般の通行人に触れてもダメージなし。<br>途中で休むときは「一時停止」。<br>別タブへ移ると自動で止まります。</p></aside></div>
+</div><aside class="sidebar"><div class="rail-label"><span>COMMUTE MANUAL</span><span>↗</span></div><div class="mission-number">45<span>秒の帰り道。</span></div><h2>人混みの向こうから、<br>肩が、やってくる。</h2><p>通行人は道を譲ってくれます。<br>おじさんだけは、お構いなし。</p><ul class="rules"><li><span class="rule-num">01</span><span><b>人混みをかき分けてくる。</b><br>「！」を見たら、狙われた場所から移動。</span></li><li><span class="rule-num">02</span><span><b>ラグビーおじさんは超高速。</b><br>大きな肩とボールが目印。直進に注意。</span></li><li><span class="rule-num">03</span><span><b>名刺拾いにも、ご用心。</b><br>予告なしで、頭からダイブしてきます。</span></li><li><span class="rule-num">04</span><span><b>押し出された人は、駅員さんが救助。</b><br>ときどき停電。暗闇では足元の輪を頼りに。</span></li></ul><div class="record"><span>このブラウザの最高記録</span><strong id="best">0</strong></div><p class="record-note">最高記録は速度設定にかかわらず共通です。</p><p class="pause-note">ギリギリ回避は +15 PT。<br>一般の通行人に触れてもダメージなし。<br>「速度」で3種類の速さを調整できます。<br>途中で休むときは「一時停止」。<br>別タブへ移ると自動で止まります。</p></aside></div>
 </main><footer class="footer"><span>DAITAI ANZEN INDUSTRIES</span><span>本日も、ご安全に。© 2026 EKOOEKON</span></footer>
-</div><noscript>このゲームを遊ぶにはJavaScriptを有効にしてください。</noscript>
+</div><dialog class="settings" id="settings" aria-labelledby="settingsTitle">
+<div class="settings-head"><h2 id="settingsTitle">自分のペースで。</h2><button class="settings-close" id="settingsClose" aria-label="速度設定を閉じる" autofocus>×</button></div>
+<label class="setting" for="tempo"><span class="setting-title">全体のテンポ<output id="tempoValue" for="tempo">0.90×</output></span><small>人の流れとカウントダウンをまとめて調整。</small><input id="tempo" type="range" min="0.5" max="1.5" step="0.05" value="0.9"><span class="setting-ends"><span>ゆっくり 0.50×</span><span>せわしない 1.50×</span></span></label>
+<label class="setting" for="playerSpeed"><span class="setting-title">自分の移動<output id="playerSpeedValue" for="playerSpeed">1.00×</output></span><small>黄色いあなたの、身のこなし。</small><input id="playerSpeed" type="range" min="0.6" max="1.6" step="0.05" value="1"><span class="setting-ends"><span>おだやか 0.60×</span><span>すばやい 1.60×</span></span></label>
+<label class="setting" for="attackSpeed"><span class="setting-title">おじさんの突進<output id="attackSpeedValue" for="attackSpeed">1.00×</output></span><small>ラグビーと名刺ダイブの速さも変わります。</small><input id="attackSpeed" type="range" min="0.6" max="1.6" step="0.05" value="1"><span class="setting-ends"><span>控えめ 0.60×</span><span>容赦なし 1.60×</span></span></label>
+<div class="settings-foot"><button class="subtle" id="settingsReset">初期設定に戻す</button><p id="settingsHint">好みの速さでどうぞ。</p></div>
+</dialog>
+<noscript>このゲームを遊ぶにはJavaScriptを有効にしてください。</noscript>
 <script>
 const OjiCore = (() => {
   const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
   const DASH_SPEED={charge:315,rugby:560,cards:405};
-  const WARN_TIME={charge:.72,rugby:.9,cards:.52};
+  const WARN_TIME={charge:.72,rugby:.9};
+  const PLAYER_SPEED=340;
+  const FALL_TIME=.45,HELP_TIME=1.1,MAX_RESCUES=3;
+  const smooth=t=>t*t*(3-2*t);
   function create(random=Math.random) {
-    const s={phase:'ready',time:0,elapsed:0,duration:45,player:{x:210,y:456,hit:0},enemies:[],crowd:[],particles:[],lives:3,dodged:0,near:0,score:0,spawn:1.1,serial:0,shake:0,distance:0,events:[],blackout:{phase:'off',timer:0,level:0},blackoutIndex:0};
+    const s={phase:'ready',time:0,elapsed:0,duration:45,player:{x:210,y:456,hit:0},enemies:[],crowd:[],rescues:[],rescued:0,rescueSerial:0,particles:[],lives:3,dodged:0,near:0,score:0,spawn:1.1,serial:0,shake:0,distance:0,events:[],settings:{tempo:1,playerSpeed:1,attackSpeed:1},blackout:{phase:'off',timer:0,level:0},blackoutIndex:0};
     function emit(type){s.events.push(type);}
+    function setSettings(next={}){
+      for(const [key,min,max] of [['tempo',.5,1.5],['playerSpeed',.6,1.6],['attackSpeed',.6,1.6]]){
+        if(Number.isFinite(next[key]))s.settings[key]=clamp(next[key],min,max);
+      }
+      return {...s.settings};
+    }
     function resetCrowd(){
-      s.crowd=Array.from({length:24},(_,i)=>{
-        const baseX=76+(i%4)*88+(random()-.5)*28;
-        return {x:baseX,y:Math.floor(i/4)*101-16+(random()-.5)*42,baseX,speed:42+random()*35,variant:i%8,phase:random()*6.28,direction:i%4===1?-1:1,push:0,tilt:0};
-      });
+      s.crowd=[];
+      for(let i=0;i<24;i++){
+        let chosen=null,best=null,bestClearance=-1;
+        for(let attempt=0;attempt<200;attempt++){
+          // The fallback also keeps deterministic / constant random sources usable.
+          const x=65+290*(attempt<80?random():((i*31+attempt)*.61803398875)%1);
+          const y=-35+610*(attempt<80?random():((i*47+attempt)*.41421356237)%1);
+          const clearance=s.crowd.reduce((d,p)=>Math.min(d,Math.hypot(x-p.x,y-p.y)),Infinity);
+          if(clearance>bestClearance){bestClearance=clearance;best={x,y};}
+          if(clearance>=42){chosen={x,y};break;}
+        }
+        const p=chosen||best;
+        s.crowd.push({...p,id:i+1,baseX:p.x,speed:42+random()*35,variant:i%8,phase:random()*Math.PI*2,direction:i%4===1?-1:1,push:0,tilt:0,status:'walking',fallSide:0,fallProgress:0,rescueGrace:0});
+      }
     }
     resetCrowd();
     function start(){
-      Object.assign(s,{phase:'playing',time:0,elapsed:0,lives:3,dodged:0,near:0,score:0,spawn:1,serial:0,shake:0,distance:0,enemies:[],particles:[],events:[],blackoutIndex:0,blackout:{phase:'off',timer:0,level:0}});
+      Object.assign(s,{phase:'playing',time:0,elapsed:0,lives:3,dodged:0,near:0,score:0,spawn:1,serial:0,shake:0,distance:0,enemies:[],particles:[],rescues:[],rescued:0,rescueSerial:0,events:[],blackoutIndex:0,blackout:{phase:'off',timer:0,level:0}});
       Object.assign(s.player,{x:210,y:456,hit:0});resetCrowd();
     }
     function updateBlackout(dt){
@@ -79,95 +110,194 @@ const OjiCore = (() => {
       if(kind==='rugby'&&s.enemies.some(e=>e.kind==='rugby'&&!e.passed))kind='charge';
       let x=68+random()*284;
       if(s.enemies.some(e=>e.y<80&&Math.abs(e.x-x)<65))x=x<210?clamp(x+95,68,352):clamp(x-95,68,352);
-      s.enemies.push({x,y:-38,kind,mode:'walk',timer:0,variant:s.serial%4,speed:90+s.elapsed/s.duration*48+random()*18,passed:false,hit:false,touched:false,phase:random()*6,pickupY:218+random()*48});
+      s.enemies.push({x,y:-38,kind,mode:'walk',timer:0,variant:s.serial%4,speed:90+s.elapsed/s.duration*48+random()*18,passed:false,hit:false,touched:false,entered:false,minClearance:Infinity,age:0,phase:random()*6,pickupY:218+random()*48,diveTime:0,diveProgress:0});
       s.spawn=1.22-s.elapsed/s.duration*.30+random()*.18;
     }
     function warn(e){
       e.mode='warn';e.timer=WARN_TIME[e.kind];e.targetX=s.player.x;e.targetY=s.player.y;
-      emit(e.kind==='rugby'?'rugby-warning':e.kind==='cards'?'cards-warning':'warning');
+      emit(e.kind==='rugby'?'rugby-warning':'warning');
+    }
+    function attackSlotAvailable(){return s.enemies.filter(e=>e.mode==='dash'&&!e.passed).length<2;}
+    function launch(e){
+      let dx=e.targetX-e.x,dy=e.targetY-e.y,n=Math.hypot(dx,dy);
+      if(!Number.isFinite(n)||n<.001){dx=0;dy=1;n=1;}
+      e.mode='dash';e.dashTime=0;e.diveTime=0;e.diveProgress=0;
+      e.baseVx=dx/n*DASH_SPEED[e.kind];e.baseVy=dy/n*DASH_SPEED[e.kind];
+      e.vx=e.baseVx*s.settings.attackSpeed;e.vy=e.baseVy*s.settings.attackSpeed;
+      if(e.kind==='cards')emit('cards-dive');
     }
     function moveEnemy(e,dt){
+      e.age=(e.age||0)+dt;
       if(e.mode==='walk'){
         e.y+=e.speed*dt;
         if(e.kind==='cards'&&e.y>=e.pickupY&&!e.passed){e.mode='pickup';e.timer=1.8+random()*.65;e.pickupDuration=e.timer;emit('cards-pickup');}
         else if((e.kind==='charge'||e.kind==='rugby')&&e.y>=(e.kind==='rugby'?190:240)&&!e.passed)warn(e);
       }else if(e.mode==='pickup'){
-        e.timer=Math.max(0,e.timer-dt);if(e.timer===0)warn(e);
+        e.timer=Math.max(0,e.timer-dt);
+        if(e.timer===0&&attackSlotAvailable()){
+          // Picking up the last card is the tell: there is no exclamation phase.
+          e.targetX=s.player.x;e.targetY=s.player.y;launch(e);
+        }
       }else if(e.mode==='warn'){
         e.timer=Math.max(0,e.timer-dt);
-        if(e.timer===0&&s.enemies.filter(o=>o.mode==='dash'&&!o.passed).length<2){
-          const dx=e.targetX-e.x,dy=e.targetY-e.y,n=Math.max(1,Math.hypot(dx,dy));
-          e.mode='dash';e.vx=dx/n*DASH_SPEED[e.kind];e.vy=dy/n*DASH_SPEED[e.kind];
-        }
-      }else if(e.mode==='dash'){e.x+=e.vx*dt;e.y+=e.vy*dt;}
+        if(e.timer===0&&attackSlotAvailable())launch(e);
+      }else if(e.mode==='dash'){
+        if(!Number.isFinite(e.baseVx))e.baseVx=Number.isFinite(e.vx)?e.vx:0;
+        if(!Number.isFinite(e.baseVy))e.baseVy=Number.isFinite(e.vy)?e.vy:DASH_SPEED[e.kind]||315;
+        e.vx=e.baseVx*s.settings.attackSpeed;e.vy=e.baseVy*s.settings.attackSpeed;
+        e.x+=e.vx*dt;e.y+=e.vy*dt;e.dashTime=(e.dashTime||0)+dt;
+        if(e.kind==='cards'){e.diveTime=(e.diveTime||0)+dt;e.diveProgress=clamp(e.diveTime/.2,0,1);}
+      }
     }
-    function shove(p,side,amount,dt,strength){
+    function beginFall(p){
+      p.status='falling';p.fallSide=p.x<49?-1:1;p.fallProgress=0;
+      p.groundX=p.x;p.groundY=p.y;p.push=1;p.tilt=p.fallSide;
+      emit('civilian-fall');
+    }
+    function shove(p,side,amount,dt,strength,hostile=false){
       const move=side*Math.min(strength*dt,Math.max(0,amount)*dt*9);
-      p.x=clamp(p.x+move,59,361);p.push=Math.max(p.push,Math.min(1,Math.abs(move)/(dt*100||1)));p.tilt=clamp(side*p.push,-1,1);
+      p.x=hostile&&p.rescueGrace<=0?p.x+move:clamp(p.x+move,50,370);
+      p.push=Math.max(p.push,Math.min(1,Math.abs(move)/(dt*100||1)));p.tilt=clamp(side*p.push,-1,1);
+      if(hostile&&p.rescueGrace<=0&&(p.x<49||p.x>371))beginFall(p);
+    }
+    function updateRescues(dt){
+      for(const r of s.rescues){
+        const p=s.crowd.find(p=>p.id===r.personId);
+        r.timer+=dt;
+        if(r.phase==='approach'){
+          const distance=r.y-r.workerY;
+          r.workerY+=Math.sign(distance)*Math.min(Math.abs(distance),230*dt);
+          r.progress=clamp(1-Math.abs(r.y-r.workerY)/Math.max(1,Math.abs(r.y+35)),0,1);
+          if(Math.abs(r.y-r.workerY)<.01){r.phase='help';r.timer=0;r.progress=0;if(p)p.status='lifting';}
+        }else if(r.phase==='help'){
+          r.progress=clamp(r.timer/HELP_TIME,0,1);
+          if(p){p.x=(r.side<0?25:395)+((r.side<0?82:338)-(r.side<0?25:395))*smooth(r.progress);p.fallProgress=1-r.progress;}
+          if(r.progress===1){
+            if(p){p.status='walking';p.fallProgress=0;p.baseX=r.side<0?100:320;p.push=0;p.tilt=0;p.rescueGrace=2;s.rescued++;emit('civilian-rescued');}
+            r.phase='return';r.timer=0;r.progress=0;r.startY=r.workerY;
+          }
+        }else{
+          r.workerY=Math.max(-45,r.workerY-330*dt);
+          r.progress=clamp((r.startY-r.workerY)/Math.max(1,r.startY+45),0,1);
+        }
+      }
+      s.rescues=s.rescues.filter(r=>r.phase!=='return'||r.progress<1);
+      for(const p of s.crowd){
+        if(s.rescues.length>=MAX_RESCUES)break;
+        if(p.status==='waiting'&&!s.rescues.some(r=>r.personId===p.id)){
+          const side=p.fallSide;
+          s.rescues.push({id:++s.rescueSerial,personId:p.id,side,x:side<0?25:395,y:p.y,workerX:side<0?69:351,workerY:-35,phase:'approach',timer:0,progress:0,startY:-35});
+        }
+      }
     }
     function moveCrowd(dt,dim){
       for(const p of s.crowd){
+        if(!p.status)p.status='walking';
+        if(p.status==='falling'){
+          p.fallProgress=clamp(p.fallProgress+dt/FALL_TIME,0,1);
+          p.x=p.groundX+((p.fallSide<0?25:395)-p.groundX)*smooth(p.fallProgress);
+          if(p.fallProgress===1)p.status='waiting';
+          continue;
+        }
+        if(p.status!=='walking')continue;
+        p.rescueGrace=Math.max(0,(p.rescueGrace||0)-dt);
         p.push=Math.max(0,p.push-dt*1.6);p.tilt*=Math.exp(-dt*5);
         p.y+=p.speed*p.direction*dt*(dim?.30:1);
-        if(p.y>610||p.y< -62){p.y=p.direction>0?-57:605;p.x=p.baseX=clamp(70+random()*280,65,355);p.push=0;p.tilt=0;}
-        p.x+=(p.baseX-p.x)*dt*.28;
+        if(p.y>610||p.y< -62){p.y=p.direction>0?-57:605;p.x=p.baseX=70+random()*280;p.push=0;p.tilt=0;}
+        p.x=clamp(p.x+(p.baseX-p.x)*dt*.28,50,370);
         const pdx=p.x-s.player.x,pdy=p.y-s.player.y;
         if(Math.abs(pdy)<65&&Math.abs(pdx)<45){const side=pdx===0?(p.variant%2?1:-1):Math.sign(pdx);shove(p,side,(45-Math.abs(pdx))*(1-Math.abs(pdy)/70),dt,115);}
-        for(const e of s.enemies){
-          const aggressive=e.mode==='warn'||e.mode==='dash';
-          const reach=aggressive?100:46,dy=p.y-e.y;
-          if(dy< -30||dy>reach)continue;
-          let pathX=e.x;
-          if(aggressive&&Number.isFinite(e.targetX))pathX=e.x+(e.targetX-e.x)*clamp(dy/Math.max(1,e.targetY-e.y),0,1);
-          const dx=p.x-pathX,width=e.kind==='rugby'?56:aggressive?49:34;
-          if(Math.abs(dx)<width){const side=dx===0?(p.variant%2?1:-1):Math.sign(dx);const weight=dy<0?1+dy/40:1-dy/(reach+30);shove(p,side,(width-Math.abs(dx))*weight,dt,aggressive?235:85);}
-        }
       }
-      // Soft personal space lets a dense crowd part without stacking into one sprite.
+      // Everyday yielding stays on the platform; only a hostile shove can cause a fall.
       for(let i=0;i<s.crowd.length;i++)for(let j=i+1;j<s.crowd.length;j++){
-        const a=s.crowd[i],b=s.crowd[j],dx=b.x-a.x,dy=b.y-a.y;
+        const a=s.crowd[i],b=s.crowd[j];if(a.status!=='walking'||b.status!=='walking')continue;
+        const dx=b.x-a.x,dy=b.y-a.y;
         if(Math.abs(dy)<43&&Math.abs(dx)<32){
           const push=(32-Math.abs(dx))*(1-Math.abs(dy)/43)*Math.min(.25,dt*3),side=dx===0?(i%2?1:-1):Math.sign(dx);
-          a.x=clamp(a.x-push*side,59,361);b.x=clamp(b.x+push*side,59,361);
+          a.x=clamp(a.x-push*side,50,370);b.x=clamp(b.x+push*side,50,370);
         }
       }
-      for(const p of s.crowd)p.x=clamp(p.x,59,361);
+      if(!dim)for(const p of s.crowd){
+        if(p.status!=='walking')continue;
+        for(const e of s.enemies){
+          if(e.mode==='pickup'||e.passed)continue;
+          const aggressive=e.mode==='warn'||e.mode==='dash';
+          let dx=0,dy=1;
+          if(e.mode==='dash'){dx=e.vx;dy=e.vy;}
+          else if(e.mode==='warn'){dx=e.targetX-e.x;dy=e.targetY-e.y;}
+          const length=Math.hypot(dx,dy);if(length>.001){dx/=length;dy/=length;}else{dx=0;dy=1;}
+          const reach=aggressive?90:42;
+          const ax=(Number.isFinite(e.oldX)?e.oldX:e.x)-dx*20,ay=(Number.isFinite(e.oldY)?e.oldY:e.y)-dy*20;
+          const bx=e.x+dx*reach,by=e.y+dy*reach,sx=bx-ax,sy=by-ay;
+          const t=clamp(((p.x-ax)*sx+(p.y-ay)*sy)/(sx*sx+sy*sy||1),0,1);
+          const pathX=ax+sx*t,pathY=ay+sy*t,awayX=p.x-pathX;
+          const distance=Math.hypot(awayX,p.y-pathY),width=e.kind==='rugby'?58:aggressive?52:35;
+          if(distance<width){
+            const side=Math.abs(awayX)<.001?(p.variant%2?1:-1):Math.sign(awayX);
+            shove(p,side,width-distance,dt,e.mode==='dash'?(e.kind==='rugby'?340:300):aggressive?220:95,true);
+            if(p.status!=='walking')break;
+          }
+        }
+      }
+      updateRescues(dt);
     }
-    function touches(e,oldX,oldY,oldPlayerX){
+    function closestApproach(e,oldPlayerX,oldPlayerY){
       const rx=e.kind==='rugby'?32:27,ry=e.kind==='rugby'?32:29;
-      const ax=(oldX-oldPlayerX)/rx,ay=(oldY-s.player.y)/ry,bx=(e.x-s.player.x)/rx,by=(e.y-s.player.y)/ry;
+      const ax=(e.oldX-oldPlayerX)/rx,ay=(e.oldY-oldPlayerY)/ry,bx=(e.x-s.player.x)/rx,by=(e.y-s.player.y)/ry;
       const dx=bx-ax,dy=by-ay,den=dx*dx+dy*dy,t=den?clamp(-(ax*dx+ay*dy)/den,0,1):0;
-      return (ax+dx*t)**2+(ay+dy*t)**2<1;
+      const x=ax+dx*t,y=ay+dy*t;
+      return {touching:x*x+y*y<1,clearance:Math.hypot(x*rx,y*ry)};
+    }
+    function movePlayer(dt,input){
+      const hasTarget=Number.isFinite(input.targetX)||Number.isFinite(input.targetY),speed=PLAYER_SPEED*s.settings.playerSpeed;
+      let dx,dy,length,step;
+      if(hasTarget){
+        dx=(Number.isFinite(input.targetX)?input.targetX:s.player.x)-s.player.x;
+        dy=(Number.isFinite(input.targetY)?input.targetY:s.player.y)-s.player.y;
+        length=Math.hypot(dx,dy);step=Math.min(length,speed*dt);
+      }else{
+        dx=clamp(Number.isFinite(input.dirX)?input.dirX:Number.isFinite(input.dir)?input.dir:0,-1,1);
+        dy=clamp(Number.isFinite(input.dirY)?input.dirY:0,-1,1);
+        length=Math.hypot(dx,dy);step=Math.min(1,length)*speed*dt;
+      }
+      if(length>0){s.player.x=clamp(s.player.x+dx/length*step,72,348);s.player.y=clamp(s.player.y+dy/length*step,95,500);}
     }
     function step(dt,input={}){
       if(s.phase!=='playing')return;
-      dt=Number.isFinite(dt)?clamp(dt,0,.05):0;s.events=[];s.time+=dt;s.elapsed=Math.min(s.duration,s.elapsed+dt);s.distance=s.elapsed/s.duration;
+      dt=(Number.isFinite(dt)?clamp(dt,0,.05):0)*s.settings.tempo;s.events=[];
+      if(dt===0)return;
+      s.time+=dt;s.elapsed=Math.min(s.duration,s.elapsed+dt);s.distance=s.elapsed/s.duration;
       s.player.hit=Math.max(0,s.player.hit-dt);s.shake=Math.max(0,s.shake-dt);
-      const oldPlayerX=s.player.x,target=Number.isFinite(input.targetX)?input.targetX:s.player.x+(input.dir||0)*340*dt;
-      s.player.x=clamp(s.player.x+clamp(target-s.player.x,-340*dt,340*dt),61,359);
+      const oldPlayerX=s.player.x,oldPlayerY=s.player.y;movePlayer(dt,input);
       updateBlackout(dt);
       const dim=s.blackout.phase==='dark'||s.blackout.phase==='recover';
       if(!dim){s.spawn-=dt;if(s.spawn<=0)spawnEnemy();}
       for(const e of s.enemies){
-        const oldX=e.x,oldY=e.y;
+        e.oldX=e.x;e.oldY=e.y;
         if(!dim)moveEnemy(e,dt);
-        const touching=!dim&&touches(e,oldX,oldY,oldPlayerX);
-        if(touching)e.touched=true;
-        if(!e.hit&&s.player.hit<=0&&touching){
+        if(e.y>=0&&e.y<=600&&e.x>=-40&&e.x<=460)e.entered=true;
+        const approach=dim?{touching:false,clearance:Infinity}:closestApproach(e,oldPlayerX,oldPlayerY);
+        e.minClearance=Math.min(e.minClearance??Infinity,approach.clearance);
+        if(approach.touching)e.touched=true;
+        if(!e.hit&&s.player.hit<=0&&approach.touching){
           e.hit=true;s.lives--;s.player.hit=1.5;s.shake=.32;emit('hit');
           for(let i=0;i<14;i++){const a=random()*Math.PI*2;s.particles.push({x:s.player.x,y:s.player.y,life:.6,maxLife:.6,vx:Math.cos(a)*(45+random()*110),vy:Math.sin(a)*(45+random()*110),color:i%2?'#ce6345':'#e6bd57'});}
           if(s.lives<=0){s.phase='lost';emit('lost');break;}
         }
-        if(!e.passed&&e.y>s.player.y+42){e.passed=true;if(!e.hit&&!e.touched){s.dodged++;if(Math.abs(e.x-s.player.x)<54){s.near++;emit('near');}else emit('dodge');}}
+        const outside=e.y>630||e.x< -70||e.x>490||(e.mode==='dash'&&e.y< -70);
+        if(outside||(e.age||0)>18||(e.dashTime||0)>5){
+          e.passed=true;
+          if(outside&&e.entered&&!e.hit&&!e.touched){s.dodged++;if(e.minClearance<55){s.near++;emit('near');}else emit('dodge');}
+        }
       }
-      s.enemies=s.enemies.filter(e=>e.y<630&&e.x>-100&&e.x<520);
+      s.enemies=s.enemies.filter(e=>!e.passed);
       moveCrowd(dt,dim);
       for(const p of s.particles){p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=140*dt;}
       s.particles=s.particles.filter(p=>p.life>0);
       s.score=s.dodged*10+s.near*15+Math.floor(s.elapsed)*2;
       if(s.phase==='playing'&&s.elapsed>=s.duration){s.phase='won';s.score+=100;emit('won');}
     }
-    return {s,start,step,pause(){if(s.phase==='playing')s.phase='paused';},resume(){if(s.phase==='paused')s.phase='playing';}};
+    return {s,start,step,setSettings,pause(){if(s.phase==='playing')s.phase='paused';},resume(){if(s.phase==='paused')s.phase='playing';}};
   }
   return {create};
 })();
@@ -238,47 +368,119 @@ const OjiArt = (() => {
     c.restore();
   }
   function floor(c,s){
-    c.fillStyle=C.floor;c.fillRect(0,0,420,560);
     const drift=((s.elapsed||0)*68)%70;
-    // Station tiles: subtle variation, continuous motion, and narrow wall shadows.
+    // Open tracks on both sides, with sleepers and two continuous rails.
+    c.fillStyle='#677974';c.fillRect(0,0,420,560);
+    for(const x of [0,370]){
+      c.fillStyle='#536761';c.fillRect(x,0,50,560);
+      for(let y=-70;y<630;y+=35){
+        const yy=y+(drift%35);
+        rr(c,x+3,yy,44,8,1.5,'#3e514b');
+        line(c,x+4,yy+1,x+46,yy+1,'#75847a',1);
+        for(const dx of [9,38])ellipse(c,x+dx,yy+4,1.2,1.2,'#9bada0');
+      }
+      for(const dx of [10,39]){
+        c.fillStyle='#344d45';c.fillRect(x+dx-3,0,6,560);
+        c.fillStyle='#a2b3a6';c.fillRect(x+dx-1,0,2,560);
+      }
+      for(let i=0;i<28;i++){
+        const px=x+4+((i*17)%43),py=(i*47+drift)%560;
+        ellipse(c,px,py,1.3,.8,i%2?'#829086':'#445c51');
+      }
+    }
+    // A raised island platform, pale tiles, and tactile yellow edge strips.
+    c.fillStyle='#a7b5a5';c.fillRect(50,0,320,560);
+    c.fillStyle='#3c534a';c.fillRect(49,0,4,560);c.fillRect(367,0,4,560);
+    c.fillStyle=C.floor;c.fillRect(54,0,312,560);
     for(let row=-1;row<9;row++){
       const y=row*70+drift;
       for(let col=0;col<5;col++){
         c.fillStyle=(row+col)%3===0?'#e9eadf':'#e4e6d9';
-        c.fillRect(40+col*68+1,y+1,67,68);
+        c.fillRect(54+col*62.4+1,y+1,61.4,68);
       }
-      line(c,40,y,380,y,C.grout,1);
+      line(c,54,y,366,y,C.grout,1);
     }
-    for(let col=1;col<5;col++)line(c,40+col*68,0,40+col*68,560,'#d3d8ca',1);
-    c.fillStyle='#e1c76e';c.fillRect(43,0,13,560);c.fillRect(364,0,13,560);
-    for(let y=-8;y<565;y+=10)for(const x of [46,51,367,372])ellipse(c,x,y+(drift%10),1.15,1.15,'#bda756');
-    c.fillStyle='#35594d10';c.fillRect(56,0,7,560);c.fillRect(357,0,7,560);
-    // Side walls, mint tiled caps, and recessed details.
-    c.fillStyle=C.wall;c.fillRect(0,0,37,560);c.fillRect(383,0,37,560);
-    c.fillStyle=C.darkWall;c.fillRect(31,0,6,560);c.fillRect(383,0,6,560);
-    line(c,37,0,37,560,'#6f8d7c',1);line(c,382,0,382,560,'#6f8d7c',1);
-    for(let y=-80;y<650;y+=140){const yy=y+(drift*2);line(c,0,yy,30,yy,'#91aa9c',1);line(c,390,yy,420,yy,'#91aa9c',1);rr(c,8,yy+28,15,44,2,'#c5d2c5','#95ac9d');rr(c,397,yy+28,15,44,2,'#c5d2c5','#95ac9d');}
+    for(let col=1;col<5;col++)line(c,54+col*62.4,0,54+col*62.4,560,'#d3d8ca',1);
+    c.fillStyle='#e1c76e';c.fillRect(58,0,12,560);c.fillRect(350,0,12,560);
+    for(let y=-8;y<565;y+=10)for(const x of [61,66,353,358])ellipse(c,x,y+(drift%10),1.1,1.1,'#b49a4f');
+    line(c,54,0,54,560,'#f7f2d6',2);line(c,366,0,366,560,'#f7f2d6',2);
     // Faint directional floor marks move with the walkway.
     for(let y=-160;y<700;y+=240){let yy=y+((s.elapsed||0)*68)%240;arrow(c,141,yy,true,14,'#b5c3b065');arrow(c,279,yy,false,14,'#b5c3b065');}
-    // Top corridor sign stays fixed as a strong, readable frame.
-    c.fillStyle='#263d4320';c.fillRect(0,0,420,47);
+    c.fillStyle='#263d4320';c.fillRect(54,0,312,47);
     rr(c,74,-5,272,46,3,'#344f49','#254038',1);
     text(c,'N',91,24,12,'#e7d889','700');line(c,113,7,113,30,'#6b8474');
     text(c,'北口・改札方面',128,22,12,'#f2f0db','650');
     text(c,'NORTH EXIT',128,33,6,'#b7c9b9','500');arrow(c,324,18,true,8,'#e9d487');
-    // Bottom soft vignette, no opaque obstruction to the player.
-    const g=c.createLinearGradient(0,510,0,560);g.addColorStop(0,'#f8f4e700');g.addColorStop(1,'#738f7820');c.fillStyle=g;c.fillRect(38,510,344,50);
+    const g=c.createLinearGradient(0,510,0,560);g.addColorStop(0,'#f8f4e700');g.addColorStop(1,'#738f7820');c.fillStyle=g;c.fillRect(54,510,312,50);
+  }
+  function strandedCivilian(c,p,t,reduced){
+    const v=((p.variant||0)%6+6)%6,side=p.fallSide||1;
+    const coat=['#9aada5','#b5a4a4','#8f9fa8','#b8b29a','#a5a8b9','#9cafbc'][v];
+    const skin=['#d8b599','#d6aa8e','#ba9277','#dfb9a0','#cfaa91','#bb9279'][v];
+    c.save();c.translate(p.x,p.y);c.scale(.76,.76);
+    ellipse(c,0,17,18,5,'#243f3138');
+    c.lineCap='round';c.lineJoin='round';
+    // Seated, startled, and waiting to be pulled back onto the platform.
+    line(c,-6,9,-13,17,'#65746e',8);line(c,5,8,12,16,'#65746e',8);
+    line(c,-13,17,-18,11,'#445954',6);line(c,12,16,19,12,'#445954',6);
+    rr(c,-12,-13,24,26,6,coat,'#4e6c5440');
+    line(c,-side*11,-7,-side*20,-20,coat,7);
+    ellipse(c,-side*21,-21,3.4,3.4,skin);
+    line(c,side*10,-5,side*16,7,coat,7);ellipse(c,side*17,9,3.4,3.4,skin);
+    ellipse(c,0,-22,10,12,skin);
+    c.fillStyle='#54615a';c.beginPath();c.moveTo(-10,-22);c.quadraticCurveTo(-12,-37,0,-35);c.quadraticCurveTo(12,-35,10,-22);c.lineTo(5,-28);c.lineTo(-5,-29);c.closePath();c.fill();
+    ellipse(c,-4,-22,1.1,1.2,'#42574c');ellipse(c,4,-22,1.1,1.2,'#42574c');
+    ellipse(c,0,-15,2,2.5,'#9e7765');
+    const bob=reduced?0:Math.sin(t*5)*1.2;
+    line(c,14,-29+bob,17,-34+bob,'#9dc8cf',1.6);line(c,-15,-27-bob,-18,-30-bob,'#9dc8cf',1.5);
+    c.restore();
+  }
+  function stationStaff(c,r,t,reduced){
+    const side=r.side||1,help=r.phase==='help',stride=reduced||help?0:Math.sin(t*14)*3.3;
+    c.save();c.translate(r.workerX,r.workerY);
+    ellipse(c,0,23,18,4.5,'#263d4320');
+    c.lineCap='round';c.lineJoin='round';
+    rr(c,-10,12+stride,8,14,3,'#2c4654');rr(c,3,12-stride,8,14,3,'#2c4654');
+    rr(c,-12,23+stride,11,5,2,'#25383e');rr(c,3,23-stride,11,5,2,'#25383e');
+    c.translate(0,help?5:0);
+    rr(c,-13,-10,26,31,6,'#456474','#2d4852',1);
+    c.fillStyle='#d5e3dc';c.beginPath();c.moveTo(-5,-9);c.lineTo(5,-9);c.lineTo(0,8);c.closePath();c.fill();
+    line(c,0,-5,0,9,'#2f4149',2.2);line(c,0,10,0,19,'#314f5c',1);
+    rr(c,-9,3,6,4,1,'#b6d4c4');ellipse(c,6,6,1.1,1.1,'#dfc880');
+    if(help){
+      line(c,side*12,-3,side*27,2,'#456474',8);line(c,side*27,2,side*36,14,'#456474',7);
+      ellipse(c,side*37,15,4,4,'#dfb393');
+      line(c,-side*11,-3,side*20,15,'#456474',7);ellipse(c,side*23,16,3.5,3.5,'#dfb393');
+    }else{
+      line(c,-14,-4,-17,15+stride,'#456474',8);line(c,14,-4,17,15-stride,'#456474',8);
+      ellipse(c,-17,18+stride,3.6,3.6,'#dfb393');ellipse(c,17,18-stride,3.6,3.6,'#dfb393');
+    }
+    rr(c,-20,1,7,7,1.5,'#e9cf73');
+    ellipse(c,0,-21,10.5,12,'#dfb393');
+    ellipse(c,-4,-20,1,1.2,'#2f4846');ellipse(c,4,-20,1,1.2,'#2f4846');line(c,-2,-14,2,-14,'#99715d',1);
+    rr(c,-12,-35,24,12,4,'#345360','#223e48',1);rr(c,-14,-26,28,5,2,'#29464f');
+    line(c,-10,-27,10,-27,'#adcfba',2);ellipse(c,0,-30,2.5,2.5,'#e7cb72');
+    c.restore();
+    if(help){
+      const bx=Math.max(69,Math.min(351,r.workerX)),by=r.workerY-50;
+      rr(c,bx-24,by-12,48,20,5,'#eef7dd','#789c80',1);
+      text(c,'救助中',bx,by+1,9,'#426e52','700','center');
+      c.fillStyle='#87b38c';c.fillRect(bx-19,by+5,38*Math.max(0,Math.min(1,r.progress||0)),2);
+    }
   }
   // Civilian adults have softer colors and no hostile eyebrows or warning marks.
   function civilian(c,p,t,reduced){
+    if(p.status==='waiting'){strandedCivilian(c,p,t,reduced);return;}
     const v=((p.variant||0)%6+6)%6, back=p.direction===-1;
     const coats=['#9aada5','#b5a4a4','#8f9fa8','#b8b29a','#a5a8b9','#9cafbc'];
     const hair=['#4b5653','#68635e','#414b48','#6d6b61','#5f6260','#505552'];
     const skin=['#d8b599','#d6aa8e','#ba9277','#dfb9a0','#cfaa91','#bb9279'][v];
-    const walk=reduced?0:Math.sin(t*7+(p.phase||0))*2.6;
+    const falling=p.status==='falling'||p.status==='lifting';
+    const fall=falling?Math.max(0,Math.min(1,p.fallProgress||0)):0;
+    const walk=reduced||falling?0:Math.sin(t*7+(p.phase||0))*2.6;
     const push=Math.max(0,Math.min(1,p.push||0));
-    c.save();c.translate(p.x,p.y);c.scale(.82,.82);
-    c.rotate(reduced?0:Math.max(-.30,Math.min(.30,p.tilt||0)));
+    c.save();c.translate(p.x,p.y);c.scale(.82*(1-fall*.16),.82*(1-fall*.16));
+    c.rotate(falling?(p.fallSide||1)*fall*1.12:(reduced?0:Math.max(-.30,Math.min(.30,p.tilt||0))));
     ellipse(c,0,22,18,4.5,'#294b3c12');
     c.lineCap='round';c.lineJoin='round';
     rr(c,-9,13+walk,6,13,2,'#65746e');rr(c,3,13-walk,6,13,2,'#65746e');
@@ -287,8 +489,13 @@ const OjiArt = (() => {
       c.fillStyle=coats[v];c.beginPath();c.moveTo(-12,-7);c.lineTo(12,-7);c.lineTo(16,20);c.lineTo(-16,20);c.closePath();c.fill();
       line(c,-5,6,-8,18,'#56685a25');line(c,4,6,6,18,'#56685a25');
     }else rr(c,-12,-8,24,28,5,coats[v],'#4e6c5425');
-    rr(c,-18,-5,7,21,3,coats[v]);rr(c,11,-5,7,21,3,coats[v]);
-    ellipse(c,-14,17,3.4,3.4,skin);ellipse(c,14,17,3.4,3.4,skin);
+    if(falling){
+      line(c,-13,-4,-24,-17,coats[v],7);line(c,13,-4,24,-20,coats[v],7);
+      ellipse(c,-25,-18,3.4,3.4,skin);ellipse(c,25,-21,3.4,3.4,skin);
+    }else{
+      rr(c,-18,-5,7,21,3,coats[v]);rr(c,11,-5,7,21,3,coats[v]);
+      ellipse(c,-14,17,3.4,3.4,skin);ellipse(c,14,17,3.4,3.4,skin);
+    }
     if(back){
       line(c,-8,-5,-9,10,'#748b7b',2);line(c,8,-5,9,10,'#748b7b',2);
       rr(c,-9,-4,18,23,4,v===2?'#c6b68a':'#87988a','#6c81752a');
@@ -366,8 +573,26 @@ const OjiArt = (() => {
   }
   function cards(c,e,t,reduced){
     const pickup=e.mode==='pickup';
+    if(e.mode==='dash'){
+      c.save();c.translate(e.x,e.y);
+      const vx=e.vx||0,vy=Number.isFinite(e.vy)?e.vy:1;
+      c.rotate(Math.atan2(vy,vx)+Math.PI/2);
+      const kick=reduced?0:Math.sin(t*24)*3;
+      c.lineCap='round';c.lineJoin='round';
+      // The entire silhouette is prone: outstretched arms, leading head, trailing feet.
+      line(c,-7,19,-12,37+kick,'#334e57',10);line(c,7,19,13,37-kick,'#334e57',10);
+      rr(c,-18,34+kick,11,8,3,'#263c41');rr(c,8,34-kick,11,8,3,'#263c41');
+      rr(c,-15,-11,30,35,7,'#607f83','#3b6166',1.2);
+      line(c,-13,-7,-20,-26,'#607f83',10);line(c,13,-7,20,-26,'#607f83',10);
+      line(c,-20,-26,-13,-40,'#607f83',8);line(c,20,-26,13,-40,'#607f83',8);
+      ellipse(c,-12,-42,4,5,'#dfac8b');ellipse(c,12,-42,4,5,'#dfac8b');
+      c.fillStyle='#f1e6cf';c.beginPath();c.moveTo(-6,-9);c.lineTo(6,-9);c.lineTo(0,14);c.closePath();c.fill();
+      line(c,0,-5,2,12,'#b76b52',3);rr(c,6,0,7,5,1,'#fffbed','#728d83',.6);
+      enemyHead(c,0,-22,false,false);
+      c.restore();return;
+    }
     if(!pickup){
-      person(c,e.x,e.y,'enemy',reduced?0:t*(e.mode==='dash'?22:9),1);
+      person(c,e.x,e.y,'enemy',reduced?0:t*9,1);
       // A white card peeks out of the breast pocket.
       rr(c,e.x+5,e.y-5,7,5,1,'#fffbed','#728d83',.6);
       return;
@@ -393,9 +618,10 @@ const OjiArt = (() => {
     c.restore();
   }
   function warning(c,e,s,t){
-    const rugbyKind=e.kind==='rugby', cardsKind=e.kind==='cards';
-    const label=rugbyKind?'突進！':cardsKind?'!?':'!';
-    const w=rugbyKind?46:cardsKind?29:21;
+    if(e.kind==='cards')return;
+    const rugbyKind=e.kind==='rugby';
+    const label=rugbyKind?'突進！':'!';
+    const w=rugbyKind?46:21;
     c.save();c.translate(e.x,e.y-(rugbyKind?58:53));
     rr(c,-w/2,-12,w,22,5,rugbyKind?'#9e3e42':'#c26042','#f6ead4',1.4);
     c.fillStyle=rugbyKind?'#9e3e42':'#c26042';c.beginPath();c.moveTo(-3,9);c.lineTo(0,14);c.lineTo(4,9);c.fill();
@@ -423,7 +649,7 @@ const OjiArt = (() => {
     const t=s.time||s.elapsed||0, enemies=s.enemies||[], reduced=!!s.reduceMotion;
     // The attack preview is only a thin dashed line, with no cone or body-shaped trail.
     for(const e of enemies){
-      if(e.mode==='warn'){
+      if(e.mode==='warn'&&e.kind!=='cards'){
         const tx=Number.isFinite(e.targetX)?e.targetX:s.player.x;
         const ty=Number.isFinite(e.targetY)?e.targetY:s.player.y;
         c.save();c.strokeStyle=e.kind==='rugby'?'#a1494699':'#bf67448a';c.lineWidth=1.7;c.setLineDash([4,7]);
@@ -439,9 +665,11 @@ const OjiArt = (() => {
     }
     const people=(s.crowd||[]).map(p=>({x:p.x,y:p.y,civilian:p}));
     for(const e of enemies)people.push({x:e.x,y:e.y,e});
+    for(const r of (s.rescues||[]))people.push({x:r.workerX,y:r.workerY,staff:r});
     people.push({x:s.player.x,y:s.player.y,player:true});people.sort((a,b)=>a.y-b.y);
     for(const p of people){
       if(p.civilian){civilian(c,p.civilian,t,reduced);continue;}
+      if(p.staff){stationStaff(c,p.staff,t,reduced);continue;}
       if(p.player){
         c.save();if(s.player.hit>0&&!reduced)c.globalAlpha=Math.floor(t*12)%2?.4:1;
         if(s.player.hit>0)ellipse(c,p.x,p.y+9,27,21,'#f6e6a080');
@@ -454,7 +682,7 @@ const OjiArt = (() => {
       }
     }
     // Warnings sit above the crowd so a packed corridor never hides the telegraph.
-    for(const e of enemies)if(e.mode==='warn')warning(c,e,s,t);
+    for(const e of enemies)if(e.mode==='warn'&&e.kind!=='cards')warning(c,e,s,t);
     for(const p of (s.particles||[])){
       c.save();c.globalAlpha=Math.max(0,Math.min(1,p.life/(p.maxLife||.7)));c.translate(p.x,p.y);c.rotate((p.x+p.y)*.05);rr(c,-2.5,-2.5,5,5,1,p.color||C.yellow);c.restore();
     }
@@ -467,16 +695,19 @@ const OjiArt = (() => {
   'use strict';
   const $=id=>document.getElementById(id), game=OjiCore.create(), s=game.s;
   const canvas=$('game'),ctx=canvas.getContext('2d'), reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let best=0,sound=false,audio=null,last=0,dragId=null,dragStart=0,playerStart=0,buttonDir=0,commentUntil=0,lastMessage=-1;
-  const keys=new Set(), input={dir:0,targetX:null};
+  let best=0,sound=false,audio=null,last=0,dragId=null,dragStart={x:0,y:0},playerStart={x:0,y:0},commentUntil=0,lastMessage=-1;
+  const keys=new Set(), held=new Map(), input={dirX:0,dirY:0,targetX:null,targetY:null};
+  const defaults={tempo:.9,playerSpeed:1,attackSpeed:1}, settingKeys=Object.keys(defaults);
+  game.setSettings(defaults);
+  try{const saved=JSON.parse(localStorage.getItem('dai_oji_settings_v1'));if(saved&&typeof saved==='object')game.setSettings(saved);}catch(e){}
   try{best=Math.max(0,Number(localStorage.getItem('dai_oji_best_v1'))||0);}catch(e){}
   $('best').textContent=best;
   const safeLines=['あの肩、通行人ごと押しのけてくる。','名刺交換は、穏やかにお願いします。','ここ、ラグビー場じゃないんですよ。','人混みの中で、急加速しないで。','すみません、そこ通ります。','肩幅の主張が強い。','今日のあなた、身のこなしがいい。','視野を広く。心も広く。','こちらは、帰りたいだけです。','その肩、しまってもらえます？','今のは完全にこっち見てた。','平和って、避け続けることなんだ。','帰宅への意志だけは負けません。','謝罪より先に、次のおじさん。','華麗。誰も見ていないけど。','駅の通路は格闘技場ではありません。','目指せ、無傷の晩ごはん。','避ける側にも、都合があります。','その直進力、別の場所で活かして。','今日の歩数、横移動が多い。'];
   function say(text,hit=false){$('comment').textContent=text;$('message').classList.toggle('hit',hit);commentUntil=s.elapsed+2.1;}
   function safeComment(){let n=Math.floor(Math.random()*safeLines.length);if(n===lastMessage)n=(n+1)%safeLines.length;lastMessage=n;say(safeLines[n]);}
   function tone(freq=.0,duration=.07,type='sine',volume=.035){if(!sound||!audio)return;try{const o=audio.createOscillator(),g=audio.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(volume,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+duration);}catch(e){}}
-  function clearInput(){keys.clear();input.dir=0;input.targetX=null;buttonDir=0;dragId=null;}
-  function controls(enabled){$('left').disabled=!enabled;$('right').disabled=!enabled;$('pause').disabled=s.phase==='ready'||s.phase==='won'||s.phase==='lost';$('pause').textContent=s.phase==='paused'?'▶ 再開':'Ⅱ 一時停止';$('pause').setAttribute('aria-label',s.phase==='paused'?'再開':'一時停止');}
+  function clearInput(){keys.clear();held.clear();input.dirX=0;input.dirY=0;input.targetX=null;input.targetY=null;dragId=null;}
+  function controls(enabled){for(const id of ['left','up','down','right'])$(id).disabled=!enabled;$('pause').disabled=s.phase==='ready'||s.phase==='won'||s.phase==='lost';$('pause').textContent=s.phase==='paused'?'▶ 再開':'Ⅱ 一時停止';$('pause').setAttribute('aria-label',s.phase==='paused'?'再開':'一時停止');}
   function hud(){
     $('score').textContent=String(s.score).padStart(3,'0');
     $('time').innerHTML=(s.duration-s.elapsed).toFixed(1)+'<small style="font-size:10px"> 秒</small>';
@@ -486,7 +717,7 @@ const OjiArt = (() => {
   }
   function start(){
     clearInput();game.start();last=performance.now();commentUntil=0;$('overlay').hidden=true;$('result').hidden=true;$('resultActions').hidden=true;$('stage').classList.remove('bump');
-    controls(true);hud();say('黄色があなた。普通の通行人は道を譲ってくれます。');canvas.focus({preventScroll:true});tone(550,.12);
+    controls(true);hud();say('黄色があなた。前後左右に動いて、帰り道を切り抜けよう。');canvas.focus({preventScroll:true});tone(550,.12);
   }
   function finish(){
     clearInput();controls(false);const won=s.phase==='won',isBest=s.score>best;
@@ -494,7 +725,7 @@ const OjiArt = (() => {
     $('overlayTag').textContent=won?'無事帰宅 / MISSION COMPLETE':'本日の通勤 / MISSION FAILED';
     $('overlayTitle').innerHTML=won?'おつかれさま。<br>無事、帰れました。':'心が、<br>先に帰りました。';
     $('overlayText').textContent=won?(s.lives===3?'完全無傷。今日は自分を褒めていい。':'世界は変わらない。でも、あなたは帰れた。'):'普通に歩くだけで、なぜこんなに疲れる。';
-    $('resultScore').textContent=s.score;$('resultDetail').textContent=`${s.dodged}人回避 · ギリギリ ${s.near}回${isBest?' · 自己ベスト！':''}`;
+    $('resultScore').textContent=s.score;$('resultDetail').textContent=`${s.dodged}人回避 · ギリギリ ${s.near}回 · ${s.rescued}人救助${isBest?' · 自己ベスト！':''}`;
     $('result').hidden=false;$('resultActions').hidden=false;$('start').textContent='もう一度、帰ってみる →';$('overlayHint').textContent='← 一覧から、ほかのゲームにも戻れます。';
     const text=`ぶつかりおじさんを${s.dodged}人かわして${s.score}点。${won?'無事に帰れました。':'心が先に帰りました。'}\n#ぶつかりおじさん回避中 #ゲーム制作\nhttps://ekooekon.github.io/oji/`;
     $('share').href='https://x.com/intent/tweet?text='+encodeURIComponent(text);
@@ -504,21 +735,33 @@ const OjiArt = (() => {
   function pause(){
     if(s.phase==='paused'){game.resume();$('overlay').hidden=true;clearInput();last=performance.now();controls(true);canvas.focus({preventScroll:true});return;}
     if(s.phase!=='playing')return;
-    game.pause();clearInput();controls(false);$('overlayTag').textContent='小休憩 / PAUSED';$('overlayTitle').innerHTML='ひと息、<br>つきましょう。';$('overlayText').textContent='時間も、おじさんも、止まっています。';$('result').hidden=true;$('resultActions').hidden=true;$('start').textContent='通勤を再開する →';$('overlayHint').textContent='P / Esc キーでも再開できます。';$('overlay').hidden=false;
+    game.pause();clearInput();controls(false);$('overlayTag').textContent='小休憩 / PAUSED';$('overlayTitle').innerHTML='ひと息、<br>つきましょう。';$('overlayText').textContent='時間も、おじさんも、止まっています。';$('result').hidden=true;$('resultActions').hidden=true;$('start').textContent='通勤を再開する →';$('overlayHint').textContent='P / Esc キーでも再開できます。';$('overlay').hidden=false;$('start').focus({preventScroll:true});
   }
   $('start').addEventListener('click',()=>s.phase==='paused'?pause():start());$('pause').addEventListener('click',pause);
+  function updateSettings(){
+    for(const key of settingKeys){$(key).value=s.settings[key];$(key+'Value').textContent=s.settings[key].toFixed(2)+'×';}
+    $('settingsButton').textContent='速度 '+s.settings.tempo.toFixed(2)+'×';
+    try{localStorage.setItem('dai_oji_settings_v1',JSON.stringify(s.settings));}catch(e){}
+  }
+  $('settingsButton').addEventListener('click',()=>{if(s.phase==='playing')pause();clearInput();$('settingsHint').textContent=s.phase==='paused'?'閉じたら「再開」で続きから遊べます。':'好みの速さでどうぞ。設定はこのブラウザに保存されます。';$('settings').showModal();});
+  $('settingsClose').addEventListener('click',()=>$('settings').close());
+  $('settingsReset').addEventListener('click',()=>{game.setSettings(defaults);updateSettings();});
+  for(const key of settingKeys)$(key).addEventListener('input',()=>{game.setSettings({[key]:Number($(key).value)});updateSettings();});
+  $('settings').addEventListener('close',()=>{clearInput();$('settingsButton').focus({preventScroll:true});});
+  updateSettings();
   $('sound').addEventListener('click',()=>{sound=!sound;$('sound').textContent=sound?'音 ON':'音 OFF';$('sound').setAttribute('aria-pressed',String(sound));if(sound){try{audio=audio||new (window.AudioContext||window.webkitAudioContext)();audio.resume().catch(()=>{});tone(630,.07);}catch(e){sound=false;$('sound').textContent='音 OFF';$('sound').setAttribute('aria-pressed','false');}}});
   document.addEventListener('keydown',e=>{
+    if($('settings').open)return;
     if(e.key==='Escape'||e.key.toLowerCase()==='p'){if(!e.repeat)pause();return;}
-    const k=e.key.toLowerCase();if(!['arrowleft','arrowright','a','d'].includes(k)||s.phase!=='playing')return;e.preventDefault();keys.add(k);input.targetX=null;
+    const k=e.key.toLowerCase();if(!['arrowleft','arrowright','arrowup','arrowdown','a','d','w','s'].includes(k)||s.phase!=='playing')return;e.preventDefault();keys.add(k);input.targetX=null;input.targetY=null;
   });document.addEventListener('keyup',e=>keys.delete(e.key.toLowerCase()));
-  canvas.addEventListener('pointerdown',e=>{if(s.phase!=='playing'||dragId!==null)return;e.preventDefault();dragId=e.pointerId;dragStart=e.clientX;playerStart=s.player.x;canvas.setPointerCapture(e.pointerId);input.targetX=s.player.x;});
-  canvas.addEventListener('pointermove',e=>{if(e.pointerId!==dragId||s.phase!=='playing')return;const r=canvas.getBoundingClientRect();input.targetX=Math.max(61,Math.min(359,playerStart+(e.clientX-dragStart)*420/r.width));});
-  const endDrag=e=>{if(e.pointerId===dragId){dragId=null;input.targetX=null;}};canvas.addEventListener('pointerup',endDrag);canvas.addEventListener('pointercancel',endDrag);canvas.addEventListener('lostpointercapture',endDrag);
-  for(const [id,dir]of [['left',-1],['right',1]]){
-    const b=$(id);b.addEventListener('pointerdown',e=>{if(s.phase!=='playing')return;e.preventDefault();b.setPointerCapture(e.pointerId);input.targetX=null;buttonDir=dir;});
-    for(const ev of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(ev,()=>{if(buttonDir===dir)buttonDir=0;});
-    b.addEventListener('click',e=>{if(e.detail===0&&s.phase==='playing')input.targetX=Math.max(61,Math.min(359,s.player.x+dir*60));});
+  canvas.addEventListener('pointerdown',e=>{if(s.phase!=='playing'||dragId!==null)return;e.preventDefault();dragId=e.pointerId;dragStart={x:e.clientX,y:e.clientY};playerStart={x:s.player.x,y:s.player.y};canvas.setPointerCapture(e.pointerId);input.targetX=s.player.x;input.targetY=s.player.y;});
+  canvas.addEventListener('pointermove',e=>{if(e.pointerId!==dragId||s.phase!=='playing')return;const r=canvas.getBoundingClientRect();input.targetX=Math.max(72,Math.min(348,playerStart.x+(e.clientX-dragStart.x)*420/r.width));input.targetY=Math.max(95,Math.min(500,playerStart.y+(e.clientY-dragStart.y)*560/r.height));});
+  const endDrag=e=>{if(e.pointerId===dragId){dragId=null;input.targetX=null;input.targetY=null;}};canvas.addEventListener('pointerup',endDrag);canvas.addEventListener('pointercancel',endDrag);canvas.addEventListener('lostpointercapture',endDrag);
+  for(const [id,dx,dy]of [['left',-1,0],['up',0,-1],['down',0,1],['right',1,0]]){
+    const b=$(id);b.addEventListener('pointerdown',e=>{if(s.phase!=='playing')return;e.preventDefault();b.setPointerCapture(e.pointerId);input.targetX=null;input.targetY=null;held.set(e.pointerId,{dx,dy});});
+    for(const ev of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(ev,e=>held.delete(e.pointerId));
+    b.addEventListener('click',e=>{if(e.detail===0&&s.phase==='playing'){input.targetX=Math.max(72,Math.min(348,s.player.x+dx*60));input.targetY=Math.max(95,Math.min(500,s.player.y+dy*60));}});
   }
   window.addEventListener('blur',()=>{clearInput();if(s.phase==='playing')pause();});document.addEventListener('visibilitychange',()=>{if(document.hidden&&s.phase==='playing')pause();});
   function render(){
@@ -530,17 +773,21 @@ const OjiArt = (() => {
   function frame(now){
     let elapsed=last?Math.min((now-last)/1000,.15):0;last=now;
     if(s.phase==='playing'){
-      input.dir=buttonDir+(keys.has('arrowright')||keys.has('d')?1:0)-(keys.has('arrowleft')||keys.has('a')?1:0);input.dir=Math.sign(input.dir);
+      input.dirX=(keys.has('arrowright')||keys.has('d')?1:0)-(keys.has('arrowleft')||keys.has('a')?1:0);
+      input.dirY=(keys.has('arrowdown')||keys.has('s')?1:0)-(keys.has('arrowup')||keys.has('w')?1:0);
+      for(const h of held.values()){input.dirX+=h.dx;input.dirY+=h.dy;}input.dirX=Math.sign(input.dirX);input.dirY=Math.sign(input.dirY);
       while(elapsed>0&&s.phase==='playing'){
         const dt=Math.min(elapsed,.025);game.step(dt,input);elapsed-=dt;
         for(const event of s.events){
           if(event==='hit'){say(s.lives===2?'肩、当たってますけど。':s.lives===1?'心の余裕、あと1回分。':'もう今日は、帰りたい。',true);tone(120,.13,'triangle');if(!reduceMotion){$('stage').classList.remove('bump');void $('stage').offsetWidth;$('stage').classList.add('bump');}}
           else if(event==='near'){if(s.elapsed>=commentUntil)say('今の、紙一重。 +15 PT');tone(820,.06);}
           else if(event==='dodge'){if(s.elapsed>=commentUntil&&s.dodged%2===0)safeComment();}
-          else if(event==='warning'){tone(380,.045,'triangle',.018);if(s.elapsed>=commentUntil)say('「！」の方向に注意。今いる場所から、左右へ。');}
+          else if(event==='warning'){tone(380,.045,'triangle',.018);if(s.elapsed>=commentUntil)say('「！」の方向に注意。狙われた場所から離れて。');}
           else if(event==='rugby-warning'){say('ラグビーおじさん！タックルの進路から離れて。');tone(320,.10,'triangle',.025);}
           else if(event==='cards-pickup'){if(s.elapsed>=commentUntil)say('あのおじさん、名刺を落としたみたい。');}
-          else if(event==='cards-warning'){say('名刺拾いの姿勢から、なぜタックル！？');tone(450,.08,'triangle',.025);}
+          else if(event==='cards-dive'){say('名刺を拾っていたのに、頭からダイブ！？');tone(450,.08,'triangle',.025);}
+          else if(event==='civilian-fall'){if(s.elapsed>=commentUntil)say('通行人が押し出された！駅員さんが駆けつけます。');}
+          else if(event==='civilian-rescued'){if(s.elapsed>=commentUntil)say('駅員さん、救助完了。ありがとうございます。');}
           else if(event==='blackout-warning'){say('照明の調子が……。まもなく、一瞬停電します。');tone(260,.12,'sine',.025);}
           else if(event==='blackout-on')say('停電！足元の輪が、あなたの位置です。');
           else if(event==='blackout-off')say('復旧しました。おじさんも、動き出します。');
