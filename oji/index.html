@@ -2,67 +2,46 @@
 <html lang="ja">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#efeee5"><meta name="description" content="ただ帰りたいだけなのに。混雑した駅で突進おじさん、ラグビーおじさん、名刺トラップをかわす45秒のブラウザゲーム。スマホ・PC対応。">
+<meta name="theme-color" content="#efeee5"><meta name="description" content="ただ帰りたいだけなのに。前から後ろから、ときには空から。ぶつかりおじさんを何秒かわし続けられる？スマホ・PCで遊べるサバイバルゲーム。">
+<meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>ぶつかりおじさん回避中。｜だいたい安全工業</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232a4d4b'/%3E%3Cpath d='M16 32h30m-12-12 12 12-12 12' fill='none' stroke='%23efd57f' stroke-width='7'/%3E%3C/svg%3E">
 <style>
-:root{--paper:#efeee5;--ink:#263d3d;--muted:#6e817b;--green:#315a52;--line:#ccd3c7;--yellow:#efd57f;--rust:#b85036;--mono:ui-monospace,SFMono-Regular,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif}
-*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.6 var(--sans);-webkit-font-smoothing:antialiased}button,a{touch-action:manipulation;-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer;color:inherit}a{color:inherit}button:focus-visible,a:focus-visible,canvas:focus-visible{outline:3px solid #3e8d9a;outline-offset:3px}button:disabled{cursor:default;opacity:.45}[hidden]{display:none!important}.wrap{max-width:1100px;padding:0 32px;margin:auto}.topbar{height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:12px}.brand{font-size:12px;font-weight:700;letter-spacing:.04em;text-decoration:none;display:flex;align-items:center;gap:10px}.brand-mark{display:grid;place-items:center;width:28px;height:28px;border-radius:6px;background:var(--green);color:var(--yellow);font-size:19px}.top-actions{display:flex;gap:7px;flex-shrink:0}.top-actions>*{white-space:nowrap}.subtle{background:none;border:1px solid #c1cbc0;border-radius:5px;padding:7px 10px;font-size:10px;min-height:34px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}.subtle:hover{background:#e1e6d9}.hero{padding:28px 0 23px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px}.eyebrow{font:9px var(--mono);letter-spacing:2px;color:var(--muted);margin:0 0 8px}.hero h1{margin:0;font-size:clamp(26px,3.8vw,40px);font-weight:850;letter-spacing:-1.6px;line-height:1.3}.hero h1 em{font-style:normal;color:var(--green)}.hero-copy{color:var(--muted);font-size:12px;margin:0;text-align:right}.workspace{display:grid;grid-template-columns:minmax(0,640px) 270px;justify-content:space-between;gap:38px;align-items:start}.arena-shell{min-width:0;background:#dae2d5;border:1px solid #b9c9ba;padding:16px 20px 14px;border-radius:12px;box-shadow:0 10px 25px #2d4d3c09}.hud{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:11px}.hud-label{font:8px var(--mono);letter-spacing:1.1px;color:#5d776d;display:block;margin-bottom:1px}.hud strong{font:600 21px/1.2 var(--mono);font-variant-numeric:tabular-nums}.hud-time{display:flex;align-items:center;gap:12px}.hearts{display:flex;gap:4px}.heart{display:block;width:12px;height:12px;transform:rotate(-45deg);background:#bc674c;position:relative;margin:4px 2px}.heart:before,.heart:after{content:'';position:absolute;width:12px;height:12px;border-radius:50%;background:inherit}.heart:before{top:-6px;left:0}.heart:after{left:6px;top:0}.heart.empty{background:#a6b6a6}.life-label{font-size:9px;color:#617b6e;margin-top:5px}.stage{width:min(100%,420px);aspect-ratio:3/4;margin:auto;position:relative;border-radius:8px;overflow:hidden;border:1px solid #a7bbac;background:#e7e8d9;isolation:isolate}.stage canvas{display:block;width:100%;height:100%;touch-action:none;user-select:none;outline-offset:-3px}.stage:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 30px #1c3b3512;border-radius:8px}.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:24px;background:#e8ede142;backdrop-filter:blur(2px);z-index:3}.ticket{width:100%;max-width:320px;max-height:100%;overflow-y:auto;padding:25px 25px 21px;background:#f8f6e9;border:1px solid #aebbab;border-radius:7px;box-shadow:0 12px 35px #17382d24;text-align:center;position:relative}.ticket:before{content:'';height:5px;position:absolute;top:0;left:0;right:0;background:repeating-linear-gradient(90deg,#315a52 0 14px,#efd57f 14px 28px);border-radius:6px 6px 0 0}.ticket .stamp{display:inline-block;border:1px solid #9cae99;border-radius:3px;color:#61775e;font:9px var(--mono);letter-spacing:1px;padding:4px 8px;margin:0 0 10px}.ticket h2{font-size:29px;letter-spacing:-1px;line-height:1.4;margin:0 0 12px}.ticket p{font-size:11px;line-height:1.9;color:#6a7c70;margin:0 0 16px}.primary{width:100%;min-height:46px;border-radius:5px;background:var(--green);border:1px solid #24483f;color:#fffbed;font-weight:700;font-size:14px;box-shadow:0 3px 0 #1b3c36;padding:10px}.primary:hover{background:#3f7166}.primary:active{transform:translateY(2px);box-shadow:none}.ticket .tiny{font-size:9px;margin:12px 0 0;color:#8a9586}.result-score{font:600 36px var(--mono);color:var(--green);margin:6px 0}.result-score small{font:10px var(--mono);margin-left:5px}.result-detail{font-size:11px;color:var(--muted);margin-bottom:13px}.result-actions{display:flex;gap:7px;margin-top:10px}.result-actions a{flex:1;min-height:33px;text-decoration:none;border:1px solid #c4cdbc;border-radius:4px;font-size:10px;display:grid;place-items:center}.progress{margin:10px 0 0;display:flex;align-items:center;gap:10px;font:8px var(--mono);letter-spacing:.7px;color:#63816f}.progress-bar{height:4px;flex:1;background:#b9c9b5;border-radius:3px;overflow:hidden}.progress-bar span{display:block;background:var(--green);height:100%;width:0;transition:width .1s linear}.control-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:12px}.steer{height:38px;flex:1;border:1px solid #a9baa5;background:#f3f2e5;border-radius:5px;font-size:18px;box-shadow:0 2px 0 #acb9a3;max-width:165px;touch-action:none;user-select:none}.steer:active{background:var(--yellow);transform:translateY(1px);box-shadow:none}.control-hint{font-size:9px;color:#63786a;text-align:center;min-width:102px;line-height:1.5}.sidebar{padding-top:2px}.rail-label{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:12px;font:9px var(--mono);letter-spacing:1px;color:#7c8d7d}.mission-number{font:600 69px/1 var(--mono);letter-spacing:-5px;color:var(--green);margin:19px 0 3px}.mission-number span{font:14px var(--sans);letter-spacing:0;margin-left:8px}.sidebar h2{font-size:16px;line-height:1.6;margin:7px 0 11px;letter-spacing:-.4px}.sidebar p{font-size:11px;line-height:1.9;color:#748576}.rules{list-style:none;padding:15px 0;margin:15px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.rules li{display:flex;gap:10px;font-size:11px;line-height:1.65;margin:0 0 10px;color:#667d6e}.rules li:last-child{margin-bottom:0}.rule-num{font:10px var(--mono);color:#8da18b;padding-top:3px}.rules b{font-weight:650;color:#425e4c}.record{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:20px}.record span{font-size:10px;color:#788b78}.record strong{font:22px var(--mono)}.record-note{font-size:9px!important;color:#8c9787!important;margin-top:3px!important}.message{display:flex;align-items:center;gap:11px;min-height:62px;margin-top:14px;padding:12px 15px;background:#f7f5eb;border:1px solid #d0d6c9;border-radius:7px}.message-tag{font:8px var(--mono);letter-spacing:1px;color:#889980;border-right:1px solid #d5ddcb;padding-right:11px;flex-shrink:0}.message p{font-size:12px;font-weight:600;line-height:1.6;margin:0;color:#51694f}.message.hit{border-color:#c3927a;background:#f2e5d6}.message.hit p{color:#9b4c32}.footer{margin:25px 0 0;padding:16px 0 22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:15px;font:8px var(--mono);letter-spacing:.6px;color:#899581}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}.pause-note{font-size:10px;color:#748576}.urgent{color:var(--rust)!important}.stage.bump{animation:bump .25s ease-out}@keyframes bump{20%{transform:translate(-4px,1px)}50%{transform:translate(4px,-2px)}80%{transform:translate(-2px,0)}}
-@media(max-width:800px){.wrap{padding:0 18px;max-width:640px}.topbar{height:46px}.brand{font-size:10px;gap:7px}.brand-mark{width:24px;height:24px;font-size:17px}.subtle{min-height:29px;font-size:9px;padding:5px 8px}.hero{padding:16px 0 13px;display:block}.hero h1{font-size:28px;letter-spacing:-1px}.eyebrow{font-size:7px;margin-bottom:5px;letter-spacing:1.5px}.hero-copy{font-size:10px;margin:5px 0 0;text-align:left}.workspace{display:block}.sidebar{display:none}.arena-shell{padding:10px 12px;border-radius:9px}.hud{margin-bottom:8px}.hud strong{font-size:18px}.hud-label{font-size:7px}.heart{width:9px;height:9px;margin:4px 1px}.heart:before,.heart:after{width:9px;height:9px}.heart:before{top:-4.5px}.heart:after{left:4.5px}.life-label{font-size:8px;margin-top:2px}.stage{width:min(100%,calc((100svh - 303px)*.75));min-width:195px}.progress{margin-top:7px}.control-row{margin-top:9px;gap:9px}.steer{height:34px}.control-hint{font-size:8px;min-width:90px}.message{margin-top:9px;padding:8px 10px;min-height:45px}.message p{font-size:11px}.message-tag{font-size:7px}.footer{margin-top:15px;padding:12px 0 15px;font-size:7px}.ticket{padding:19px 17px 17px}.ticket h2{font-size:25px;margin-bottom:9px}.ticket p{font-size:10px;margin-bottom:12px}.ticket .tiny{font-size:8px;margin-top:10px}.ticket .stamp{font-size:8px;margin-bottom:8px}.primary{min-height:41px;font-size:12px}.overlay{padding:17px}.result-score{font-size:30px}.result-detail{font-size:9px;margin-bottom:10px}.result-actions a{font-size:9px}.hud-time{gap:9px}}
-@media(max-width:800px) and (max-height:680px){.hero{padding:10px 0}.hero-copy,.eyebrow{display:none}.hero h1{font-size:24px}.stage{width:min(100%,calc((100svh - 308px)*.75))}.ticket h2{font-size:21px}.ticket .tiny{display:none}.ticket{padding:15px}.overlay{padding:12px}.ticket .stamp{font-size:7px}.ticket p{font-size:9px}.footer{margin-top:10px}}
-@media(max-width:360px){.brand>span:last-child{display:none}.hero h1{font-size:21px;letter-spacing:-.8px}.topbar{gap:8px}.wrap{padding:0 14px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
-
-.control-hint{margin:8px 0 0;min-width:0;font-size:9px;line-height:1.4}.steer{min-height:40px}.settings{width:min(420px,calc(100% - 28px));max-height:calc(100svh - 32px);overflow-y:auto;margin:auto;padding:26px;border:1px solid #aebbab;border-radius:12px;background:#f8f6e9;color:var(--ink);box-shadow:0 20px 70px #17382d33}.settings::backdrop{background:#18372e85;backdrop-filter:blur(3px)}.settings-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}.settings h2{font-size:23px;margin:0;letter-spacing:-.8px}.settings-close{border:1px solid #c4cdbc;background:transparent;border-radius:5px;width:34px;height:34px;font-size:22px;line-height:1}.setting{display:block;margin:0 0 23px}.setting-title{display:flex;justify-content:space-between;align-items:center;font-weight:700;font-size:13px}.setting output{font:600 16px var(--mono);color:var(--green)}.setting small{display:block;color:var(--muted);font-size:11px;margin:5px 0 9px}.setting input{display:block;width:100%;accent-color:var(--green);min-height:26px;margin:0;cursor:pointer}.setting-ends{display:flex;justify-content:space-between;font-size:9px;color:var(--muted)}.settings-foot{border-top:1px solid var(--line);padding-top:15px;display:flex;gap:16px;align-items:center}.settings-foot p{font-size:10px;color:var(--muted);margin:0;flex:1}.settings-foot button{flex-shrink:0}input:focus-visible{outline:3px solid #3e8d9a;outline-offset:2px}
-@media(max-width:800px){.control-hint{font-size:8px;margin-top:6px}.steer{min-height:36px}.top-actions{gap:5px}.top-actions .subtle{padding:5px 6px}.settings{padding:22px}.setting{margin-bottom:19px}}
-@media(max-width:460px){.brand>span:last-child{display:none}.topbar{gap:5px}}
-@media(max-width:800px) and (max-height:680px){.overlay{padding:8px}.ticket{padding:13px 10px 12px}.ticket h2{font-size:18px;line-height:1.35;letter-spacing:-.5px;margin-bottom:8px}.ticket .stamp{font-size:7px;line-height:1.4;padding:3px 5px;margin-bottom:7px}.ticket p{font-size:9px;line-height:1.6;margin-bottom:9px}.ticket .primary{font-size:11px;min-height:36px;padding:7px}.result-score{font-size:24px;margin:4px 0}.result-detail{margin-bottom:7px}.result-actions{margin-top:8px}}
-</style>
-</head>
-<body>
-<div class="wrap">
-<header class="topbar"><a class="brand" href="../" aria-label="ゲーム一覧へ"><span class="brand-mark" aria-hidden="true">↗</span><span>だいたい安全工業</span></a><div class="top-actions"><a class="subtle" href="../">← 一覧</a><button class="subtle" id="settingsButton" aria-haspopup="dialog">速度 0.90×</button><button class="subtle" id="sound" aria-pressed="false">音 OFF</button><button class="subtle" id="pause" disabled aria-label="一時停止">Ⅱ 一時停止</button></div></header>
-<main>
-<section class="hero"><div><p class="eyebrow">DAILY COMMUTE / AVOID THE UNAVOIDABLE</p><h1>ぶつかりおじさん<em>回避中。</em></h1></div><p class="hero-copy">ただ、帰りたいだけなのに。<br>人混み、突進、ときどき停電。</p></section>
-<div class="workspace"><div class="game-column">
-<section class="arena-shell" aria-label="回避ゲーム">
-<div class="hud"><div><span class="hud-label">SCORE</span><strong id="score">000</strong></div><div class="hud-time"><div><span class="hud-label">改札まで</span><strong id="time">45.0<small style="font-size:10px"> 秒</small></strong></div><div><div class="hearts" id="hearts" aria-label="残り体力3"><i class="heart"></i><i class="heart"></i><i class="heart"></i></div><div class="life-label">心の余裕</div></div></div></div>
-<div class="stage" id="stage"><canvas id="game" width="840" height="1120" tabindex="0" aria-label="黄色い服があなた。矢印キー、WASD、ドラッグ、または下の4方向ボタンで前後左右に移動。45秒間おじさんを避けます。"></canvas>
-<div class="overlay" id="overlay"><div class="ticket" id="ticket">
-<span class="stamp" id="overlayTag">帰宅ラッシュ / 45 SEC.</span><h2 id="overlayTitle">ぶつからずに、<br>帰りたい。</h2><p id="overlayText">黄色い服があなた。<br>人混みを抜けて、45秒で改札へ。<br>前後左右に動いてかわそう。<br>3回ぶつかると、心が折れます。</p>
-<div id="result" hidden><div class="result-score"><span id="resultScore">0</span><small>PT</small></div><div class="result-detail" id="resultDetail"></div></div>
-<button class="primary" id="start">通勤をはじめる →</button><div class="result-actions" id="resultActions" hidden><a id="share" target="_blank" rel="noopener noreferrer">𝕏 結果を投稿</a><a href="../">ゲーム一覧</a></div><p class="tiny" id="overlayHint">スマホ：自由にドラッグ / PC：矢印・WASD</p>
-</div></div></div>
-<div class="progress"><span>START</span><div class="progress-bar" role="progressbar" aria-label="改札までの進み具合" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress"><span id="progressFill"></span></div><span>改札 →</span></div>
+:root{--paper:#efeee5;--ink:#263d3d;--muted:#6e817b;--green:#315a52;--line:#ccd3c7;--yellow:#efd57f;--pink:#e65786;--rust:#b85036;--mono:ui-monospace,SFMono-Regular,Consolas,monospace;--sans:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:14px/1.6 var(--sans);-webkit-font-smoothing:antialiased}button,a{touch-action:manipulation;-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer;color:inherit}a{color:inherit}button:focus-visible,a:focus-visible,canvas:focus-visible{outline:3px solid #3e8d9a;outline-offset:3px}button:disabled{cursor:default;opacity:.45}[hidden]{display:none!important}.wrap{max-width:1100px;padding:0 32px;margin:auto}.topbar{height:68px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line);gap:12px}.brand{font-size:12px;font-weight:700;text-decoration:none;display:flex;align-items:center;gap:10px}.brand-mark{display:grid;place-items:center;width:28px;height:28px;border-radius:6px;background:var(--green);color:var(--yellow);font-size:19px}.top-actions{display:flex;gap:7px}.subtle{background:none;border:1px solid #c1cbc0;border-radius:5px;padding:7px 10px;font-size:10px;min-height:34px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}.subtle:hover{background:#e1e6d9}.hero{padding:28px 0 23px;display:flex;justify-content:space-between;align-items:flex-end;gap:20px}.eyebrow{font:9px var(--mono);letter-spacing:2px;color:var(--muted);margin:0 0 8px}.hero h1{margin:0;font-size:clamp(26px,3.8vw,40px);font-weight:850;letter-spacing:-1.6px;line-height:1.3}.hero h1 em{font-style:normal;color:var(--green)}.hero-copy{color:var(--muted);font-size:12px;margin:0;text-align:right}.workspace{display:grid;grid-template-columns:minmax(0,640px) 270px;justify-content:space-between;gap:38px;align-items:start}.game-column{min-width:0}.arena-shell{min-width:0;background:#dae2d5;border:1px solid #b9c9ba;padding:14px 20px;border-radius:12px;box-shadow:0 10px 25px #2d4d3c09}.hud{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:10px}.hud-label{font-size:9px;color:#5d776d;display:block}.hud strong{font:600 26px/1.2 var(--mono);font-variant-numeric:tabular-nums}.hud strong small{font:11px var(--sans);margin-left:4px}.hud-right{display:flex;gap:16px;align-items:center}.hearts{display:flex;gap:4px}.heart{display:block;width:11px;height:11px;transform:rotate(-45deg);background:#bc674c;position:relative;margin:4px 2px}.heart:before,.heart:after{content:'';position:absolute;width:11px;height:11px;border-radius:50%;background:inherit}.heart:before{top:-5.5px;left:0}.heart:after{left:5.5px;top:0}.heart.empty{background:#a6b6a6}.life-label{font-size:9px;color:#617b6e;margin-top:5px}.fall-counter{font-size:9px;line-height:1.7;color:#61766c;text-align:right}.fall-counter b{font:600 14px var(--mono);color:var(--ink)}.fall-counter .self-count{color:#b43f67}.mobile-sound{display:none}.alert-rail{height:27px;border:1px solid #b7c7b5;background:#e7ebdf;border-radius:4px;overflow:hidden;margin-bottom:8px;display:flex;align-items:center;position:relative;color:#667b65;font-size:10px}.alert-rail>span{padding:0 10px;white-space:nowrap}.alert-rail.warn{background:#f4d28a;border-color:#c9a454;color:#704627;font-weight:700}.alert-rail.danger{background:#b34f3e;border-color:#a34031;color:#fff9e8;font-weight:700}.alert-rail.scroll>span{display:inline-block;min-width:100%;animation:news 3.8s linear infinite}@keyframes news{from{transform:translateX(100%)}to{transform:translateX(-100%)}}.stage{width:min(100%,420px);aspect-ratio:3/4;margin:auto;position:relative;border-radius:8px;overflow:hidden;border:1px solid #a7bbac;background:#e7e8d9;isolation:isolate}.stage canvas{display:block;width:100%;height:100%;touch-action:none;user-select:none;outline-offset:-3px}.stage:after{content:'';position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 30px #1c3b3512;border-radius:8px}.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;background:#e8ede142;backdrop-filter:blur(2px);z-index:3}.ticket{width:100%;max-width:330px;max-height:100%;overflow-y:auto;overscroll-behavior:contain;padding:23px 22px 19px;background:#f8f6e9;border:1px solid #aebbab;border-radius:7px;box-shadow:0 12px 35px #17382d24;text-align:center;position:relative}.ticket:before{content:'';height:5px;position:absolute;top:0;left:0;right:0;background:repeating-linear-gradient(90deg,#315a52 0 14px,#efd57f 14px 28px);border-radius:6px 6px 0 0}.ticket .stamp{display:inline-block;border:1px solid #9cae99;border-radius:3px;color:#61775e;font:9px var(--mono);letter-spacing:1px;padding:4px 8px;margin:0 0 10px}.ticket h2{font-size:27px;letter-spacing:-1px;line-height:1.4;margin:0 0 11px}.ticket p{font-size:11px;line-height:1.8;color:#6a7c70;margin:0 0 14px}.primary{width:100%;min-height:44px;border-radius:5px;background:var(--green);border:1px solid #24483f;color:#fffbed;font-weight:700;font-size:13px;box-shadow:0 3px 0 #1b3c36;padding:10px}.primary:hover{background:#3f7166}.primary:active{transform:translateY(2px);box-shadow:none}.ticket .tiny{font-size:9px;margin:11px 0 0;color:#8a9586}.result-time{font:600 42px var(--mono);color:var(--green);margin:0 0 4px}.result-time small{font:12px var(--sans);margin-left:5px}.result-detail{font-size:10px;color:var(--muted);margin-bottom:12px}.comparison{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:10px 0 13px}.comparison>div{background:#e7ecdf;border-radius:5px;padding:9px 6px}.comparison .you{background:#f5dfe5}.comparison span{font-size:10px;display:block;color:#64776b}.comparison strong{font:600 25px var(--mono)}.comparison small{font-size:10px;margin-left:3px}.ticket .verdict{font-size:13px;font-weight:700;color:#a44065;line-height:1.8;border-top:1px dashed #cab8b4;padding-top:10px;margin-bottom:14px}.result-actions{display:flex;gap:7px;margin-top:10px}.result-actions a{flex:1;min-height:37px;text-decoration:none;border:1px solid #c4cdbc;border-radius:4px;font-size:10px;display:grid;place-items:center}.result-actions #share{background:#263d3d;color:#fff8e7;border-color:#263d3d}.control-row{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:11px}.steer{height:40px;flex:1;border:1px solid #a9baa5;background:#f3f2e5;border-radius:5px;font-size:20px;box-shadow:0 2px 0 #acb9a3;touch-action:none;user-select:none}.steer:active{background:var(--yellow);transform:translateY(1px);box-shadow:none}.control-hint{font-size:9px;color:#63786a;text-align:center;line-height:1.4;margin:8px 0 0}.sidebar{padding-top:2px}.rail-label{display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:12px;font:9px var(--mono);letter-spacing:1px;color:#7c8d7d}.mission-number{font:600 69px/1 var(--mono);letter-spacing:-5px;color:var(--green);margin:19px 0 3px}.mission-number span{font:14px var(--sans);letter-spacing:0;margin-left:8px}.sidebar h2{font-size:16px;line-height:1.6;margin:10px 0}.sidebar p{font-size:11px;line-height:1.9;color:#748576}.rules{list-style:none;padding:15px 0;margin:15px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.rules li{display:flex;gap:10px;font-size:11px;line-height:1.7;margin:0 0 12px;color:#667d6e}.rules li:last-child{margin-bottom:0}.rule-num{font:10px var(--mono);color:#8da18b;padding-top:3px;min-width:26px}.rules b{font-weight:650;color:#425e4c}.record{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-top:20px}.record span{font-size:10px;color:#788b78}.record strong{font:22px var(--mono)}.record-note{font-size:9px!important;color:#8c9787!important}.message{display:flex;align-items:center;gap:11px;min-height:58px;margin-top:12px;padding:10px 15px;background:#f7f5eb;border:1px solid #d0d6c9;border-radius:7px}.message-tag{font:8px var(--mono);color:#889980;border-right:1px solid #d5ddcb;padding-right:11px;flex-shrink:0}.message p{font-size:12px;font-weight:600;line-height:1.6;margin:0;color:#51694f}.message.hit{border-color:#c3927a;background:#f2e5d6}.message.hit p{color:#9b4c32}.footer{margin:25px 0 0;padding:16px 0 22px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:15px;font:8px var(--mono);color:#899581}.stage.bump{animation:bump .25s ease-out}@keyframes bump{20%{transform:translate(-3px,1px)}50%{transform:translate(3px,-2px)}80%{transform:translate(-2px,0)}}
+@media(max-width:800px){.wrap{padding:0 16px;max-width:640px}.topbar{height:46px}.brand{font-size:10px;gap:7px}.brand-mark{width:24px;height:24px;font-size:17px}.subtle{min-height:29px;font-size:9px;padding:5px 8px}.hero{padding:14px 0;display:block}.hero h1{font-size:27px;letter-spacing:-1px}.eyebrow{font-size:7px;margin-bottom:5px;letter-spacing:1.5px}.hero-copy{font-size:10px;margin:5px 0 0;text-align:left}.workspace{display:block}.sidebar{display:none}.arena-shell{padding:10px 12px}.hud{margin-bottom:8px}.hud strong{font-size:24px}.hud-right{gap:10px}.heart{width:9px;height:9px;margin:4px 1px}.heart:before,.heart:after{width:9px;height:9px}.heart:before{top:-4.5px}.heart:after{left:4.5px}.life-label{font-size:8px;margin-top:3px}.stage{width:min(100%,calc((100svh - 310px)*.75));min-width:195px}.control-row{gap:8px;margin-top:8px}.steer{height:38px}.control-hint{font-size:8px;margin-top:6px}.message{margin-top:9px;padding:8px 10px;min-height:45px}.message p{font-size:11px}.message-tag{font-size:7px}.footer{margin-top:15px;padding:12px 0 15px;font-size:7px}.ticket{padding:18px 15px 15px}.ticket h2{font-size:24px}.ticket .tiny{font-size:8px}.ticket .stamp{font-size:8px}.primary{min-height:40px;font-size:12px}.overlay{padding:14px}}
+body.immersive{overflow:hidden;overscroll-behavior:none}body.immersive .topbar,body.immersive .hero,body.immersive .sidebar,body.immersive .footer{display:none}body.immersive .wrap{padding:0;max-width:none}body.immersive .workspace{display:block}body.immersive .game-column{position:fixed;inset:0;display:flex;flex-direction:column;height:100vh;height:100dvh;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);background:#dae2d5;overflow:hidden}body.immersive .arena-shell{flex:1;min-height:0;display:flex;flex-direction:column;border:0;border-radius:0;box-shadow:none;padding:8px 8px 5px;width:100%}body.immersive .hud{flex-shrink:0;min-height:49px;margin:0 4px 7px}body.immersive .hud strong{font-size:29px}body.immersive .hud-right{gap:15px}body.immersive .mobile-sound{display:inline-flex;font-size:10px;min-height:30px;padding:4px 7px}body.immersive .stage{width:100%;height:100%;min-height:0;min-width:0;flex:1;aspect-ratio:auto;border-radius:5px;max-width:none}body.immersive .alert-rail{flex-shrink:0;margin-bottom:6px;height:25px}body.immersive .control-row{flex-shrink:0;margin-top:7px;gap:8px}body.immersive .steer{height:44px;font-size:24px}body.immersive .control-hint{flex-shrink:0;font-size:8px;margin:5px 0 0}body.immersive .message{flex-shrink:0;margin:0;border:0;border-top:1px solid #bdcdb8;border-radius:0;min-height:44px;max-height:55px;padding:6px 12px}body.immersive .message p{font-size:11px;line-height:1.5}body.immersive .overlay{padding:16px}body.immersive .ticket{max-width:340px}body.immersive .ticket h2{font-size:24px}body.immersive .ticket p{font-size:11px}body.immersive .result-time{font-size:39px}
+@media(max-width:360px){.brand>span:last-child{display:none}.hero h1{font-size:22px}.hud-right{gap:8px}body.immersive .hud-right{gap:10px}body.immersive .hud strong{font-size:25px}.fall-counter{font-size:8px}.fall-counter b{font-size:12px}body.immersive .mobile-sound{font-size:8px;padding:4px}.ticket .tiny{display:none}}
+@media(max-height:680px){body.immersive .hud{min-height:42px;margin-bottom:4px}body.immersive .alert-rail{height:22px;margin-bottom:4px}body.immersive .steer{height:36px}body.immersive .control-hint{display:none}body.immersive .message{min-height:36px;max-height:48px}body.immersive .ticket{padding:15px 12px 13px}body.immersive .ticket h2{font-size:19px;margin-bottom:7px}body.immersive .ticket p{font-size:10px;margin-bottom:10px}body.immersive .ticket .stamp{font-size:7px;margin-bottom:6px}body.immersive .result-time{font-size:30px}body.immersive .comparison{margin:7px 0;gap:6px}body.immersive .comparison>div{padding:5px}body.immersive .comparison strong{font-size:20px}body.immersive .ticket .verdict{font-size:11px;margin:7px 0;padding-top:7px}body.immersive .ticket .tiny{display:none}body.immersive .result-detail{margin-bottom:5px}body.immersive .primary{min-height:35px;padding:7px}body.immersive .result-actions{margin-top:7px}body.immersive .result-actions a{min-height:32px}}
+@media(max-width:800px) and (max-height:680px){body:not(.immersive) .hero-copy,body:not(.immersive) .eyebrow{display:none}body:not(.immersive) .ticket{padding:13px 9px}body:not(.immersive) .ticket h2{font-size:18px}body:not(.immersive) .ticket p{font-size:9px;line-height:1.6}body:not(.immersive) .ticket .tiny{display:none}body:not(.immersive) .overlay{padding:8px}body:not(.immersive) .ticket .stamp{font-size:7px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.alert-rail.scroll>span{white-space:normal;text-align:center;font-size:9px}}
+@media(max-height:680px){body.immersive .result-ticket #overlayText{display:none}body.immersive .result-ticket h2{font-size:17px;line-height:1.25;margin-bottom:5px}body.immersive .result-ticket .result-time{font-size:28px}body.immersive .result-ticket{padding:12px 10px 10px}body.immersive .result-ticket .result-detail{font-size:9px}body.immersive .result-ticket .comparison{margin:6px 0}body.immersive .result-ticket .verdict{font-size:10px;line-height:1.5;margin:6px 0}body.immersive .result-ticket .result-actions a{font-size:9px}}
+</style></head><body>
+<div class="wrap"><header class="topbar"><a class="brand" href="../" aria-label="ゲーム一覧へ"><span class="brand-mark" aria-hidden="true">↗</span><span>だいたい安全工業</span></a><div class="top-actions"><a class="subtle" href="../">← 一覧</a><button class="subtle" id="sound" aria-pressed="false">音 OFF</button></div></header>
+<main><section class="hero"><div><p class="eyebrow">DAILY COMMUTE / SURVIVE THE UNAVOIDABLE</p><h1>ぶつかりおじさん<em>回避中。</em></h1></div><p class="hero-copy">ただ、帰りたいだけなのに。<br>前から、後ろから、ときには空から。</p></section>
+<div class="workspace"><div class="game-column" id="gamePanel"><section class="arena-shell" aria-label="回避ゲーム">
+<div class="hud"><div><span class="hud-label">生き残った時間</span><strong><span id="time">0.0</span><small>秒</small></strong></div><div class="hud-right"><div class="fall-counter">落とした人数<br>私 <b class="self-count" id="playerFalls">0</b> · 敵 <b id="enemyFalls">0</b></div><div><div class="hearts" id="hearts" aria-label="残り体力3"><i class="heart"></i><i class="heart"></i><i class="heart"></i></div><div class="life-label">心の余裕</div></div><button class="subtle mobile-sound" id="mobileSound" aria-label="効果音の切り替え" aria-pressed="false">音 OFF</button></div></div>
+<div class="alert-rail" id="alertRail" role="status" aria-live="polite"><span id="alertText">足元だけでなく、周囲にもご注意ください。</span></div>
+<div class="stage" id="stage"><canvas id="game" width="840" height="1120" tabindex="0" aria-label="ピンクの服とポニーテールの女性があなた。矢印キー、WASD、ドラッグ、4方向ボタンで移動。3回ぶつかるまで生き残った時間を競います。"></canvas>
+<div class="overlay" id="overlay"><div class="ticket" id="ticket"><span class="stamp" id="overlayTag">帰宅ラッシュ / SURVIVAL</span><h2 id="overlayTitle">何秒、<br>平和でいられる？</h2><p id="overlayText">ピンクの服の女性があなた。<br>前後左右に動いて回避。<br>3回ぶつかると終了。<br>通行人の押し出しにも注意。</p>
+<div id="result" hidden><div class="result-time"><span id="resultTime">0.0</span><small>秒</small></div><div class="result-detail" id="resultDetail"></div><div class="comparison"><div class="you"><span>私が落とした人</span><strong id="resultPlayer">0</strong><small>人</small></div><div><span>敵が落とした人</span><strong id="resultEnemy">0</strong><small>人</small></div></div><p class="verdict" id="verdict" hidden>実は私がぶつかりおじさんだったのかもしれない、、、</p></div>
+<button class="primary" id="start">通勤をはじめる →</button><div class="result-actions" id="resultActions" hidden><a id="share" target="_blank" rel="noopener noreferrer">𝕏 結果を投稿</a><a href="../">ゲーム一覧へ</a></div><p class="tiny" id="overlayHint">スマホは全画面で開始 / PCは矢印キー・WASD</p></div></div></div>
 <div class="control-row" role="group" aria-label="移動ボタン"><button class="steer" id="left" aria-label="左に移動" disabled>←</button><button class="steer" id="up" aria-label="前に移動" disabled>↑</button><button class="steer" id="down" aria-label="後ろに移動" disabled>↓</button><button class="steer" id="right" aria-label="右に移動" disabled>→</button></div><p class="control-hint">画面を自由にドラッグ / 矢印キー・WASDでも移動</p>
-</section><div class="message" id="message"><span class="message-tag">ひとこと</span><p id="comment" aria-live="polite">こちらは、普通に歩いているだけです。</p></div>
-</div><aside class="sidebar"><div class="rail-label"><span>COMMUTE MANUAL</span><span>↗</span></div><div class="mission-number">45<span>秒の帰り道。</span></div><h2>人混みの向こうから、<br>肩が、やってくる。</h2><p>通行人は道を譲ってくれます。<br>おじさんだけは、お構いなし。</p><ul class="rules"><li><span class="rule-num">01</span><span><b>人混みをかき分けてくる。</b><br>「！」を見たら、狙われた場所から移動。</span></li><li><span class="rule-num">02</span><span><b>ラグビーおじさんは超高速。</b><br>大きな肩とボールが目印。直進に注意。</span></li><li><span class="rule-num">03</span><span><b>名刺拾いにも、ご用心。</b><br>予告なしで、頭からダイブしてきます。</span></li><li><span class="rule-num">04</span><span><b>押し出された人は、駅員さんが救助。</b><br>停電中は真っ暗。移動もタックルも続きます。</span></li></ul><div class="record"><span>このブラウザの最高記録</span><strong id="best">0</strong></div><p class="record-note">最高記録は速度設定にかかわらず共通です。</p><p class="pause-note">ギリギリ回避は +15 PT。<br>一般の通行人に触れてもダメージなし。<br>「速度」で3種類の速さを調整できます。<br>途中で休むときは「一時停止」。<br>別タブへ移ると自動で止まります。</p></aside></div>
-</main><footer class="footer"><span>DAITAI ANZEN INDUSTRIES</span><span>本日も、ご安全に。© 2026 EKOOEKON</span></footer>
-</div><dialog class="settings" id="settings" aria-labelledby="settingsTitle">
-<div class="settings-head"><h2 id="settingsTitle">自分のペースで。</h2><button class="settings-close" id="settingsClose" aria-label="速度設定を閉じる" autofocus>×</button></div>
-<label class="setting" for="tempo"><span class="setting-title">全体のテンポ<output id="tempoValue" for="tempo">0.90×</output></span><small>人の流れとカウントダウンをまとめて調整。</small><input id="tempo" type="range" min="0.5" max="1.5" step="0.05" value="0.9"><span class="setting-ends"><span>ゆっくり 0.50×</span><span>せわしない 1.50×</span></span></label>
-<label class="setting" for="playerSpeed"><span class="setting-title">自分の移動<output id="playerSpeedValue" for="playerSpeed">1.00×</output></span><small>黄色いあなたの、身のこなし。</small><input id="playerSpeed" type="range" min="0.6" max="1.6" step="0.05" value="1"><span class="setting-ends"><span>おだやか 0.60×</span><span>すばやい 1.60×</span></span></label>
-<label class="setting" for="attackSpeed"><span class="setting-title">おじさんの突進<output id="attackSpeedValue" for="attackSpeed">1.00×</output></span><small>ラグビーと名刺ダイブの速さも変わります。</small><input id="attackSpeed" type="range" min="0.6" max="1.6" step="0.05" value="1"><span class="setting-ends"><span>控えめ 0.60×</span><span>容赦なし 1.60×</span></span></label>
-<div class="settings-foot"><button class="subtle" id="settingsReset">初期設定に戻す</button><p id="settingsHint">好みの速さでどうぞ。</p></div>
-</dialog>
+</section><div class="message" id="message"><span class="message-tag">ひとこと</span><p id="comment" aria-live="polite">こちらは、普通に歩いているだけです。たぶん。</p></div></div>
+<aside class="sidebar"><div class="rail-label"><span>COMMUTE MANUAL</span><span>↗</span></div><div class="mission-number">∞<span>帰り道は続く。</span></div><h2>長く生き残るほど、<br>平和が遠のく。</h2><p>記録は、生き残った時間だけ。<br>あなたの肩にも、ご注意ください。</p><ul class="rules"><li><span class="rule-num">00s</span><span><b>とにかく、ぶつからない。</b><br>ラグビー突進、名刺ダイブ、真っ暗な停電。</span></li><li><span class="rule-num">20s</span><span><b>後ろからも、やってくる。</b><br>下から迫るおじさんにも注意。</span></li><li><span class="rule-num">40s</span><span><b>今度は、空から。</b><br>影を見たら離れて。そこに落ちてきます。</span></li><li><span class="rule-num">!</span><span><b>あなたも人を落としてしまう。</b><br>落ちた通行人は駅員さんが救助します。</span></li></ul><div class="record"><span>このブラウザの最長記録</span><strong><span id="best">0.0</span><small style="font:10px var(--sans)"> 秒</small></strong></div><p class="record-note">記録はこの端末・ブラウザに保存されます。</p><p>途中の一時停止はありません。<br>停電しても、移動もタックルも続きます。</p></aside></div>
+</main><footer class="footer"><span>DAITAI ANZEN INDUSTRIES</span><span>本日も、ご安全に。© 2026 EKOOEKON</span></footer></div>
 <noscript>このゲームを遊ぶにはJavaScriptを有効にしてください。</noscript>
 <script>
 const OjiCore = (() => {
   const clamp=(x,a,b)=>Math.max(a,Math.min(b,x));
   const DASH_SPEED={charge:315,rugby:560,cards:405};
   const WARN_TIME={charge:.72,rugby:.9};
-  const PLAYER_SPEED=340;
+  const PLAYER_SPEED=340, SPEED=1.215;
   const FALL_TIME=.45,HELP_TIME=1.1,MAX_RESCUES=3;
   const smooth=t=>t*t*(3-2*t);
   function create(random=Math.random) {
-    const s={phase:'ready',time:0,elapsed:0,duration:45,player:{x:210,y:456,hit:0},enemies:[],crowd:[],rescues:[],rescued:0,rescueSerial:0,particles:[],lives:3,dodged:0,near:0,score:0,spawn:1.1,serial:0,shake:0,distance:0,events:[],settings:{tempo:1,playerSpeed:1,attackSpeed:1},blackout:{phase:'off',timer:0,level:0},blackoutIndex:0};
+    const s={phase:'ready',time:0,elapsed:0,stage:0,player:{x:210,y:456,hit:0},enemies:[],airdrops:[],airSerial:0,nextDrop:42,crowd:[],falls:{player:0,enemy:0},rescues:[],rescued:0,rescueSerial:0,particles:[],lives:3,dodged:0,near:0,spawn:1.1,serial:0,shake:0,events:[],blackout:{phase:'off',timer:0,level:0},blackoutIndex:0};
     function emit(type){s.events.push(type);}
-    function setSettings(next={}){
-      for(const [key,min,max] of [['tempo',.5,1.5],['playerSpeed',.6,1.6],['attackSpeed',.6,1.6]]){
-        if(Number.isFinite(next[key]))s.settings[key]=clamp(next[key],min,max);
-      }
-      return {...s.settings};
-    }
     function resetCrowd(){
       s.crowd=[];
       for(let i=0;i<24;i++){
@@ -81,13 +60,13 @@ const OjiCore = (() => {
     }
     resetCrowd();
     function start(){
-      Object.assign(s,{phase:'playing',time:0,elapsed:0,lives:3,dodged:0,near:0,score:0,spawn:1,serial:0,shake:0,distance:0,enemies:[],particles:[],rescues:[],rescued:0,rescueSerial:0,events:[],blackoutIndex:0,blackout:{phase:'off',timer:0,level:0}});
+      Object.assign(s,{phase:'playing',time:0,elapsed:0,stage:0,lives:3,dodged:0,near:0,spawn:1,serial:0,shake:0,enemies:[],airdrops:[],airSerial:0,nextDrop:42,falls:{player:0,enemy:0},particles:[],rescues:[],rescued:0,rescueSerial:0,events:[],blackoutIndex:0,blackout:{phase:'off',timer:0,level:0}});
       Object.assign(s.player,{x:210,y:456,hit:0});resetCrowd();
     }
     function updateBlackout(dt){
       const b=s.blackout;
       if(b.phase==='off'){
-        if(s.blackoutIndex<2&&s.elapsed>=[14,31][s.blackoutIndex]){
+        if(s.elapsed>=14+17*s.blackoutIndex){
           s.blackoutIndex++;b.phase='warn';b.timer=.8;b.level=0;emit('blackout-warning');
         }
       }else if(b.phase==='warn'){
@@ -101,17 +80,24 @@ const OjiCore = (() => {
         if(b.timer===0){b.phase='off';b.level=0;emit('blackout-off');}
       }
     }
-    function spawnEnemy(){
+    function spawnEnemy(forceDirection){
       s.serial++;
       const opening=['straight','charge','rugby','cards','straight','charge'];
       const pool=['straight','charge','straight','rugby','cards'];
       let kind=opening[s.serial-1]||pool[Math.floor(random()*pool.length)];
+      const direction=forceDirection||(s.stage>=1&&random()<.4?-1:1);
+      if(direction===-1&&kind==='cards')kind=random()<.5?'charge':'rugby';
       if(kind==='cards'&&s.enemies.some(e=>e.kind==='cards'&&!e.passed))kind='straight';
-      if(kind==='rugby'&&s.enemies.some(e=>e.kind==='rugby'&&!e.passed))kind='charge';
+      if(kind==='rugby'&&s.enemies.filter(e=>e.kind==='rugby'&&!e.passed).length>=2)kind='charge';
       let x=68+random()*284;
-      if(s.enemies.some(e=>e.y<80&&Math.abs(e.x-x)<65))x=x<210?clamp(x+95,68,352):clamp(x-95,68,352);
-      s.enemies.push({x,y:-38,kind,mode:'walk',timer:0,variant:s.serial%4,speed:90+s.elapsed/s.duration*48+random()*18,passed:false,hit:false,touched:false,entered:false,minClearance:Infinity,age:0,phase:random()*6,pickupY:218+random()*48,diveTime:0,diveProgress:0});
-      s.spawn=1.22-s.elapsed/s.duration*.30+random()*.18;
+      if(s.enemies.some(e=>(direction===1?e.y<80:e.y>480)&&Math.abs(e.x-x)<65))x=x<210?clamp(x+95,68,352):clamp(x-95,68,352);
+      const difficulty=Math.min(1,s.elapsed/90);
+      s.enemies.push({id:s.serial,x,y:direction===1?-38:598,direction,kind,mode:'walk',timer:0,variant:s.serial%4,speed:90+difficulty*48+random()*18,passed:false,hit:false,touched:false,entered:false,minClearance:Infinity,age:0,phase:random()*6,pickupY:218+random()*48,diveTime:0,diveProgress:0});
+      s.spawn=1.22-difficulty*.3+random()*.18;
+    }
+    function updateStages(){
+      if(s.stage===0&&s.elapsed>=20){s.stage=1;emit('bottom-unlocked');spawnEnemy(-1);}
+      if(s.stage===1&&s.elapsed>=40){s.stage=2;emit('falling-unlocked');s.nextDrop=s.elapsed+2;}
     }
     function warn(e){
       e.mode='warn';e.timer=WARN_TIME[e.kind];e.targetX=s.player.x;e.targetY=s.player.y;
@@ -120,18 +106,18 @@ const OjiCore = (() => {
     function attackSlotAvailable(){return s.enemies.filter(e=>e.mode==='dash'&&!e.passed).length<2;}
     function launch(e){
       let dx=e.targetX-e.x,dy=e.targetY-e.y,n=Math.hypot(dx,dy);
-      if(!Number.isFinite(n)||n<.001){dx=0;dy=1;n=1;}
+      if(!Number.isFinite(n)||n<.001){dx=0;dy=e.direction||1;n=1;}
       e.mode='dash';e.dashTime=0;e.diveTime=0;e.diveProgress=0;
       e.baseVx=dx/n*DASH_SPEED[e.kind];e.baseVy=dy/n*DASH_SPEED[e.kind];
-      e.vx=e.baseVx*s.settings.attackSpeed;e.vy=e.baseVy*s.settings.attackSpeed;
+      e.vx=e.baseVx;e.vy=e.baseVy;
       if(e.kind==='cards')emit('cards-dive');
     }
     function moveEnemy(e,dt){
       e.age=(e.age||0)+dt;
       if(e.mode==='walk'){
-        e.y+=e.speed*dt;
+        const direction=e.direction||1;e.y+=e.speed*direction*dt;
         if(e.kind==='cards'&&e.y>=e.pickupY&&!e.passed){e.mode='pickup';e.timer=1.8+random()*.65;e.pickupDuration=e.timer;emit('cards-pickup');}
-        else if((e.kind==='charge'||e.kind==='rugby')&&e.y>=(e.kind==='rugby'?190:240)&&!e.passed)warn(e);
+        else if((e.kind==='charge'||e.kind==='rugby')&&(direction===1?e.y>=(e.kind==='rugby'?190:240):e.y<=560-(e.kind==='rugby'?190:240))&&!e.passed)warn(e);
       }else if(e.mode==='pickup'){
         e.timer=Math.max(0,e.timer-dt);
         if(e.timer===0&&attackSlotAvailable()){
@@ -144,21 +130,22 @@ const OjiCore = (() => {
       }else if(e.mode==='dash'){
         if(!Number.isFinite(e.baseVx))e.baseVx=Number.isFinite(e.vx)?e.vx:0;
         if(!Number.isFinite(e.baseVy))e.baseVy=Number.isFinite(e.vy)?e.vy:DASH_SPEED[e.kind]||315;
-        e.vx=e.baseVx*s.settings.attackSpeed;e.vy=e.baseVy*s.settings.attackSpeed;
+        e.vx=e.baseVx;e.vy=e.baseVy;
         e.x+=e.vx*dt;e.y+=e.vy*dt;e.dashTime=(e.dashTime||0)+dt;
         if(e.kind==='cards'){e.diveTime=(e.diveTime||0)+dt;e.diveProgress=clamp(e.diveTime/.2,0,1);}
       }
     }
-    function beginFall(p){
+    function beginFall(p,cause){
+      if(p.status!=='walking')return;
       p.status='falling';p.fallSide=p.x<49?-1:1;p.fallProgress=0;
-      p.groundX=p.x;p.groundY=p.y;p.push=1;p.tilt=p.fallSide;
-      emit('civilian-fall');
+      p.groundX=p.x;p.groundY=p.y;p.push=1;p.tilt=p.fallSide;p.fallCause=cause;
+      s.falls[cause]++;emit('civilian-fall');emit(cause+'-fall');
     }
-    function shove(p,side,amount,dt,strength,hostile=false){
+    function shove(p,side,amount,dt,strength,cause=null){
       const move=side*Math.min(strength*dt,Math.max(0,amount)*dt*9);
-      p.x=hostile&&p.rescueGrace<=0?p.x+move:clamp(p.x+move,50,370);
+      p.x=cause&&p.rescueGrace<=0?p.x+move:clamp(p.x+move,50,370);
       p.push=Math.max(p.push,Math.min(1,Math.abs(move)/(dt*100||1)));p.tilt=clamp(side*p.push,-1,1);
-      if(hostile&&p.rescueGrace<=0&&(p.x<49||p.x>371))beginFall(p);
+      if(cause&&p.rescueGrace<=0&&(p.x<49||p.x>371))beginFall(p,cause);
     }
     function updateRescues(dt){
       for(const r of s.rescues){
@@ -190,7 +177,8 @@ const OjiCore = (() => {
         }
       }
     }
-    function moveCrowd(dt){
+    function moveCrowd(dt,oldPlayerX,oldPlayerY){
+      const mx=s.player.x-oldPlayerX,my=s.player.y-oldPlayerY,moved=Math.hypot(mx,my);
       for(const p of s.crowd){
         if(!p.status)p.status='walking';
         if(p.status==='falling'){
@@ -206,9 +194,19 @@ const OjiCore = (() => {
         if(p.y>610||p.y< -62){p.y=p.direction>0?-57:605;p.x=p.baseX=70+random()*280;p.push=0;p.tilt=0;}
         p.x=clamp(p.x+(p.baseX-p.x)*dt*.28,50,370);
         const pdx=p.x-s.player.x,pdy=p.y-s.player.y;
-        if(Math.abs(pdy)<65&&Math.abs(pdx)<45){const side=pdx===0?(p.variant%2?1:-1):Math.sign(pdx);shove(p,side,(45-Math.abs(pdx))*(1-Math.abs(pdy)/70),dt,115);}
+        if(moved>.001){
+          const ox=p.x-oldPlayerX,oy=p.y-oldPlayerY;
+          const along=ox*mx+oy*my,t=clamp(along/(moved*moved),0,1);
+          const cx=p.x-(oldPlayerX+mx*t),cy=p.y-(oldPlayerY+my*t);
+          if(along>0&&(cx*cx/(36*36)+cy*cy/(45*45))<1){
+            const side=Math.abs(cx)>1?Math.sign(cx):Math.abs(mx)>.1?Math.sign(mx):(p.variant%2?1:-1);
+            shove(p,side,Math.max(10,42-Math.abs(cx)),dt,Math.min(390,170+moved/dt*.55),'player');
+          }
+        }
+        if(p.status==='walking'&&Math.abs(pdy)<65&&Math.abs(pdx)<45){const side=pdx===0?(p.variant%2?1:-1):Math.sign(pdx);shove(p,side,(45-Math.abs(pdx))*(1-Math.abs(pdy)/70),dt,115);}
+
       }
-      // Everyday yielding stays on the platform; only a hostile shove can cause a fall.
+      // Passive yielding stays on the platform. Moving-player and enemy impacts can cause falls.
       for(let i=0;i<s.crowd.length;i++)for(let j=i+1;j<s.crowd.length;j++){
         const a=s.crowd[i],b=s.crowd[j];if(a.status!=='walking'||b.status!=='walking')continue;
         const dx=b.x-a.x,dy=b.y-a.y;
@@ -222,10 +220,10 @@ const OjiCore = (() => {
         for(const e of s.enemies){
           if(e.mode==='pickup'||e.passed)continue;
           const aggressive=e.mode==='warn'||e.mode==='dash';
-          let dx=0,dy=1;
+          let dx=0,dy=e.direction||1;
           if(e.mode==='dash'){dx=e.vx;dy=e.vy;}
           else if(e.mode==='warn'){dx=e.targetX-e.x;dy=e.targetY-e.y;}
-          const length=Math.hypot(dx,dy);if(length>.001){dx/=length;dy/=length;}else{dx=0;dy=1;}
+          const length=Math.hypot(dx,dy);if(length>.001){dx/=length;dy/=length;}else{dx=0;dy=e.direction||1;}
           const reach=aggressive?90:42;
           const ax=(Number.isFinite(e.oldX)?e.oldX:e.x)-dx*20,ay=(Number.isFinite(e.oldY)?e.oldY:e.y)-dy*20;
           const bx=e.x+dx*reach,by=e.y+dy*reach,sx=bx-ax,sy=by-ay;
@@ -234,7 +232,7 @@ const OjiCore = (() => {
           const distance=Math.hypot(awayX,p.y-pathY),width=e.kind==='rugby'?58:aggressive?52:35;
           if(distance<width){
             const side=Math.abs(awayX)<.001?(p.variant%2?1:-1):Math.sign(awayX);
-            shove(p,side,width-distance,dt,e.mode==='dash'?(e.kind==='rugby'?340:300):aggressive?220:95,true);
+            shove(p,side,width-distance,dt,e.mode==='dash'?(e.kind==='rugby'?340:300):aggressive?220:95,'enemy');
             if(p.status!=='walking')break;
           }
         }
@@ -249,7 +247,7 @@ const OjiCore = (() => {
       return {touching:x*x+y*y<1,clearance:Math.hypot(x*rx,y*ry)};
     }
     function movePlayer(dt,input){
-      const hasTarget=Number.isFinite(input.targetX)||Number.isFinite(input.targetY),speed=PLAYER_SPEED*s.settings.playerSpeed;
+      const hasTarget=Number.isFinite(input.targetX)||Number.isFinite(input.targetY),speed=PLAYER_SPEED;
       let dx,dy,length,step;
       if(hasTarget){
         dx=(Number.isFinite(input.targetX)?input.targetX:s.player.x)-s.player.x;
@@ -262,41 +260,77 @@ const OjiCore = (() => {
       }
       if(length>0){s.player.x=clamp(s.player.x+dx/length*step,72,348);s.player.y=clamp(s.player.y+dy/length*step,95,500);}
     }
+    function hurt(){
+      if(s.player.hit>0||s.phase!=='playing')return false;
+      s.lives--;s.player.hit=1.5;s.shake=.32;emit('hit');
+      for(let i=0;i<14;i++){const a=random()*Math.PI*2;s.particles.push({x:s.player.x,y:s.player.y,life:.6,maxLife:.6,vx:Math.cos(a)*(45+random()*110),vy:Math.sin(a)*(45+random()*110),color:i%2?'#ce6345':'#e6bd57'});}
+      if(s.lives<=0){s.phase='lost';emit('lost');}
+      return true;
+    }
+    function spawnDrop(){
+      s.airdrops.push({id:++s.airSerial,x:clamp(s.player.x+(random()-.5)*54,76,344),y:clamp(s.player.y+(random()-.5)*48,100,492),kind:'straight',variant:s.airSerial%4,phase:'shadow',timer:1.1,progress:0,height:220,hit:false});
+      emit('falling-shadow');
+      s.nextDrop=s.elapsed+3.2+random()*1.6;
+    }
+    function dropImpact(a){
+      emit('falling-impact');
+      if(((s.player.x-a.x)/47)**2+((s.player.y-a.y)/43)**2<1)a.hit=hurt();
+      for(const p of s.crowd){
+        if(p.status!=='walking')continue;
+        const dx=p.x-a.x,dy=p.y-a.y,d=Math.hypot(dx,dy);
+        if(d<77){
+          const side=Math.abs(dx)>1?Math.sign(dx):(p.variant%2?1:-1),amount=18+(77-d)*.5;
+          p.x=p.rescueGrace>0?clamp(p.x+side*amount,50,370):clamp(p.x+side*amount,28,392);p.push=1;p.tilt=side;
+          if(p.rescueGrace<=0&&(p.x<49||p.x>371))beginFall(p,'enemy');
+        }
+      }
+      for(let i=0;i<10;i++){const angle=i*Math.PI/5;s.particles.push({x:a.x,y:a.y,life:.35,maxLife:.35,vx:Math.cos(angle)*90,vy:Math.sin(angle)*55,color:'#a4a98a'});}
+    }
+    function updateDrops(dt){
+      if(s.stage>=2&&s.elapsed>=s.nextDrop&&s.airdrops.length<2)spawnDrop();
+      for(const a of s.airdrops){
+        a.timer=Math.max(0,a.timer-dt);
+        if(a.phase==='shadow'){
+          a.progress=clamp(1-a.timer/1.1,0,1);
+          if(a.timer===0){a.phase='falling';a.timer=.42;a.progress=0;}
+        }else if(a.phase==='falling'){
+          a.progress=clamp(1-a.timer/.42,0,1);a.height=220*(1-a.progress*a.progress);
+          if(a.timer===0){a.phase='impact';a.timer=.4;a.progress=0;a.height=0;dropImpact(a);}
+        }else a.progress=clamp(1-a.timer/.4,0,1);
+        if(s.phase!=='playing')break;
+      }
+      s.airdrops=s.airdrops.filter(a=>a.phase!=='impact'||a.timer>0);
+    }
     function step(dt,input={}){
       if(s.phase!=='playing')return;
-      dt=(Number.isFinite(dt)?clamp(dt,0,.05):0)*s.settings.tempo;s.events=[];
+      const realDt=Number.isFinite(dt)?clamp(dt,0,.05):0;dt=realDt*SPEED;s.events=[];
       if(dt===0)return;
-      s.time+=dt;s.elapsed=Math.min(s.duration,s.elapsed+dt);s.distance=s.elapsed/s.duration;
+      s.time+=dt;s.elapsed+=realDt;
       s.player.hit=Math.max(0,s.player.hit-dt);s.shake=Math.max(0,s.shake-dt);
       const oldPlayerX=s.player.x,oldPlayerY=s.player.y;movePlayer(dt,input);
-      updateBlackout(dt);
+      updateStages();updateBlackout(dt);
       s.spawn-=dt;if(s.spawn<=0)spawnEnemy();
       for(const e of s.enemies){
-        e.oldX=e.x;e.oldY=e.y;
-        moveEnemy(e,dt);
-        if(e.y>=0&&e.y<=600&&e.x>=-40&&e.x<=460)e.entered=true;
+        e.oldX=e.x;e.oldY=e.y;moveEnemy(e,dt);
+        if(e.y>=0&&e.y<=560&&e.x>=-40&&e.x<=460)e.entered=true;
         const approach=closestApproach(e,oldPlayerX,oldPlayerY);
         e.minClearance=Math.min(e.minClearance??Infinity,approach.clearance);
         if(approach.touching)e.touched=true;
-        if(!e.hit&&s.player.hit<=0&&approach.touching){
-          e.hit=true;s.lives--;s.player.hit=1.5;s.shake=.32;emit('hit');
-          for(let i=0;i<14;i++){const a=random()*Math.PI*2;s.particles.push({x:s.player.x,y:s.player.y,life:.6,maxLife:.6,vx:Math.cos(a)*(45+random()*110),vy:Math.sin(a)*(45+random()*110),color:i%2?'#ce6345':'#e6bd57'});}
-          if(s.lives<=0){s.phase='lost';emit('lost');break;}
-        }
-        const outside=e.y>630||e.x< -70||e.x>490||(e.mode==='dash'&&e.y< -70);
+        if(!e.hit&&approach.touching&&hurt())e.hit=true;
+        if(s.phase!=='playing')break;
+        const outside=e.y>630||e.x< -70||e.x>490||e.y< -70;
         if(outside||(e.age||0)>18||(e.dashTime||0)>5){
           e.passed=true;
           if(outside&&e.entered&&!e.hit&&!e.touched){s.dodged++;if(e.minClearance<55){s.near++;emit('near');}else emit('dodge');}
         }
       }
       s.enemies=s.enemies.filter(e=>!e.passed);
-      moveCrowd(dt);
+      if(s.phase!=='playing')return;
+      moveCrowd(dt,oldPlayerX,oldPlayerY);updateDrops(dt);
       for(const p of s.particles){p.life-=dt;p.x+=p.vx*dt;p.y+=p.vy*dt;p.vy+=140*dt;}
       s.particles=s.particles.filter(p=>p.life>0);
-      s.score=s.dodged*10+s.near*15+Math.floor(s.elapsed)*2;
-      if(s.phase==='playing'&&s.elapsed>=s.duration){s.phase='won';s.score+=100;emit('won');}
     }
-    return {s,start,step,setSettings,pause(){if(s.phase==='playing')s.phase='paused';},resume(){if(s.phase==='paused')s.phase='playing';}};
+    return {s,start,step};
   }
   return {create};
 })();
@@ -318,28 +352,32 @@ const OjiArt = (() => {
     const player=type==='player', charging=type==='charge', v=((Number(variant)||0)%4+4)%4;
     const stride=Math.sin(phase)*3.6, bob=Math.abs(Math.sin(phase))*.7;
     c.save();c.translate(x,y);
-    ellipse(c,1,23,21,6,'#263d4320');
+    if(type!=='falling')ellipse(c,1,23,21,6,'#263d4320');
     c.lineCap='round';c.lineJoin='round';
     // Feet and trouser legs move independently of the coat.
-    rr(c,-11,12+stride,8,14,3,'#33494d');rr(c,3,12-stride,8,14,3,'#33494d');
-    rr(c,-12,22+stride,10,6,2,'#22373b');rr(c,3,22-stride,10,6,2,'#22373b');
+    rr(c,-11,12+stride,8,14,3,player?'#354e65':'#33494d');rr(c,3,12-stride,8,14,3,player?'#354e65':'#33494d');
+    rr(c,-12,22+stride,10,6,2,player?'#fff4df':'#22373b');rr(c,3,22-stride,10,6,2,player?'#fff4df':'#22373b');
     c.translate(0,-bob);
-    const coat=player?C.yellow:coats[v];
+    const coat=player?'#ef6487':coats[v];
     // Rounded shoulders; the outside silhouette carries most of the character.
     rr(c,-20,-6,10,26,5,coat,'#263d4322');rr(c,10,-6,10,26,5,coat,'#263d4322');
     ellipse(c,-15,19,4,4,'#e6b293');ellipse(c,15,19,4,4,'#e6b293');
     rr(c,-14,-10,28,32,7,coat,'#263d4340',1.1);
     if(player){
-      // Player is seen from behind: hair, mustard jacket, distinctive mint backpack.
-      line(c,-9,-8,-10,13,'#587f76',3);line(c,9,-8,10,13,'#587f76',3);
-      rr(c,-10,-5,20,24,5,'#78a998','#48796e',1.3);
-      rr(c,-7,8,14,8,2,'#91bba7','#658e80',1);
-      line(c,-5,-2,5,-2,'#c1dbbf',1.5);line(c,0,9,0,14,'#658e80',1);
+      // Coral jacket, light backpack, and a tied ponytail distinguish the heroine.
+      line(c,-9,-8,-10,13,'#477c72',3);line(c,9,-8,10,13,'#477c72',3);
+      rr(c,-10,-5,20,24,5,'#fff0ce','#6f8e7c',1.3);
+      rr(c,-7,8,14,8,2,'#a7d3bd','#6b9b86',1);
+      line(c,-5,-2,5,-2,'#719d87',1.5);line(c,0,9,0,14,'#6a9681',1);
+      line(c,-13,19,13,19,'#c84e72',1.2);
       rr(c,-4,-15,8,7,2,'#e7b28b');
       ellipse(c,-10,-20,2.6,4,'#e7b28b');ellipse(c,10,-20,2.6,4,'#e7b28b');
-      ellipse(c,0,-21,11,12,'#3b4c4b');
-      c.beginPath();c.ellipse(-2,-26,8,5,-.25,Math.PI,Math.PI*2);c.strokeStyle='#526360';c.lineWidth=2;c.stroke();
-      rr(c,-7,-12,14,4,2,'#abc9af');
+      ellipse(c,0,-22,11,12.5,'#483b3e');
+      c.beginPath();c.ellipse(-2,-27,8,5,-.25,Math.PI,Math.PI*2);c.strokeStyle='#6d5352';c.lineWidth=2;c.stroke();
+      rr(c,-7,-12,14,4,2,'#f7adbb');
+      const swing=Math.sin(phase)*2;
+      c.fillStyle='#483b3e';c.beginPath();c.moveTo(7,-27);c.quadraticCurveTo(21,-27,18+swing,-14);c.quadraticCurveTo(17+swing,-5,9,-5);c.quadraticCurveTo(14,-14,9,-21);c.closePath();c.fill();
+      line(c,15,-22,15+swing,-13,'#6d5352',1.5);ellipse(c,10,-25,3.3,3.3,'#a7d3bd');
     }else{
       // Shirt, lapels, and a modestly disproportionate tie.
       c.fillStyle='#f1e6cf';c.beginPath();c.moveTo(-6,-8);c.lineTo(6,-8);c.lineTo(2,14);c.lineTo(-2,14);c.closePath();c.fill();
@@ -367,7 +405,7 @@ const OjiArt = (() => {
     c.restore();
   }
   function floor(c,s){
-    const drift=((s.elapsed||0)*68)%70;
+    const drift=((s.time||s.elapsed||0)*68)%70;
     // Open tracks on both sides, with sleepers and two continuous rails.
     c.fillStyle='#677974';c.fillRect(0,0,420,560);
     for(const x of [0,370]){
@@ -404,7 +442,7 @@ const OjiArt = (() => {
     for(let y=-8;y<565;y+=10)for(const x of [61,66,353,358])ellipse(c,x,y+(drift%10),1.1,1.1,'#b49a4f');
     line(c,54,0,54,560,'#f7f2d6',2);line(c,366,0,366,560,'#f7f2d6',2);
     // Faint directional floor marks move with the walkway.
-    for(let y=-160;y<700;y+=240){let yy=y+((s.elapsed||0)*68)%240;arrow(c,141,yy,true,14,'#b5c3b065');arrow(c,279,yy,false,14,'#b5c3b065');}
+    for(let y=-160;y<700;y+=240){let yy=y+((s.time||s.elapsed||0)*68)%240;arrow(c,141,yy,true,14,'#b5c3b065');arrow(c,279,yy,false,14,'#b5c3b065');}
     c.fillStyle='#263d4320';c.fillRect(54,0,312,47);
     rr(c,74,-5,272,46,3,'#344f49','#254038',1);
     text(c,'N',91,24,12,'#e7d889','700');line(c,113,7,113,30,'#6b8474');
@@ -626,6 +664,49 @@ const OjiArt = (() => {
     c.fillStyle=rugbyKind?'#9e3e42':'#c26042';c.beginPath();c.moveTo(-3,9);c.lineTo(0,14);c.lineTo(4,9);c.fill();
     text(c,label,0,4,rugbyKind?11:17,'#fff2d8','800','center');c.restore();
   }
+  function landingShadow(c,d,t,reduced){
+    const p=Math.max(0,Math.min(1,d.progress||0));
+    const shadow=d.phase==='shadow',impact=d.phase==='impact';
+    const grow=shadow?.55+p*.45:1,fade=impact?1-p:1;
+    c.save();c.translate(d.x,d.y+15);
+    c.globalAlpha=fade;
+    ellipse(c,0,0,29*grow,12*grow,shadow?`rgba(33,46,42,${.18+p*.26})`:'#26372e75');
+    c.strokeStyle='#ac6049';c.lineWidth=1.8;c.setLineDash(shadow?[4,4]:[]);
+    c.beginPath();c.ellipse(0,0,34,17,0,0,Math.PI*2);c.stroke();
+    if(shadow){
+      const tick=reduced?1:.8+Math.sin(t*10)*.2;
+      for(const side of [-1,1]){
+        line(c,side*41,-2,side*35,-2,`rgba(172,96,73,${tick})`,2);
+        line(c,0,side*23,0,side*18,`rgba(172,96,73,${tick})`,2);
+      }
+    }else if(impact){
+      c.setLineDash([]);c.strokeStyle='#b48656';c.lineWidth=2.3*(1-p)+.3;
+      c.beginPath();c.ellipse(0,0,30+p*26,13+p*14,0,0,Math.PI*2);c.stroke();
+      for(let i=0;i<7;i++){
+        const a=i/7*Math.PI*2,r=22+p*27;
+        ellipse(c,Math.cos(a)*r,Math.sin(a)*r*.45-3,3.2+p*3.4,2.3+p*2,'#dccaa5');
+      }
+    }
+    c.restore();
+  }
+  function fallingEnemy(c,d,t,reduced){
+    const p=Math.max(0,Math.min(1,d.progress||0));
+    if(d.phase==='shadow')return;
+    const falling=d.phase==='falling';
+    const lift=falling?(d.y+75)*(1-p*p):0;
+    const y=d.y-lift;
+    c.save();
+    if(!falling)c.globalAlpha=Math.max(0,Math.min(1,(1-p)*2));
+    if(falling&&!reduced){
+      for(const side of [-1,1]){
+        line(c,d.x+side*28,y-51,d.x+side*28,y-24,'#9b827c99',1.8);
+        line(c,d.x+side*36,y-65,d.x+side*36,y-47,'#9b827c77',1.3);
+      }
+    }
+    c.translate(d.x,y);c.rotate(falling&&!reduced?Math.sin(p*7)*.12:0);
+    person(c,0,0,falling?'falling':'enemy',0,d.variant||0);
+    c.restore();
+  }
   function lighting(c,s){
     const b=s.blackout||{}, amount=Math.max(0,Math.min(1,b.level||0));
     if(amount>0){
@@ -640,7 +721,8 @@ const OjiArt = (() => {
       c.globalAlpha=1;c.fillStyle='#000';c.fillRect(0,0,420,560);c.restore();return;
     }
     floor(c,s);
-    const t=s.time||s.elapsed||0, enemies=s.enemies||[], reduced=!!s.reduceMotion;
+    const t=s.time||s.elapsed||0, enemies=s.enemies||[], drops=s.airdrops||[], reduced=!!s.reduceMotion;
+    for(const d of drops)landingShadow(c,d,t,reduced);
     // The attack preview is only a thin dashed line, with no cone or body-shaped trail.
     for(const e of enemies){
       if(e.mode==='warn'&&e.kind!=='cards'){
@@ -660,11 +742,14 @@ const OjiArt = (() => {
     const people=(s.crowd||[]).map(p=>({x:p.x,y:p.y,civilian:p}));
     for(const e of enemies)people.push({x:e.x,y:e.y,e});
     for(const r of (s.rescues||[]))people.push({x:r.workerX,y:r.workerY,staff:r});
+    for(const d of drops)if(d.phase==='impact')people.push({x:d.x,y:d.y,drop:d});
     people.push({x:s.player.x,y:s.player.y,player:true});people.sort((a,b)=>a.y-b.y);
     for(const p of people){
       if(p.civilian){civilian(c,p.civilian,t,reduced);continue;}
       if(p.staff){stationStaff(c,p.staff,t,reduced);continue;}
+      if(p.drop){fallingEnemy(c,p.drop,t,reduced);continue;}
       if(p.player){
+        c.save();c.lineWidth=3;c.strokeStyle='#fff6e8';c.beginPath();c.ellipse(p.x,p.y+20,23,11,0,0,Math.PI*2);c.stroke();c.lineWidth=1.3;c.strokeStyle='#c94c75';c.stroke();c.restore();
         c.save();if(s.player.hit>0&&!reduced)c.globalAlpha=Math.floor(t*12)%2?.4:1;
         if(s.player.hit>0)ellipse(c,p.x,p.y+9,27,21,'#f6e6a080');
         person(c,p.x,p.y,'player',!reduced&&(s.phase==='playing'||s.phase==='active')?t*12:0,0);c.restore();
@@ -675,6 +760,7 @@ const OjiArt = (() => {
         else person(c,e.x,e.y,e.mode==='dash'?'charge':'enemy',reduced||e.mode==='warn'?0:t*(e.mode==='dash'?21:9)+(e.variant||0),e.variant||0);
       }
     }
+    for(const d of drops)if(d.phase==='falling')fallingEnemy(c,d,t,reduced);
     // Warnings sit above the crowd so a packed corridor never hides the telegraph.
     for(const e of enemies)if(e.mode==='warn'&&e.kind!=='cards')warning(c,e,s,t);
     for(const p of (s.particles||[])){
@@ -687,113 +773,94 @@ const OjiArt = (() => {
 
 (() => {
   'use strict';
-  const $=id=>document.getElementById(id), game=OjiCore.create(), s=game.s;
-  const canvas=$('game'),ctx=canvas.getContext('2d'), reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  let best=0,sound=false,audio=null,last=0,dragId=null,dragStart={x:0,y:0},playerStart={x:0,y:0},commentUntil=0,lastMessage=-1;
-  const keys=new Set(), held=new Map(), input={dirX:0,dirY:0,targetX:null,targetY:null};
-  const defaults={tempo:.9,playerSpeed:1,attackSpeed:1}, settingKeys=Object.keys(defaults);
-  game.setSettings(defaults);
-  try{const saved=JSON.parse(localStorage.getItem('dai_oji_settings_v1'));if(saved&&typeof saved==='object')game.setSettings(saved);}catch(e){}
-  try{best=Math.max(0,Number(localStorage.getItem('dai_oji_best_v1'))||0);}catch(e){}
-  $('best').textContent=best;
-  const safeLines=['あの肩、通行人ごと押しのけてくる。','名刺交換は、穏やかにお願いします。','ここ、ラグビー場じゃないんですよ。','人混みの中で、急加速しないで。','すみません、そこ通ります。','肩幅の主張が強い。','今日のあなた、身のこなしがいい。','視野を広く。心も広く。','こちらは、帰りたいだけです。','その肩、しまってもらえます？','今のは完全にこっち見てた。','平和って、避け続けることなんだ。','帰宅への意志だけは負けません。','謝罪より先に、次のおじさん。','華麗。誰も見ていないけど。','駅の通路は格闘技場ではありません。','目指せ、無傷の晩ごはん。','避ける側にも、都合があります。','その直進力、別の場所で活かして。','今日の歩数、横移動が多い。'];
+  const $=id=>document.getElementById(id),game=OjiCore.create(),s=game.s,canvas=$('game'),ctx=canvas.getContext('2d');
+  const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches,keys=new Set(),held=new Map(),input={dirX:0,dirY:0,targetX:null,targetY:null};
+  const guilt='実は私がぶつかりおじさんだったのかもしれない、、、';
+  let best=0,sound=false,audio=null,last=performance.now(),debt=0,dragId=null,dragStart={x:0,y:0},playerStart={x:0,y:0},commentUntil=0,lastMessage=-1,alertUntil=0;
+  try{const value=Number(localStorage.getItem('dai_oji_survival_best_v1'));if(Number.isFinite(value)&&value>0)best=value;}catch(e){}
+  $('best').textContent=best.toFixed(1);
+  const safeLines=['あの肩、通行人ごと押しのけてくる。','名刺交換は、穏やかにお願いします。','ここ、ラグビー場じゃないんですよ。','人混みの中で、急加速しないで。','すみません、そこ通ります。','肩幅の主張が強い。','今日のあなた、身のこなしがいい。','視野を広く。心も広く。','こちらは、帰りたいだけです。','その肩、しまってもらえます？','今のは完全にこっち見てた。','平和って、避け続けることなんだ。','帰宅への意志だけは負けません。','謝罪より先に、次のおじさん。','華麗。誰も見ていないけど。','駅のホームは格闘技場ではありません。','目指せ、無傷の晩ごはん。','避ける側にも、都合があります。','その直進力、別の場所で活かして。','今日の歩数、横移動が多い。'];
   function say(text,hit=false){$('comment').textContent=text;$('message').classList.toggle('hit',hit);commentUntil=s.elapsed+2.1;}
   function safeComment(){let n=Math.floor(Math.random()*safeLines.length);if(n===lastMessage)n=(n+1)%safeLines.length;lastMessage=n;say(safeLines[n]);}
-  function tone(freq=.0,duration=.07,type='sine',volume=.035){if(!sound||!audio)return;try{const o=audio.createOscillator(),g=audio.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(volume,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+duration);}catch(e){}}
+  function tone(freq,duration=.07,type='sine',volume=.035){if(!sound||!audio)return;try{const o=audio.createOscillator(),g=audio.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(volume,audio.currentTime);g.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);o.connect(g);g.connect(audio.destination);o.start();o.stop(audio.currentTime+duration);}catch(e){}}
   function clearInput(){keys.clear();held.clear();input.dirX=0;input.dirY=0;input.targetX=null;input.targetY=null;dragId=null;}
-  function controls(enabled){for(const id of ['left','up','down','right'])$(id).disabled=!enabled;$('pause').disabled=s.phase==='ready'||s.phase==='won'||s.phase==='lost';$('pause').textContent=s.phase==='paused'?'▶ 再開':'Ⅱ 一時停止';$('pause').setAttribute('aria-label',s.phase==='paused'?'再開':'一時停止');}
+  function controls(on){for(const id of ['left','up','down','right'])$(id).disabled=!on;}
+  function alert(text,kind,duration){$('alertText').textContent=text;$('alertRail').className='alert-rail '+kind;alertUntil=s.elapsed+duration;}
+  function normalAlert(){const messages=['足元だけでなく、周囲にもご注意ください。','20秒突破。前からも、後ろからも。','40秒突破。影を見たら、その場所から離れて。'];$('alertText').textContent=messages[s.stage||0];$('alertRail').className='alert-rail';}
   function hud(){
-    $('score').textContent=String(s.score).padStart(3,'0');
-    $('time').innerHTML=(s.duration-s.elapsed).toFixed(1)+'<small style="font-size:10px"> 秒</small>';
-    $('time').classList.toggle('urgent',s.elapsed>35&&s.phase==='playing');
+    $('time').textContent=s.elapsed.toFixed(1);$('playerFalls').textContent=s.falls.player;$('enemyFalls').textContent=s.falls.enemy;
     [...$('hearts').children].forEach((h,i)=>h.classList.toggle('empty',i>=s.lives));$('hearts').setAttribute('aria-label',`残り体力${s.lives}`);
-    $('progressFill').style.width=(s.distance*100)+'%';$('progress').setAttribute('aria-valuenow',String(Math.round(s.distance*100)));
+    if(alertUntil&&s.elapsed>=alertUntil){normalAlert();alertUntil=0;}
+  }
+  function enterImmersive(){
+    if(!matchMedia('(max-width:800px), (pointer:coarse)').matches)return;
+    document.body.classList.add('immersive');window.scrollTo(0,0);
+    try{const el=document.documentElement;if(!document.fullscreenElement&&document.fullscreenEnabled&&el.requestFullscreen){const request=el.requestFullscreen({navigationUI:'hide'});if(request&&request.catch)request.catch(()=>{});}else if(!document.webkitFullscreenElement&&el.webkitRequestFullscreen){el.webkitRequestFullscreen();}}catch(e){}
   }
   function start(){
-    clearInput();game.start();last=performance.now();commentUntil=0;$('overlay').hidden=true;$('result').hidden=true;$('resultActions').hidden=true;$('stage').classList.remove('bump');
-    controls(true);hud();say('黄色があなた。前後左右に動いて、帰り道を切り抜けよう。');canvas.focus({preventScroll:true});tone(550,.12);
+    enterImmersive();clearInput();game.start();last=performance.now();debt=0;commentUntil=0;alertUntil=0;
+    $('overlay').hidden=true;$('ticket').classList.remove('result-ticket');$('result').hidden=true;$('resultActions').hidden=true;$('verdict').hidden=true;$('stage').classList.remove('bump');
+    normalAlert();controls(true);hud();say('ピンクの服があなた。周りの人も、できれば大切に。');canvas.focus({preventScroll:true});tone(550,.12);
   }
   function finish(){
-    clearInput();controls(false);const won=s.phase==='won',isBest=s.score>best;
-    if(isBest){best=s.score;$('best').textContent=best;try{localStorage.setItem('dai_oji_best_v1',String(best));}catch(e){}}
-    $('overlayTag').textContent=won?'無事帰宅 / MISSION COMPLETE':'本日の通勤 / MISSION FAILED';
-    $('overlayTitle').innerHTML=won?'おつかれさま。<br>無事、帰れました。':'心が、<br>先に帰りました。';
-    $('overlayText').textContent=won?(s.lives===3?'完全無傷。今日は自分を褒めていい。':'世界は変わらない。でも、あなたは帰れた。'):'普通に歩くだけで、なぜこんなに疲れる。';
-    $('resultScore').textContent=s.score;$('resultDetail').textContent=`${s.dodged}人回避 · ギリギリ ${s.near}回 · ${s.rescued}人救助${isBest?' · 自己ベスト！':''}`;
-    $('result').hidden=false;$('resultActions').hidden=false;$('start').textContent='もう一度、帰ってみる →';$('overlayHint').textContent='← 一覧から、ほかのゲームにも戻れます。';
-    const text=`ぶつかりおじさんを${s.dodged}人かわして${s.score}点。${won?'無事に帰れました。':'心が先に帰りました。'}\n#ぶつかりおじさん回避中 #ゲーム制作\nhttps://ekooekon.github.io/oji/`;
+    clearInput();controls(false);const isBest=s.elapsed>best,wasMe=s.falls.player>s.falls.enemy;
+    if(isBest){best=s.elapsed;$('best').textContent=best.toFixed(1);try{localStorage.setItem('dai_oji_survival_best_v1',String(best));}catch(e){}}
+    $('ticket').classList.add('result-ticket');$('overlayTag').textContent='本日の通勤 / RESULT';$('overlayTitle').innerHTML='心が、<br>先に帰りました。';$('overlayText').textContent='あなたが生き残った時間';
+    $('resultTime').textContent=s.elapsed.toFixed(1);$('resultDetail').textContent=`最長記録 ${best.toFixed(1)}秒${isBest?' · 自己ベスト！':''}`;
+    $('resultPlayer').textContent=s.falls.player;$('resultEnemy').textContent=s.falls.enemy;$('verdict').hidden=!wasMe;
+    $('result').hidden=false;$('resultActions').hidden=false;$('start').textContent='もう一度、帰ってみる →';$('overlayHint').textContent='本日も、ご安全に。';
+    const text=`ぶつかりおじさんを${s.elapsed.toFixed(1)}秒回避！\n私が落とした人：${s.falls.player}人／敵：${s.falls.enemy}人\n${wasMe?guilt+'\n':''}#ぶつかりおじ回避 #ゲーム制作 #gamedev\nhttps://ekooekon.github.io/oji/`;
     $('share').href='https://x.com/intent/tweet?text='+encodeURIComponent(text);
-    $('overlay').hidden=false;$('start').focus({preventScroll:true});
-    say(won?'本日も、ご安全に。おつかれさまでした。':'おじさんを避ける仕事、時給出ますか？',!won);tone(won?760:130,won?.3:.2,won?'sine':'triangle');
+    $('overlay').hidden=false;if(!document.hidden)$('start').focus({preventScroll:true});
+    say(wasMe?guilt:'おじさんを避ける仕事、時給出ますか？',true);tone(130,.2,'triangle');
   }
-  function pause(){
-    if(s.phase==='paused'){game.resume();$('overlay').hidden=true;clearInput();last=performance.now();controls(true);canvas.focus({preventScroll:true});return;}
-    if(s.phase!=='playing')return;
-    game.pause();clearInput();controls(false);$('overlayTag').textContent='小休憩 / PAUSED';$('overlayTitle').innerHTML='ひと息、<br>つきましょう。';$('overlayText').textContent='時間も、おじさんも、止まっています。';$('result').hidden=true;$('resultActions').hidden=true;$('start').textContent='通勤を再開する →';$('overlayHint').textContent='P / Esc キーでも再開できます。';$('overlay').hidden=false;$('start').focus({preventScroll:true});
-  }
-  $('start').addEventListener('click',()=>s.phase==='paused'?pause():start());$('pause').addEventListener('click',pause);
-  function updateSettings(){
-    for(const key of settingKeys){$(key).value=s.settings[key];$(key+'Value').textContent=s.settings[key].toFixed(2)+'×';}
-    $('settingsButton').textContent='速度 '+s.settings.tempo.toFixed(2)+'×';
-    try{localStorage.setItem('dai_oji_settings_v1',JSON.stringify(s.settings));}catch(e){}
-  }
-  $('settingsButton').addEventListener('click',()=>{if(s.phase==='playing')pause();clearInput();$('settingsHint').textContent=s.phase==='paused'?'閉じたら「再開」で続きから遊べます。':'好みの速さでどうぞ。設定はこのブラウザに保存されます。';$('settings').showModal();});
-  $('settingsClose').addEventListener('click',()=>$('settings').close());
-  $('settingsReset').addEventListener('click',()=>{game.setSettings(defaults);updateSettings();});
-  for(const key of settingKeys)$(key).addEventListener('input',()=>{game.setSettings({[key]:Number($(key).value)});updateSettings();});
-  $('settings').addEventListener('close',()=>{clearInput();$('settingsButton').focus({preventScroll:true});});
-  updateSettings();
-  $('sound').addEventListener('click',()=>{sound=!sound;$('sound').textContent=sound?'音 ON':'音 OFF';$('sound').setAttribute('aria-pressed',String(sound));if(sound){try{audio=audio||new (window.AudioContext||window.webkitAudioContext)();audio.resume().catch(()=>{});tone(630,.07);}catch(e){sound=false;$('sound').textContent='音 OFF';$('sound').setAttribute('aria-pressed','false');}}});
-  document.addEventListener('keydown',e=>{
-    if($('settings').open)return;
-    if(e.key==='Escape'||e.key.toLowerCase()==='p'){if(!e.repeat)pause();return;}
-    const k=e.key.toLowerCase();if(!['arrowleft','arrowright','arrowup','arrowdown','a','d','w','s'].includes(k)||s.phase!=='playing')return;e.preventDefault();keys.add(k);input.targetX=null;input.targetY=null;
-  });document.addEventListener('keyup',e=>keys.delete(e.key.toLowerCase()));
+  function toggleSound(){sound=!sound;if(sound){try{audio=audio||new (window.AudioContext||window.webkitAudioContext)();audio.resume().catch(()=>{});tone(630,.07);}catch(e){sound=false;}}for(const id of ['sound','mobileSound']){$(id).textContent=sound?'音 ON':'音 OFF';$(id).setAttribute('aria-pressed',String(sound));}}
+  $('start').addEventListener('click',start);$('sound').addEventListener('click',toggleSound);$('mobileSound').addEventListener('click',toggleSound);
+  document.addEventListener('keydown',e=>{const k=e.key.toLowerCase();if(!['arrowleft','arrowright','arrowup','arrowdown','a','d','w','s'].includes(k)||s.phase!=='playing')return;e.preventDefault();keys.add(k);input.targetX=null;input.targetY=null;});
+  document.addEventListener('keyup',e=>keys.delete(e.key.toLowerCase()));
   canvas.addEventListener('pointerdown',e=>{if(s.phase!=='playing'||dragId!==null)return;e.preventDefault();dragId=e.pointerId;dragStart={x:e.clientX,y:e.clientY};playerStart={x:s.player.x,y:s.player.y};canvas.setPointerCapture(e.pointerId);input.targetX=s.player.x;input.targetY=s.player.y;});
   canvas.addEventListener('pointermove',e=>{if(e.pointerId!==dragId||s.phase!=='playing')return;const r=canvas.getBoundingClientRect();input.targetX=Math.max(72,Math.min(348,playerStart.x+(e.clientX-dragStart.x)*420/r.width));input.targetY=Math.max(95,Math.min(500,playerStart.y+(e.clientY-dragStart.y)*560/r.height));});
-  const endDrag=e=>{if(e.pointerId===dragId){dragId=null;input.targetX=null;input.targetY=null;}};canvas.addEventListener('pointerup',endDrag);canvas.addEventListener('pointercancel',endDrag);canvas.addEventListener('lostpointercapture',endDrag);
-  for(const [id,dx,dy]of [['left',-1,0],['up',0,-1],['down',0,1],['right',1,0]]){
+  const endDrag=e=>{if(e.pointerId===dragId){dragId=null;input.targetX=null;input.targetY=null;}};for(const ev of ['pointerup','pointercancel','lostpointercapture'])canvas.addEventListener(ev,endDrag);
+  for(const [id,dx,dy] of [['left',-1,0],['up',0,-1],['down',0,1],['right',1,0]]){
     const b=$(id);b.addEventListener('pointerdown',e=>{if(s.phase!=='playing')return;e.preventDefault();b.setPointerCapture(e.pointerId);input.targetX=null;input.targetY=null;held.set(e.pointerId,{dx,dy});});
     for(const ev of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(ev,e=>held.delete(e.pointerId));
     b.addEventListener('click',e=>{if(e.detail===0&&s.phase==='playing'){input.targetX=Math.max(72,Math.min(348,s.player.x+dx*60));input.targetY=Math.max(95,Math.min(500,s.player.y+dy*60));}});
   }
-  window.addEventListener('blur',()=>{clearInput();if(s.phase==='playing')pause();});document.addEventListener('visibilitychange',()=>{if(document.hidden&&s.phase==='playing')pause();});
+  window.addEventListener('blur',clearInput);document.addEventListener('visibilitychange',()=>{clearInput();advance(performance.now());});
+  function handle(event){
+    if(event==='hit'){say(s.lives===2?'肩、当たってますけど。':s.lives===1?'心の余裕、あと1回分。':'もう今日は、帰りたい。',true);tone(120,.13,'triangle');if(!reduceMotion){$('stage').classList.remove('bump');void $('stage').offsetWidth;$('stage').classList.add('bump');}}
+    else if(event==='near'){if(s.elapsed>=commentUntil)say('今の、紙一重。');tone(820,.06);}
+    else if(event==='dodge'){if(s.elapsed>=commentUntil&&s.dodged%2===0)safeComment();}
+    else if(event==='warning'){tone(380,.045,'triangle',.018);if(s.elapsed>=commentUntil)say('「！」に注意。狙われた場所から離れて。');}
+    else if(event==='rugby-warning'){if(s.elapsed>=commentUntil)say('ラグビーおじさん！進路から離れて。');tone(320,.10,'triangle',.025);}
+    else if(event==='cards-pickup'){if(s.elapsed>=commentUntil)say('あのおじさん、名刺を落としたみたい。');}
+    else if(event==='cards-dive'){if(s.elapsed>=commentUntil)say('名刺を拾っていたのに、頭からダイブ！？');tone(450,.08,'triangle',.025);}
+    else if(event==='player-fall'){say('今、押したのは……あなたです。',true);}
+    else if(event==='enemy-fall'){if(s.elapsed>=commentUntil)say('通行人が押し出された！駅員さんが救助へ。');}
+    else if(event==='civilian-rescued'){if(s.elapsed>=commentUntil)say('駅員さん、救助完了。ありがとうございます。');}
+    else if(event==='bottom-unlocked'){alert('20秒経過 — 後方注意！下からもおじさんが迫ります。','warn',4);say('後ろからも来ます。前だけ見ていると危ない。');tone(370,.15,'triangle');}
+    else if(event==='falling-unlocked'){alert('⚠ 上空注意！ これより、おじさんが降ってきます。影から離れてください。','danger scroll',7);say('今度は空から。影のところに、降ってきます。');tone(260,.24,'triangle');}
+    else if(event==='blackout-warning'){if(s.elapsed>=commentUntil)say('照明の調子が……。まもなく、一瞬停電します。');tone(260,.12,'sine',.025);}
+    else if(event==='blackout-on')say('停電！何も見えません。おじさんは止まりません。');
+    else if(event==='blackout-off'){if(s.elapsed>=commentUntil)say('復旧しました。無事ですか？');}
+    else if(event==='lost')finish();
+  }
+  function advance(now){
+    const delta=Math.max(0,(now-last)/1000);last=now;if(s.phase!=='playing'){debt=0;return;}
+    debt+=delta;const catchingUp=debt>.3||document.hidden;if(catchingUp)clearInput();
+    input.dirX=(keys.has('arrowright')||keys.has('d')?1:0)-(keys.has('arrowleft')||keys.has('a')?1:0);input.dirY=(keys.has('arrowdown')||keys.has('s')?1:0)-(keys.has('arrowup')||keys.has('w')?1:0);
+    for(const h of held.values()){input.dirX+=h.dx;input.dirY+=h.dy;}input.dirX=Math.sign(input.dirX);input.dirY=Math.sign(input.dirY);
+    let steps=0;while(debt>1e-7&&s.phase==='playing'&&steps++<500){const dt=Math.min(debt,.025);game.step(dt,input);debt-=dt;for(const event of s.events)handle(event);}
+    if(s.phase!=='playing')debt=0;hud();
+  }
   function render(){
-    const dpr=Math.min(window.devicePixelRatio||1,2),r=canvas.getBoundingClientRect(),w=Math.round(r.width*dpr),h=Math.round(r.height*dpr);
+    const dpr=Math.min(window.devicePixelRatio||1,2),r=canvas.getBoundingClientRect(),w=Math.max(1,Math.round(r.width*dpr)),h=Math.max(1,Math.round(r.height*dpr));
     if(canvas.width!==w||canvas.height!==h){canvas.width=w;canvas.height=h;}ctx.setTransform(w/420,0,0,h/560,0,0);
-    if(s.phase==='ready'){OjiArt.draw(ctx,{...s,time:0,reduceMotion,enemies:[{x:100,y:160,kind:'rugby',mode:'walk',variant:0},{x:295,y:285,kind:'cards',mode:'pickup',variant:2,timer:1.6},{x:225,y:65,kind:'charge',mode:'walk',variant:1}]});}
-    else OjiArt.draw(ctx,{...s,reduceMotion});
+    if(s.phase==='ready')OjiArt.draw(ctx,{...s,time:0,reduceMotion,enemies:[{x:100,y:160,kind:'rugby',mode:'walk',variant:0},{x:295,y:285,kind:'cards',mode:'pickup',variant:2,timer:1.6},{x:225,y:65,kind:'charge',mode:'walk',variant:1}]});else OjiArt.draw(ctx,{...s,reduceMotion});
   }
-  function frame(now){
-    let elapsed=last?Math.min((now-last)/1000,.15):0;last=now;
-    if(s.phase==='playing'){
-      input.dirX=(keys.has('arrowright')||keys.has('d')?1:0)-(keys.has('arrowleft')||keys.has('a')?1:0);
-      input.dirY=(keys.has('arrowdown')||keys.has('s')?1:0)-(keys.has('arrowup')||keys.has('w')?1:0);
-      for(const h of held.values()){input.dirX+=h.dx;input.dirY+=h.dy;}input.dirX=Math.sign(input.dirX);input.dirY=Math.sign(input.dirY);
-      while(elapsed>0&&s.phase==='playing'){
-        const dt=Math.min(elapsed,.025);game.step(dt,input);elapsed-=dt;
-        for(const event of s.events){
-          if(event==='hit'){say(s.lives===2?'肩、当たってますけど。':s.lives===1?'心の余裕、あと1回分。':'もう今日は、帰りたい。',true);tone(120,.13,'triangle');if(!reduceMotion){$('stage').classList.remove('bump');void $('stage').offsetWidth;$('stage').classList.add('bump');}}
-          else if(event==='near'){if(s.elapsed>=commentUntil)say('今の、紙一重。 +15 PT');tone(820,.06);}
-          else if(event==='dodge'){if(s.elapsed>=commentUntil&&s.dodged%2===0)safeComment();}
-          else if(event==='warning'){tone(380,.045,'triangle',.018);if(s.elapsed>=commentUntil)say('「！」の方向に注意。狙われた場所から離れて。');}
-          else if(event==='rugby-warning'){say('ラグビーおじさん！タックルの進路から離れて。');tone(320,.10,'triangle',.025);}
-          else if(event==='cards-pickup'){if(s.elapsed>=commentUntil)say('あのおじさん、名刺を落としたみたい。');}
-          else if(event==='cards-dive'){say('名刺を拾っていたのに、頭からダイブ！？');tone(450,.08,'triangle',.025);}
-          else if(event==='civilian-fall'){if(s.elapsed>=commentUntil)say('通行人が押し出された！駅員さんが駆けつけます。');}
-          else if(event==='civilian-rescued'){if(s.elapsed>=commentUntil)say('駅員さん、救助完了。ありがとうございます。');}
-          else if(event==='blackout-warning'){say('照明の調子が……。まもなく、一瞬停電します。');tone(260,.12,'sine',.025);}
-          else if(event==='blackout-on')say('停電！何も見えません。おじさんは止まりません。');
-          else if(event==='blackout-off')say('復旧しました。暗闇の中でも、お疲れさまでした。');
-          else if(event==='won'||event==='lost')finish();
-        }
-      }
-      hud();
-    }
-    render();requestAnimationFrame(frame);
-  }
+  function frame(now){advance(now);render();requestAnimationFrame(frame);}
+  setInterval(()=>{if(document.hidden)advance(performance.now());},250);
   controls(false);hud();requestAnimationFrame(frame);
 })();
 
-</script>
-</body></html>
+</script></body></html>
