@@ -22,6 +22,70 @@
 
 .mission-meta{display:flex;align-items:center;gap:16px}.mission-clock{display:flex;align-items:center;gap:9px;color:#48616b}.mission-clock>span{font-size:9px;color:#7b8b8f}.mission-clock strong{font:600 25px/1 var(--mono);font-variant-numeric:tabular-nums;letter-spacing:-1px}.mission-clock.urgent,.mobile-timer.urgent{color:#bd4934}.mission-clock.expired,.mobile-timer.expired{color:#a33829}.mobile-meta{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin-bottom:5px}.mobile-meta .mobile-label{margin:0}.mobile-timer{font:600 16px/1 var(--mono);font-variant-numeric:tabular-nums;color:#48616b}.control-heading b{min-width:22px;width:auto;padding:0 5px}.share-note{font-size:9px;color:#819194}
 @media(max-width:760px){.mission-meta{gap:8px}.mission-clock{gap:5px}.mission-clock strong{font-size:21px}.mission-clock>span{font-size:8px}.mobile-controls .mobile-copy{min-width:150px}.mobile-controls .mobile-actions{margin-left:auto}.is-ready~.mobile-controls .mobile-copy{flex-basis:100%}.mobile-actions .share-btn{width:86px}.board-note .fixed{font-size:6px;letter-spacing:.3px}}
+
+/* Keep the entire mobile work area in one compact, stable frame. */
+@media(max-width:760px){
+  html,body{overflow-anchor:none;scrollbar-width:none}
+  html::-webkit-scrollbar,body::-webkit-scrollbar{display:none}
+  .wrap{padding:0 17px}
+  .topbar{height:44px}
+  .brand{font-size:11px;gap:7px}
+  .brand-logo{width:24px;height:24px;padding:4px}
+  .brand-logo svg{width:16px;height:16px}
+  .plain-btn{min-height:30px;padding:5px 8px;font-size:9px}
+  .hero{display:block;padding:13px 0 8px}
+  .eyebrow{display:none}
+  .hero h1{font-size:clamp(21px,6vw,28px);line-height:1.25;letter-spacing:-.8px;margin-bottom:5px}
+  .hero>div:first-child>p{font-size:10px;line-height:1.65}
+  .odds{display:flex;align-items:baseline;justify-content:flex-end;gap:8px;padding:7px 0 0;min-height:33px;text-align:right}
+  .odds b{font-size:24px;line-height:1;letter-spacing:-1.2px;white-space:nowrap}
+  .odds b small{font-size:12px;letter-spacing:0}
+  .odds p{font-size:9px;margin:0;max-width:none;line-height:1.3}
+  .odds .odds-note{display:none}
+  .board-toolbar{min-height:28px;margin-bottom:6px;gap:6px}
+  .board-label{font-size:7px;letter-spacing:.4px}
+  .mission-meta{gap:6px}
+  .mission-clock strong{font-size:21px}
+  .phase-tag{font-size:7px;padding:5px 7px}
+  #gameRoot #board{height:min(calc((100vw - 34px) * .885714),max(180px,calc(100vh - 390px)));height:min(calc((100vw - 34px) * .885714),max(180px,calc(100svh - 390px)));aspect-ratio:auto}
+  .start-overlay{bottom:15px}
+  .start-overlay .start-btn{min-height:42px;min-width:150px;padding:10px 20px;font-size:14px}
+  .board-note{display:none}
+  .scroll-tools{height:38px;padding:3px 0 0;margin:3px 0 0;border:0;gap:6px}
+  .scroll-tools .range-label{font-size:10px;min-width:75px}
+  .range-wrap{gap:6px}
+  .scroll-tools button{min-height:32px;min-width:32px}
+  .scroll-tools input{min-height:32px;margin:0}
+  .controls{display:flex;flex-direction:column;padding-top:7px;gap:0}
+  .control-heading,.selection-main,.run-score,.tap-note{display:none}
+  .action-main{padding:0}
+  .pick-tools{margin:0;display:block}
+  .pick-tools button{width:100%;min-height:44px;font-size:13px;font-weight:650;background:#e9cf83;border-color:#bda66b;color:#273e47;box-shadow:0 2px 0 #b9a36c}
+  .pick-tools button:hover:not(:disabled){background:#f2dc9f}
+  .pick-tools button:active:not(:disabled){transform:translateY(1px);box-shadow:0 1px 0 #b9a36c}
+  .pick-tools button:disabled{opacity:.55}
+  .status-box{padding:9px 0 10px;margin:7px 0 13px}
+  .status-box .comment-tag{display:none}
+  .status-box .comment-line{font-size:14px;line-height:1.5;min-height:42px;margin:0 0 4px;letter-spacing:0}
+  .status-box .status-title{font-size:10px;line-height:1.5;margin:0}
+  .status-box #statusText{margin-top:4px}
+  #gameRoot[data-phase=active] #statusText{display:none}
+  .status-box .share-btn{min-height:34px;font-size:10px;margin-top:8px}
+  .status-box .again-btn{min-height:40px;margin-top:9px}
+  .stats{padding-top:0}
+  .stats-values{margin-top:9px;justify-content:space-between}
+  .stats-values b{font-size:20px}
+  .record-note{margin-top:8px}
+  .reset-btn{align-self:flex-start;margin-top:11px}
+  .footer{margin-top:20px;padding:15px 0 22px;font-size:7px}
+  .mobile-controls{display:none}
+  .toast{bottom:18px}
+}
+@media(max-width:760px) and (max-height:650px){
+  .hero>div:first-child>p{display:none}
+  .hero{padding-top:9px}
+  .topbar{height:40px}
+}
 </style>
 <style id="bombStyles"></style></head>
 <body>
@@ -29,10 +93,9 @@
 <div class="wrap is-ready" id="gameRoot"><header class="topbar"><div class="brand"><span class="brand-logo"><svg viewBox="0 0 20 20" fill="none"><path d="M1 5h12M1 10h12M1 15h12" stroke="#f5bf69" stroke-width="1.6"/><rect x="11" y="2" width="7" height="16" rx="1" fill="#e6e6cf"/></svg></span><span>ONE BAD WIRE</span></div><div class="top-actions"><button class="plain-btn" id="soundBtn" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path id="soundWaves" d="m17 9 5 6m0-6-5 6"/></svg><span id="soundLabel">音 OFF</span></button><button class="plain-btn" id="helpBtn" type="button">遊び方</button></div></header>
 <main><section class="hero"><div><div class="eyebrow">ONE BAD WIRE. ONE PERCENT CHANCE.</div><h1>国民の命は<wbr>あなたの手に</h1><p><strong>正確な一本を残さなければ爆発してしまいます</strong><br>制限時間は3分。あなたの直感を信じて。</p></div><div class="odds"><b><span id="safetyValue">1</span><small id="oddsUnit">%</small></b><p id="oddsLabel">ハズレを最後に残す確率</p><p class="odds-note" id="riskNote">3分以内に99本を切れたら成功。</p></div></section>
 <div class="workspace"><section class="board-card" aria-label="爆弾と導線"><div class="board-toolbar"><span class="board-label" id="boardLabel">100 WIRES / 1 BAD</span><div class="mission-meta"><div class="mission-clock" id="clockBox"><span>残り時間</span><strong id="timerText" role="timer" aria-live="off">03:00</strong></div><span class="phase-tag" id="phaseLabel">READY</span></div></div><div class="apparatus" id="apparatus" data-phase="ready"><svg id="board" role="group" aria-label="100本の導線と爆弾の全体図"></svg><div class="start-overlay" id="startOverlay"><button class="start-btn" id="startBtn" type="button">スタート</button></div></div><div class="board-note" id="boardNote"><span id="boardHint">スタートすると、配線を拡大します。</span><span class="fixed">180 SECONDS. TRUST YOUR INSTINCT.</span></div><div class="scroll-tools" id="scrollTools" hidden><span class="range-label" id="rangeLabel">001 — 010</span><div class="range-wrap"><button id="upBtn" type="button" aria-label="上の導線へ">↑</button><input id="rangeScroll" type="range" min="0" max="90" step="0.01" value="0" aria-label="表示する導線の範囲"><button id="downBtn" type="button" aria-label="下の導線へ">↓</button></div></div></section>
-<aside class="controls" aria-label="ゲームの状態"><div class="control-heading"><span id="controlHeading">READY TO DISARM</span><b id="attemptBadge">—</b></div><div class="run-score"><div><span class="score-label">この箱の記録</span><strong id="scoreCount">0</strong><small>本セーフ</small></div><div class="remaining"><span>残り</span><b id="remainingCount">100</b><span>本</span></div></div><div class="selection-main"><p class="selection-label">最後に切った導線</p><p class="selected-number empty" id="selectedNumber">— —</p><div class="color-preview"><span class="sample-wire" id="sampleWire"></span><span class="color-name" id="colorName">まだ切っていません</span></div></div><div class="action-main" id="actionTools" hidden><div class="pick-tools"><button id="randomBtn" type="button">⚄ おまかせで切る</button><button id="jumpBtn" type="button"># 番号で切る</button></div><p class="tap-note">タップで切断。<br><strong>二本指スクロールで上下に移動。</strong></p></div><div class="status-box" id="statusBox"><p class="comment-tag" id="commentTag">FIELD NOTES</p><p class="comment-line" id="commentText">さて、世界を救いにいこうか。</p><h2 class="status-title" id="statusTitle">準備ができたら、スタート。</h2><p id="statusText">99本はセーフ。1本だけがハズレです。</p><button class="again-btn" id="againBtn" type="button" hidden>次の爆弾へ</button><a class="share-btn" id="shareBtn" target="_blank" rel="noopener noreferrer"><b>𝕏</b> Xに投稿</a></div><div class="stats"><div class="stats-label"><span>YOUR RECORD</span><span>このブラウザの記録</span></div><div class="stats-values"><div><b id="attemptCount">0</b><span>挑戦</span></div><div><b id="winCount">0</b><span>解除成功</span></div><div><b id="safeCount">0</b><span>自己ベスト</span></div><div><b id="failCount">0</b><span>爆発</span></div></div><p class="record-note">挑戦回数はスタート時に数えます。</p></div><button class="reset-btn" id="resetBtn" type="button" hidden>↻ この挑戦をやめる</button></aside></div></main><footer class="footer"><span>ONE BAD WIRE © 2026 · EKOOEKON</span><span>DAITAI ANZEN INDUSTRIES — だいたい安全工業</span></footer></div>
+<aside class="controls" aria-label="ゲームの状態"><div class="control-heading"><span id="controlHeading">READY TO DISARM</span><b id="attemptBadge">—</b></div><div class="run-score"><div><span class="score-label">この箱の記録</span><strong id="scoreCount">0</strong><small>本セーフ</small></div><div class="remaining"><span>残り</span><b id="remainingCount">100</b><span>本</span></div></div><div class="selection-main"><p class="selection-label">最後に切った導線</p><p class="selected-number empty" id="selectedNumber">— —</p><div class="color-preview"><span class="sample-wire" id="sampleWire"></span><span class="color-name" id="colorName">まだ切っていません</span></div></div><div class="action-main" id="actionTools" hidden><div class="pick-tools"><button id="randomBtn" type="button">⚄ おまかせで切る</button></div><p class="tap-note">タップで切断。<br><strong>二本指スクロールで上下に移動。</strong></p></div><div class="status-box" id="statusBox"><p class="comment-tag" id="commentTag">FIELD NOTES</p><p class="comment-line" id="commentText">さて、世界を救いにいこうか。</p><h2 class="status-title" id="statusTitle">準備ができたら、スタート。</h2><p id="statusText">99本はセーフ。1本だけがハズレです。</p><button class="again-btn" id="againBtn" type="button" hidden>次の爆弾へ</button><a class="share-btn" id="shareBtn" target="_blank" rel="noopener noreferrer"><b>𝕏</b> Xに投稿</a></div><div class="stats"><div class="stats-label"><span>YOUR RECORD</span><span>このブラウザの記録</span></div><div class="stats-values"><div><b id="attemptCount">0</b><span>挑戦</span></div><div><b id="winCount">0</b><span>解除成功</span></div><div><b id="safeCount">0</b><span>自己ベスト</span></div><div><b id="failCount">0</b><span>爆発</span></div></div><p class="record-note">挑戦回数はスタート時に数えます。</p></div><button class="reset-btn" id="resetBtn" type="button" hidden>↻ この挑戦をやめる</button></aside></div></main><footer class="footer"><span>ONE BAD WIRE © 2026 · EKOOEKON</span><span>DAITAI ANZEN INDUSTRIES — だいたい安全工業</span></footer></div>
 <div class="mobile-controls" id="mobileBar"><div class="mobile-copy"><div class="mobile-meta"><div class="mobile-label" id="mobileLabel">100本 / ハズレは1本</div><strong class="mobile-timer" id="mobileTimer" aria-label="残り時間 3分">03:00</strong></div><p class="mobile-comment" id="mobileComment">準備ができたら、スタート。</p></div><div class="mobile-actions"><button class="start-btn" id="mobileStartBtn" type="button">スタート</button><button class="again-btn" id="mobileAgainBtn" type="button" hidden>次の爆弾へ</button><a class="share-btn" id="mobileShareBtn" target="_blank" rel="noopener noreferrer">𝕏 Xに投稿</a></div></div>
-<dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialog-top"><span>FIELD NOTES / ONE PERCENT</span><button class="close-btn" data-close="helpDialog" type="button" aria-label="閉じる">×</button></div><h2 id="helpTitle">最後の1本を、残せ。</h2><ul><li>スタートで3分のカウントダウンが始まり、配線を約10本ずつ拡大表示します。</li><li>配線の上で二本指スクロール、または上下にスワイプすると、範囲を連続して動かせます。下のスライダーでも移動できます。</li><li>導線をタップすると即切断。セーフなら続行、ハズレなら爆発します。</li><li>3分以内に99本のセーフを切り、1本のハズレを残せたら解除成功。時間切れでも爆発します。</li></ul><p>成功・失敗のどちらも、最後は全体図に戻ります。別のタブや投稿画面を開いている間も時間は進みます。ハズレは箱を用意したときに決まり、途中で変わりません。</p><p>上下矢印で導線へ移動、Enter / Spaceで切断。「おまかせで切る」と番号入力の送信も、すぐ切断します。</p><p>セーフのコメントは100種類、アウトは8種類。出やすさには差があります。Xボタンはいつでも使えます。クリア済みなら成功した挑戦回数、未クリアなら累計爆発回数とゲームのリンクを入れた投稿画面を開きます。</p><p class="probability-note">時間内に99本を選べる場合、ハズレを最後に残せる確率は1/100（1%）。最初の1本がセーフの確率は99%。見た目やコメントは当たり外れのヒントではありません。</p><button class="dialog-primary" data-close="helpDialog" type="button">わかった</button></dialog>
-<dialog id="jumpDialog" aria-labelledby="jumpTitle"><form id="jumpForm"><div class="dialog-top"><span>CUT BY NUMBER</span><button class="close-btn" data-close="jumpDialog" type="button" aria-label="閉じる">×</button></div><h2 id="jumpTitle">どの番号を切る？</h2><p><label for="wireInput">1〜100の番号を入力。送信するとすぐ切れます。</label></p><input class="field" id="wireInput" type="text" inputmode="numeric" maxlength="5" autocomplete="off" placeholder="例：48" aria-describedby="jumpError"><div class="field-error" id="jumpError" role="status"></div><button class="dialog-primary" type="submit">この番号を切る</button></form></dialog>
+<dialog id="helpDialog" aria-labelledby="helpTitle"><div class="dialog-top"><span>FIELD NOTES / ONE PERCENT</span><button class="close-btn" data-close="helpDialog" type="button" aria-label="閉じる">×</button></div><h2 id="helpTitle">最後の1本を、残せ。</h2><ul><li>スタートで3分のカウントダウンが始まり、配線を約10本ずつ拡大表示します。</li><li>配線の上で二本指スクロール、または上下にスワイプすると、範囲を連続して動かせます。下のスライダーでも移動できます。</li><li>導線をタップすると即切断。セーフなら続行、ハズレなら爆発します。</li><li>3分以内に99本のセーフを切り、1本のハズレを残せたら解除成功。時間切れでも爆発します。</li></ul><p>成功・失敗のどちらも、最後は全体図に戻ります。別のタブや投稿画面を開いている間も時間は進みます。ハズレは箱を用意したときに決まり、途中で変わりません。</p><p>上下矢印で導線へ移動、Enter / Spaceで切断。「おまかせで切る」では、未切断の導線からランダムに1本をすぐ切断します。</p><p>セーフのコメントは100種類、アウトは8種類。出やすさには差があります。Xボタンはいつでも使えます。クリア済みなら成功した挑戦回数、未クリアなら累計爆発回数とゲームのリンクを入れた投稿画面を開きます。</p><p class="probability-note">時間内に99本を選べる場合、ハズレを最後に残せる確率は1/100（1%）。最初の1本がセーフの確率は99%。見た目やコメントは当たり外れのヒントではありません。</p><button class="dialog-primary" data-close="helpDialog" type="button">わかった</button></dialog>
 <dialog id="resetDialog" aria-labelledby="resetTitle"><div class="dialog-top"><span>A NEW BOX</span><button class="close-btn" data-close="resetDialog" type="button" aria-label="閉じる">×</button></div><h2 id="resetTitle">この挑戦をやめる？</h2><p>新しい爆弾のスタート画面に戻ります。挑戦回数と自己ベストは残ります。</p><button class="dialog-primary" id="confirmReset" type="button">新しい爆弾を用意する</button></dialog><div class="flash" id="flash" aria-hidden="true"></div><div class="toast" id="toast" role="status"></div><div class="sr-only" id="announce" aria-live="polite"></div>
 <script>(function (root) {
   'use strict';
@@ -991,7 +1054,7 @@
     let snapshot = {state:'ready', round:0, cutIds:[], safeCount:0, badId:null};
     let settings = {mode:'overview', exploded:false, animateExplosion:false, reducedMotion:false, interactive:false};
     let offset = 0, roving = 1, hovered = null, focused = null;
-    let geometry = null, sceneMode = null, sceneWidth = 0, scroller = null;
+    let geometry = null, sceneMode = null, sceneWidth = 0, sceneHeight = 0, scroller = null;
     let rows = [], pointer = null, deferredBuild = false, lastRange = '';
 
     function el(tag, attrs, text) {
@@ -1021,9 +1084,14 @@
         if (typeof cb.onRangeChange === 'function') cb.onRangeChange(range);
       }
     }
+    function dimensions() {
+      const width=svg.clientWidth||800,height=svg.clientHeight||HEIGHT;
+      if(active())return {w:Math.max(240,Math.round(width)),h:Math.max(120,Math.round(height))};
+      return {w:Math.max(700,Math.round(width*HEIGHT/height)),h:HEIGHT};
+    }
     function screenScale() {
       const rect = typeof svg.getBoundingClientRect === 'function' ? svg.getBoundingClientRect() : null;
-      return rect && rect.height > 0 ? HEIGHT / rect.height : 1;
+      return rect && rect.height > 0 ? (geometry?geometry.h:HEIGHT) / rect.height : 1;
     }
     function makeDefs() {
       const defs = el('defs', {});
@@ -1128,30 +1196,31 @@
       }
     }
 
-    function drawActive(w, defs) {
-      const g=geometry={w,h:HEIGHT,start:w<500?62:78,end:w-43,top:TOP,bottom:BOTTOM,step:STEP};
+    function drawActive(w, h, defs) {
+      const compact=h<480,top=compact?30:TOP,bottom=h-(compact?30:HEIGHT-BOTTOM);
+      const g=geometry={w,h,start:w<500?62:78,end:w-43,top,bottom,step:(bottom-top)/VISIBLE};
       g.cut=g.start+(g.end-g.start)*.48;
       const clip=el('clipPath',{id:'workClip',clipPathUnits:'userSpaceOnUse'});
-      clip.append(el('rect',{x:18,y:TOP,width:w-36,height:BOTTOM-TOP}));
+      clip.append(el('rect',{x:18,y:g.top,width:w-36,height:g.bottom-g.top}));
       defs.append(clip);
       const frame=el('g',{'aria-hidden':'true'});
-      frame.append(el('rect',{x:1,y:2,width:w-2,height:HEIGHT-5,rx:13,fill:'url(#frame)',stroke:'#273944','stroke-width':2}));
-      frame.append(el('rect',{x:11,y:13,width:w-22,height:HEIGHT-28,rx:7,fill:'#182630',stroke:'#72818a','stroke-opacity':.6}));
-      frame.append(el('rect',{x:12,y:14,width:w-24,height:HEIGHT-30,rx:7,fill:'url(#texture)'}));
-      frame.append(el('text',{x:25,y:35,fill:'#8da4af','font-size':8,'font-family':'monospace','letter-spacing':1.5},'WIRE WORK AREA / 100'));
-      frame.append(el('text',{x:25,y:HEIGHT-28,fill:'#8c9ea4','font-size':8,'font-family':'monospace','letter-spacing':1},'SCROLL TO FIND YOUR NEXT WIRE'));
-      frame.append(el('path',{d:'M'+g.cut+' '+TOP+'V'+BOTTOM,stroke:'#c9d9df','stroke-opacity':.13,'stroke-dasharray':'3 6','stroke-width':1}));
-      frame.append(el('rect',{x:w-47,y:TOP,width:27,height:BOTTOM-TOP,rx:3,fill:'#243946',stroke:'#577080','stroke-opacity':'.35'}));
+      frame.append(el('rect',{x:1,y:2,width:w-2,height:h-5,rx:13,fill:'url(#frame)',stroke:'#273944','stroke-width':2}));
+      frame.append(el('rect',{x:11,y:13,width:w-22,height:h-28,rx:7,fill:'#182630',stroke:'#72818a','stroke-opacity':.6}));
+      frame.append(el('rect',{x:12,y:14,width:w-24,height:h-30,rx:7,fill:'url(#texture)'}));
+      frame.append(el('text',{x:25,y:compact?23:35,fill:'#8da4af','font-size':8,'font-family':'monospace','letter-spacing':1.5},'WIRE WORK AREA / 100'));
+      frame.append(el('text',{x:25,y:h-(compact?16:28),fill:'#8c9ea4','font-size':8,'font-family':'monospace','letter-spacing':1},'SCROLL TO FIND YOUR NEXT WIRE'));
+      frame.append(el('path',{d:'M'+g.cut+' '+g.top+'V'+g.bottom,stroke:'#c9d9df','stroke-opacity':.13,'stroke-dasharray':'3 6','stroke-width':1}));
+      frame.append(el('rect',{x:w-47,y:g.top,width:27,height:g.bottom-g.top,rx:3,fill:'#243946',stroke:'#577080','stroke-opacity':'.35'}));
       svg.append(frame);
       const viewport=el('g',{'clip-path':'url(#workClip)'});
       scroller=el('g',{'data-wire-scroll':'true'});
       viewport.append(scroller);svg.append(viewport);rows=[];
       for(let i=0;i<TOTAL;i++) {
-        const id=i+1,y=TOP+STEP*(i+.5);
+        const id=i+1,y=g.top+g.step*(i+.5);
         const node=el('g',{class:'wire-row','data-wire':id,role:'button',tabindex:-1});
-        const hit=el('rect',{class:'row-hit',x:18,y:TOP+STEP*i,width:w-36,height:STEP,rx:2,fill:'transparent'});
+        const hit=el('rect',{class:'row-hit',x:18,y:g.top+g.step*i,width:w-36,height:g.step,rx:2,fill:'transparent'});
         node.append(hit);
-        if(i%2)node.append(el('rect',{x:18,y:TOP+STEP*i,width:w-36,height:STEP,fill:'#ffffff03','pointer-events':'none'}));
+        if(i%2)node.append(el('rect',{x:18,y:g.top+g.step*i,width:w-36,height:g.step,fill:'#ffffff03','pointer-events':'none'}));
         const outline=el('path',{fill:'none',stroke:'#fff3ca','stroke-width':10,'stroke-linecap':'round',opacity:0,'pointer-events':'none'});
         const shadow=el('path',{fill:'none',stroke:'#050b11','stroke-width':8,'stroke-linecap':'round',transform:'translate(0 2)','pointer-events':'none'});
         const core=el('path',{fill:'none',stroke:color(id)[0],'stroke-width':5.4,'stroke-linecap':'round',class:'wire-core','pointer-events':'none'});
@@ -1171,7 +1240,7 @@
       const used=cutSet(),range=getRange();
       const visibleUncut=rows.filter(row=>row.id>=range.first&&row.id<=range.last&&!used.has(row.id));
       if(roving<range.first||roving>range.last||used.has(roving))roving=visibleUncut.length?visibleUncut[0].id:range.first;
-      scroller.setAttribute('transform','translate(0 '+(-offset*STEP)+')');
+      scroller.setAttribute('transform','translate(0 '+(-offset*geometry.step)+')');
       for(const row of rows) {
         const done=used.has(row.id),visible=row.id>=range.first&&row.id<=range.last;
         const enabled=settings.interactive!==false&&snapshot.state==='playing'&&!done;
@@ -1192,26 +1261,26 @@
       svg.setAttribute('aria-label','導線 '+pad(range.first)+' から '+pad(range.last)+' を表示。スクロールで移動し、押すと切断します。');
     }
     function build() {
-      const w=Math.max(active()?280:700,Math.round(svg.clientWidth||800));
+      const {w,h}=dimensions();
       const remember=focused;
       svg.replaceChildren();rows=[];scroller=null;
-      svg.setAttribute('viewBox','0 0 '+w+' '+HEIGHT);
+      svg.setAttribute('viewBox','0 0 '+w+' '+h);
       svg.setAttribute('data-mode',settings.mode);
       svg.setAttribute('role',active()?'group':'img');
       svg.setAttribute('aria-label',active()?'導線の作業エリア':'100本の導線、密閉された箱、黒い爆弾の全体図。');
-      svg.style.aspectRatio=w+' / '+HEIGHT;
+      svg.style.aspectRatio=w+' / '+h;
       svg.style.touchAction=active()?'none':'auto';
       const defs=makeDefs();svg.append(defs);
-      if(active())drawActive(w,defs);else drawOverview(w);
-      sceneMode=settings.mode;sceneWidth=w;deferredBuild=false;
+      if(active())drawActive(w,h,defs);else drawOverview(w);
+      sceneMode=settings.mode;sceneWidth=w;sceneHeight=h;deferredBuild=false;
       if(active()&&remember&&canCut(remember))focusWire(remember,false);
     }
     function render(nextSnapshot, nextSettings) {
       if(nextSnapshot)snapshot=nextSnapshot;
       settings=Object.assign({},settings,nextSettings||{});
       settings.mode=settings.mode==='active'?'active':'overview';
-      const w=Math.max(active()?280:700,Math.round(svg.clientWidth||800));
-      const needsBuild=sceneMode!==settings.mode||sceneWidth!==w||!active();
+      const {w,h}=dimensions();
+      const needsBuild=sceneMode!==settings.mode||sceneWidth!==w||sceneHeight!==h||!active();
       if(needsBuild&&pointer){deferredBuild=true;paintActive();}
       else if(needsBuild)build();
       else paintActive();
@@ -1227,7 +1296,7 @@
     }
     function scrollBy(pixels) {
       const numeric=Number(pixels);
-      return Number.isFinite(numeric)?setOffset(offset+numeric*screenScale()/STEP):getRange();
+      return Number.isFinite(numeric)?setOffset(offset+numeric*screenScale()/(geometry?geometry.step:STEP)):getRange();
     }
     function ensureVisible(id) {
       if(!Number.isInteger(id)||id<1||id>TOTAL)return getRange();
@@ -1407,8 +1476,8 @@
     $('rangeScroll').setAttribute('aria-valuetext','導線 '+pad(range.first)+' から '+pad(range.last));
     $('upBtn').disabled=busy||range.offset<=0;$('downBtn').disabled=busy||range.offset>=90;
   }});
-  function renderBoard(animateExplosion=false){boardView.render(game.snapshot(),{mode:phase==='active'?'active':'overview',exploded,animateExplosion,reducedMotion:reduced,interactive:phase==='active'&&!busy});}
-  function focusBoard(){if(window.matchMedia('(max-width:760px)').matches)$('board').scrollIntoView?.({block:'start',behavior:reduced?'auto':'smooth'});}
+  let boardWidth=0,boardHeight=0;
+  function renderBoard(animateExplosion=false){boardView.render(game.snapshot(),{mode:phase==='active'?'active':'overview',exploded,animateExplosion,reducedMotion:reduced,interactive:phase==='active'&&!busy});boardWidth=$('board').clientWidth;boardHeight=$('board').clientHeight||0;}
   function updateShare(){const {href}=WireShare.fromStats(stats);for(const id of ['shareBtn','mobileShareBtn']){$(id).hidden=false;$(id).setAttribute('href',href);}}
   function updateClock(s=game.snapshot()){
     const seconds=Math.ceil(s.remainingMs/1000),label=Math.floor(seconds/60)+':'+String(seconds%60).padStart(2,'0'),display=label.padStart(5,'0');
@@ -1432,10 +1501,10 @@
   function setComment(kind){const entry=WireComments.pick(kind,previousComment[kind]);previousComment[kind]=entry.id;setMessage(entry.text);return entry.text;}
   function updateUI(){
     const s=game.snapshot(),ready=phase==='ready',active=phase==='active',done=phase==='result',won=done&&s.state==='won';
-    $('gameRoot').classList.toggle('is-ready',ready);$('apparatus').dataset.phase=phase;$('boardNote').hidden=done;
+    $('gameRoot').classList.toggle('is-ready',ready);$('gameRoot').dataset.phase=phase;$('apparatus').dataset.phase=phase;$('boardNote').hidden=done;
     $('startOverlay').hidden=!ready;$('startBtn').disabled=busy;$('mobileStartBtn').hidden=!ready;$('mobileStartBtn').disabled=busy;
     $('actionTools').hidden=!active;$('scrollTools').hidden=!active;
-    $('randomBtn').disabled=$('jumpBtn').disabled=!active||busy;
+    $('randomBtn').disabled=!active||busy;
     $('resetBtn').hidden=!active;$('resetBtn').disabled=busy;$('rangeScroll').disabled=busy||!active;
     const range=boardView.getRange();$('upBtn').disabled=busy||range.offset<=0;$('downBtn').disabled=busy||range.offset>=90;
     $('againBtn').hidden=$('mobileAgainBtn').hidden=!done||busy;
@@ -1461,14 +1530,14 @@
     if(busy||game.snapshot().state!=='ready')return;
     game.start();resultRecorded=false;stats.rounds++;currentAttempt=stats.rounds;saveStats();phase='active';exploded=false;boardView.reset();
     $('commentTag').textContent='FIELD NOTES';setMessage('タップで切断。二本指スクロールで移動。');$('statusTitle').textContent=currentAttempt+'回目の挑戦。';$('statusText').textContent='3分以内にセーフを99本切って、ハズレを1本残しましょう。';
-    updateUI();renderBoard();focusBoard();clockTimer=setInterval(refreshTimer,100);announce('スタート。制限時間は3分です。導線001から010を拡大しました。');
+    updateUI();renderBoard();clockTimer=setInterval(refreshTimer,100);announce('スタート。制限時間は3分です。導線001から010を拡大しました。');
   }
   function finish(lost){
     if(phase!=='active')return;
     const s=game.snapshot();recordResult(s);clearTimeout(cutTimer);stopClock();document.querySelectorAll('dialog[open]').forEach(d=>d.close());phase='result';exploded=lost;
     if(lost){setComment('out');$('commentTag').textContent='OUT / GAME OVER';$('statusTitle').textContent=s.lossReason==='timeout'?'時間切れ。ドカン！':'ドカン。ここまで！';$('statusText').textContent=s.lossReason==='timeout'?'3分以内に解除できませんでした。記録は '+s.safeCount+'本です。':'記録は '+s.safeCount+'本。No. '+pad(s.badId)+' がハズレでした。';}
     else{setMessage(SUCCESS);$('commentTag').textContent='MISSION COMPLETE';$('statusTitle').textContent=currentAttempt+'回目の挑戦で解除成功！';$('statusText').textContent='99本を切断。No. '+pad(s.badId)+' のハズレを残しました。';}
-    updateUI();renderBoard(lost);focusBoard();
+    updateUI();renderBoard(lost);
     if(lost&&!reduced){$('apparatus').classList.add('shake');$('flash').classList.add('fire');}
     sound(lost?'lose':'win');
     if(lost){setTimeout(()=>{busy=false;updateUI();announce($('commentText').textContent+' '+$('statusTitle').textContent);},reduced?0:850);}else{busy=false;updateUI();announce(SUCCESS+' '+$('statusTitle').textContent);}
@@ -1499,13 +1568,10 @@
   $('upBtn').addEventListener('click',()=>{if(!busy)boardView.scrollBy(-247);});$('downBtn').addEventListener('click',()=>{if(!busy)boardView.scrollBy(247);});
   $('helpBtn').addEventListener('click',()=>showDialog('helpDialog'));
   $('soundBtn').addEventListener('click',()=>{soundOn=!soundOn;try{localStorage.setItem(SOUND,soundOn?'on':'off');}catch(_){}updateSound();if(soundOn)sound('select');});
-  $('jumpBtn').addEventListener('click',()=>{if(phase!=='active'||busy)return;$('wireInput').value='';$('jumpError').textContent='';$('wireInput').removeAttribute('aria-invalid');showDialog('jumpDialog');$('wireInput').focus();});
-  $('jumpForm').addEventListener('submit',e=>{e.preventDefault();if(phase!=='active'||busy)return;const v=$('wireInput').value.trim().replace(/[０-９]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0)),id=Number(v);if(!/^\d+$/.test(v)||!Number.isInteger(id)||id<1||id>100){$('jumpError').textContent='1〜100の整数を入力してください。';return;}if(game.snapshot().cutIds.includes(id)){$('jumpError').textContent='その導線は切断済みです。';return;}$('jumpDialog').close();boardView.ensureVisible(id);cutWire(id);});
   for(const id of ['shareBtn','mobileShareBtn'])$(id).addEventListener('click',()=>{refreshTimer();updateShare();});
   document.addEventListener('visibilitychange',refreshTimer);
   window.addEventListener('pageshow',refreshTimer);window.addEventListener('focus',refreshTimer);
-  let boardWidth=$('board').clientWidth;
-  new ResizeObserver(()=>{const width=$('board').clientWidth;if(width!==boardWidth){boardWidth=width;renderBoard();}}).observe($('board'));
+  new ResizeObserver(()=>{const width=$('board').clientWidth,height=$('board').clientHeight||0;if(width!==boardWidth||(phase==='active'&&height!==boardHeight))renderBoard();}).observe($('board'));
   updateSound();updateUI();renderBoard();
 })();
 </script></body></html>
