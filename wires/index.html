@@ -86,11 +86,25 @@
   .hero{padding-top:9px}
   .topbar{height:40px}
 }
+
+.home-link {
+  color: inherit;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* スマホでは左上の英語名を省略し、ボタンの場所を確保 */
+@media (max-width: 480px) {
+  .brand > span:last-child {
+    display: none;
+  }
+}
+  
 </style>
 <style id="bombStyles"></style></head>
 <body>
 <noscript>このゲームを遊ぶには、JavaScriptを有効にしてください。</noscript>
-<div class="wrap is-ready" id="gameRoot"><header class="topbar"><div class="brand"><span class="brand-logo"><svg viewBox="0 0 20 20" fill="none"><path d="M1 5h12M1 10h12M1 15h12" stroke="#f5bf69" stroke-width="1.6"/><rect x="11" y="2" width="7" height="16" rx="1" fill="#e6e6cf"/></svg></span><span>ONE BAD WIRE</span></div><div class="top-actions"><button class="plain-btn" id="soundBtn" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path id="soundWaves" d="m17 9 5 6m0-6-5 6"/></svg><span id="soundLabel">音 OFF</span></button><button class="plain-btn" id="helpBtn" type="button">遊び方</button></div></header>
+<div class="wrap is-ready" id="gameRoot"><header class="topbar"><div class="brand"><span class="brand-logo"><svg viewBox="0 0 20 20" fill="none"><path d="M1 5h12M1 10h12M1 15h12" stroke="#f5bf69" stroke-width="1.6"/><rect x="11" y="2" width="7" height="16" rx="1" fill="#e6e6cf"/></svg></span><span>ONE BAD WIRE</span></div><div class="top-actions"><a class="plain-btn home-link" href="../">← ゲーム一覧</a><button class="plain-btn" id="soundBtn" type="button" aria-pressed="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path id="soundWaves" d="m17 9 5 6m0-6-5 6"/></svg><span id="soundLabel">音 OFF</span></button><button class="plain-btn" id="helpBtn" type="button">遊び方</button></div></header>
 <main><section class="hero"><div><div class="eyebrow">ONE BAD WIRE. ONE PERCENT CHANCE.</div><h1>国民の命は<wbr>あなたの手に</h1><p><strong>正確な一本を残さなければ爆発してしまいます</strong><br>制限時間は3分。あなたの直感を信じて。</p></div><div class="odds"><b><span id="safetyValue">1</span><small id="oddsUnit">%</small></b><p id="oddsLabel">ハズレを最後に残す確率</p><p class="odds-note" id="riskNote">3分以内に99本を切れたら成功。</p></div></section>
 <div class="workspace"><section class="board-card" aria-label="爆弾と導線"><div class="board-toolbar"><span class="board-label" id="boardLabel">100 WIRES / 1 BAD</span><div class="mission-meta"><div class="mission-clock" id="clockBox"><span>残り時間</span><strong id="timerText" role="timer" aria-live="off">03:00</strong></div><span class="phase-tag" id="phaseLabel">READY</span></div></div><div class="apparatus" id="apparatus" data-phase="ready"><svg id="board" role="group" aria-label="100本の導線と爆弾の全体図"></svg><div class="start-overlay" id="startOverlay"><button class="start-btn" id="startBtn" type="button">スタート</button></div></div><div class="board-note" id="boardNote"><span id="boardHint">スタートすると、配線を拡大します。</span><span class="fixed">180 SECONDS. TRUST YOUR INSTINCT.</span></div><div class="scroll-tools" id="scrollTools" hidden><span class="range-label" id="rangeLabel">001 — 010</span><div class="range-wrap"><button id="upBtn" type="button" aria-label="上の導線へ">↑</button><input id="rangeScroll" type="range" min="0" max="90" step="0.01" value="0" aria-label="表示する導線の範囲"><button id="downBtn" type="button" aria-label="下の導線へ">↓</button></div></div></section>
 <aside class="controls" aria-label="ゲームの状態"><div class="control-heading"><span id="controlHeading">READY TO DISARM</span><b id="attemptBadge">—</b></div><div class="run-score"><div><span class="score-label">この箱の記録</span><strong id="scoreCount">0</strong><small>本セーフ</small></div><div class="remaining"><span>残り</span><b id="remainingCount">100</b><span>本</span></div></div><div class="selection-main"><p class="selection-label">最後に切った導線</p><p class="selected-number empty" id="selectedNumber">— —</p><div class="color-preview"><span class="sample-wire" id="sampleWire"></span><span class="color-name" id="colorName">まだ切っていません</span></div></div><div class="action-main" id="actionTools" hidden><div class="pick-tools"><button id="randomBtn" type="button">⚄ おまかせで切る</button></div><p class="tap-note">タップで切断。<br><strong>二本指スクロールで上下に移動。</strong></p></div><div class="status-box" id="statusBox"><p class="comment-tag" id="commentTag">FIELD NOTES</p><p class="comment-line" id="commentText">さて、世界を救いにいこうか。</p><h2 class="status-title" id="statusTitle">準備ができたら、スタート。</h2><p id="statusText">99本はセーフ。1本だけがハズレです。</p><button class="again-btn" id="againBtn" type="button" hidden>次の爆弾へ</button><a class="share-btn" id="shareBtn" target="_blank" rel="noopener noreferrer"><b>𝕏</b> Xに投稿</a></div><div class="stats"><div class="stats-label"><span>YOUR RECORD</span><span>このブラウザの記録</span></div><div class="stats-values"><div><b id="attemptCount">0</b><span>挑戦</span></div><div><b id="winCount">0</b><span>解除成功</span></div><div><b id="safeCount">0</b><span>自己ベスト</span></div><div><b id="failCount">0</b><span>爆発</span></div></div><p class="record-note">挑戦回数はスタート時に数えます。</p></div><button class="reset-btn" id="resetBtn" type="button" hidden>↻ この挑戦をやめる</button></aside></div></main><footer class="footer"><span>ONE BAD WIRE © 2026 · EKOOEKON</span><span>DAITAI ANZEN INDUSTRIES — だいたい安全工業</span></footer></div>
